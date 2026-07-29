@@ -1,0 +1,51 @@
+body {
+	position: fixed;
+	inset: 0;
+	max-width: 100vmin;
+	max-height: 100vh;
+	margin-inline: auto;
+	display: grid;
+	grid-template-columns: 1fr auto 2fr;
+	grid-template-rows: auto;
+	overflow: hidden;
+}
+
+div#scroll-picker {
+	--size-item: var(--size-large-standart);
+
+	overflow: hidden scroll;
+	padding-block: calc((100vh - var(--size-item)) / 2);
+
+	& > * {
+		min-height: var(--size-item);
+		max-height: var(--size-item);
+	}
+
+	&::-webkit-scrollbar {
+		display: none;
+		-ms-overflow-style: none;
+	}
+}
+
+@supports(scrollbar-width: none) {
+	div#scroll-picker::-webkit-scrollbar {
+		scrollbar-width: none;
+	}
+}
+
+button.picker-item {
+	align-items: self-end;
+}
+
+button.picker-item.selected {
+	pointer-events: none;
+	color: var(--color-highlight);
+}
+
+button.picker-item:not(.selected) dfn.subtitle {
+	display: none;
+}
+
+dialog.loader img[alt="Logo"] {
+	content: url(../../assets/icons/loading.gif);
+}

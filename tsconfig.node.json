@@ -1,0 +1,12 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"lib": [ "ES2025", "ESNext.Array" ],
+		"types": [ "node" ]
+	},
+	"include": [
+		"vite.config.ts",
+		"environment/configs/**/*.ts",
+		"environment/plugins/**/*.ts"
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"lib": [ "DOM", "DOM.Iterable", "ES2025" ]
+	},
+	"include": [
+		"environment/models/**/*.ts",
+		"environment/controllers/**/*.ts",
+		"environment/services/**/*.ts",
+		"209-birthdays/**/*.ts"
+	]
+}

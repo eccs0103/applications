@@ -1,0 +1,28 @@
+{
+	"private": true,
+	"name": "applications",
+	"version": "1.0.0",
+	"type": "module",
+	"author": "eccs0103",
+	"packageManager": "npm@11.6.2",
+	"engines": {
+		"node": ">=22"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "npm run build && vite preview",
+		"deploy": "vite build && wrangler deploy",
+		"typecheck": "tsc -p tsconfig.node.json && tsc -p tsconfig.web.json"
+	},
+	"devDependencies": {
+		"@cloudflare/vite-plugin": "^1.45.0",
+		"@types/node": "^24.10.1",
+		"typescript": "^6.0.3",
+		"vite": "^7.3.0",
+		"wrangler": "^4.111.0"
+	},
+	"dependencies": {
+		"adaptive-extender": "^1.0.5"
+	}
+}
