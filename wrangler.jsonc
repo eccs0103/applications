@@ -2,6 +2,9 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "applications",
 	"compatibility_date": "2026-07-16",
+	"routes": [
+		{ "pattern": "applications.eccs.dev", "custom_domain": true }
+	],
 	"observability": {
 		"enabled": true,
 		"traces": {
