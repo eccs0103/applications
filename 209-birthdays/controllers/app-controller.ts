@@ -14,20 +14,13 @@ const { baseURI, body } = document;
 //#region App controller
 class AppController extends Controller {
 	#bridge: Bridge = new ClientBridge();
-	#renderer: BirthdaysRenderer;
-	#timer: Timer;
-	#settings: SettingsService;
+	#renderer: BirthdaysRenderer = new BirthdaysRenderer(body);
+	#timer: Timer = new Timer({ multiple: false });
+	#settings: SettingsService = new SettingsService();
 
 	#members: GroupMember[] = [];
 	#selectionIndex: number = 0;
 	#selectionMember: GroupMember | null = null;
-
-	constructor() {
-		super();
-		this.#renderer = new BirthdaysRenderer(body);
-		this.#timer = new Timer({ multiple: false });
-		this.#settings = new SettingsService();
-	}
 
 	async #readGroup(url: Readonly<URL>): Promise<Group> {
 		const content = await this.#bridge.read(url);
@@ -68,10 +61,11 @@ class AppController extends Controller {
 	}
 
 	#updateSelection(member: GroupMember | null, animate: boolean): void {
+		const renderer = this.#renderer;
 		this.#selectionMember = member;
 
 		if (member === null) {
-			return this.#renderer.updateContent(String.empty, String.empty, false);
+			return renderer.updateContent(String.empty, String.empty, false);
 		}
 
 		const date = new Date();
@@ -84,13 +78,13 @@ class AppController extends Controller {
 
 		if (wish !== null) {
 			const [member, content] = wish;
-			return this.#renderer.updateContent(content, member.name, animate, 5000);
+			return renderer.updateContent(content, member.name, animate, 5000);
 		}
 
 		const timespan = Timespan.fromValue(begin - now);
 		const { days, hours, minutes, seconds } = timespan.duration();
 		const negativity = timespan.valueOf() < 0;
-		return this.#renderer.updateContent(`${negativity ? "Անցավ" : "Մնաց"} ${days}օր ${hours}ժ․ ${minutes}ր․ ${seconds}վ․`, String.empty, false, 1000);
+		return renderer.updateContent(`${negativity ? "Անցավ" : "Մնաց"} ${days}օր ${hours}ժ․ ${minutes}ր․ ${seconds}վ․`, String.empty, false, 1000);
 	}
 
 	#onSelectionChange(event: CustomEvent<GroupMember | null>): void {
