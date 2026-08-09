@@ -21,6 +21,42 @@ export class ConverterRenderer extends EventTarget {
 	#spanReportDropped: HTMLSpanElement | null = null;
 	#tableReportKeys: HTMLTableElement | null = null;
 
+	get #elementInputSource(): HTMLInputElement {
+		return ReferenceError.suppress(this.#inputSource, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementDefinitionSource(): HTMLElement {
+		return ReferenceError.suppress(this.#definitionSource, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementSpanDirection(): HTMLSpanElement {
+		return ReferenceError.suppress(this.#spanDirection, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementButtonConvert(): HTMLButtonElement {
+		return ReferenceError.suppress(this.#buttonConvert, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementDivReport(): HTMLDivElement {
+		return ReferenceError.suppress(this.#divReport, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementSpanReportDirect(): HTMLSpanElement {
+		return ReferenceError.suppress(this.#spanReportDirect, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementSpanReportAnchored(): HTMLSpanElement {
+		return ReferenceError.suppress(this.#spanReportAnchored, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementSpanReportDropped(): HTMLSpanElement {
+		return ReferenceError.suppress(this.#spanReportDropped, "ConverterRenderer.initialize() must run first");
+	}
+
+	get #elementTableReportKeys(): HTMLTableElement {
+		return ReferenceError.suppress(this.#tableReportKeys, "ConverterRenderer.initialize() must run first");
+	}
+
 	constructor(container: HTMLElement) {
 		super();
 		this.#container = container;
@@ -54,8 +90,8 @@ export class ConverterRenderer extends EventTarget {
 	}
 
 	#initializeListeners(): void {
-		const inputSource = this.#inputSource!;
-		const buttonConvert = this.#buttonConvert!;
+		const inputSource = this.#elementInputSource;
+		const buttonConvert = this.#elementButtonConvert;
 
 		inputSource.addEventListener("change", () => {
 			const files = inputSource.files;
@@ -70,43 +106,39 @@ export class ConverterRenderer extends EventTarget {
 	}
 
 	setStatus(text: string): void {
-		this.#definitionSource!.textContent = text;
+		this.#elementDefinitionSource.textContent = text;
 	}
 
 	setDirection(text: string): void {
-		this.#spanDirection!.textContent = text;
+		this.#elementSpanDirection.textContent = text;
 	}
 
 	setConvertEnabled(enabled: boolean): void {
-		this.#buttonConvert!.disabled = !enabled;
+		this.#elementButtonConvert.disabled = !enabled;
 	}
 
 	#renderReportRow(key: string, outcome: KeyOutcome): HTMLTableRowElement {
-		const tableReportKeys = this.#tableReportKeys!;
-		const trReportKey = tableReportKeys.insertRow();
+		const trReportKey = this.#elementTableReportKeys.insertRow();
 		trReportKey.insertCell().textContent = key;
 		trReportKey.insertCell().textContent = outcome;
 		return trReportKey;
 	}
 
 	showReport(report: Readonly<Report>): void {
-		const divReport = this.#divReport!;
-		const tableReportKeys = this.#tableReportKeys!;
+		this.#elementSpanReportDirect.textContent = `${report.countBy(KeyOutcome.direct)}`;
+		this.#elementSpanReportAnchored.textContent = `${report.countBy(KeyOutcome.anchored)}`;
+		this.#elementSpanReportDropped.textContent = `${report.countBy(KeyOutcome.dropped)}`;
 
-		this.#spanReportDirect!.textContent = `${report.countBy(KeyOutcome.direct)}`;
-		this.#spanReportAnchored!.textContent = `${report.countBy(KeyOutcome.anchored)}`;
-		this.#spanReportDropped!.textContent = `${report.countBy(KeyOutcome.dropped)}`;
-
-		tableReportKeys.replaceChildren();
+		this.#elementTableReportKeys.replaceChildren();
 		for (const outcome of [KeyOutcome.direct, KeyOutcome.anchored, KeyOutcome.dropped]) {
 			for (const key of report.keysBy(outcome)) this.#renderReportRow(key, outcome);
 		}
 
-		divReport.hidden = false;
+		this.#elementDivReport.hidden = false;
 	}
 
 	hideReport(): void {
-		this.#divReport!.hidden = true;
+		this.#elementDivReport.hidden = true;
 	}
 }
 //#endregion

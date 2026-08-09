@@ -13,9 +13,6 @@ import { type Color } from "adaptive-extender/core";
 
 const { baseURI, body } = document;
 
-const extensionAttheme = ".attheme";
-const extensionTdesktopTheme = ".tdesktop-theme";
-
 enum SourcePlatform {
 	android = "android",
 	desktop = "desktop",
@@ -23,6 +20,9 @@ enum SourcePlatform {
 
 //#region App controller
 class AppController extends Controller {
+	static #extensionAttheme: string = ".attheme";
+	static #extensionTdesktopTheme: string = ".tdesktop-theme";
+
 	#renderer: ConverterRenderer = new ConverterRenderer(body);
 	#converter: Converter | null = null;
 	#androidVocabulary: Vocabulary | null = null;
@@ -31,10 +31,22 @@ class AppController extends Controller {
 	#sourceFile: File | null = null;
 	#sourcePlatform: SourcePlatform | null = null;
 
+	get #requiredConverter(): Converter {
+		return ReferenceError.suppress(this.#converter, "AppController.run() must complete first");
+	}
+
+	get #requiredAndroidVocabulary(): Vocabulary {
+		return ReferenceError.suppress(this.#androidVocabulary, "AppController.run() must complete first");
+	}
+
+	get #requiredDesktopVocabulary(): Vocabulary {
+		return ReferenceError.suppress(this.#desktopVocabulary, "AppController.run() must complete first");
+	}
+
 	#detectSourcePlatform(fileName: string): SourcePlatform | null {
 		const lowered = fileName.toLowerCase();
-		if (lowered.endsWith(extensionAttheme)) return SourcePlatform.android;
-		if (lowered.endsWith(extensionTdesktopTheme)) return SourcePlatform.desktop;
+		if (lowered.endsWith(AppController.#extensionAttheme)) return SourcePlatform.android;
+		if (lowered.endsWith(AppController.#extensionTdesktopTheme)) return SourcePlatform.desktop;
 		return null;
 	}
 
@@ -93,7 +105,7 @@ class AppController extends Controller {
 
 		this.#renderer.setDirection(String.empty);
 		this.#renderer.setConvertEnabled(false);
-		this.#renderer.setStatus(`Unrecognized file '${file.name}' - expected ${extensionAttheme} or ${extensionTdesktopTheme}.`);
+		this.#renderer.setStatus(`Unrecognized file '${file.name}' - expected ${AppController.#extensionAttheme} or ${AppController.#extensionTdesktopTheme}.`);
 	}
 
 	#lightColors(vocabulary: Readonly<Vocabulary>): Map<string, Color> {
@@ -123,8 +135,8 @@ class AppController extends Controller {
 	async #convert(): Promise<void> {
 		const file = this.#sourceFile;
 		const platform = this.#sourcePlatform;
-		const converter = this.#converter!;
-		const desktopVocabulary = this.#desktopVocabulary!;
+		const converter = this.#requiredConverter;
+		const desktopVocabulary = this.#requiredDesktopVocabulary;
 
 		if (file === null || platform === null) return;
 
@@ -136,7 +148,7 @@ class AppController extends Controller {
 			const { theme, report } = converter.androidToDesktop(source);
 			const order = desktopVocabulary.entries.map(entry => entry.name);
 			const output = await theme.serialize(order);
-			this.#download(output, this.#swapExtension(file.name, extensionAttheme, extensionTdesktopTheme), "application/zip");
+			this.#download(output, this.#swapExtension(file.name, AppController.#extensionAttheme, AppController.#extensionTdesktopTheme), "application/zip");
 			this.#renderer.showReport(report);
 			this.#renderer.setStatus(`Converted '${file.name}'.`);
 			return;
@@ -144,9 +156,9 @@ class AppController extends Controller {
 
 		const source = await DesktopTheme.parse(bytes, this.#lightColors(desktopVocabulary));
 		const { theme, report } = converter.desktopToAndroid(source);
-		const order = this.#androidVocabulary!.entries.map(entry => entry.name);
+		const order = this.#requiredAndroidVocabulary.entries.map(entry => entry.name);
 		const output = await theme.serialize(order);
-		this.#download(output, this.#swapExtension(file.name, extensionTdesktopTheme, extensionAttheme), "text/plain");
+		this.#download(output, this.#swapExtension(file.name, AppController.#extensionTdesktopTheme, AppController.#extensionAttheme), "text/plain");
 		this.#renderer.showReport(report);
 		this.#renderer.setStatus(`Converted '${file.name}'.`);
 	}
