@@ -28,13 +28,13 @@
 	<p>Converts between Telegram Android (<code>.attheme</code>) and Telegram Desktop (<code>.tdesktop-theme</code>) themes, in either direction.</p>
 	<section class="option">
 		<label class="title" for="input-source">Source theme</label>
-		<input class="value" id="input-source" type="file" accept=".attheme,.tdesktop-theme">
-		<dfn class="definition" id="definition-source"></dfn>
+		<input id="input-source" type="file" accept=".attheme,.tdesktop-theme" class="value">
+		<dfn id="definition-source" class="definition"></dfn>
 	</section>
 	<section class="option">
 		<span class="title">Direction</span>
-		<span class="value" id="span-direction"></span>
-		<dfn class="definition" id="definition-direction">Detected automatically from the source file extension.</dfn>
+		<span id="span-direction" class="value"></span>
+		<dfn id="definition-direction" class="definition">Detected automatically from the source file extension.</dfn>
 	</section>
 	<button id="button-convert" type="button" disabled>Convert</button>
 	<hr class="layer">
@@ -42,15 +42,15 @@
 		<h4>Coverage report</h4>
 		<section class="option">
 			<span class="title">Direct</span>
-			<span class="value" id="span-report-direct"></span>
+			<span id="span-report-direct" class="value"></span>
 		</section>
 		<section class="option">
 			<span class="title">Anchored</span>
-			<span class="value" id="span-report-anchored"></span>
+			<span id="span-report-anchored" class="value"></span>
 		</section>
 		<section class="option">
 			<span class="title">Dropped</span>
-			<span class="value" id="span-report-dropped"></span>
+			<span id="span-report-dropped" class="value"></span>
 		</section>
 		<details id="details-report-keys">
 			<summary>Per-key breakdown</summary>
