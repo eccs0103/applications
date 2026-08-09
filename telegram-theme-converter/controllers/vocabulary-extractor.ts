@@ -4,10 +4,10 @@ import "adaptive-extender/node";
 import { Color, ColorFormats } from "adaptive-extender/node";
 import AsyncFileSystem from "node:fs/promises";
 import URLUtilities from "node:url";
-import { AtthemeReader } from "../../telegram-theme-converter/services/attheme-reader.js";
-import { PaletteReader } from "../../telegram-theme-converter/services/palette-reader.js";
-import { ArchiveReader } from "../../telegram-theme-converter/services/archive-reader.js";
-import { Argb } from "../../telegram-theme-converter/services/argb.js";
+import { AtthemeReader } from "../services/attheme-reader.js";
+import { PaletteReader } from "../services/palette-reader.js";
+import { ArchiveReader } from "../services/archive-reader.js";
+import { Argb } from "../services/argb.js";
 
 interface VocabularyEntryData {
 	name: string;

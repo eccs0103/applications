@@ -12,5 +12,8 @@
 		"telegram-theme-converter/models/**/*.ts",
 		"telegram-theme-converter/services/**/*.ts",
 		"telegram-theme-converter/view/**/*.ts"
+	],
+	"exclude": [
+		"telegram-theme-converter/controllers/vocabulary-extractor.ts"
 	]
 }

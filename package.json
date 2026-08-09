@@ -15,7 +15,7 @@
 		"deploy": "vite build && wrangler deploy",
 		"typecheck": "tsc -p tsconfig.node.json && tsc -p tsconfig.web.json",
 		"test": "npm run build && vitest run",
-		"extract:vocabulary": "tsx environment/scripts/vocabulary-extractor.ts"
+		"extract:vocabulary": "tsx telegram-theme-converter/controllers/vocabulary-extractor.ts"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "^1.45.0",
