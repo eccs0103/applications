@@ -7,6 +7,10 @@
 		"environment/models/**/*.ts",
 		"environment/controllers/**/*.ts",
 		"environment/services/**/*.ts",
-		"209-birthdays/**/*.ts"
+		"209-birthdays/**/*.ts",
+		"telegram-theme-converter/controllers/**/*.ts",
+		"telegram-theme-converter/models/**/*.ts",
+		"telegram-theme-converter/services/**/*.ts",
+		"telegram-theme-converter/view/**/*.ts"
 	]
 }

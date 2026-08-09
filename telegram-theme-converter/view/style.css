@@ -1,0 +1,8 @@
+body {
+	max-width: 60rem;
+	margin-inline: auto;
+}
+
+table#table-report-keys {
+	width: 100%;
+}

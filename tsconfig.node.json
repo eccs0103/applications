@@ -6,7 +6,10 @@
 	},
 	"include": [
 		"vite.config.ts",
+		"vitest.config.ts",
 		"environment/configs/**/*.ts",
-		"environment/plugins/**/*.ts"
+		"environment/plugins/**/*.ts",
+		"environment/scripts/**/*.ts",
+		"telegram-theme-converter/tests/**/*.ts"
 	]
 }

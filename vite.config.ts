@@ -9,6 +9,7 @@ import { type VitePlugin } from "./environment/plugins/vite-plugin.js";
 const root: URL = new URL(import.meta.url);
 const inputs: URL[] = [
 	new URL("./209-birthdays/index.html", root),
+	new URL("./telegram-theme-converter/index.html", root),
 ];
 const rootEntries: URL[] = [];
 const pathEntries: URL[] = [];

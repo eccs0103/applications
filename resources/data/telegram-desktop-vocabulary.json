@@ -1,0 +1,2934 @@
+{
+	"entries": [
+		{
+			"name": "windowBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "windowFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "windowBgOver",
+			"light": "#f1f1f1ff",
+			"dark": "#232e3cff"
+		},
+		{
+			"name": "windowBgRipple",
+			"light": "#e5e5e5ff",
+			"dark": "#24303dff"
+		},
+		{
+			"name": "windowFgOver",
+			"light": "#000000ff",
+			"dark": "#e9ecf0ff"
+		},
+		{
+			"name": "windowSubTextFg",
+			"light": "#999999ff",
+			"dark": "#708499ff"
+		},
+		{
+			"name": "windowSubTextFgOver",
+			"light": "#919191ff",
+			"dark": "#7c90a4ff"
+		},
+		{
+			"name": "windowBoldFg",
+			"light": "#222222ff",
+			"dark": "#e9e8e8ff"
+		},
+		{
+			"name": "windowBoldFgOver",
+			"light": "#222222ff",
+			"dark": "#e9e9e9ff"
+		},
+		{
+			"name": "windowBgActive",
+			"light": "#40a7e3ff",
+			"dark": "#5288c1ff"
+		},
+		{
+			"name": "windowFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "windowActiveTextFg",
+			"light": "#168acdff",
+			"dark": "#6ab3f3ff"
+		},
+		{
+			"name": "windowShadowFg",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "windowShadowFgFallback",
+			"light": "#f1f1f1ff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "shadowFg",
+			"light": "#00000018",
+			"dark": "#04080e56"
+		},
+		{
+			"name": "slideFadeOutBg",
+			"light": "#0000003c",
+			"dark": "#0000003c"
+		},
+		{
+			"name": "slideFadeOutShadowFg",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "imageBg",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "imageBgTransparent",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "activeButtonBg",
+			"light": "#40a7e3ff",
+			"dark": "#2f6ea5ff"
+		},
+		{
+			"name": "activeButtonBgOver",
+			"light": "#39a5dbff",
+			"dark": "#3476abff"
+		},
+		{
+			"name": "activeButtonBgRipple",
+			"light": "#2095d0ff",
+			"dark": "#3b7cb1ff"
+		},
+		{
+			"name": "activeButtonFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "activeButtonFgOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "activeButtonSecondaryFg",
+			"light": "#cceeffff",
+			"dark": "#9abfe7ff"
+		},
+		{
+			"name": "activeButtonSecondaryFgOver",
+			"light": "#cceeffff",
+			"dark": "#9abfe7ff"
+		},
+		{
+			"name": "activeLineFg",
+			"light": "#37a1deff",
+			"dark": "#6396cbff"
+		},
+		{
+			"name": "activeLineFgError",
+			"light": "#e48383ff",
+			"dark": "#ef5959ff"
+		},
+		{
+			"name": "lightButtonBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "lightButtonBgOver",
+			"light": "#e3f1faff",
+			"dark": "#1d2a39ff"
+		},
+		{
+			"name": "lightButtonBgRipple",
+			"light": "#c9e4f6ff",
+			"dark": "#223143ff"
+		},
+		{
+			"name": "lightButtonFg",
+			"light": "#168acdff",
+			"dark": "#6ab2f2ff"
+		},
+		{
+			"name": "lightButtonFgOver",
+			"light": "#168acdff",
+			"dark": "#6ab2f2ff"
+		},
+		{
+			"name": "attentionButtonFg",
+			"light": "#d14e4eff",
+			"dark": "#ec3942ff"
+		},
+		{
+			"name": "attentionButtonFgOver",
+			"light": "#d14e4eff",
+			"dark": "#ec3942ff"
+		},
+		{
+			"name": "attentionButtonBgOver",
+			"light": "#fcdfdeff",
+			"dark": "#592a2a64"
+		},
+		{
+			"name": "attentionButtonBgRipple",
+			"light": "#f4c3c2ff",
+			"dark": "#68323264"
+		},
+		{
+			"name": "menuBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "menuBgOver",
+			"light": "#f1f1f1ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "menuBgRipple",
+			"light": "#e5e5e5ff",
+			"dark": "#1f2934ff"
+		},
+		{
+			"name": "menuIconFg",
+			"light": "#999999ff",
+			"dark": "#6c7883ff"
+		},
+		{
+			"name": "menuIconFgOver",
+			"light": "#8a8a8aff",
+			"dark": "#dcdcdcff"
+		},
+		{
+			"name": "menuSubmenuArrowFg",
+			"light": "#373737ff",
+			"dark": "#637c95ff"
+		},
+		{
+			"name": "menuFgDisabled",
+			"light": "#ccccccff",
+			"dark": "#3d4e5cff"
+		},
+		{
+			"name": "menuSeparatorFg",
+			"light": "#f1f1f1ff",
+			"dark": "#232f39ff"
+		},
+		{
+			"name": "scrollBarBg",
+			"light": "#00000053",
+			"dark": "#ffffff53"
+		},
+		{
+			"name": "scrollBarBgOver",
+			"light": "#0000007a",
+			"dark": "#ffffff7a"
+		},
+		{
+			"name": "scrollBg",
+			"light": "#0000001a",
+			"dark": "#ffffff1a"
+		},
+		{
+			"name": "scrollBgOver",
+			"light": "#0000002c",
+			"dark": "#ffffff2c"
+		},
+		{
+			"name": "smallCloseIconFg",
+			"light": "#c7c7c7ff",
+			"dark": "#55616cff"
+		},
+		{
+			"name": "smallCloseIconFgOver",
+			"light": "#a3a3a3ff",
+			"dark": "#a3a3a3ff"
+		},
+		{
+			"name": "radialFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "radialBg",
+			"light": "#00000056",
+			"dark": "#00000056"
+		},
+		{
+			"name": "placeholderFg",
+			"light": "#999999ff",
+			"dark": "#6d7883ff"
+		},
+		{
+			"name": "placeholderFgActive",
+			"light": "#aaaaaaff",
+			"dark": "#4f5b67ff"
+		},
+		{
+			"name": "inputBorderFg",
+			"light": "#e0e0e0ff",
+			"dark": "#313c49ff"
+		},
+		{
+			"name": "filterInputBorderFg",
+			"light": "#54c3f3ff",
+			"dark": "#242f3dff"
+		},
+		{
+			"name": "filterInputActiveBg",
+			"light": "#ffffffff",
+			"dark": "#242f3dff"
+		},
+		{
+			"name": "filterInputInactiveBg",
+			"light": "#f1f1f1ff",
+			"dark": "#242f3dff"
+		},
+		{
+			"name": "checkboxFg",
+			"light": "#b3b3b3ff",
+			"dark": "#4f6276ff"
+		},
+		{
+			"name": "botKbBg",
+			"light": "#f1f1f1ff",
+			"dark": "#242f3dff"
+		},
+		{
+			"name": "botKbDownBg",
+			"light": "#e5e5e5ff",
+			"dark": "#2d3a49ff"
+		},
+		{
+			"name": "botKbColor",
+			"light": "#222222ff",
+			"dark": "#222222ff"
+		},
+		{
+			"name": "botKbPrimaryBg",
+			"light": "#298acfcc",
+			"dark": "#298acfcc"
+		},
+		{
+			"name": "botKbDangerBg",
+			"light": "#e05356cc",
+			"dark": "#e05356cc"
+		},
+		{
+			"name": "botKbSuccessBg",
+			"light": "#61c752cc",
+			"dark": "#61c752cc"
+		},
+		{
+			"name": "botKbInlinePrimaryBg",
+			"light": "#378eaeb3",
+			"dark": "#378eaeb3"
+		},
+		{
+			"name": "botKbInlineDangerBg",
+			"light": "#c9543eb3",
+			"dark": "#c9543eb3"
+		},
+		{
+			"name": "botKbInlineSuccessBg",
+			"light": "#489d38b3",
+			"dark": "#489d38b3"
+		},
+		{
+			"name": "sliderBgInactive",
+			"light": "#e1eaefff",
+			"dark": "#364554ff"
+		},
+		{
+			"name": "sliderBgActive",
+			"light": "#40a7e3ff",
+			"dark": "#4a81bcff"
+		},
+		{
+			"name": "tooltipBg",
+			"light": "#eef2f5ff",
+			"dark": "#16222dff"
+		},
+		{
+			"name": "tooltipFg",
+			"light": "#5d6c80ff",
+			"dark": "#d4e0eaff"
+		},
+		{
+			"name": "tooltipBorderFg",
+			"light": "#c9d1dbff",
+			"dark": "#16222dff"
+		},
+		{
+			"name": "titleShadow",
+			"light": "#00000003",
+			"dark": "#00000000"
+		},
+		{
+			"name": "titleBg",
+			"light": "#f1f1f1ff",
+			"dark": "#1f2936ff"
+		},
+		{
+			"name": "titleBgActive",
+			"light": "#f1f1f1ff",
+			"dark": "#242f3dff"
+		},
+		{
+			"name": "titleButtonBg",
+			"light": "#f1f1f1ff",
+			"dark": "#1f2936ff"
+		},
+		{
+			"name": "titleButtonFg",
+			"light": "#abababff",
+			"dark": "#576673ff"
+		},
+		{
+			"name": "titleButtonBgOver",
+			"light": "#e5e5e5ff",
+			"dark": "#25303eff"
+		},
+		{
+			"name": "titleButtonFgOver",
+			"light": "#9a9a9aff",
+			"dark": "#e0e0e0ff"
+		},
+		{
+			"name": "titleButtonBgActive",
+			"light": "#f1f1f1ff",
+			"dark": "#242f3dff"
+		},
+		{
+			"name": "titleButtonFgActive",
+			"light": "#abababff",
+			"dark": "#576673ff"
+		},
+		{
+			"name": "titleButtonBgActiveOver",
+			"light": "#e5e5e5ff",
+			"dark": "#2c3847ff"
+		},
+		{
+			"name": "titleButtonFgActiveOver",
+			"light": "#9a9a9aff",
+			"dark": "#e0e0e0ff"
+		},
+		{
+			"name": "titleButtonCloseBg",
+			"light": "#f1f1f1ff",
+			"dark": "#1f2936ff"
+		},
+		{
+			"name": "titleButtonCloseFg",
+			"light": "#abababff",
+			"dark": "#576673ff"
+		},
+		{
+			"name": "titleButtonCloseBgOver",
+			"light": "#e81123ff",
+			"dark": "#e92539ff"
+		},
+		{
+			"name": "titleButtonCloseFgOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "titleButtonCloseBgActive",
+			"light": "#f1f1f1ff",
+			"dark": "#242f3dff"
+		},
+		{
+			"name": "titleButtonCloseFgActive",
+			"light": "#abababff",
+			"dark": "#576673ff"
+		},
+		{
+			"name": "titleButtonCloseBgActiveOver",
+			"light": "#e81123ff",
+			"dark": "#e92539ff"
+		},
+		{
+			"name": "titleButtonCloseFgActiveOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "titleFg",
+			"light": "#acacacff",
+			"dark": "#6a7680ff"
+		},
+		{
+			"name": "titleFgActive",
+			"light": "#3e3c3eff",
+			"dark": "#91a3b3ff"
+		},
+		{
+			"name": "trayCounterBg",
+			"light": "#f23c34ff",
+			"dark": "#f23c34ff"
+		},
+		{
+			"name": "trayCounterBgMute",
+			"light": "#888888ff",
+			"dark": "#888888ff"
+		},
+		{
+			"name": "trayCounterFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "trayCounterBgMacInvert",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "trayCounterFgMacInvert",
+			"light": "#ffffff01",
+			"dark": "#ffffff01"
+		},
+		{
+			"name": "layerBg",
+			"light": "#0000007f",
+			"dark": "#0000007f"
+		},
+		{
+			"name": "cancelIconFg",
+			"light": "#999999ff",
+			"dark": "#737e87ff"
+		},
+		{
+			"name": "cancelIconFgOver",
+			"light": "#8a8a8aff",
+			"dark": "#dcdcdcff"
+		},
+		{
+			"name": "boxBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "boxTextFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "boxTextFgGood",
+			"light": "#4ab44aff",
+			"dark": "#5598dbff"
+		},
+		{
+			"name": "boxTextFgError",
+			"light": "#d84d4dff",
+			"dark": "#dc3d3dff"
+		},
+		{
+			"name": "boxTitleFg",
+			"light": "#404040ff",
+			"dark": "#ebebebff"
+		},
+		{
+			"name": "boxSearchBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "boxTitleAdditionalFg",
+			"light": "#808080ff",
+			"dark": "#6d7f8fff"
+		},
+		{
+			"name": "boxTitleCloseFg",
+			"light": "#999999ff",
+			"dark": "#737e87ff"
+		},
+		{
+			"name": "boxTitleCloseFgOver",
+			"light": "#8a8a8aff",
+			"dark": "#dcdcdcff"
+		},
+		{
+			"name": "boxDividerBg",
+			"light": "#f1f1f1ff",
+			"dark": "#f1f1f1ff"
+		},
+		{
+			"name": "boxDividerFg",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "paymentsTipActive",
+			"light": "#01ad0fff",
+			"dark": "#01ad0fff"
+		},
+		{
+			"name": "membersAboutLimitFg",
+			"light": "#919191ff",
+			"dark": "#677a8bff"
+		},
+		{
+			"name": "contactsBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "contactsBgOver",
+			"light": "#f1f1f1ff",
+			"dark": "#1f2c39ff"
+		},
+		{
+			"name": "contactsNameFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "contactsStatusFg",
+			"light": "#999999ff",
+			"dark": "#677a8bff"
+		},
+		{
+			"name": "contactsStatusFgOver",
+			"light": "#919191ff",
+			"dark": "#677a8bff"
+		},
+		{
+			"name": "contactsStatusFgOnline",
+			"light": "#168acdff",
+			"dark": "#559be0ff"
+		},
+		{
+			"name": "photoCropFadeBg",
+			"light": "#0000007f",
+			"dark": "#0000007f"
+		},
+		{
+			"name": "photoCropPointFg",
+			"light": "#ffffff7f",
+			"dark": "#ffffff7f"
+		},
+		{
+			"name": "callArrowFg",
+			"light": "#2dad2dff",
+			"dark": "#49a2f0ff"
+		},
+		{
+			"name": "callArrowMissedFg",
+			"light": "#dd5b4aff",
+			"dark": "#ed5050ff"
+		},
+		{
+			"name": "introBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "introTitleFg",
+			"light": "#222222ff",
+			"dark": "#eeeeeeff"
+		},
+		{
+			"name": "introDescriptionFg",
+			"light": "#999999ff",
+			"dark": "#72879bff"
+		},
+		{
+			"name": "introCoverTopBg",
+			"light": "#0f89d0ff",
+			"dark": "#124a82ff"
+		},
+		{
+			"name": "introCoverBottomBg",
+			"light": "#39b0f0ff",
+			"dark": "#23659fff"
+		},
+		{
+			"name": "introCoverIconsFg",
+			"light": "#5ec6ffff",
+			"dark": "#3b7cbdff"
+		},
+		{
+			"name": "introCoverPlaneTrace",
+			"light": "#5ec6ff69",
+			"dark": "#3870a8ff"
+		},
+		{
+			"name": "introCoverPlaneInner",
+			"light": "#c6d8e8ff",
+			"dark": "#ced9e2ff"
+		},
+		{
+			"name": "introCoverPlaneOuter",
+			"light": "#a1bed4ff",
+			"dark": "#97a9b5ff"
+		},
+		{
+			"name": "introCoverPlaneTop",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsMenuIconFg",
+			"light": "#999999ff",
+			"dark": "#6c7883ff"
+		},
+		{
+			"name": "dialogsMenuIconFgOver",
+			"light": "#8a8a8aff",
+			"dark": "#dcdcdcff"
+		},
+		{
+			"name": "dialogsBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "dialogsNameFg",
+			"light": "#222222ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "dialogsChatIconFg",
+			"light": "#222222ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "dialogsDateFg",
+			"light": "#999999ff",
+			"dark": "#8696a8ff"
+		},
+		{
+			"name": "dialogsTextFg",
+			"light": "#999999ff",
+			"dark": "#7f91a4ff"
+		},
+		{
+			"name": "dialogsTextFgService",
+			"light": "#168acdff",
+			"dark": "#73b9f5ff"
+		},
+		{
+			"name": "dialogsDraftFg",
+			"light": "#dd4b39ff",
+			"dark": "#ff525dff"
+		},
+		{
+			"name": "dialogsVerifiedIconBg",
+			"light": "#40a7e3ff",
+			"dark": "#6ab3f3ff"
+		},
+		{
+			"name": "dialogsVerifiedIconFg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "dialogsSendingIconFg",
+			"light": "#c1c1c1ff",
+			"dark": "#647d96ff"
+		},
+		{
+			"name": "dialogsSentIconFg",
+			"light": "#5dc452ff",
+			"dark": "#72bcfdff"
+		},
+		{
+			"name": "dialogsUnreadBg",
+			"light": "#40a7e3ff",
+			"dark": "#4082bcff"
+		},
+		{
+			"name": "dialogsUnreadBgMuted",
+			"light": "#bbbbbbff",
+			"dark": "#3e546aff"
+		},
+		{
+			"name": "dialogsUnreadFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsArchiveFg",
+			"light": "#525252ff",
+			"dark": "#525252ff"
+		},
+		{
+			"name": "dialogsOnlineBadgeFg",
+			"light": "#4dc920ff",
+			"dark": "#63b6ffff"
+		},
+		{
+			"name": "dialogsScamFg",
+			"light": "#dd4b39ff",
+			"dark": "#dd4b39ff"
+		},
+		{
+			"name": "dialogsBgOver",
+			"light": "#f1f1f1ff",
+			"dark": "#202b36ff"
+		},
+		{
+			"name": "dialogsNameFgOver",
+			"light": "#222222ff",
+			"dark": "#e9e9e9ff"
+		},
+		{
+			"name": "dialogsChatIconFgOver",
+			"light": "#222222ff",
+			"dark": "#e9e9e9ff"
+		},
+		{
+			"name": "dialogsDateFgOver",
+			"light": "#919191ff",
+			"dark": "#8495a9ff"
+		},
+		{
+			"name": "dialogsTextFgOver",
+			"light": "#919191ff",
+			"dark": "#91a3b5ff"
+		},
+		{
+			"name": "dialogsTextFgServiceOver",
+			"light": "#168acdff",
+			"dark": "#73b9f5ff"
+		},
+		{
+			"name": "dialogsDraftFgOver",
+			"light": "#dd4b39ff",
+			"dark": "#ff525dff"
+		},
+		{
+			"name": "dialogsVerifiedIconBgOver",
+			"light": "#40a7e3ff",
+			"dark": "#6ab3f3ff"
+		},
+		{
+			"name": "dialogsVerifiedIconFgOver",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "dialogsSendingIconFgOver",
+			"light": "#c1c1c1ff",
+			"dark": "#647d96ff"
+		},
+		{
+			"name": "dialogsSentIconFgOver",
+			"light": "#58b84dff",
+			"dark": "#72bcfdff"
+		},
+		{
+			"name": "dialogsUnreadBgOver",
+			"light": "#40a7e3ff",
+			"dark": "#4082bcff"
+		},
+		{
+			"name": "dialogsUnreadBgMutedOver",
+			"light": "#bbbbbbff",
+			"dark": "#4d5762ff"
+		},
+		{
+			"name": "dialogsUnreadFgOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsArchiveFgOver",
+			"light": "#525252ff",
+			"dark": "#525252ff"
+		},
+		{
+			"name": "dialogsScamFgOver",
+			"light": "#dd4b39ff",
+			"dark": "#dd4b39ff"
+		},
+		{
+			"name": "dialogsBgActive",
+			"light": "#419fd9ff",
+			"dark": "#2b5278ff"
+		},
+		{
+			"name": "dialogsNameFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsChatIconFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsDateFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsTextFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsTextFgServiceActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsDraftFgActive",
+			"light": "#c6e1f7ff",
+			"dark": "#a9caf0ff"
+		},
+		{
+			"name": "dialogsVerifiedIconBgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsVerifiedIconFgActive",
+			"light": "#419fd9ff",
+			"dark": "#2b5278ff"
+		},
+		{
+			"name": "dialogsSendingIconFgActive",
+			"light": "#ffffff99",
+			"dark": "#ffffff99"
+		},
+		{
+			"name": "dialogsSentIconFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsUnreadBgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsUnreadBgMutedActive",
+			"light": "#c6e1f7ff",
+			"dark": "#7aa3caff"
+		},
+		{
+			"name": "dialogsUnreadFgActive",
+			"light": "#419fd9ff",
+			"dark": "#2a5378ff"
+		},
+		{
+			"name": "dialogsOnlineBadgeFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogsScamFgActive",
+			"light": "#c6e1f7ff",
+			"dark": "#c6e1f7ff"
+		},
+		{
+			"name": "dialogsRippleBg",
+			"light": "#e5e5e5ff",
+			"dark": "#25313dff"
+		},
+		{
+			"name": "dialogsRippleBgActive",
+			"light": "#2095d0ff",
+			"dark": "#315a80ff"
+		},
+		{
+			"name": "searchedBarBg",
+			"light": "#f1f1f1ff",
+			"dark": "#202b38ff"
+		},
+		{
+			"name": "searchedBarFg",
+			"light": "#919191ff",
+			"dark": "#8c98a4ff"
+		},
+		{
+			"name": "searchedTextMatchBg",
+			"light": "#fffc67ff",
+			"dark": "#fffc67ff"
+		},
+		{
+			"name": "searchedTextMatchFg",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "searchedTextCurrentMatchBg",
+			"light": "#f5ab5cff",
+			"dark": "#f5ab5cff"
+		},
+		{
+			"name": "searchedTextCurrentMatchFg",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "topBarBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "emojiPanBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "emojiPanCategories",
+			"light": "#f7f7f7ff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "emojiPanHeaderFg",
+			"light": "#999999ff",
+			"dark": "#7c8d9eff"
+		},
+		{
+			"name": "emojiPanHeaderBg",
+			"light": "#fffffff2",
+			"dark": "#fffffff2"
+		},
+		{
+			"name": "emojiIconFg",
+			"light": "#999999ff",
+			"dark": "#6c7883ff"
+		},
+		{
+			"name": "emojiSubIconFgActive",
+			"light": "#666666ff",
+			"dark": "#666666ff"
+		},
+		{
+			"name": "stickerPanDeleteBg",
+			"light": "#000000ff",
+			"dark": "#000000cc"
+		},
+		{
+			"name": "stickerPanDeleteFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "stickerPreviewBg",
+			"light": "#ffffffb0",
+			"dark": "#000000b0"
+		},
+		{
+			"name": "stickerPanPremium1",
+			"light": "#5a99ffff",
+			"dark": "#5a99ffff"
+		},
+		{
+			"name": "stickerPanPremium2",
+			"light": "#45b9f3ff",
+			"dark": "#45b9f3ff"
+		},
+		{
+			"name": "historyTextInFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "historyTextInFgSelected",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyTextOutFg",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyTextOutFgSelected",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyLinkInFg",
+			"light": "#168acdff",
+			"dark": "#70baf5ff"
+		},
+		{
+			"name": "historyLinkInFgSelected",
+			"light": "#168acdff",
+			"dark": "#aadcffff"
+		},
+		{
+			"name": "historyLinkOutFg",
+			"light": "#168acdff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyLinkOutFgSelected",
+			"light": "#168acdff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileNameInFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "historyFileNameInFgSelected",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileNameOutFg",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileNameOutFgSelected",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyOutIconFg",
+			"light": "#57b84cff",
+			"dark": "#ffffffe5"
+		},
+		{
+			"name": "historyOutIconFgSelected",
+			"light": "#45a3aaff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyIconFgInverted",
+			"light": "#ffffffff",
+			"dark": "#ffffffe5"
+		},
+		{
+			"name": "historySendingOutIconFg",
+			"light": "#98d292ff",
+			"dark": "#ffffff66"
+		},
+		{
+			"name": "historySendingInIconFg",
+			"light": "#a0adb5ff",
+			"dark": "#76838bff"
+		},
+		{
+			"name": "historySendingInvertedIconFg",
+			"light": "#ffffffc8",
+			"dark": "#ffffffc8"
+		},
+		{
+			"name": "historyCallArrowInFg",
+			"light": "#32b032ff",
+			"dark": "#5093d6ff"
+		},
+		{
+			"name": "historyCallArrowInFgSelected",
+			"light": "#2592a8ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyCallArrowMissedInFg",
+			"light": "#dd5b4aff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyCallArrowMissedInFgSelected",
+			"light": "#dd5b4aff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyCallArrowOutFg",
+			"light": "#32b032ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyCallArrowOutFgSelected",
+			"light": "#2592a8ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyUnreadBarBg",
+			"light": "#fcfbfaff",
+			"dark": "#182433ff"
+		},
+		{
+			"name": "historyUnreadBarBorder",
+			"light": "#00000018",
+			"dark": "#03080d00"
+		},
+		{
+			"name": "historyUnreadBarFg",
+			"light": "#538bb4ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyForwardChooseBg",
+			"light": "#0000004c",
+			"dark": "#0000004c"
+		},
+		{
+			"name": "historyForwardChooseFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer1NameFg",
+			"light": "#c03d33ff",
+			"dark": "#fb6169ff"
+		},
+		{
+			"name": "historyPeer1NameFgSelected",
+			"light": "#c03d33ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer1UserpicBg",
+			"light": "#ff845eff",
+			"dark": "#ff845eff"
+		},
+		{
+			"name": "historyPeer2NameFg",
+			"light": "#4fad2dff",
+			"dark": "#85de85ff"
+		},
+		{
+			"name": "historyPeer2NameFgSelected",
+			"light": "#4fad2dff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer2UserpicBg",
+			"light": "#9ad164ff",
+			"dark": "#9ad164ff"
+		},
+		{
+			"name": "historyPeer3NameFg",
+			"light": "#d09306ff",
+			"dark": "#f3bc5cff"
+		},
+		{
+			"name": "historyPeer3NameFgSelected",
+			"light": "#d09306ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer3UserpicBg",
+			"light": "#e5ca77ff",
+			"dark": "#e5ca77ff"
+		},
+		{
+			"name": "historyPeer4NameFg",
+			"light": "#168acdff",
+			"dark": "#65bdf3ff"
+		},
+		{
+			"name": "historyPeer4NameFgSelected",
+			"light": "#168acdff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer4UserpicBg",
+			"light": "#5caffaff",
+			"dark": "#5caffaff"
+		},
+		{
+			"name": "historyPeer5NameFg",
+			"light": "#8544d6ff",
+			"dark": "#b48bf2ff"
+		},
+		{
+			"name": "historyPeer5NameFgSelected",
+			"light": "#8544d6ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer5UserpicBg",
+			"light": "#b694f9ff",
+			"dark": "#b694f9ff"
+		},
+		{
+			"name": "historyPeer6NameFg",
+			"light": "#cd4073ff",
+			"dark": "#ff5694ff"
+		},
+		{
+			"name": "historyPeer6NameFgSelected",
+			"light": "#cd4073ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer6UserpicBg",
+			"light": "#ff8aacff",
+			"dark": "#ff8aacff"
+		},
+		{
+			"name": "historyPeer7NameFg",
+			"light": "#2996adff",
+			"dark": "#62d4e3ff"
+		},
+		{
+			"name": "historyPeer7NameFgSelected",
+			"light": "#2996adff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer7UserpicBg",
+			"light": "#5bcbe3ff",
+			"dark": "#5bcbe3ff"
+		},
+		{
+			"name": "historyPeer8NameFg",
+			"light": "#ce671bff",
+			"dark": "#faa357ff"
+		},
+		{
+			"name": "historyPeer8NameFgSelected",
+			"light": "#ce671bff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeer8UserpicBg",
+			"light": "#febb5bff",
+			"dark": "#febb5bff"
+		},
+		{
+			"name": "historyPeerUserpicFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyPeerSavedMessagesBg",
+			"light": "#5caffaff",
+			"dark": "#5caffaff"
+		},
+		{
+			"name": "historyPeerArchiveUserpicBg",
+			"light": "#bbbbbbff",
+			"dark": "#bbbbbbff"
+		},
+		{
+			"name": "historyPeer1UserpicBg2",
+			"light": "#d45246ff",
+			"dark": "#d45246ff"
+		},
+		{
+			"name": "historyPeer2UserpicBg2",
+			"light": "#46ba43ff",
+			"dark": "#46ba43ff"
+		},
+		{
+			"name": "historyPeer3UserpicBg2",
+			"light": "#e5ca77ff",
+			"dark": "#e5ca77ff"
+		},
+		{
+			"name": "historyPeer4UserpicBg2",
+			"light": "#408acfff",
+			"dark": "#408acfff"
+		},
+		{
+			"name": "historyPeer5UserpicBg2",
+			"light": "#6c61dfff",
+			"dark": "#6c61dfff"
+		},
+		{
+			"name": "historyPeer6UserpicBg2",
+			"light": "#d95574ff",
+			"dark": "#d95574ff"
+		},
+		{
+			"name": "historyPeer7UserpicBg2",
+			"light": "#359ad4ff",
+			"dark": "#359ad4ff"
+		},
+		{
+			"name": "historyPeer8UserpicBg2",
+			"light": "#f68136ff",
+			"dark": "#f68136ff"
+		},
+		{
+			"name": "historyPeerSavedMessagesBg2",
+			"light": "#408acfff",
+			"dark": "#408acfff"
+		},
+		{
+			"name": "settingsIconBg1",
+			"light": "#f06964ff",
+			"dark": "#f06964ff"
+		},
+		{
+			"name": "settingsIconBg2",
+			"light": "#6dc534ff",
+			"dark": "#6dc534ff"
+		},
+		{
+			"name": "settingsIconBg3",
+			"light": "#ed9f20ff",
+			"dark": "#ed9f20ff"
+		},
+		{
+			"name": "settingsIconBg4",
+			"light": "#56b3f5ff",
+			"dark": "#56b3f5ff"
+		},
+		{
+			"name": "settingsIconBg5",
+			"light": "#7595ffff",
+			"dark": "#7595ffff"
+		},
+		{
+			"name": "settingsIconBg6",
+			"light": "#b580e2ff",
+			"dark": "#b580e2ff"
+		},
+		{
+			"name": "settingsIconBg8",
+			"light": "#f2925bff",
+			"dark": "#f2925bff"
+		},
+		{
+			"name": "settingsIconBgArchive",
+			"light": "#9da2b0ff",
+			"dark": "#9da2b0ff"
+		},
+		{
+			"name": "settingsIconFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyScrollBarBg",
+			"light": "#517c417a",
+			"dark": "#7f84897a"
+		},
+		{
+			"name": "historyScrollBarBgOver",
+			"light": "#517c41bc",
+			"dark": "#64686cbc"
+		},
+		{
+			"name": "historyScrollBg",
+			"light": "#517c414c",
+			"dark": "#565a5e4c"
+		},
+		{
+			"name": "historyScrollBgOver",
+			"light": "#517c416b",
+			"dark": "#5a5d616b"
+		},
+		{
+			"name": "msgInBg",
+			"light": "#ffffffff",
+			"dark": "#24292eff"
+		},
+		{
+			"name": "msgInBgSelected",
+			"light": "#c2dcf2ff",
+			"dark": "#2e70a5ff"
+		},
+		{
+			"name": "msgOutBg",
+			"light": "#effddeff",
+			"dark": "#265e8cff"
+		},
+		{
+			"name": "msgOutBgSelected",
+			"light": "#b7dbdbff",
+			"dark": "#387aadff"
+		},
+		{
+			"name": "msgSelectOverlay",
+			"light": "#358cd44c",
+			"dark": "#3585d44c"
+		},
+		{
+			"name": "msgStickerOverlay",
+			"light": "#358cd47f",
+			"dark": "#3585d47f"
+		},
+		{
+			"name": "msgInServiceFg",
+			"light": "#168acdff",
+			"dark": "#71bafaff"
+		},
+		{
+			"name": "msgInServiceFgSelected",
+			"light": "#168acdff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgOutServiceFg",
+			"light": "#45a32dff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgOutServiceFgSelected",
+			"light": "#469992ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgInShadow",
+			"light": "#748ea229",
+			"dark": "#748ea200"
+		},
+		{
+			"name": "msgInShadowSelected",
+			"light": "#548dbb29",
+			"dark": "#538ebb00"
+		},
+		{
+			"name": "msgOutShadow",
+			"light": "#3ac3461d",
+			"dark": "#00000000"
+		},
+		{
+			"name": "msgOutShadowSelected",
+			"light": "#37a78d22",
+			"dark": "#366ea600"
+		},
+		{
+			"name": "msgInDateFg",
+			"light": "#a0acb6ff",
+			"dark": "#7a858fff"
+		},
+		{
+			"name": "msgInDateFgSelected",
+			"light": "#6a9cc5ff",
+			"dark": "#ffffff85"
+		},
+		{
+			"name": "msgOutDateFg",
+			"light": "#6db566ff",
+			"dark": "#c2e4ffad"
+		},
+		{
+			"name": "msgOutDateFgSelected",
+			"light": "#56b2a6ff",
+			"dark": "#c2e4ffad"
+		},
+		{
+			"name": "msgServiceFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgServiceBg",
+			"light": "#517c417f",
+			"dark": "#1e2429d5"
+		},
+		{
+			"name": "msgServiceBgSelected",
+			"light": "#96b38ba2",
+			"dark": "#2e7ab4ff"
+		},
+		{
+			"name": "msgInReplyBarColor",
+			"light": "#37a1deff",
+			"dark": "#429bdbff"
+		},
+		{
+			"name": "msgInReplyBarSelColor",
+			"light": "#37a1deff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgOutReplyBarColor",
+			"light": "#5eb854ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgOutReplyBarSelColor",
+			"light": "#45a3aaff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgImgReplyBarColor",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgInMonoFg",
+			"light": "#4e7391ff",
+			"dark": "#5a8cb7ff"
+		},
+		{
+			"name": "msgOutMonoFg",
+			"light": "#459866ff",
+			"dark": "#bad9f6ff"
+		},
+		{
+			"name": "msgInMonoFgSelected",
+			"light": "#4e7391ff",
+			"dark": "#a3cdf7ff"
+		},
+		{
+			"name": "msgOutMonoFgSelected",
+			"light": "#459866ff",
+			"dark": "#bad9f6ff"
+		},
+		{
+			"name": "msgDateImgFg",
+			"light": "#ffffffff",
+			"dark": "#fffffff2"
+		},
+		{
+			"name": "msgDateImgBg",
+			"light": "#00000054",
+			"dark": "#00000054"
+		},
+		{
+			"name": "msgDateImgBgOver",
+			"light": "#00000074",
+			"dark": "#00000074"
+		},
+		{
+			"name": "msgDateImgBgSelected",
+			"light": "#1c4a7187",
+			"dark": "#204f7887"
+		},
+		{
+			"name": "msgFileThumbLinkInFg",
+			"light": "#168acdff",
+			"dark": "#4aabf5ff"
+		},
+		{
+			"name": "msgFileThumbLinkInFgSelected",
+			"light": "#168acdff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgFileThumbLinkOutFg",
+			"light": "#4ba831ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgFileThumbLinkOutFgSelected",
+			"light": "#31a298ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgFileInBg",
+			"light": "#40a7e3ff",
+			"dark": "#3f96d0ff"
+		},
+		{
+			"name": "msgFileInBgOver",
+			"light": "#4eade3ff",
+			"dark": "#489ed7ff"
+		},
+		{
+			"name": "msgFileInBgSelected",
+			"light": "#51a3d3ff",
+			"dark": "#6ab4f4ff"
+		},
+		{
+			"name": "msgFileOutBg",
+			"light": "#5fbe67ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgFileOutBgSelected",
+			"light": "#50ac9bff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgFile1Bg",
+			"light": "#72b1dfff",
+			"dark": "#3e7ebaff"
+		},
+		{
+			"name": "msgFile1BgDark",
+			"light": "#5c9eceff",
+			"dark": "#24679eff"
+		},
+		{
+			"name": "msgFile1BgOver",
+			"light": "#5294c4ff",
+			"dark": "#1d5e93ff"
+		},
+		{
+			"name": "msgFile1BgSelected",
+			"light": "#5099d0ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgFile2Bg",
+			"light": "#5fbe67ff",
+			"dark": "#3ea34aff"
+		},
+		{
+			"name": "msgFile2BgDark",
+			"light": "#4da859ff",
+			"dark": "#298835ff"
+		},
+		{
+			"name": "msgFile2BgOver",
+			"light": "#44a050ff",
+			"dark": "#1b7725ff"
+		},
+		{
+			"name": "msgFile2BgSelected",
+			"light": "#50ac9bff",
+			"dark": "#1b7725ff"
+		},
+		{
+			"name": "msgFile3Bg",
+			"light": "#e47272ff",
+			"dark": "#d6454cff"
+		},
+		{
+			"name": "msgFile3BgDark",
+			"light": "#cd5b5eff",
+			"dark": "#bf333aff"
+		},
+		{
+			"name": "msgFile3BgOver",
+			"light": "#c35154ff",
+			"dark": "#b2282fff"
+		},
+		{
+			"name": "msgFile3BgSelected",
+			"light": "#9f6a82ff",
+			"dark": "#b2282fff"
+		},
+		{
+			"name": "msgFile4Bg",
+			"light": "#efc274ff",
+			"dark": "#d99546ff"
+		},
+		{
+			"name": "msgFile4BgDark",
+			"light": "#e6a561ff",
+			"dark": "#c17d39ff"
+		},
+		{
+			"name": "msgFile4BgOver",
+			"light": "#dc9c5aff",
+			"dark": "#ac6b29ff"
+		},
+		{
+			"name": "msgFile4BgSelected",
+			"light": "#b19d84ff",
+			"dark": "#ac6b29ff"
+		},
+		{
+			"name": "historyFileInIconFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileInIconFgSelected",
+			"light": "#c2dcf2ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileInRadialFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileInRadialFgSelected",
+			"light": "#c2dcf2ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileOutIconFg",
+			"light": "#effddeff",
+			"dark": "#035e90ff"
+		},
+		{
+			"name": "historyFileOutIconFgSelected",
+			"light": "#b7dbdbff",
+			"dark": "#2a6da1ff"
+		},
+		{
+			"name": "historyFileOutRadialFg",
+			"light": "#effddeff",
+			"dark": "#035e90ff"
+		},
+		{
+			"name": "historyFileOutRadialFgSelected",
+			"light": "#b7dbdbff",
+			"dark": "#2a6da1ff"
+		},
+		{
+			"name": "historyFileThumbIconFg",
+			"light": "#ffffffff",
+			"dark": "#efefefff"
+		},
+		{
+			"name": "historyFileThumbIconFgSelected",
+			"light": "#c2dcf2ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyFileThumbRadialFg",
+			"light": "#ffffffff",
+			"dark": "#efefefff"
+		},
+		{
+			"name": "historyFileThumbRadialFgSelected",
+			"light": "#c2dcf2ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyVideoMessageProgressFg",
+			"light": "#ffffffff",
+			"dark": "#efefefff"
+		},
+		{
+			"name": "msgWaveformInActive",
+			"light": "#40a7e3ff",
+			"dark": "#549cd7ff"
+		},
+		{
+			"name": "msgWaveformInActiveSelected",
+			"light": "#51a3d3ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgWaveformInInactive",
+			"light": "#d4dee6ff",
+			"dark": "#4c5661ff"
+		},
+		{
+			"name": "msgWaveformInInactiveSelected",
+			"light": "#9cc1e1ff",
+			"dark": "#6fa5d4ff"
+		},
+		{
+			"name": "msgWaveformOutActive",
+			"light": "#5ebd66ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgWaveformOutActiveSelected",
+			"light": "#6badadff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgWaveformOutInactive",
+			"light": "#b3e2b4ff",
+			"dark": "#ffffff2d"
+		},
+		{
+			"name": "msgWaveformOutInactiveSelected",
+			"light": "#91c3c3ff",
+			"dark": "#ffffff2d"
+		},
+		{
+			"name": "msgBotKbOverBgAdd",
+			"light": "#ffffff20",
+			"dark": "#80b1db0f"
+		},
+		{
+			"name": "msgBotKbIconFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "msgBotKbRippleBg",
+			"light": "#00000020",
+			"dark": "#92c0e50b"
+		},
+		{
+			"name": "mediaInFg",
+			"light": "#a0acb6ff",
+			"dark": "#7b868fff"
+		},
+		{
+			"name": "mediaInFgSelected",
+			"light": "#6a9cc5ff",
+			"dark": "#ffffff85"
+		},
+		{
+			"name": "mediaOutFg",
+			"light": "#6db566ff",
+			"dark": "#c2e4ffad"
+		},
+		{
+			"name": "mediaOutFgSelected",
+			"light": "#56b2a6ff",
+			"dark": "#c2e4ffad"
+		},
+		{
+			"name": "youtubePlayIconBg",
+			"light": "#e83131c8",
+			"dark": "#e83131c8"
+		},
+		{
+			"name": "youtubePlayIconFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "videoPlayIconBg",
+			"light": "#0000007f",
+			"dark": "#0000007f"
+		},
+		{
+			"name": "videoPlayIconFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "toastBg",
+			"light": "#2c3033e5",
+			"dark": "#000000b2"
+		},
+		{
+			"name": "toastFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "historyToDownBg",
+			"light": "#ffffffff",
+			"dark": "#1d2b3aff"
+		},
+		{
+			"name": "historyToDownBgOver",
+			"light": "#f1f1f1ff",
+			"dark": "#243446ff"
+		},
+		{
+			"name": "historyToDownBgRipple",
+			"light": "#e5e5e5ff",
+			"dark": "#2b3c4fff"
+		},
+		{
+			"name": "historyToDownFg",
+			"light": "#999999ff",
+			"dark": "#adb4baff"
+		},
+		{
+			"name": "historyToDownFgOver",
+			"light": "#8a8a8aff",
+			"dark": "#dcdcdcff"
+		},
+		{
+			"name": "historyToDownShadow",
+			"light": "#00000040",
+			"dark": "#00000040"
+		},
+		{
+			"name": "historyComposeAreaBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "historyComposeAreaFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "historyComposeAreaFgService",
+			"light": "#a0acb6ff",
+			"dark": "#7a858fff"
+		},
+		{
+			"name": "historyComposeIconFg",
+			"light": "#999999ff",
+			"dark": "#6c7883ff"
+		},
+		{
+			"name": "historyComposeIconFgOver",
+			"light": "#8a8a8aff",
+			"dark": "#dcdcdcff"
+		},
+		{
+			"name": "historySendIconFg",
+			"light": "#40a7e3ff",
+			"dark": "#5288c1ff"
+		},
+		{
+			"name": "historySendIconFgOver",
+			"light": "#40a7e3ff",
+			"dark": "#5288c1ff"
+		},
+		{
+			"name": "historyPinnedBg",
+			"light": "#ffffffff",
+			"dark": "#181e24ff"
+		},
+		{
+			"name": "historyReplyBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "historyReplyIconFg",
+			"light": "#40a7e3ff",
+			"dark": "#5288c1ff"
+		},
+		{
+			"name": "historyReplyCancelFg",
+			"light": "#999999ff",
+			"dark": "#737e87ff"
+		},
+		{
+			"name": "historyReplyCancelFgOver",
+			"light": "#8a8a8aff",
+			"dark": "#dcdcdcff"
+		},
+		{
+			"name": "historyComposeButtonBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "historyComposeButtonBgOver",
+			"light": "#f1f1f1ff",
+			"dark": "#1c2835ff"
+		},
+		{
+			"name": "historyComposeButtonBgRipple",
+			"light": "#e5e5e5ff",
+			"dark": "#222f3eff"
+		},
+		{
+			"name": "mapPointDrop",
+			"light": "#fd4444ff",
+			"dark": "#fd4444ff"
+		},
+		{
+			"name": "mapPointDot",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "overviewCheckBg",
+			"light": "#00000040",
+			"dark": "#00000040"
+		},
+		{
+			"name": "overviewCheckBgActive",
+			"light": "#40a7e3ff",
+			"dark": "#40a7e3ff"
+		},
+		{
+			"name": "overviewCheckBorder",
+			"light": "#ffffffff",
+			"dark": "#e4eaefff"
+		},
+		{
+			"name": "overviewCheckFgActive",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "overviewPhotoSelectOverlay",
+			"light": "#40ace333",
+			"dark": "#3fa2e333"
+		},
+		{
+			"name": "profileStatusFgOver",
+			"light": "#7c99b2ff",
+			"dark": "#677a8bff"
+		},
+		{
+			"name": "profileVerifiedCheckBg",
+			"light": "#40a7e3ff",
+			"dark": "#5288c1ff"
+		},
+		{
+			"name": "profileVerifiedCheckFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "profileAdminStartFg",
+			"light": "#40a7e3ff",
+			"dark": "#62a9e6ff"
+		},
+		{
+			"name": "notificationsBoxMonitorFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "notificationsBoxScreenBg",
+			"light": "#419fd9ff",
+			"dark": "#2b5278ff"
+		},
+		{
+			"name": "notificationSampleUserpicFg",
+			"light": "#40a7e3ff",
+			"dark": "#5288c1ff"
+		},
+		{
+			"name": "notificationSampleCloseFg",
+			"light": "#d7d7d7ff",
+			"dark": "#d7d7d7ff"
+		},
+		{
+			"name": "notificationSampleTextFg",
+			"light": "#d7d7d7ff",
+			"dark": "#d7d7d7ff"
+		},
+		{
+			"name": "notificationSampleNameFg",
+			"light": "#939393ff",
+			"dark": "#939393ff"
+		},
+		{
+			"name": "mainMenuBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "mainMenuCoverBg",
+			"light": "#419fd9ff",
+			"dark": "#276899ff"
+		},
+		{
+			"name": "mainMenuCloudFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mainMenuCloudBg",
+			"light": "#2785bfff",
+			"dark": "#185680ff"
+		},
+		{
+			"name": "mediaPlayerBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "mediaPlayerActiveFg",
+			"light": "#40a7e3ff",
+			"dark": "#5288c1ff"
+		},
+		{
+			"name": "mediaPlayerInactiveFg",
+			"light": "#e1eaefff",
+			"dark": "#364554ff"
+		},
+		{
+			"name": "mediaPlayerDisabledFg",
+			"light": "#9dd1efff",
+			"dark": "#9dd1efff"
+		},
+		{
+			"name": "mediaviewFileBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "mediaviewFileNameFg",
+			"light": "#000000ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "mediaviewFileSizeFg",
+			"light": "#999999ff",
+			"dark": "#708499ff"
+		},
+		{
+			"name": "mediaviewFileRedCornerFg",
+			"light": "#d55959ff",
+			"dark": "#d55959ff"
+		},
+		{
+			"name": "mediaviewFileYellowCornerFg",
+			"light": "#e8a659ff",
+			"dark": "#e8a659ff"
+		},
+		{
+			"name": "mediaviewFileGreenCornerFg",
+			"light": "#49a957ff",
+			"dark": "#49a957ff"
+		},
+		{
+			"name": "mediaviewFileBlueCornerFg",
+			"light": "#599dcfff",
+			"dark": "#599dcfff"
+		},
+		{
+			"name": "mediaviewFileExtFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewMenuBg",
+			"light": "#383838ff",
+			"dark": "#383838ff"
+		},
+		{
+			"name": "mediaviewMenuBgOver",
+			"light": "#505050ff",
+			"dark": "#505050ff"
+		},
+		{
+			"name": "mediaviewMenuBgRipple",
+			"light": "#676767ff",
+			"dark": "#676767ff"
+		},
+		{
+			"name": "mediaviewMenuFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewBg",
+			"light": "#222222eb",
+			"dark": "#222222eb"
+		},
+		{
+			"name": "mediaviewVideoBg",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "mediaviewControlBg",
+			"light": "#0000003c",
+			"dark": "#0000003c"
+		},
+		{
+			"name": "mediaviewControlFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewCaptionBg",
+			"light": "#11111180",
+			"dark": "#11111180"
+		},
+		{
+			"name": "mediaviewCaptionFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewTextLinkFg",
+			"light": "#4db8ffff",
+			"dark": "#70baf5ff"
+		},
+		{
+			"name": "mediaviewSaveMsgBg",
+			"light": "#2c3033e5",
+			"dark": "#000000b2"
+		},
+		{
+			"name": "mediaviewSaveMsgFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewPlaybackActive",
+			"light": "#c7c7c7ff",
+			"dark": "#c7c7c7ff"
+		},
+		{
+			"name": "mediaviewPlaybackInactive",
+			"light": "#252525ff",
+			"dark": "#252525ff"
+		},
+		{
+			"name": "mediaviewPlaybackActiveOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewPlaybackInactiveOver",
+			"light": "#474747ff",
+			"dark": "#474747ff"
+		},
+		{
+			"name": "mediaviewPlaybackProgressFg",
+			"light": "#ffffffc7",
+			"dark": "#ffffffc7"
+		},
+		{
+			"name": "mediaviewPlaybackIconFg",
+			"light": "#c7c7c7ff",
+			"dark": "#c7c7c7ff"
+		},
+		{
+			"name": "mediaviewPlaybackIconFgOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewPlaybackIconRipple",
+			"light": "#ffffff14",
+			"dark": "#ffffff14"
+		},
+		{
+			"name": "mediaviewPipControlsFg",
+			"light": "#ffffffd9",
+			"dark": "#ffffffd9"
+		},
+		{
+			"name": "mediaviewPipControlsFgOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewPipPlaybackActive",
+			"light": "#ffffffda",
+			"dark": "#ffffffda"
+		},
+		{
+			"name": "mediaviewPipPlaybackInactive",
+			"light": "#ffffff26",
+			"dark": "#ffffff26"
+		},
+		{
+			"name": "mediaviewTransparentBg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "mediaviewTransparentFg",
+			"light": "#ccccccff",
+			"dark": "#ccccccff"
+		},
+		{
+			"name": "notificationBg",
+			"light": "#ffffffff",
+			"dark": "#17212bff"
+		},
+		{
+			"name": "callBg",
+			"light": "#26282cf2",
+			"dark": "#14191ff5"
+		},
+		{
+			"name": "callBgOpaque",
+			"light": "#1b1f23ff",
+			"dark": "#1b1f23ff"
+		},
+		{
+			"name": "callBgButton",
+			"light": "#1b1f237f",
+			"dark": "#1b1f237f"
+		},
+		{
+			"name": "callNameFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "callStatusFg",
+			"light": "#aaabacff",
+			"dark": "#aaabacff"
+		},
+		{
+			"name": "callIconBg",
+			"light": "#ffffff1f",
+			"dark": "#ffffff1f"
+		},
+		{
+			"name": "callIconFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "callIconBgActive",
+			"light": "#ffffffe5",
+			"dark": "#ffffffe5"
+		},
+		{
+			"name": "callIconFgActive",
+			"light": "#222222ff",
+			"dark": "#222222ff"
+		},
+		{
+			"name": "callIconActiveRipple",
+			"light": "#f1f1f1ff",
+			"dark": "#f1f1f1ff"
+		},
+		{
+			"name": "callAnswerBg",
+			"light": "#66c95bff",
+			"dark": "#488fc9ff"
+		},
+		{
+			"name": "callAnswerRipple",
+			"light": "#52b149ff",
+			"dark": "#4286c2ff"
+		},
+		{
+			"name": "callAnswerBgOuter",
+			"light": "#50eb4126",
+			"dark": "#3f95eb26"
+		},
+		{
+			"name": "callHangupBg",
+			"light": "#d75a5aff",
+			"dark": "#cc4646ff"
+		},
+		{
+			"name": "callHangupRipple",
+			"light": "#c04646ff",
+			"dark": "#ca4141ff"
+		},
+		{
+			"name": "callMuteRipple",
+			"light": "#ffffff12",
+			"dark": "#ffffff12"
+		},
+		{
+			"name": "groupCallBg",
+			"light": "#1a2026ff",
+			"dark": "#1a2026ff"
+		},
+		{
+			"name": "groupCallActiveFg",
+			"light": "#4db8ffff",
+			"dark": "#4db8ffff"
+		},
+		{
+			"name": "groupCallMembersBg",
+			"light": "#2c333dff",
+			"dark": "#2c333dff"
+		},
+		{
+			"name": "groupCallMembersBgOver",
+			"light": "#323a45ff",
+			"dark": "#323a45ff"
+		},
+		{
+			"name": "groupCallMembersBgRipple",
+			"light": "#39424fff",
+			"dark": "#39424fff"
+		},
+		{
+			"name": "groupCallMembersFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "groupCallMemberActiveIcon",
+			"light": "#8deb90ff",
+			"dark": "#8deb90ff"
+		},
+		{
+			"name": "groupCallMemberActiveStatus",
+			"light": "#8deb90ff",
+			"dark": "#8deb90ff"
+		},
+		{
+			"name": "groupCallMemberInactiveIcon",
+			"light": "#84888fff",
+			"dark": "#84888fff"
+		},
+		{
+			"name": "groupCallMemberInactiveStatus",
+			"light": "#61c0ffff",
+			"dark": "#61c0ffff"
+		},
+		{
+			"name": "groupCallMemberMutedIcon",
+			"light": "#ed7372ff",
+			"dark": "#ed7372ff"
+		},
+		{
+			"name": "groupCallMemberNotJoinedStatus",
+			"light": "#91979eff",
+			"dark": "#91979eff"
+		},
+		{
+			"name": "groupCallIconFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "groupCallLive1",
+			"light": "#0dcc39ff",
+			"dark": "#0dcc39ff"
+		},
+		{
+			"name": "groupCallLive2",
+			"light": "#0bb6bdff",
+			"dark": "#0bb6bdff"
+		},
+		{
+			"name": "groupCallMuted1",
+			"light": "#0992efff",
+			"dark": "#0992efff"
+		},
+		{
+			"name": "groupCallMuted2",
+			"light": "#16ccfbff",
+			"dark": "#16ccfbff"
+		},
+		{
+			"name": "groupCallForceMutedBar1",
+			"light": "#c65493ff",
+			"dark": "#c65493ff"
+		},
+		{
+			"name": "groupCallForceMutedBar2",
+			"light": "#7a6af1ff",
+			"dark": "#7a6af1ff"
+		},
+		{
+			"name": "groupCallForceMutedBar3",
+			"light": "#5f95e8ff",
+			"dark": "#5f95e8ff"
+		},
+		{
+			"name": "groupCallForceMuted1",
+			"light": "#4f9cffff",
+			"dark": "#4f9cffff"
+		},
+		{
+			"name": "groupCallForceMuted2",
+			"light": "#9b52e9ff",
+			"dark": "#9b52e9ff"
+		},
+		{
+			"name": "groupCallForceMuted3",
+			"light": "#eb5353ff",
+			"dark": "#eb5353ff"
+		},
+		{
+			"name": "groupCallMenuBg",
+			"light": "#292d33ff",
+			"dark": "#292d33ff"
+		},
+		{
+			"name": "groupCallMenuBgOver",
+			"light": "#343940ff",
+			"dark": "#343940ff"
+		},
+		{
+			"name": "groupCallMenuBgRipple",
+			"light": "#3a4047ff",
+			"dark": "#3a4047ff"
+		},
+		{
+			"name": "groupCallLeaveBg",
+			"light": "#f75c5c7f",
+			"dark": "#f75c5c7f"
+		},
+		{
+			"name": "groupCallLeaveBgRipple",
+			"light": "#f75c5c9e",
+			"dark": "#f75c5c9e"
+		},
+		{
+			"name": "groupCallVideoTextFg",
+			"light": "#ffffffe0",
+			"dark": "#ffffffe0"
+		},
+		{
+			"name": "groupCallVideoSubTextFg",
+			"light": "#ffffffc0",
+			"dark": "#ffffffc0"
+		},
+		{
+			"name": "callBarBg",
+			"light": "#419fd9ff",
+			"dark": "#366693ff"
+		},
+		{
+			"name": "callBarMuteRipple",
+			"light": "#2095d0ff",
+			"dark": "#4b7dabff"
+		},
+		{
+			"name": "callBarBgMuted",
+			"light": "#8f8f8fff",
+			"dark": "#35495dff"
+		},
+		{
+			"name": "callBarFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "importantTooltipBg",
+			"light": "#2c3033e5",
+			"dark": "#000000b2"
+		},
+		{
+			"name": "importantTooltipFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "importantTooltipFgLink",
+			"light": "#4db8ffff",
+			"dark": "#65b6fcff"
+		},
+		{
+			"name": "outdatedFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "outdateSoonBg",
+			"light": "#e08543ff",
+			"dark": "#e08543ff"
+		},
+		{
+			"name": "outdatedBg",
+			"light": "#e05745ff",
+			"dark": "#e05745ff"
+		},
+		{
+			"name": "spellUnderline",
+			"light": "#ff000088",
+			"dark": "#ff000088"
+		},
+		{
+			"name": "walletTitleBg",
+			"light": "#121213ff",
+			"dark": "#121213ff"
+		},
+		{
+			"name": "walletTitleBgActive",
+			"light": "#121213ff",
+			"dark": "#121213ff"
+		},
+		{
+			"name": "walletTitleButtonBg",
+			"light": "#121213ff",
+			"dark": "#121213ff"
+		},
+		{
+			"name": "walletTitleButtonFg",
+			"light": "#5a5a5bff",
+			"dark": "#5a5a5bff"
+		},
+		{
+			"name": "walletTitleButtonBgOver",
+			"light": "#373738ff",
+			"dark": "#373738ff"
+		},
+		{
+			"name": "walletTitleButtonFgOver",
+			"light": "#747475ff",
+			"dark": "#747475ff"
+		},
+		{
+			"name": "walletTitleButtonBgActive",
+			"light": "#121213ff",
+			"dark": "#121213ff"
+		},
+		{
+			"name": "walletTitleButtonFgActive",
+			"light": "#5a5a5bff",
+			"dark": "#5a5a5bff"
+		},
+		{
+			"name": "walletTitleButtonBgActiveOver",
+			"light": "#373738ff",
+			"dark": "#373738ff"
+		},
+		{
+			"name": "walletTitleButtonFgActiveOver",
+			"light": "#747475ff",
+			"dark": "#747475ff"
+		},
+		{
+			"name": "walletTitleButtonCloseBg",
+			"light": "#121213ff",
+			"dark": "#121213ff"
+		},
+		{
+			"name": "walletTitleButtonCloseFg",
+			"light": "#5a5a5bff",
+			"dark": "#5a5a5bff"
+		},
+		{
+			"name": "walletTitleButtonCloseBgOver",
+			"light": "#e81123ff",
+			"dark": "#e81123ff"
+		},
+		{
+			"name": "walletTitleButtonCloseFgOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "walletTitleButtonCloseBgActive",
+			"light": "#121213ff",
+			"dark": "#121213ff"
+		},
+		{
+			"name": "walletTitleButtonCloseFgActive",
+			"light": "#5a5a5bff",
+			"dark": "#5a5a5bff"
+		},
+		{
+			"name": "walletTitleButtonCloseBgActiveOver",
+			"light": "#e81123ff",
+			"dark": "#e81123ff"
+		},
+		{
+			"name": "walletTitleButtonCloseFgActiveOver",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "walletTopBg",
+			"light": "#1e1f21ff",
+			"dark": "#1e1f21ff"
+		},
+		{
+			"name": "walletBalanceFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "walletSubBalanceFg",
+			"light": "#f9f9f9ff",
+			"dark": "#f9f9f9ff"
+		},
+		{
+			"name": "walletTopLabelFg",
+			"light": "#999999ff",
+			"dark": "#999999ff"
+		},
+		{
+			"name": "walletTopIconFg",
+			"light": "#999999ff",
+			"dark": "#999999ff"
+		},
+		{
+			"name": "walletTopIconRipple",
+			"light": "#ffffff12",
+			"dark": "#ffffff12"
+		},
+		{
+			"name": "sideBarBg",
+			"light": "#293a4cff",
+			"dark": "#0e1621ff"
+		},
+		{
+			"name": "sideBarBgActive",
+			"light": "#17212bff",
+			"dark": "#25303eff"
+		},
+		{
+			"name": "sideBarBgRipple",
+			"light": "#1e2b38ff",
+			"dark": "#1e2733ff"
+		},
+		{
+			"name": "sideBarTextFg",
+			"light": "#8897a6ff",
+			"dark": "#768c9eff"
+		},
+		{
+			"name": "sideBarTextFgActive",
+			"light": "#64b9faff",
+			"dark": "#64b9faff"
+		},
+		{
+			"name": "sideBarIconFg",
+			"light": "#8393a3ff",
+			"dark": "#768c9eff"
+		},
+		{
+			"name": "sideBarIconFgActive",
+			"light": "#5eb5f7ff",
+			"dark": "#5eb5f7ff"
+		},
+		{
+			"name": "sideBarBadgeBg",
+			"light": "#5eb5f7ff",
+			"dark": "#5eb5f7ff"
+		},
+		{
+			"name": "sideBarBadgeBgActive",
+			"light": "#5eb5f7ff",
+			"dark": "#5eb5f7ff"
+		},
+		{
+			"name": "sideBarBadgeBgMuted",
+			"light": "#8393a3ff",
+			"dark": "#768c9eff"
+		},
+		{
+			"name": "sideBarBadgeBgMutedActive",
+			"light": "#5eb5f7ff",
+			"dark": "#5eb5f7ff"
+		},
+		{
+			"name": "sideBarBadgeFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "songCoverOverlayFg",
+			"light": "#00000066",
+			"dark": "#00000066"
+		},
+		{
+			"name": "photoEditorItemBaseHandleFg",
+			"light": "#3ccaefff",
+			"dark": "#3ccaefff"
+		},
+		{
+			"name": "premiumButtonBg1",
+			"light": "#55a5ffff",
+			"dark": "#55a5ffff"
+		},
+		{
+			"name": "premiumButtonBg2",
+			"light": "#a767ffff",
+			"dark": "#a767ffff"
+		},
+		{
+			"name": "premiumButtonBg3",
+			"light": "#db5c9dff",
+			"dark": "#db5c9dff"
+		},
+		{
+			"name": "premiumButtonFg",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "premiumIconBg1",
+			"light": "#f38926ff",
+			"dark": "#f38926ff"
+		},
+		{
+			"name": "premiumIconBg2",
+			"light": "#e44456ff",
+			"dark": "#e44456ff"
+		},
+		{
+			"name": "premiumIconBg3",
+			"light": "#4acd43ff",
+			"dark": "#4acd43ff"
+		},
+		{
+			"name": "statisticsChartInactive",
+			"light": "#e2eef999",
+			"dark": "#313d4cc8"
+		},
+		{
+			"name": "statisticsChartActive",
+			"light": "#baccd9d8",
+			"dark": "#526679d8"
+		},
+		{
+			"name": "statisticsChartLineBlue",
+			"light": "#327fe5ff",
+			"dark": "#327fe5ff"
+		},
+		{
+			"name": "statisticsChartLineGreen",
+			"light": "#61c752ff",
+			"dark": "#61c752ff"
+		},
+		{
+			"name": "statisticsChartLineRed",
+			"light": "#e05356ff",
+			"dark": "#e05356ff"
+		},
+		{
+			"name": "statisticsChartLineGolden",
+			"light": "#eba52dff",
+			"dark": "#eba52dff"
+		},
+		{
+			"name": "statisticsChartLineLightblue",
+			"light": "#58a8edff",
+			"dark": "#58a8edff"
+		},
+		{
+			"name": "statisticsChartLineLightgreen",
+			"light": "#8fcf39ff",
+			"dark": "#8fcf39ff"
+		},
+		{
+			"name": "statisticsChartLineOrange",
+			"light": "#f28c39ff",
+			"dark": "#f28c39ff"
+		},
+		{
+			"name": "statisticsChartLineIndigo",
+			"light": "#7f79f3ff",
+			"dark": "#7f79f3ff"
+		},
+		{
+			"name": "statisticsChartLinePurple",
+			"light": "#9f79e8ff",
+			"dark": "#9f79e8ff"
+		},
+		{
+			"name": "statisticsChartLineCyan",
+			"light": "#40d0caff",
+			"dark": "#40d0caff"
+		},
+		{
+			"name": "creditsBg1",
+			"light": "#ffb222ff",
+			"dark": "#ffb222ff"
+		},
+		{
+			"name": "creditsBg2",
+			"light": "#ffd951ff",
+			"dark": "#ffd951ff"
+		},
+		{
+			"name": "creditsBg3",
+			"light": "#f0b400ff",
+			"dark": "#f0b400ff"
+		},
+		{
+			"name": "creditsFg",
+			"light": "#ba7000ff",
+			"dark": "#ba7000ff"
+		},
+		{
+			"name": "creditsStroke",
+			"light": "#da8735ff",
+			"dark": "#da8735ff"
+		},
+		{
+			"name": "currencyFg",
+			"light": "#168acdff",
+			"dark": "#168acdff"
+		},
+		{
+			"name": "rankAdminFg",
+			"light": "#49a355ff",
+			"dark": "#49a355ff"
+		},
+		{
+			"name": "rankOwnerFg",
+			"light": "#956ac8ff",
+			"dark": "#956ac8ff"
+		},
+		{
+			"name": "rankUserFg",
+			"light": "#999999ff",
+			"dark": "#999999ff"
+		},
+		{
+			"name": "dialogsMentionIconFg",
+			"light": "#40a7e3ff",
+			"dark": "#40a7e3ff"
+		},
+		{
+			"name": "dialogsReactionIconFg",
+			"light": "#e05356ff",
+			"dark": "#e05356ff"
+		},
+		{
+			"name": "dialogsPollIconFg",
+			"light": "#997be1ff",
+			"dark": "#997be1ff"
+		}
+	]
+}

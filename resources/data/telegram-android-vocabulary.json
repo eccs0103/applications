@@ -1,0 +1,3799 @@
+{
+	"entries": [
+		{
+			"name": "dialogBackground",
+			"light": "#ffffffff",
+			"dark": "#1e1e1eff"
+		},
+		{
+			"name": "dialogBackgroundGray",
+			"light": "#f0f0f0ff",
+			"dark": "#2a2a2aff"
+		},
+		{
+			"name": "dialogTextBlack",
+			"light": "#1a1d21ff",
+			"dark": "#f6f6f6ff"
+		},
+		{
+			"name": "dialogTextLink",
+			"light": "#2678b6ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "dialogLinkSelection",
+			"light": "#62a9e333",
+			"dark": "#62a9e333"
+		},
+		{
+			"name": "dialogTextBlue",
+			"light": "#2f8cc9ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "dialogTextBlue2",
+			"light": "#3a95d5ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "dialogTextBlue4",
+			"light": "#19a7e8ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "dialogTextGray",
+			"light": "#348bc1ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "dialogTextGray2",
+			"light": "#757575ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "dialogTextGray3",
+			"light": "#999999ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "dialogTextGray4",
+			"light": "#b3b3b3ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "dialogTextHint",
+			"light": "#979797ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "dialogIcon",
+			"light": "#1a1d21ff",
+			"dark": "#8c8c8cff"
+		},
+		{
+			"name": "dialogGrayLine",
+			"light": "#d2d2d2ff",
+			"dark": "#484848ff"
+		},
+		{
+			"name": "dialogTopBackground",
+			"light": "#298acfff",
+			"dark": "#326a98ff"
+		},
+		{
+			"name": "dialogInputField",
+			"light": "#dbdbdbff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "dialogInputFieldActivated",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "dialogCheckboxSquareBackground",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "dialogCheckboxSquareCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogCheckboxSquareUnchecked",
+			"light": "#737373ff",
+			"dark": "#5a5a5aff"
+		},
+		{
+			"name": "dialogCheckboxSquareDisabled",
+			"light": "#b0b0b0ff",
+			"dark": "#484848ff"
+		},
+		{
+			"name": "dialogRadioBackground",
+			"light": "#b3b3b3ff",
+			"dark": "#5a5a5aff"
+		},
+		{
+			"name": "dialogRadioBackgroundChecked",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "dialogLineProgress",
+			"light": "#527da3ff",
+			"dark": "#57a8e6ff"
+		},
+		{
+			"name": "dialogLineProgressBackground",
+			"light": "#dbdbdbff",
+			"dark": "#444444ff"
+		},
+		{
+			"name": "dialogButton",
+			"light": "#298acfff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "dialogButtonSelector",
+			"light": "#0000000f",
+			"dark": "#ffffff19"
+		},
+		{
+			"name": "dialogScrollGlow",
+			"light": "#f5f6f7ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "dialogRoundCheckBox",
+			"light": "#229af0ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "dialogRoundCheckBoxCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialog_inlineProgressBackground",
+			"light": "#f0f2f5f6",
+			"dark": "#f0f2f5f6"
+		},
+		{
+			"name": "dialog_inlineProgress",
+			"light": "#6b7378ff",
+			"dark": "#6b7378ff"
+		},
+		{
+			"name": "dialogSearchBackground",
+			"light": "#f2f4f5ff",
+			"dark": "#2d2d2dff"
+		},
+		{
+			"name": "dialogSearchHint",
+			"light": "#98a0a7ff",
+			"dark": "#7f7f7fff"
+		},
+		{
+			"name": "dialogSearchIcon",
+			"light": "#a1a8afff",
+			"dark": "#787878ff"
+		},
+		{
+			"name": "dialogSearchText",
+			"light": "#222222ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogFloatingButton",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "dialogFloatingButtonPressed",
+			"light": "#0000000f",
+			"dark": "#0000000f"
+		},
+		{
+			"name": "dialogFloatingIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "dialogShadowLine",
+			"light": "#00000012",
+			"dark": "#00000014"
+		},
+		{
+			"name": "dialogEmptyImage",
+			"light": "#9fa4a8ff",
+			"dark": "#9fa4a8ff"
+		},
+		{
+			"name": "dialogEmptyText",
+			"light": "#8c9094ff",
+			"dark": "#8c9094ff"
+		},
+		{
+			"name": "dialogSwipeRemove",
+			"light": "#e56555ff",
+			"dark": "#e56555ff"
+		},
+		{
+			"name": "dialogReactionMentionBackground",
+			"light": "#eb5e5eff",
+			"dark": "#eb5e5eff"
+		},
+		{
+			"name": "dialogCardShadow",
+			"light": "#00000017",
+			"dark": "#00000040"
+		},
+		{
+			"name": "dialogGiftsBackground",
+			"light": "#f5f6f7ff",
+			"dark": "#f5f6f7ff"
+		},
+		{
+			"name": "dialogGiftsTabText",
+			"light": "#56595cff",
+			"dark": "#56595cff"
+		},
+		{
+			"name": "bot_loadingIcon",
+			"light": "#f2f2f2ff",
+			"dark": "#ffffff1e"
+		},
+		{
+			"name": "gift_ribbon",
+			"light": "#46a4f2ff",
+			"dark": "#41607fff"
+		},
+		{
+			"name": "gift_ribbon_soldout",
+			"light": "#cc4747ff",
+			"dark": "#7e4b41ff"
+		},
+		{
+			"name": "share_icon",
+			"light": "#6e7275ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "share_linkText",
+			"light": "#222222ff",
+			"dark": "#ffffffb7"
+		},
+		{
+			"name": "share_linkBackground",
+			"light": "#0000000f",
+			"dark": "#ffffff14"
+		},
+		{
+			"name": "windowBackgroundWhite",
+			"light": "#ffffffff",
+			"dark": "#181819ff"
+		},
+		{
+			"name": "windowBackgroundUnchecked",
+			"light": "#96a2adff",
+			"dark": "#1e1e20ff"
+		},
+		{
+			"name": "windowBackgroundChecked",
+			"light": "#229af0ff",
+			"dark": "#2f76abff"
+		},
+		{
+			"name": "windowBackgroundCheckText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "progressCircle",
+			"light": "#1c93e3ff",
+			"dark": "#64b5fdff"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayIcon",
+			"light": "#1a1d21ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueText",
+			"light": "#4092cdff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueText2",
+			"light": "#3a95d5ff",
+			"dark": "#3a9fedff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueText3",
+			"light": "#2678b6ff",
+			"dark": "#4da1efff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueText4",
+			"light": "#1c93e3ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueText5",
+			"light": "#4c8ecaff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueText6",
+			"light": "#3a8ccfff",
+			"dark": "#3a8ccfff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueText7",
+			"light": "#377aaeff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueButton",
+			"light": "#1e88d3ff",
+			"dark": "#1e88d3ff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueIcon",
+			"light": "#379de5ff",
+			"dark": "#379de5ff"
+		},
+		{
+			"name": "windowBackgroundWhiteGreenText",
+			"light": "#26972cff",
+			"dark": "#61bd67ff"
+		},
+		{
+			"name": "windowBackgroundWhiteGreenText2",
+			"light": "#37a818ff",
+			"dark": "#61d36bff"
+		},
+		{
+			"name": "text_RedRegular",
+			"light": "#cc2929ff",
+			"dark": "#ee686fff"
+		},
+		{
+			"name": "text_RedBold",
+			"light": "#cc4747ff",
+			"dark": "#ee686fff"
+		},
+		{
+			"name": "fill_RedNormal",
+			"light": "#eb5e5eff",
+			"dark": "#eb5e5eff"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText",
+			"light": "#808384ff",
+			"dark": "#ffffff6e"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText2",
+			"light": "#82868aff",
+			"dark": "#fdfdff6e"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText3",
+			"light": "#999999ff",
+			"dark": "#868686ff"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText4",
+			"light": "#808080ff",
+			"dark": "#6a6a6aff"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText5",
+			"light": "#a3a3a3ff",
+			"dark": "#7d8b99ff"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText6",
+			"light": "#757575ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText7",
+			"light": "#c6c6c6ff",
+			"dark": "#c6c6c6ff"
+		},
+		{
+			"name": "windowBackgroundWhiteGrayText8",
+			"light": "#6d6d72ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "windowBackgroundWhiteBlackText",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "windowBackgroundWhiteHintText",
+			"light": "#a8a8a8ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "windowBackgroundWhiteValueText",
+			"light": "#298acfff",
+			"dark": "#69b6fde0"
+		},
+		{
+			"name": "windowBackgroundWhiteLinkText",
+			"light": "#298acfff",
+			"dark": "#57a7e0ff"
+		},
+		{
+			"name": "windowBackgroundWhiteLinkSelection",
+			"light": "#62a9e333",
+			"dark": "#64b5fd3d"
+		},
+		{
+			"name": "windowBackgroundWhiteBlueHeader",
+			"light": "#298acfff",
+			"dark": "#6cb6f8ff"
+		},
+		{
+			"name": "windowBackgroundWhiteInputField",
+			"light": "#dbdbdbff",
+			"dark": "#505050ff"
+		},
+		{
+			"name": "windowBackgroundWhiteInputFieldActivated",
+			"light": "#229af0ff",
+			"dark": "#6eb2efff"
+		},
+		{
+			"name": "switchTrack",
+			"light": "#a6adb3ff",
+			"dark": "#606060ff"
+		},
+		{
+			"name": "switchTrackChecked",
+			"light": "#229af0ff",
+			"dark": "#459ce3ff"
+		},
+		{
+			"name": "switchTrackBlue",
+			"light": "#78828aff",
+			"dark": "#68686aff"
+		},
+		{
+			"name": "switchTrackBlueChecked",
+			"light": "#1079c4ff",
+			"dark": "#77d1ffff"
+		},
+		{
+			"name": "switchTrackBlueThumb",
+			"light": "#ffffffff",
+			"dark": "#1e1e20ff"
+		},
+		{
+			"name": "switchTrackBlueThumbChecked",
+			"light": "#ffffffff",
+			"dark": "#2d82c3ff"
+		},
+		{
+			"name": "switchTrackBlueSelector",
+			"light": "#404a5317",
+			"dark": "#b9ddfa19"
+		},
+		{
+			"name": "switchTrackBlueSelectorChecked",
+			"light": "#02478121",
+			"dark": "#8cd7ff32"
+		},
+		{
+			"name": "switch2Track",
+			"light": "#f57e7eff",
+			"dark": "#f57e7eff"
+		},
+		{
+			"name": "switch2TrackChecked",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "checkboxSquareBackground",
+			"light": "#229af0ff",
+			"dark": "#64b5e5ff"
+		},
+		{
+			"name": "checkboxSquareCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "checkboxSquareUnchecked",
+			"light": "#737373ff",
+			"dark": "#546679ff"
+		},
+		{
+			"name": "checkboxSquareDisabled",
+			"light": "#b0b0b0ff",
+			"dark": "#44536264"
+		},
+		{
+			"name": "listSelector",
+			"light": "#0000000f",
+			"dark": "#0000000f"
+		},
+		{
+			"name": "settings_listSelector",
+			"light": "#0000101d",
+			"dark": "#0000101d"
+		},
+		{
+			"name": "radioBackground",
+			"light": "#b3b3b3ff",
+			"dark": "#606060ff"
+		},
+		{
+			"name": "radioBackgroundChecked",
+			"light": "#229af0ff",
+			"dark": "#48a6efff"
+		},
+		{
+			"name": "windowBackgroundGray",
+			"light": "#f1f1f3ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "windowBackgroundGrayShadow",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "emptyListPlaceholder",
+			"light": "#73787bff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "divider",
+			"light": "#d9d9d9ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "graySection",
+			"light": "#f5f5f5ff",
+			"dark": "#0b0b0cff"
+		},
+		{
+			"name": "graySectionText",
+			"light": "#82878aff",
+			"dark": "#838384ff"
+		},
+		{
+			"name": "contextProgressInner1",
+			"light": "#bfdff6ff",
+			"dark": "#ffffff5a"
+		},
+		{
+			"name": "contextProgressOuter1",
+			"light": "#2b96e2ff",
+			"dark": "#4facf8ff"
+		},
+		{
+			"name": "contextProgressInner2",
+			"light": "#bfdff6ff",
+			"dark": "#bfdff6ff"
+		},
+		{
+			"name": "contextProgressOuter2",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "contextProgressInner3",
+			"light": "#b3b3b3ff",
+			"dark": "#b3b3b3ff"
+		},
+		{
+			"name": "contextProgressOuter3",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "contextProgressInner4",
+			"light": "#cacdd0ff",
+			"dark": "#cacdd0ff"
+		},
+		{
+			"name": "contextProgressOuter4",
+			"light": "#2f3438ff",
+			"dark": "#2f3438ff"
+		},
+		{
+			"name": "fastScrollActive",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "fastScrollInactive",
+			"light": "#c9cdd1ff",
+			"dark": "#414141ff"
+		},
+		{
+			"name": "fastScrollText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "pollCreateIcons",
+			"light": "#909599ff",
+			"dark": "#909599ff"
+		},
+		{
+			"name": "avatar_text",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "avatar_backgroundSaved",
+			"light": "#69bdf9ff",
+			"dark": "#4fa1e8ff"
+		},
+		{
+			"name": "avatar_background2Saved",
+			"light": "#409fe1ff",
+			"dark": "#1a88e7ff"
+		},
+		{
+			"name": "avatar_backgroundArchived",
+			"light": "#b8c2ccff",
+			"dark": "#3c3c3cff"
+		},
+		{
+			"name": "avatar_backgroundArchivedHidden",
+			"light": "#229af0ff",
+			"dark": "#44a1e8ff"
+		},
+		{
+			"name": "avatar_backgroundRed",
+			"light": "#ff845eff",
+			"dark": "#dc805bff"
+		},
+		{
+			"name": "avatar_background2Red",
+			"light": "#d45246ff",
+			"dark": "#d9614fff"
+		},
+		{
+			"name": "avatar_backgroundOrange",
+			"light": "#febb5bff",
+			"dark": "#f2bc64ff"
+		},
+		{
+			"name": "avatar_background2Orange",
+			"light": "#f68136ff",
+			"dark": "#e58943ff"
+		},
+		{
+			"name": "avatar_backgroundViolet",
+			"light": "#b694f9ff",
+			"dark": "#b694f9ff"
+		},
+		{
+			"name": "avatar_background2Violet",
+			"light": "#6c61dfff",
+			"dark": "#6c61dfff"
+		},
+		{
+			"name": "avatar_backgroundGreen",
+			"light": "#9ad164ff",
+			"dark": "#9ad164ff"
+		},
+		{
+			"name": "avatar_background2Green",
+			"light": "#46ba43ff",
+			"dark": "#46ba43ff"
+		},
+		{
+			"name": "avatar_backgroundCyan",
+			"light": "#5bcbe3ff",
+			"dark": "#5bcbe3ff"
+		},
+		{
+			"name": "avatar_background2Cyan",
+			"light": "#359ad4ff",
+			"dark": "#359ad4ff"
+		},
+		{
+			"name": "avatar_backgroundBlue",
+			"light": "#5caffaff",
+			"dark": "#5caffaff"
+		},
+		{
+			"name": "avatar_background2Blue",
+			"light": "#408acfff",
+			"dark": "#408acfff"
+		},
+		{
+			"name": "avatar_backgroundPink",
+			"light": "#ff8aacff",
+			"dark": "#ff8aacff"
+		},
+		{
+			"name": "avatar_background2Pink",
+			"light": "#d95574ff",
+			"dark": "#d95574ff"
+		},
+		{
+			"name": "avatar_backgroundGray",
+			"light": "#a1abb5ff",
+			"dark": "#a1abb5ff"
+		},
+		{
+			"name": "avatar_backgroundInProfileBlue",
+			"light": "#ffffffff",
+			"dark": "#549cddff"
+		},
+		{
+			"name": "avatar_backgroundActionBarBlue",
+			"light": "#f5f5f5ff",
+			"dark": "#1f1f20ff"
+		},
+		{
+			"name": "avatar_subtitleInProfileBlue",
+			"light": "#1a1d21ff",
+			"dark": "#fdfdff78"
+		},
+		{
+			"name": "avatar_actionBarSelectorBlue",
+			"light": "#1a1d2112",
+			"dark": "#ffffff19"
+		},
+		{
+			"name": "avatar_actionBarIconBlue",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "avatar_nameInMessageRed",
+			"light": "#cc5049ff",
+			"dark": "#e88878ff"
+		},
+		{
+			"name": "avatar_nameInMessageOrange",
+			"light": "#d67722ff",
+			"dark": "#e8ab5aff"
+		},
+		{
+			"name": "avatar_nameInMessageViolet",
+			"light": "#955cdbff",
+			"dark": "#8c8deaff"
+		},
+		{
+			"name": "avatar_nameInMessageGreen",
+			"light": "#40a920ff",
+			"dark": "#7dd071ff"
+		},
+		{
+			"name": "avatar_nameInMessageCyan",
+			"light": "#309ebaff",
+			"dark": "#53ccc6ff"
+		},
+		{
+			"name": "avatar_nameInMessageBlue",
+			"light": "#368ad1ff",
+			"dark": "#5cadeaff"
+		},
+		{
+			"name": "avatar_nameInMessagePink",
+			"light": "#c7508bff",
+			"dark": "#e8749aff"
+		},
+		{
+			"name": "actionBarDefault",
+			"light": "#ffffffff",
+			"dark": "#232326ff"
+		},
+		{
+			"name": "actionBarDefaultIcon",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarActionModeDefault",
+			"light": "#ffffffff",
+			"dark": "#272727ff"
+		},
+		{
+			"name": "actionBarActionModeDefaultTop",
+			"light": "#00000010",
+			"dark": "#262626ff"
+		},
+		{
+			"name": "actionBarActionModeDefaultIcon",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultTitle",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultSubtitle",
+			"light": "#79817eff",
+			"dark": "#f2f2f273"
+		},
+		{
+			"name": "actionBarDefaultSelector",
+			"light": "#1a1d2112",
+			"dark": "#ffffff16"
+		},
+		{
+			"name": "actionBarWhiteSelector",
+			"light": "#1a1d2112",
+			"dark": "#ffffff10"
+		},
+		{
+			"name": "actionBarDefaultSearch",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultSearchPlaceholder",
+			"light": "#79817eff",
+			"dark": "#ffffff82"
+		},
+		{
+			"name": "actionBarDefaultSubmenuItem",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultSubmenuItemIcon",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultSubmenuBackground",
+			"light": "#ffffffff",
+			"dark": "#282829ff"
+		},
+		{
+			"name": "actionBarDefaultSubmenuSeparator",
+			"light": "#f5f5f5ff",
+			"dark": "#1e1e1fff"
+		},
+		{
+			"name": "actionBarActionModeDefaultSelector",
+			"light": "#e2e2e2ff",
+			"dark": "#ffffff1e"
+		},
+		{
+			"name": "actionBarActionModeReaction",
+			"light": "#f0f0f0ff",
+			"dark": "#ffffff12"
+		},
+		{
+			"name": "actionBarActionModeReactionText",
+			"light": "#82868aff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarActionModeReactionDot",
+			"light": "#c0c0c0ff",
+			"dark": "#353e47ff"
+		},
+		{
+			"name": "actionBarTabActiveText",
+			"light": "#298acfff",
+			"dark": "#5cc1ffff"
+		},
+		{
+			"name": "actionBarTabUnactiveText",
+			"light": "#777c7fff",
+			"dark": "#8e8e8fff"
+		},
+		{
+			"name": "actionBarTabLine",
+			"light": "#298acfff",
+			"dark": "#43b7ffff"
+		},
+		{
+			"name": "chats_tabUnreadActiveBackground",
+			"light": "#66ade1ff",
+			"dark": "#66ade1ff"
+		},
+		{
+			"name": "chats_tabUnreadUnactiveBackground",
+			"light": "#c5c9ccff",
+			"dark": "#c5c9ccff"
+		},
+		{
+			"name": "actionBarTabSelector",
+			"light": "#1a1d2112",
+			"dark": "#58636a31"
+		},
+		{
+			"name": "actionBarBrowser",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "table_background",
+			"light": "#f7f7f7ff",
+			"dark": "#92c4ff0a"
+		},
+		{
+			"name": "table_border",
+			"light": "#e0e0e0ff",
+			"dark": "#ffffff19"
+		},
+		{
+			"name": "actionBarDefaultArchived",
+			"light": "#ffffffff",
+			"dark": "#232326ff"
+		},
+		{
+			"name": "actionBarDefaultArchivedSelector",
+			"light": "#1a1d2112",
+			"dark": "#3e3e3fff"
+		},
+		{
+			"name": "actionBarDefaultArchivedIcon",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultArchivedTitle",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultArchivedSearch",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "actionBarDefaultArchivedSearchPlaceholder",
+			"light": "#838c96ff",
+			"dark": "#838c96ff"
+		},
+		{
+			"name": "chats_onlineCircle",
+			"light": "#4bcb1cff",
+			"dark": "#37a4f9ff"
+		},
+		{
+			"name": "chats_unreadCounter",
+			"light": "#229af0ff",
+			"dark": "#399ef3ff"
+		},
+		{
+			"name": "chats_unreadCounterMuted",
+			"light": "#bec3c7ff",
+			"dark": "#454545ff"
+		},
+		{
+			"name": "chats_unreadCounterText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_archiveBackground",
+			"light": "#229af0ff",
+			"dark": "#458ad2ff"
+		},
+		{
+			"name": "chats_archivePinBackground",
+			"light": "#9faab3ff",
+			"dark": "#303030ff"
+		},
+		{
+			"name": "chats_archiveIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_archiveText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_name",
+			"light": "#1a1d21ff",
+			"dark": "#f1f1f1ff"
+		},
+		{
+			"name": "chats_nameArchived",
+			"light": "#1a1d21ff",
+			"dark": "#aaaaaaff"
+		},
+		{
+			"name": "chats_secretName",
+			"light": "#00a60eff",
+			"dark": "#71d756ff"
+		},
+		{
+			"name": "chats_secretIcon",
+			"light": "#19b126ff",
+			"dark": "#71d756ff"
+		},
+		{
+			"name": "chats_pinnedIcon",
+			"light": "#919294ff",
+			"dark": "#646464ff"
+		},
+		{
+			"name": "chats_message",
+			"light": "#75787aff",
+			"dark": "#828282ff"
+		},
+		{
+			"name": "chats_messageArchived",
+			"light": "#919191ff",
+			"dark": "#828282ff"
+		},
+		{
+			"name": "chats_message_threeLines",
+			"light": "#8e9091ff",
+			"dark": "#828282ff"
+		},
+		{
+			"name": "chats_draft",
+			"light": "#dd4b39ff",
+			"dark": "#fc474ad9"
+		},
+		{
+			"name": "chats_nameMessage",
+			"light": "#298acfff",
+			"dark": "#ebebebff"
+		},
+		{
+			"name": "chats_nameMessageArchived",
+			"light": "#8b8d8fff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "chats_nameMessage_threeLines",
+			"light": "#424449ff",
+			"dark": "#ebebebff"
+		},
+		{
+			"name": "chats_nameMessageArchived_threeLines",
+			"light": "#5e5e5eff",
+			"dark": "#5e5e5eff"
+		},
+		{
+			"name": "chats_attachMessage",
+			"light": "#298acfff",
+			"dark": "#828282ff"
+		},
+		{
+			"name": "chats_actionMessage",
+			"light": "#298acfff",
+			"dark": "#64afe9ff"
+		},
+		{
+			"name": "chats_date",
+			"light": "#848688ff",
+			"dark": "#787878ff"
+		},
+		{
+			"name": "chats_date_bold",
+			"light": "#919395ff",
+			"dark": "#919395ff"
+		},
+		{
+			"name": "chats_pinnedOverlay",
+			"light": "#00000008",
+			"dark": "#ffffff0b"
+		},
+		{
+			"name": "chats_tabletSelectedOverlay",
+			"light": "#0000000f",
+			"dark": "#ffffff0f"
+		},
+		{
+			"name": "chats_sentCheck",
+			"light": "#46aa36ff",
+			"dark": "#46adf3ff"
+		},
+		{
+			"name": "chats_sentReadCheck",
+			"light": "#46aa36ff",
+			"dark": "#46adf3ff"
+		},
+		{
+			"name": "chats_sentClock",
+			"light": "#75bd5eff",
+			"dark": "#6e6e6eff"
+		},
+		{
+			"name": "chats_sentError",
+			"light": "#d55252ff",
+			"dark": "#d55252ff"
+		},
+		{
+			"name": "chats_sentErrorIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_verifiedBackground",
+			"light": "#33a8e6ff",
+			"dark": "#46aaf7ff"
+		},
+		{
+			"name": "chats_verifiedCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_muteIcon",
+			"light": "#bdc1c4ff",
+			"dark": "#555555ff"
+		},
+		{
+			"name": "chats_mentionIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_menuBackground",
+			"light": "#ffffffff",
+			"dark": "#242426ff"
+		},
+		{
+			"name": "chats_menuItemText",
+			"light": "#444444ff",
+			"dark": "#fffffff4"
+		},
+		{
+			"name": "chats_menuItemCheck",
+			"light": "#598fbaff",
+			"dark": "#598fbaff"
+		},
+		{
+			"name": "chats_menuItemIcon",
+			"light": "#889198ff",
+			"dark": "#828282ff"
+		},
+		{
+			"name": "chats_menuName",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_menuPhone",
+			"light": "#ffffffff",
+			"dark": "#c8c8c893"
+		},
+		{
+			"name": "chats_menuPhoneCats",
+			"light": "#c2e5ffff",
+			"dark": "#828282ff"
+		},
+		{
+			"name": "chats_actionIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chats_actionBackground",
+			"light": "#65a9e0ff",
+			"dark": "#5ea0dbff"
+		},
+		{
+			"name": "chats_actionPressedBackground",
+			"light": "#569dd6ff",
+			"dark": "#70bce6ff"
+		},
+		{
+			"name": "chats_menuTopBackgroundCats",
+			"light": "#598fbaff",
+			"dark": "#1b1b1bff"
+		},
+		{
+			"name": "chats_archivePullDownBackground",
+			"light": "#c6c9ccff",
+			"dark": "#282828ff"
+		},
+		{
+			"name": "chats_archivePullDownBackgroundActive",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "chat_attachCheckBoxCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_attachCheckBoxBackground",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "chat_attachPhotoBackground",
+			"light": "#0000000c",
+			"dark": "#0000000c"
+		},
+		{
+			"name": "chat_attachActiveTab",
+			"light": "#33a7f5ff",
+			"dark": "#6abfffff"
+		},
+		{
+			"name": "chat_attachUnactiveTab",
+			"light": "#92999eff",
+			"dark": "#6d91a6ff"
+		},
+		{
+			"name": "chat_attachPermissionImage",
+			"light": "#333333ff",
+			"dark": "#333333ff"
+		},
+		{
+			"name": "chat_attachPermissionMark",
+			"light": "#e25050ff",
+			"dark": "#e25050ff"
+		},
+		{
+			"name": "chat_attachPermissionText",
+			"light": "#6f777aff",
+			"dark": "#6f777aff"
+		},
+		{
+			"name": "chat_attachEmptyImage",
+			"light": "#ccccccff",
+			"dark": "#ccccccff"
+		},
+		{
+			"name": "chat_attachIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_attachGalleryBackground",
+			"light": "#459df5ff",
+			"dark": "#4d96f5ff"
+		},
+		{
+			"name": "chat_attachAudioBackground",
+			"light": "#eb6060ff",
+			"dark": "#f66f6bff"
+		},
+		{
+			"name": "chat_attachContactBackground",
+			"light": "#f2c04bff",
+			"dark": "#deb045ff"
+		},
+		{
+			"name": "chat_attachContactText",
+			"light": "#dfa000ff",
+			"dark": "#dfa000ff"
+		},
+		{
+			"name": "chat_attachLocationBackground",
+			"light": "#60c255ff",
+			"dark": "#60c255ff"
+		},
+		{
+			"name": "chat_attachPollBackground",
+			"light": "#f2c04bff",
+			"dark": "#deb045ff"
+		},
+		{
+			"name": "chat_inPollCorrectAnswer",
+			"light": "#60c255ff",
+			"dark": "#60c255ff"
+		},
+		{
+			"name": "chat_outPollCorrectAnswer",
+			"light": "#60c255ff",
+			"dark": "#60c255ff"
+		},
+		{
+			"name": "chat_inPollWrongAnswer",
+			"light": "#eb6060ff",
+			"dark": "#eb6060ff"
+		},
+		{
+			"name": "chat_outPollWrongAnswer",
+			"light": "#eb6060ff",
+			"dark": "#eb6060ff"
+		},
+		{
+			"name": "chat_status",
+			"light": "#298acfff",
+			"dark": "#74bdf9ff"
+		},
+		{
+			"name": "chat_inGreenCall",
+			"light": "#00c853ff",
+			"dark": "#00c853ff"
+		},
+		{
+			"name": "chat_outGreenCall",
+			"light": "#00c853ff",
+			"dark": "#00c853ff"
+		},
+		{
+			"name": "chat_lockIcon",
+			"light": "#222222ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_muteIcon",
+			"light": "#79817eff",
+			"dark": "#a5a5a564"
+		},
+		{
+			"name": "chat_inBubble",
+			"light": "#ffffffff",
+			"dark": "#1f2123ff"
+		},
+		{
+			"name": "chat_inBubbleSelected",
+			"light": "#ecf7fdff",
+			"dark": "#314a61ff"
+		},
+		{
+			"name": "chat_inBubbleShadow",
+			"light": "#1d3753ff",
+			"dark": "#00000032"
+		},
+		{
+			"name": "chat_outBubble",
+			"light": "#efffdeff",
+			"dark": "#366cafff"
+		},
+		{
+			"name": "chat_outBubbleGradientSelectedOverlay",
+			"light": "#00000014",
+			"dark": "#ffffff14"
+		},
+		{
+			"name": "chat_outBubbleSelected",
+			"light": "#d9f7c5ff",
+			"dark": "#4b7dafff"
+		},
+		{
+			"name": "chat_outBubbleShadow",
+			"light": "#1e750cff",
+			"dark": "#00000032"
+		},
+		{
+			"name": "chat_inMediaIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inMediaIconSelected",
+			"light": "#eff8feff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outMediaIcon",
+			"light": "#efffdeff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outMediaIconSelected",
+			"light": "#e1f8cfff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_messageTextIn",
+			"light": "#000000ff",
+			"dark": "#fafafaff"
+		},
+		{
+			"name": "chat_messageTextOut",
+			"light": "#000000ff",
+			"dark": "#fafafaff"
+		},
+		{
+			"name": "chat_messageLinkIn",
+			"light": "#2678b6ff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_messageLinkOut",
+			"light": "#2678b6ff",
+			"dark": "#aedfffff"
+		},
+		{
+			"name": "chat_serviceText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_serviceLink",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_serviceIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_mediaTimeBackground",
+			"light": "#00000066",
+			"dark": "#00000066"
+		},
+		{
+			"name": "chat_outSentCheck",
+			"light": "#5db050ff",
+			"dark": "#c9f0ffe1"
+		},
+		{
+			"name": "chat_outSentCheckSelected",
+			"light": "#5db050ff",
+			"dark": "#a6dbffff"
+		},
+		{
+			"name": "chat_outSentCheckRead",
+			"light": "#5db050ff",
+			"dark": "#c9f0ffe1"
+		},
+		{
+			"name": "chat_outSentCheckReadSelected",
+			"light": "#5db050ff",
+			"dark": "#5db050ff"
+		},
+		{
+			"name": "chat_outSentClock",
+			"light": "#75bd5eff",
+			"dark": "#99c9efff"
+		},
+		{
+			"name": "chat_outSentClockSelected",
+			"light": "#75bd5eff",
+			"dark": "#bedffaff"
+		},
+		{
+			"name": "chat_inSentClock",
+			"light": "#a1aab3ff",
+			"dark": "#576063ff"
+		},
+		{
+			"name": "chat_inSentClockSelected",
+			"light": "#93bdcaff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_mediaSentCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_mediaSentClock",
+			"light": "#ffffffff",
+			"dark": "#ffffffb2"
+		},
+		{
+			"name": "chat_inViews",
+			"light": "#a1aab3ff",
+			"dark": "#787c80ff"
+		},
+		{
+			"name": "chat_inViewsSelected",
+			"light": "#93bdcaff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_outViews",
+			"light": "#6eb257ff",
+			"dark": "#8fbcdfff"
+		},
+		{
+			"name": "chat_outViewsSelected",
+			"light": "#6eb257ff",
+			"dark": "#bedffaff"
+		},
+		{
+			"name": "chat_mediaViews",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inMenu",
+			"light": "#b6bdc5ff",
+			"dark": "#5d6364ff"
+		},
+		{
+			"name": "chat_inMenuSelected",
+			"light": "#98c1ceff",
+			"dark": "#8db2d3a5"
+		},
+		{
+			"name": "chat_outMenu",
+			"light": "#91ce7eff",
+			"dark": "#8ec4f3ff"
+		},
+		{
+			"name": "chat_outMenuSelected",
+			"light": "#91ce7eff",
+			"dark": "#bedffadf"
+		},
+		{
+			"name": "chat_mediaMenu",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outInstant",
+			"light": "#55ab4fff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outInstantSelected",
+			"light": "#489943ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inInstant",
+			"light": "#298acfff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_inInstantSelected",
+			"light": "#3079b5ff",
+			"dark": "#a9cfeeff"
+		},
+		{
+			"name": "chat_sentError",
+			"light": "#db3535ff",
+			"dark": "#f6574eff"
+		},
+		{
+			"name": "chat_sentErrorIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_selectedBackground",
+			"light": "#0a90f028",
+			"dark": "#5f9de32a"
+		},
+		{
+			"name": "chat_previewDurationText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_previewGameText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inPreviewInstantText",
+			"light": "#298acfff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outPreviewInstantText",
+			"light": "#55ab4fff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_secretTimeText",
+			"light": "#e4e2e0ff",
+			"dark": "#cdcdceff"
+		},
+		{
+			"name": "chat_stickerNameText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_botButtonText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inForwardedNameText",
+			"light": "#3886c7ff",
+			"dark": "#77bcfcff"
+		},
+		{
+			"name": "chat_outForwardedNameText",
+			"light": "#55ab4fff",
+			"dark": "#acddffff"
+		},
+		{
+			"name": "chat_inPsaNameText",
+			"light": "#5a9c39ff",
+			"dark": "#5a9c39ff"
+		},
+		{
+			"name": "chat_outPsaNameText",
+			"light": "#5a9c39ff",
+			"dark": "#5a9c39ff"
+		},
+		{
+			"name": "chat_inViaBotNameText",
+			"light": "#298acfff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outViaBotNameText",
+			"light": "#55ab4fff",
+			"dark": "#acddffff"
+		},
+		{
+			"name": "chat_stickerViaBotNameText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inReplyLine",
+			"light": "#599fd8ff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outReplyLine",
+			"light": "#6eb969ff",
+			"dark": "#7eceffff"
+		},
+		{
+			"name": "chat_outReplyLine2",
+			"light": "#40a920ff",
+			"dark": "#40a920ff"
+		},
+		{
+			"name": "chat_stickerReplyLine",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inReplyNameText",
+			"light": "#298acfff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outReplyNameText",
+			"light": "#55ab4fff",
+			"dark": "#9fd9ffff"
+		},
+		{
+			"name": "chat_stickerReplyNameText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inReplyMessageText",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outReplyMessageText",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inReplyMediaMessageText",
+			"light": "#a1aab3ff",
+			"dark": "#7f8081ff"
+		},
+		{
+			"name": "chat_outReplyMediaMessageText",
+			"light": "#65b05bff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_inReplyMediaMessageSelectedText",
+			"light": "#89b4c1ff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_outReplyMediaMessageSelectedText",
+			"light": "#65b05bff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_stickerReplyMessageText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inPreviewLine",
+			"light": "#70b4e8ff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outPreviewLine",
+			"light": "#88c97bff",
+			"dark": "#9acdffff"
+		},
+		{
+			"name": "chat_inSiteNameText",
+			"light": "#298acfff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outSiteNameText",
+			"light": "#55ab4fff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inContactNameText",
+			"light": "#4e9ad4ff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outContactNameText",
+			"light": "#55ab4fff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inContactPhoneText",
+			"light": "#2f3438ff",
+			"dark": "#7e8081ff"
+		},
+		{
+			"name": "chat_inContactPhoneSelectedText",
+			"light": "#2f3438ff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_outContactPhoneText",
+			"light": "#354234ff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_outContactPhoneSelectedText",
+			"light": "#354234ff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_mediaProgress",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inAudioProgress",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outAudioProgress",
+			"light": "#efffdeff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inAudioSelectedProgress",
+			"light": "#eff8feff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outAudioSelectedProgress",
+			"light": "#e1f8cfff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_mediaTimeText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inAdminText",
+			"light": "#c0c6cbff",
+			"dark": "#c0c6cbff"
+		},
+		{
+			"name": "chat_inAdminSelectedText",
+			"light": "#89b4c1ff",
+			"dark": "#89b4c1ff"
+		},
+		{
+			"name": "chat_outAdminText",
+			"light": "#70b15cff",
+			"dark": "#70b15cff"
+		},
+		{
+			"name": "chat_outAdminSelectedText",
+			"light": "#70b15cff",
+			"dark": "#70b15cff"
+		},
+		{
+			"name": "chat_inTimeText",
+			"light": "#a1aab3ff",
+			"dark": "#7d7f81ff"
+		},
+		{
+			"name": "chat_inTimeSelectedText",
+			"light": "#89b4c1ff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_outTimeText",
+			"light": "#70b15cff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_outTimeSelectedText",
+			"light": "#70b15cff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_inAudioPerformerText",
+			"light": "#2f3438ff",
+			"dark": "#2f3438ff"
+		},
+		{
+			"name": "chat_inAudioPerformerSelectedText",
+			"light": "#2f3438ff",
+			"dark": "#2f3438ff"
+		},
+		{
+			"name": "chat_outAudioPerformerText",
+			"light": "#354234ff",
+			"dark": "#354234ff"
+		},
+		{
+			"name": "chat_outAudioPerformerSelectedText",
+			"light": "#354234ff",
+			"dark": "#354234ff"
+		},
+		{
+			"name": "chat_inAudioTitleText",
+			"light": "#4e9ad4ff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outAudioTitleText",
+			"light": "#55ab4fff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inAudioDurationText",
+			"light": "#a1aab3ff",
+			"dark": "#767677ff"
+		},
+		{
+			"name": "chat_outAudioDurationText",
+			"light": "#65b05bff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_inAudioDurationSelectedText",
+			"light": "#89b4c1ff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_outAudioDurationSelectedText",
+			"light": "#65b05bff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_inAudioSeekbar",
+			"light": "#e4eaf0ff",
+			"dark": "#565656ff"
+		},
+		{
+			"name": "chat_inAudioCacheSeekbar",
+			"light": "#e4eaf03f",
+			"dark": "#606060ff"
+		},
+		{
+			"name": "chat_outAudioSeekbar",
+			"light": "#bbe3acff",
+			"dark": "#7dc7ffdf"
+		},
+		{
+			"name": "chat_outAudioCacheSeekbar",
+			"light": "#bbe3ac3f",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inAudioSeekbarSelected",
+			"light": "#bcdee8ff",
+			"dark": "#7391abff"
+		},
+		{
+			"name": "chat_outAudioSeekbarSelected",
+			"light": "#a9dd96ff",
+			"dark": "#7dc7ffde"
+		},
+		{
+			"name": "chat_inAudioSeekbarFill",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "chat_outAudioSeekbarFill",
+			"light": "#78c272ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inVoiceSeekbar",
+			"light": "#dee5ebff",
+			"dark": "#636363ff"
+		},
+		{
+			"name": "chat_outVoiceSeekbar",
+			"light": "#bbe3acff",
+			"dark": "#63aae2ff"
+		},
+		{
+			"name": "chat_inVoiceSeekbarSelected",
+			"light": "#bcdee8ff",
+			"dark": "#7391abff"
+		},
+		{
+			"name": "chat_outVoiceSeekbarSelected",
+			"light": "#a9dd96ff",
+			"dark": "#72a4dcff"
+		},
+		{
+			"name": "chat_inVoiceSeekbarFill",
+			"light": "#229af0ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "chat_outVoiceSeekbarFill",
+			"light": "#78c272ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inFileProgress",
+			"light": "#ebf0f5ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outFileProgress",
+			"light": "#daf5c3ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inFileProgressSelected",
+			"light": "#cbeaf6ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outFileProgressSelected",
+			"light": "#c5eca7ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inFileNameText",
+			"light": "#298acfff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outFileNameText",
+			"light": "#55ab4fff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inFileInfoText",
+			"light": "#a1aab3ff",
+			"dark": "#767677ff"
+		},
+		{
+			"name": "chat_outFileInfoText",
+			"light": "#65b05bff",
+			"dark": "#8fbcdfff"
+		},
+		{
+			"name": "chat_inFileInfoSelectedText",
+			"light": "#89b4c1ff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_outFileInfoSelectedText",
+			"light": "#65b05bff",
+			"dark": "#bedffaff"
+		},
+		{
+			"name": "chat_inFileBackground",
+			"light": "#ebf0f5ff",
+			"dark": "#2c2c2cff"
+		},
+		{
+			"name": "chat_outFileBackground",
+			"light": "#daf5c3ff",
+			"dark": "#ffffff1e"
+		},
+		{
+			"name": "chat_inFileBackgroundSelected",
+			"light": "#cbeaf6ff",
+			"dark": "#3d5778ff"
+		},
+		{
+			"name": "chat_outFileBackgroundSelected",
+			"light": "#c5eca7ff",
+			"dark": "#ffffff1e"
+		},
+		{
+			"name": "chat_inVenueInfoText",
+			"light": "#a1aab3ff",
+			"dark": "#767677ff"
+		},
+		{
+			"name": "chat_outVenueInfoText",
+			"light": "#65b05bff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_inVenueInfoSelectedText",
+			"light": "#89b4c1ff",
+			"dark": "#8db2d3ff"
+		},
+		{
+			"name": "chat_outVenueInfoSelectedText",
+			"light": "#65b05bff",
+			"dark": "#94d3f6ff"
+		},
+		{
+			"name": "chat_mediaInfoText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_linkSelectBackground",
+			"light": "#62a9e333",
+			"dark": "#62a9e35a"
+		},
+		{
+			"name": "chat_outLinkSelectBackground",
+			"light": "#62a9e333",
+			"dark": "#62a9e333"
+		},
+		{
+			"name": "chat_textSelectBackground",
+			"light": "#62a9e366",
+			"dark": "#62a9e35a"
+		},
+		{
+			"name": "chat_emojiPanelBackground",
+			"light": "#f0f2f5ff",
+			"dark": "#1e1e1fff"
+		},
+		{
+			"name": "chat_emojiSearchBackground",
+			"light": "#e5e9eeff",
+			"dark": "#e5e9eeff"
+		},
+		{
+			"name": "chat_emojiSearchIcon",
+			"light": "#94a1afff",
+			"dark": "#737374ff"
+		},
+		{
+			"name": "chat_emojiPanelShadowLine",
+			"light": "#00000012",
+			"dark": "#000000a0"
+		},
+		{
+			"name": "chat_emojiPanelEmptyText",
+			"light": "#949ba1ff",
+			"dark": "#7d7d7eff"
+		},
+		{
+			"name": "chat_emojiPanelIcon",
+			"light": "#9da4abff",
+			"dark": "#6e6e6fff"
+		},
+		{
+			"name": "chat_emojiBottomPanelIcon",
+			"light": "#8c9197ff",
+			"dark": "#6e6e6fff"
+		},
+		{
+			"name": "chat_emojiPanelIconSelected",
+			"light": "#5e6976ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "chat_emojiPanelStickerPackSelector",
+			"light": "#e2e5e7ff",
+			"dark": "#cdeaff0a"
+		},
+		{
+			"name": "chat_emojiPanelStickerPackSelectorLine",
+			"light": "#56abf0ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "chat_emojiPanelBackspace",
+			"light": "#8c9197ff",
+			"dark": "#6e6e6fff"
+		},
+		{
+			"name": "chat_emojiPanelTrendingTitle",
+			"light": "#222222ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_emojiPanelStickerSetName",
+			"light": "#828b94ff",
+			"dark": "#828b94ff"
+		},
+		{
+			"name": "chat_emojiPanelStickerSetNameHighlight",
+			"light": "#278ddbff",
+			"dark": "#278ddbff"
+		},
+		{
+			"name": "chat_emojiPanelStickerSetNameIcon",
+			"light": "#b1b6bcff",
+			"dark": "#b1b6bcff"
+		},
+		{
+			"name": "chat_emojiPanelTrendingDescription",
+			"light": "#8a8a8aff",
+			"dark": "#7d7d7eff"
+		},
+		{
+			"name": "chat_botKeyboardButtonText",
+			"light": "#444444f0",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_botKeyboardButtonBackground",
+			"light": "#bcc3c866",
+			"dark": "#2c2c2eff"
+		},
+		{
+			"name": "chat_botKeyboardButtonBackgroundPressed",
+			"light": "#808c9466",
+			"dark": "#49494bff"
+		},
+		{
+			"name": "chat_unreadMessagesStartArrowIcon",
+			"light": "#a2b5c7ff",
+			"dark": "#6d6d6fff"
+		},
+		{
+			"name": "chat_unreadMessagesStartText",
+			"light": "#5695ccff",
+			"dark": "#ffffffda"
+		},
+		{
+			"name": "chat_unreadMessagesStartBackground",
+			"light": "#ffffffff",
+			"dark": "#212122ff"
+		},
+		{
+			"name": "chat_inLocationBackground",
+			"light": "#ebf0f5ff",
+			"dark": "#3c3c3cff"
+		},
+		{
+			"name": "chat_inLocationIcon",
+			"light": "#a2b5c7ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outLocationIcon",
+			"light": "#87bf78ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inContactBackground",
+			"light": "#229af0ff",
+			"dark": "#5099e8ff"
+		},
+		{
+			"name": "chat_inContactIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outContactBackground",
+			"light": "#78c272ff",
+			"dark": "#68a3d7ff"
+		},
+		{
+			"name": "chat_outContactIcon",
+			"light": "#efffdeff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_searchPanelIcons",
+			"light": "#676a6fff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "chat_searchPanelText",
+			"light": "#676a6fff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_secretChatStatusText",
+			"light": "#7f7f7fff",
+			"dark": "#ffffff6e"
+		},
+		{
+			"name": "chat_fieldOverlayText",
+			"light": "#298acfff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "chat_stickersHintPanel",
+			"light": "#ffffffff",
+			"dark": "#212122ff"
+		},
+		{
+			"name": "chat_replyPanelIcons",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "chat_replyPanelClose",
+			"light": "#8e959bff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "chat_replyPanelName",
+			"light": "#298acfff",
+			"dark": "#62b4f9ff"
+		},
+		{
+			"name": "chat_replyPanelLine",
+			"light": "#e8e8e8ff",
+			"dark": "#00000032"
+		},
+		{
+			"name": "chat_messagePanelBackground",
+			"light": "#ffffffff",
+			"dark": "#1e1e1fff"
+		},
+		{
+			"name": "chat_messagePanelText",
+			"light": "#000000ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_messagePanelHint",
+			"light": "#858a84ff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "chat_messagePanelCursor",
+			"light": "#54a1dbff",
+			"dark": "#54a1dbff"
+		},
+		{
+			"name": "chat_messagePanelShadow",
+			"light": "#000000ff",
+			"dark": "#00000079"
+		},
+		{
+			"name": "chat_messagePanelIcons",
+			"light": "#8e959bff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "chat_recordedVoicePlayPause",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_recordedVoiceDot",
+			"light": "#da564dff",
+			"dark": "#ed5d54ff"
+		},
+		{
+			"name": "chat_recordedVoiceBackground",
+			"light": "#5dade8ff",
+			"dark": "#4d9eeeff"
+		},
+		{
+			"name": "chat_recordedVoiceDarkerBackground",
+			"light": "#1f89dbff",
+			"dark": "#1f89dbff"
+		},
+		{
+			"name": "chat_recordedVoiceProgress",
+			"light": "#b1deffff",
+			"dark": "#b1deffff"
+		},
+		{
+			"name": "chat_recordedVoiceProgressInner",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_recordVoiceCancel",
+			"light": "#3a95d4ff",
+			"dark": "#5da9ecff"
+		},
+		{
+			"name": "chat_messagePanelSend",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "chat_messagePanelVoiceLock",
+			"light": "#a4a4a4ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_messagePanelVoiceLockBackground",
+			"light": "#ffffffff",
+			"dark": "#212122ff"
+		},
+		{
+			"name": "chat_messagePanelVoiceLockShadow",
+			"light": "#000000ff",
+			"dark": "#00000000"
+		},
+		{
+			"name": "chat_recordTime",
+			"light": "#8e959bff",
+			"dark": "#ffffff78"
+		},
+		{
+			"name": "chat_emojiPanelNewTrending",
+			"light": "#4da6eaff",
+			"dark": "#4da6eaff"
+		},
+		{
+			"name": "chat_gifSaveHintText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_gifSaveHintBackground",
+			"light": "#1f2b38e2",
+			"dark": "#1f2b38e2"
+		},
+		{
+			"name": "chat_goDownButton",
+			"light": "#ffffffff",
+			"dark": "#212122ff"
+		},
+		{
+			"name": "chat_goDownButtonCounter",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_goDownButtonCounterBackground",
+			"light": "#229af0ff",
+			"dark": "#51aaeeff"
+		},
+		{
+			"name": "chat_messagePanelCancelInlineBot",
+			"light": "#adadadff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "chat_messagePanelVoicePressed",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_messagePanelVoiceBackground",
+			"light": "#229af0ff",
+			"dark": "#448bccff"
+		},
+		{
+			"name": "chat_messagePanelVoiceDelete",
+			"light": "#737373ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_messagePanelVoiceDuration",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inlineResultIcon",
+			"light": "#5795ccff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_topPanelBackground",
+			"light": "#ffffffff",
+			"dark": "#1a1a1bff"
+		},
+		{
+			"name": "chat_topPanelClose",
+			"light": "#818786ff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "chat_topPanelLine",
+			"light": "#3fa8efff",
+			"dark": "#5ba3e3ff"
+		},
+		{
+			"name": "chat_topPanelTitle",
+			"light": "#298acfff",
+			"dark": "#60aff4ff"
+		},
+		{
+			"name": "chat_topPanelMessage",
+			"light": "#767e7cff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "chat_addContact",
+			"light": "#298acfff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_inLoader",
+			"light": "#229af0ff",
+			"dark": "#5098e9ff"
+		},
+		{
+			"name": "chat_inLoaderSelected",
+			"light": "#65abe0ff",
+			"dark": "#539df1ff"
+		},
+		{
+			"name": "chat_outLoader",
+			"light": "#78c272ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outLoaderSelected",
+			"light": "#6ab564ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_inLoaderPhoto",
+			"light": "#a2b8c8ff",
+			"dark": "#2c2c2cff"
+		},
+		{
+			"name": "chat_mediaLoaderPhoto",
+			"light": "#00000066",
+			"dark": "#00000066"
+		},
+		{
+			"name": "chat_mediaLoaderPhotoSelected",
+			"light": "#0000007f",
+			"dark": "#0000007f"
+		},
+		{
+			"name": "chat_mediaLoaderPhotoIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_mediaLoaderPhotoIconSelected",
+			"light": "#d9d9d9ff",
+			"dark": "#d9d9d9ff"
+		},
+		{
+			"name": "chat_serviceBackgroundSelector",
+			"light": "#ffffff20",
+			"dark": "#ffffff20"
+		},
+		{
+			"name": "chat_inQuote",
+			"light": "#459bd8ff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "chat_outQuote",
+			"light": "#6ab860ff",
+			"dark": "#6ab860ff"
+		},
+		{
+			"name": "profile_creatorIcon",
+			"light": "#3a95d5ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "profile_actionIcon",
+			"light": "#81868aff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "profile_actionBackground",
+			"light": "#ffffffff",
+			"dark": "#4f9adbff"
+		},
+		{
+			"name": "profile_actionPressedBackground",
+			"light": "#1a1d2112",
+			"dark": "#76c0edff"
+		},
+		{
+			"name": "profile_verifiedBackground",
+			"light": "#229af0ff",
+			"dark": "#5db2f8ff"
+		},
+		{
+			"name": "profile_verifiedCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "profile_title",
+			"light": "#222222ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "profile_status",
+			"light": "#222222ff",
+			"dark": "#69c1fcff"
+		},
+		{
+			"name": "chat_tagAdmin",
+			"light": "#40a920ff",
+			"dark": "#40a920ff"
+		},
+		{
+			"name": "chat_tagCreator",
+			"light": "#955cdbff",
+			"dark": "#955cdbff"
+		},
+		{
+			"name": "profile_tabText",
+			"light": "#878c90ff",
+			"dark": "#ffffff78"
+		},
+		{
+			"name": "profile_tabSelectedText",
+			"light": "#3a95d5ff",
+			"dark": "#3a95d5ff"
+		},
+		{
+			"name": "profile_tabSelectedLine",
+			"light": "#4fa6e9ff",
+			"dark": "#4fa6e9ff"
+		},
+		{
+			"name": "profile_tabSelector",
+			"light": "#0000000f",
+			"dark": "#ffffff0f"
+		},
+		{
+			"name": "player_actionBarSelector",
+			"light": "#0000000f",
+			"dark": "#2a2a2aff"
+		},
+		{
+			"name": "player_actionBarTitle",
+			"light": "#2f3438ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "player_actionBarSubtitle",
+			"light": "#8a8a8aff",
+			"dark": "#ffffff64"
+		},
+		{
+			"name": "player_actionBarItems",
+			"light": "#8a8a8aff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "player_background",
+			"light": "#ffffffff",
+			"dark": "#232323ff"
+		},
+		{
+			"name": "player_time",
+			"light": "#8c9296ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "player_progressBackground",
+			"light": "#ebedf0ff",
+			"dark": "#3c3c3cff"
+		},
+		{
+			"name": "player_progressCachedBackground",
+			"light": "#c5dcf0ff",
+			"dark": "#555555ff"
+		},
+		{
+			"name": "player_progress",
+			"light": "#54aaebff",
+			"dark": "#53afefff"
+		},
+		{
+			"name": "player_button",
+			"light": "#333333ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "player_buttonActive",
+			"light": "#4ca8eaff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "sheet_scrollUp",
+			"light": "#e1e4e8ff",
+			"dark": "#ffffff25"
+		},
+		{
+			"name": "sheet_other",
+			"light": "#c9cdd3ff",
+			"dark": "#ffffff43"
+		},
+		{
+			"name": "files_folderIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "files_folderIconBackground",
+			"light": "#5dafebff",
+			"dark": "#5dafebff"
+		},
+		{
+			"name": "files_iconText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "sessions_devicesImage",
+			"light": "#969696ff",
+			"dark": "#969696ff"
+		},
+		{
+			"name": "passport_authorizeBackground",
+			"light": "#45abefff",
+			"dark": "#4383baff"
+		},
+		{
+			"name": "passport_authorizeBackgroundSelected",
+			"light": "#409ddbff",
+			"dark": "#4e93d7ff"
+		},
+		{
+			"name": "passport_authorizeText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "location_sendLocationBackground",
+			"light": "#469df6ff",
+			"dark": "#68a3d7ff"
+		},
+		{
+			"name": "location_sendLocationIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "location_sendLocationText",
+			"light": "#1c8ad8ff",
+			"dark": "#1c8ad8ff"
+		},
+		{
+			"name": "location_sendLiveLocationBackground",
+			"light": "#4fc244ff",
+			"dark": "#4fc244ff"
+		},
+		{
+			"name": "location_sendLiveLocationIcon",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "location_sendLiveLocationText",
+			"light": "#36ab24ff",
+			"dark": "#36ab24ff"
+		},
+		{
+			"name": "location_liveLocationProgress",
+			"light": "#359fe5ff",
+			"dark": "#68a3d7ff"
+		},
+		{
+			"name": "location_placeLocationBackground",
+			"light": "#4ca8eaff",
+			"dark": "#68a3d7ff"
+		},
+		{
+			"name": "location_actionIcon",
+			"light": "#3a4045ff",
+			"dark": "#3a4045ff"
+		},
+		{
+			"name": "location_actionActiveIcon",
+			"light": "#4290e6ff",
+			"dark": "#4290e6ff"
+		},
+		{
+			"name": "location_actionBackground",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "location_actionPressedBackground",
+			"light": "#f2f2f2ff",
+			"dark": "#f2f2f2ff"
+		},
+		{
+			"name": "dialog_liveLocationProgress",
+			"light": "#359fe5ff",
+			"dark": "#68a3d7ff"
+		},
+		{
+			"name": "calls_callReceivedGreenIcon",
+			"light": "#00c853ff",
+			"dark": "#48dd76ff"
+		},
+		{
+			"name": "calls_callReceivedRedIcon",
+			"light": "#ff4848ff",
+			"dark": "#ff4848ff"
+		},
+		{
+			"name": "featuredStickers_addedIcon",
+			"light": "#229af0ff",
+			"dark": "#4ca5efff"
+		},
+		{
+			"name": "featuredStickers_buttonProgress",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "featuredStickers_addButton",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "featuredStickers_addButton2",
+			"light": "#56baf0ff",
+			"dark": "#56baf0ff"
+		},
+		{
+			"name": "featuredStickers_addButtonPressed",
+			"light": "#2288d1ff",
+			"dark": "#2288d1ff"
+		},
+		{
+			"name": "featuredStickers_removeButtonText",
+			"light": "#5093d3ff",
+			"dark": "#5093d3ff"
+		},
+		{
+			"name": "featuredStickers_buttonText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "featuredStickers_unread",
+			"light": "#4da6eaff",
+			"dark": "#4da6eaff"
+		},
+		{
+			"name": "buttonNeutral",
+			"light": "#e4e4e4ff",
+			"dark": "#e4e4e4ff"
+		},
+		{
+			"name": "buttonNeutralText",
+			"light": "#1a1d21ff",
+			"dark": "#1a1d21ff"
+		},
+		{
+			"name": "inappPlayerPerformer",
+			"light": "#1a1d21ff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "inappPlayerTitle",
+			"light": "#1a1d21ff",
+			"dark": "#ffffff6e"
+		},
+		{
+			"name": "inappPlayerBackground",
+			"light": "#ffffffff",
+			"dark": "#1a1a1bff"
+		},
+		{
+			"name": "inappPlayerPlayPause",
+			"light": "#229af0ff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "inappPlayerClose",
+			"light": "#898b86ff",
+			"dark": "#ffffff6e"
+		},
+		{
+			"name": "returnToCallBackground",
+			"light": "#44a1e3ff",
+			"dark": "#5da5e7ff"
+		},
+		{
+			"name": "returnToCallMutedBackground",
+			"light": "#9da7b1ff",
+			"dark": "#9da7b1ff"
+		},
+		{
+			"name": "returnToCallText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "sharedMedia_startStopLoadIcon",
+			"light": "#36a2eeff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "sharedMedia_linkPlaceholder",
+			"light": "#f0f3f5ff",
+			"dark": "#232324ff"
+		},
+		{
+			"name": "sharedMedia_linkPlaceholderText",
+			"light": "#b7bec3ff",
+			"dark": "#6f6f70ff"
+		},
+		{
+			"name": "sharedMedia_photoPlaceholder",
+			"light": "#edf3f7ff",
+			"dark": "#edf3f7ff"
+		},
+		{
+			"name": "checkbox",
+			"light": "#5ec245ff",
+			"dark": "#5ec245ff"
+		},
+		{
+			"name": "checkboxCheck",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "checkboxDisabled",
+			"light": "#b0b9c2ff",
+			"dark": "#b0b9c2ff"
+		},
+		{
+			"name": "stickers_menu",
+			"light": "#b6bdc5ff",
+			"dark": "#5c5c5cff"
+		},
+		{
+			"name": "stickers_menuSelector",
+			"light": "#0000000f",
+			"dark": "#ffffff17"
+		},
+		{
+			"name": "changephoneinfo_image2",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "groupcreate_hintText",
+			"light": "#a1aab3ff",
+			"dark": "#7d7d7dff"
+		},
+		{
+			"name": "groupcreate_cursor",
+			"light": "#52a3dbff",
+			"dark": "#64b5efff"
+		},
+		{
+			"name": "groupcreate_sectionShadow",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "groupcreate_sectionText",
+			"light": "#7c8288ff",
+			"dark": "#ffffff99"
+		},
+		{
+			"name": "groupcreate_spanText",
+			"light": "#222222ff",
+			"dark": "#f5f5f5ff"
+		},
+		{
+			"name": "groupcreate_spanBackground",
+			"light": "#f2f2f2ff",
+			"dark": "#2d2d2dff"
+		},
+		{
+			"name": "groupcreate_spanDelete",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "contacts_inviteBackground",
+			"light": "#55be61ff",
+			"dark": "#55be61ff"
+		},
+		{
+			"name": "contacts_inviteText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "login_progressInner",
+			"light": "#e1eaf2ff",
+			"dark": "#e1eaf2ff"
+		},
+		{
+			"name": "login_progressOuter",
+			"light": "#62a0d0ff",
+			"dark": "#62a0d0ff"
+		},
+		{
+			"name": "picker_enabledButton",
+			"light": "#19a7e8ff",
+			"dark": "#6abfffff"
+		},
+		{
+			"name": "picker_disabledButton",
+			"light": "#999999ff",
+			"dark": "#576d80ff"
+		},
+		{
+			"name": "picker_badge",
+			"light": "#29b6f7ff",
+			"dark": "#56abf7ff"
+		},
+		{
+			"name": "picker_badgeText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_botSwitchToInlineText",
+			"light": "#4391ccff",
+			"dark": "#79c4fcff"
+		},
+		{
+			"name": "undo_background",
+			"light": "#272f38ea",
+			"dark": "#181818f5"
+		},
+		{
+			"name": "undo_cancelColor",
+			"light": "#85caffff",
+			"dark": "#6cb7ffff"
+		},
+		{
+			"name": "undo_infoColor",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outTextSelectionHighlight",
+			"light": "#3f99232e",
+			"dark": "#7ec0ed7e"
+		},
+		{
+			"name": "chat_inTextSelectionHighlight",
+			"light": "#62a9e350",
+			"dark": "#4eb4f35a"
+		},
+		{
+			"name": "chat_TextSelectionCursor",
+			"light": "#419fe8ff",
+			"dark": "#57b7edff"
+		},
+		{
+			"name": "chat_outTextSelectionCursor",
+			"light": "#419fe8ff",
+			"dark": "#419fe8ff"
+		},
+		{
+			"name": "chat_outBubbleLocationPlaceholder",
+			"light": "#3073111e",
+			"dark": "#3073111e"
+		},
+		{
+			"name": "chat_inBubbleLocationPlaceholder",
+			"light": "#5063731e",
+			"dark": "#5063731e"
+		},
+		{
+			"name": "chat_BlurAlpha",
+			"light": "#000000b2",
+			"dark": "#000000b2"
+		},
+		{
+			"name": "chat_BlurAlphaSlow",
+			"light": "#000000c1",
+			"dark": "#000000c1"
+		},
+		{
+			"name": "chat_editMediaButton",
+			"light": "#1a9cffff",
+			"dark": "#1a9cffff"
+		},
+		{
+			"name": "statisticChartSignature",
+			"light": "#2525297f",
+			"dark": "#a3b1c2b7"
+		},
+		{
+			"name": "statisticChartSignatureAlpha",
+			"light": "#2525297f",
+			"dark": "#ffffff8b"
+		},
+		{
+			"name": "statisticChartHintLine",
+			"light": "#182d3b1a",
+			"dark": "#ffffff1a"
+		},
+		{
+			"name": "statisticChartActiveLine",
+			"light": "#00000033",
+			"dark": "#00000033"
+		},
+		{
+			"name": "statisticChartInactivePickerChart",
+			"light": "#e2eef999",
+			"dark": "#313a43d8"
+		},
+		{
+			"name": "statisticChartActivePickerChart",
+			"light": "#baccd9d8",
+			"dark": "#596879d8"
+		},
+		{
+			"name": "statisticChartRipple",
+			"light": "#7e9db72c",
+			"dark": "#a4bdd22c"
+		},
+		{
+			"name": "statisticChartBackZoomColor",
+			"light": "#108be3ff",
+			"dark": "#46aaeeff"
+		},
+		{
+			"name": "statisticChartChevronColor",
+			"light": "#d2d5d7ff",
+			"dark": "#767c85ff"
+		},
+		{
+			"name": "statisticChartLine_blue",
+			"light": "#327fe5ff",
+			"dark": "#529fffff"
+		},
+		{
+			"name": "statisticChartLine_green",
+			"light": "#61c752ff",
+			"dark": "#3dc23fff"
+		},
+		{
+			"name": "statisticChartLine_red",
+			"light": "#e05356ff",
+			"dark": "#f34c44ff"
+		},
+		{
+			"name": "statisticChartLine_golden",
+			"light": "#eba52dff",
+			"dark": "#deac1fff"
+		},
+		{
+			"name": "statisticChartLine_lightblue",
+			"light": "#58a8edff",
+			"dark": "#3c78ecff"
+		},
+		{
+			"name": "statisticChartLine_lightgreen",
+			"light": "#8fcf39ff",
+			"dark": "#8fcf39ff"
+		},
+		{
+			"name": "statisticChartLine_orange",
+			"light": "#f28c39ff",
+			"dark": "#f28c39ff"
+		},
+		{
+			"name": "statisticChartLine_indigo",
+			"light": "#7f79f3ff",
+			"dark": "#875ce5ff"
+		},
+		{
+			"name": "statisticChartLine_purple",
+			"light": "#9f79e8ff",
+			"dark": "#9f79e8ff"
+		},
+		{
+			"name": "statisticChartLine_cyan",
+			"light": "#40d0caff",
+			"dark": "#40d0caff"
+		},
+		{
+			"name": "statisticChartLineEmpty",
+			"light": "#eeeeeeff",
+			"dark": "#eeeeeeff"
+		},
+		{
+			"name": "color_blue",
+			"light": "#327fe5ff",
+			"dark": "#529fffff"
+		},
+		{
+			"name": "color_green",
+			"light": "#61c752ff",
+			"dark": "#3dc23fff"
+		},
+		{
+			"name": "color_red",
+			"light": "#e05356ff",
+			"dark": "#f34c44ff"
+		},
+		{
+			"name": "color_yellow",
+			"light": "#eba52dff",
+			"dark": "#deac1fff"
+		},
+		{
+			"name": "color_lightblue",
+			"light": "#58a8edff",
+			"dark": "#3c78ecff"
+		},
+		{
+			"name": "color_lightgreen",
+			"light": "#8fcf39ff",
+			"dark": "#8fcf39ff"
+		},
+		{
+			"name": "color_orange",
+			"light": "#f28c39ff",
+			"dark": "#f28c39ff"
+		},
+		{
+			"name": "color_purple",
+			"light": "#9f79e8ff",
+			"dark": "#875ce5ff"
+		},
+		{
+			"name": "color_cyan",
+			"light": "#40d0caff",
+			"dark": "#40d0caff"
+		},
+		{
+			"name": "voipgroup_checkMenu",
+			"light": "#6bb6f9ff",
+			"dark": "#6bb6f9ff"
+		},
+		{
+			"name": "voipgroup_muteButton",
+			"light": "#77e55cff",
+			"dark": "#77e55cff"
+		},
+		{
+			"name": "voipgroup_muteButton2",
+			"light": "#7ddcaaff",
+			"dark": "#7ddcaaff"
+		},
+		{
+			"name": "voipgroup_muteButton3",
+			"light": "#56c7feff",
+			"dark": "#56c7feff"
+		},
+		{
+			"name": "voipgroup_searchText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "voipgroup_searchPlaceholder",
+			"light": "#858d94ff",
+			"dark": "#858d94ff"
+		},
+		{
+			"name": "voipgroup_searchBackground",
+			"light": "#303b47ff",
+			"dark": "#303b47ff"
+		},
+		{
+			"name": "voipgroup_leaveCallMenu",
+			"light": "#ff7575ff",
+			"dark": "#ff7575ff"
+		},
+		{
+			"name": "voipgroup_scrollUp",
+			"light": "#394654ff",
+			"dark": "#394654ff"
+		},
+		{
+			"name": "voipgroup_soundButton",
+			"light": "#2c414d7d",
+			"dark": "#2c414d7d"
+		},
+		{
+			"name": "voipgroup_soundButtonActive",
+			"light": "#22a4eb7d",
+			"dark": "#22a4eb7d"
+		},
+		{
+			"name": "voipgroup_soundButtonActiveScrolled",
+			"light": "#33b4ff82",
+			"dark": "#33b4ff82"
+		},
+		{
+			"name": "voipgroup_soundButton2",
+			"light": "#28593a7d",
+			"dark": "#28593a7d"
+		},
+		{
+			"name": "voipgroup_soundButtonActive2",
+			"light": "#18b7517d",
+			"dark": "#18b7517d"
+		},
+		{
+			"name": "voipgroup_soundButtonActive2Scrolled",
+			"light": "#24bf4682",
+			"dark": "#24bf4682"
+		},
+		{
+			"name": "voipgroup_leaveButton",
+			"light": "#f75c5c7d",
+			"dark": "#f75c5c7d"
+		},
+		{
+			"name": "voipgroup_leaveButtonScrolled",
+			"light": "#d14d5482",
+			"dark": "#d14d5482"
+		},
+		{
+			"name": "voipgroup_connectingProgress",
+			"light": "#28baffff",
+			"dark": "#28baffff"
+		},
+		{
+			"name": "voipgroup_disabledButton",
+			"light": "#1c2229ff",
+			"dark": "#1c2229ff"
+		},
+		{
+			"name": "voipgroup_rtmpButton",
+			"light": "#2a3853ff",
+			"dark": "#2a3853ff"
+		},
+		{
+			"name": "voipgroup_disabledButtonActive",
+			"light": "#2c3a45ff",
+			"dark": "#2c3a45ff"
+		},
+		{
+			"name": "voipgroup_disabledButtonActiveScrolled",
+			"light": "#77a1fc82",
+			"dark": "#77a1fc82"
+		},
+		{
+			"name": "voipgroup_unmuteButton",
+			"light": "#539ef8ff",
+			"dark": "#539ef8ff"
+		},
+		{
+			"name": "voipgroup_unmuteButton2",
+			"light": "#66d4fbff",
+			"dark": "#66d4fbff"
+		},
+		{
+			"name": "voipgroup_actionBarUnscrolled",
+			"light": "#191f26ff",
+			"dark": "#191f26ff"
+		},
+		{
+			"name": "voipgroup_listViewBackgroundUnscrolled",
+			"light": "#222a33ff",
+			"dark": "#222a33ff"
+		},
+		{
+			"name": "voipgroup_lastSeenTextUnscrolled",
+			"light": "#858d94ff",
+			"dark": "#858d94ff"
+		},
+		{
+			"name": "voipgroup_mutedIconUnscrolled",
+			"light": "#7e868cff",
+			"dark": "#7e868cff"
+		},
+		{
+			"name": "voipgroup_actionBar",
+			"light": "#0f1317ff",
+			"dark": "#0f1317ff"
+		},
+		{
+			"name": "voipgroup_actionBarItems",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "voipgroup_actionBarItemsSelector",
+			"light": "#badbff1e",
+			"dark": "#badbff1e"
+		},
+		{
+			"name": "voipgroup_mutedByAdminIcon",
+			"light": "#ff7070ff",
+			"dark": "#ff7070ff"
+		},
+		{
+			"name": "voipgroup_mutedIcon",
+			"light": "#6f7980ff",
+			"dark": "#6f7980ff"
+		},
+		{
+			"name": "voipgroup_lastSeenText",
+			"light": "#79838aff",
+			"dark": "#79838aff"
+		},
+		{
+			"name": "voipgroup_nameText",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "voipgroup_listViewBackground",
+			"light": "#1c2229ff",
+			"dark": "#1c2229ff"
+		},
+		{
+			"name": "voipgroup_dialogBackground",
+			"light": "#1c2229ff",
+			"dark": "#1c2229ff"
+		},
+		{
+			"name": "voipgroup_listeningText",
+			"light": "#4db8ffff",
+			"dark": "#4db8ffff"
+		},
+		{
+			"name": "voipgroup_speakingText",
+			"light": "#77ee7dff",
+			"dark": "#77ee7dff"
+		},
+		{
+			"name": "voipgroup_listSelector",
+			"light": "#ffffff0e",
+			"dark": "#ffffff0e"
+		},
+		{
+			"name": "voipgroup_inviteMembersBackground",
+			"light": "#222a33ff",
+			"dark": "#222a33ff"
+		},
+		{
+			"name": "voipgroup_overlayBlue1",
+			"light": "#2bceffff",
+			"dark": "#2bceffff"
+		},
+		{
+			"name": "voipgroup_overlayBlue2",
+			"light": "#0976e3ff",
+			"dark": "#0976e3ff"
+		},
+		{
+			"name": "voipgroup_overlayGreen1",
+			"light": "#12b522ff",
+			"dark": "#12b522ff"
+		},
+		{
+			"name": "voipgroup_overlayGreen2",
+			"light": "#00d6c1ff",
+			"dark": "#00d6c1ff"
+		},
+		{
+			"name": "voipgroup_topPanelBlue1",
+			"light": "#60c7fbff",
+			"dark": "#60c7fbff"
+		},
+		{
+			"name": "voipgroup_topPanelBlue2",
+			"light": "#519ff9ff",
+			"dark": "#519ff9ff"
+		},
+		{
+			"name": "voipgroup_topPanelGreen1",
+			"light": "#52ce5dff",
+			"dark": "#52ce5dff"
+		},
+		{
+			"name": "voipgroup_topPanelGreen2",
+			"light": "#00b1c0ff",
+			"dark": "#00b1c0ff"
+		},
+		{
+			"name": "voipgroup_topPanelGray",
+			"light": "#8599aaff",
+			"dark": "#8599aaff"
+		},
+		{
+			"name": "voipgroup_overlayAlertGradientMuted",
+			"light": "#236d92ff",
+			"dark": "#236d92ff"
+		},
+		{
+			"name": "voipgroup_overlayAlertGradientMuted2",
+			"light": "#2c4d6bff",
+			"dark": "#2c4d6bff"
+		},
+		{
+			"name": "voipgroup_overlayAlertGradientUnmuted",
+			"light": "#0c8a8cff",
+			"dark": "#0c8a8cff"
+		},
+		{
+			"name": "voipgroup_overlayAlertGradientUnmuted2",
+			"light": "#284c75ff",
+			"dark": "#284c75ff"
+		},
+		{
+			"name": "voipgroup_mutedByAdminGradient",
+			"light": "#57a4feff",
+			"dark": "#57a4feff"
+		},
+		{
+			"name": "voipgroup_mutedByAdminGradient2",
+			"light": "#f05459ff",
+			"dark": "#f05459ff"
+		},
+		{
+			"name": "voipgroup_mutedByAdminGradient3",
+			"light": "#766ee9ff",
+			"dark": "#766ee9ff"
+		},
+		{
+			"name": "voipgroup_overlayAlertMutedByAdmin",
+			"light": "#67709eff",
+			"dark": "#67709eff"
+		},
+		{
+			"name": "voipgroup_overlayAlertMutedByAdmin2",
+			"light": "#2f5078ff",
+			"dark": "#2f5078ff"
+		},
+		{
+			"name": "voipgroup_mutedByAdminMuteButton",
+			"light": "#78a3ff7f",
+			"dark": "#78a3ff7f"
+		},
+		{
+			"name": "voipgroup_mutedByAdminMuteButtonDisabled",
+			"light": "#78a3ff33",
+			"dark": "#78a3ff33"
+		},
+		{
+			"name": "voipgroup_windowBackgroundWhiteInputField",
+			"light": "#dbdbdbff",
+			"dark": "#dbdbdbff"
+		},
+		{
+			"name": "voipgroup_windowBackgroundWhiteInputFieldActivated",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "chat_outReactionButtonBackground",
+			"light": "#78c272ff",
+			"dark": "#78c272ff"
+		},
+		{
+			"name": "chat_inReactionButtonBackground",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "chat_inReactionButtonText",
+			"light": "#298acfff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outReactionButtonText",
+			"light": "#55ab4fff",
+			"dark": "#55ab4fff"
+		},
+		{
+			"name": "chat_inReactionButtonTextSelected",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outReactionButtonTextSelected",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_reactionServiceButtonBackgroundSelected",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_reactionServiceButtonTextSelected",
+			"light": "#000000ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "premiumGradient0",
+			"light": "#4acd43ff",
+			"dark": "#4acd43ff"
+		},
+		{
+			"name": "premiumGradient1",
+			"light": "#55a5ffff",
+			"dark": "#55a5ffff"
+		},
+		{
+			"name": "premiumGradient2",
+			"light": "#a767ffff",
+			"dark": "#a767ffff"
+		},
+		{
+			"name": "premiumGradient3",
+			"light": "#db5c9dff",
+			"dark": "#db5c9dff"
+		},
+		{
+			"name": "premiumGradient4",
+			"light": "#f38926ff",
+			"dark": "#f38926ff"
+		},
+		{
+			"name": "premiumGradientBackground1",
+			"light": "#55a5ffff",
+			"dark": "#03080fff"
+		},
+		{
+			"name": "premiumGradientBackground2",
+			"light": "#a767ffff",
+			"dark": "#020207ff"
+		},
+		{
+			"name": "premiumGradientBackground3",
+			"light": "#db5c9dff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "premiumGradientBackground4",
+			"light": "#f38926ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "premiumGradientBackgroundOverlay",
+			"light": "#ffffffff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "premiumStarGradient1",
+			"light": "#ffffffff",
+			"dark": "#dc40eaff"
+		},
+		{
+			"name": "premiumStarGradient2",
+			"light": "#e3ecfaff",
+			"dark": "#6784ffff"
+		},
+		{
+			"name": "premiumCoinGradient1",
+			"light": "#1473ffff",
+			"dark": "#1473ffff"
+		},
+		{
+			"name": "premiumCoinGradient2",
+			"light": "#c066faff",
+			"dark": "#c066faff"
+		},
+		{
+			"name": "premiumStartSmallStarsColor",
+			"light": "#ffffff5a",
+			"dark": "#8180ffff"
+		},
+		{
+			"name": "premiumStartSmallStarsColor2",
+			"light": "#ffffff5a",
+			"dark": "#ffffff5a"
+		},
+		{
+			"name": "premiumGradientBottomSheet1",
+			"light": "#5b9de7ff",
+			"dark": "#5b9de7ff"
+		},
+		{
+			"name": "premiumGradientBottomSheet2",
+			"light": "#ab87ddff",
+			"dark": "#ab87ddff"
+		},
+		{
+			"name": "premiumGradientBottomSheet3",
+			"light": "#e794beff",
+			"dark": "#e794beff"
+		},
+		{
+			"name": "topics_unreadCounter",
+			"light": "#4ecc5eff",
+			"dark": "#4ecc5eff"
+		},
+		{
+			"name": "topics_unreadCounterMuted",
+			"light": "#8b8d8fff",
+			"dark": "#8b8d8fff"
+		},
+		{
+			"name": "starsGradient1",
+			"light": "#fec846ff",
+			"dark": "#fec846ff"
+		},
+		{
+			"name": "starsGradient2",
+			"light": "#ec920aff",
+			"dark": "#ec920aff"
+		},
+		{
+			"name": "stories_circle1",
+			"light": "#2c9efcff",
+			"dark": "#39df3cff"
+		},
+		{
+			"name": "stories_circle2",
+			"light": "#2fc183ff",
+			"dark": "#4dbbffff"
+		},
+		{
+			"name": "stories_circle_dialog1",
+			"light": "#2c9efcff",
+			"dark": "#4aed55ff"
+		},
+		{
+			"name": "stories_circle_dialog2",
+			"light": "#2fc183ff",
+			"dark": "#4dc3ffff"
+		},
+		{
+			"name": "stories_circle_closeFriends1",
+			"light": "#81ce2dff",
+			"dark": "#c9eb38ff"
+		},
+		{
+			"name": "stories_circle_closeFriends2",
+			"light": "#18bd36ff",
+			"dark": "#09c167ff"
+		},
+		{
+			"name": "stories_circle_live1",
+			"light": "#ff6b5bff",
+			"dark": "#ff6b5bff"
+		},
+		{
+			"name": "stories_circle_live2",
+			"light": "#fa4874ff",
+			"dark": "#fa4874ff"
+		},
+		{
+			"name": "chat_inCodeBackground",
+			"light": "#6f889eff",
+			"dark": "#ffffffff"
+		},
+		{
+			"name": "chat_outCodeBackground",
+			"light": "#3c750312",
+			"dark": "#3442ca33"
+		},
+		{
+			"name": "code_keyword",
+			"light": "#e05356ff",
+			"dark": "#ff9380ff"
+		},
+		{
+			"name": "code_operator",
+			"light": "#4dbbffff",
+			"dark": "#ffffff7f"
+		},
+		{
+			"name": "code_constant",
+			"light": "#7f79f3ff",
+			"dark": "#ff9380ff"
+		},
+		{
+			"name": "code_string",
+			"light": "#37c123ff",
+			"dark": "#88e378ff"
+		},
+		{
+			"name": "code_number",
+			"light": "#327fe5ff",
+			"dark": "#59ded7ff"
+		},
+		{
+			"name": "code_comment",
+			"light": "#00000080",
+			"dark": "#ffffff7f"
+		},
+		{
+			"name": "code_function",
+			"light": "#f28c39ff",
+			"dark": "#ff9380ff"
+		},
+		{
+			"name": "iv_background",
+			"light": "#ffffffff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "iv_backgroundGray",
+			"light": "#f0f0f0ff",
+			"dark": "#1f1f1fff"
+		},
+		{
+			"name": "iv_ab_progress",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "iv_navigationBackground",
+			"light": "#f0f0f0ff",
+			"dark": "#000000ff"
+		},
+		{
+			"name": "reactionStarSelector",
+			"light": "#f0ab1f40",
+			"dark": "#f0ab1f40"
+		},
+		{
+			"name": "glass_defaultIcon",
+			"light": "#1b222799",
+			"dark": "#ffffffa0"
+		},
+		{
+			"name": "glass_defaultText",
+			"light": "#1b222799",
+			"dark": "#ffffffa0"
+		},
+		{
+			"name": "glass_targetMainTabs",
+			"light": "#ffffffff",
+			"dark": "#232324ff"
+		},
+		{
+			"name": "glass_targetMainTopPanel",
+			"light": "#ffffffff",
+			"dark": "#232324ff"
+		},
+		{
+			"name": "glass_tabSelected",
+			"light": "#1a91e6ff",
+			"dark": "#1a91e6ff"
+		},
+		{
+			"name": "glass_tabSelectedText",
+			"light": "#0d7fcfff",
+			"dark": "#0d7fcfff"
+		},
+		{
+			"name": "glass_tabUnselected",
+			"light": "#1a1d21ff",
+			"dark": "#1a1d21ff"
+		},
+		{
+			"name": "botKeyboard_button_danger",
+			"light": "#db4646ff",
+			"dark": "#db4646ff"
+		},
+		{
+			"name": "botKeyboard_button_primary",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "botKeyboard_button_success",
+			"light": "#40b135ff",
+			"dark": "#40b135ff"
+		},
+		{
+			"name": "telegram_color_dialogsLogo",
+			"light": "#168bdbff",
+			"dark": "#168bdbff"
+		},
+		{
+			"name": "telegram_color",
+			"light": "#229af0ff",
+			"dark": "#229af0ff"
+		},
+		{
+			"name": "telegram_color_text",
+			"light": "#298acfff",
+			"dark": "#298acfff"
+		}
+	]
+}
