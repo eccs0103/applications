@@ -3,7 +3,7 @@
 import "adaptive-extender/node";
 import { Color, ColorFormats } from "adaptive-extender/node";
 import AsyncFileSystem from "node:fs/promises";
-import { fileURLToPath } from "node:url";
+import URLUtilities from "node:url";
 import { AtthemeReader } from "../../telegram-theme-converter/services/attheme-reader.js";
 import { PaletteReader } from "../../telegram-theme-converter/services/palette-reader.js";
 import { ArchiveReader } from "../../telegram-theme-converter/services/archive-reader.js";
@@ -146,7 +146,7 @@ class VocabularyWriter {
 	static async write(entries: readonly VocabularyEntryData[], relativePath: string): Promise<void> {
 		const url = new URL(`../../${relativePath}`, import.meta.url);
 		const json = `${JSON.stringify({ entries }, null, "\t")}\n`;
-		await AsyncFileSystem.writeFile(fileURLToPath(url), json, "utf-8");
+		await AsyncFileSystem.writeFile(URLUtilities.fileURLToPath(url), json, "utf-8");
 	}
 }
 //#endregion

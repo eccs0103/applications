@@ -4,7 +4,7 @@ import "adaptive-extender/node";
 import { type InputOption, type OutputOptions, type PreRenderedChunk, type RollupOptions } from "rollup";
 import { type AppType, type BuildEnvironmentOptions, type ESBuildOptions, type ServerOptions, type UserConfig } from "vite";
 import { VitePlugin } from "../plugins/vite-plugin.js";
-import { fileURLToPath } from "node:url";
+import URLUtilities from "node:url";
 
 //#region Vite config
 export class ViteConfig {
@@ -26,7 +26,7 @@ export class ViteConfig {
 		const root = `${process.cwd().replace(/\\/g, "/")}/`;
 		const inputs: Record<string, string> = {};
 		for (const url of this.#inputs) {
-			const input = fileURLToPath(url);
+			const input = URLUtilities.fileURLToPath(url);
 			const path = input.replace(/\\/g, "/");
 			let name = path.replace(root, String.empty);
 			name = name.replace(/\.[^/.]+$/, String.empty);
@@ -40,7 +40,7 @@ export class ViteConfig {
 	#normalizeServiceWorkers(): Record<string, string> {
 		const entries: Record<string, string> = {};
 		for (const url of this.#rootEntries) {
-			const path = fileURLToPath(url);
+			const path = URLUtilities.fileURLToPath(url);
 			const filename = path.replace(/\\/g, "/").split("/").pop()!;
 			const name = filename.replace(/\.[^/.]+$/, String.empty);
 			entries[name] = path;
@@ -52,7 +52,7 @@ export class ViteConfig {
 		const root = `${process.cwd().replace(/\\/g, "/")}/`;
 		const entries: Record<string, string> = {};
 		for (const url of this.#pathEntries) {
-			const input = fileURLToPath(url);
+			const input = URLUtilities.fileURLToPath(url);
 			const path = input.replace(/\\/g, "/");
 			const name = path.replace(root, String.empty).replace(/\.[^/.]+$/, String.empty);
 			entries[name] = input;
@@ -81,7 +81,7 @@ export class ViteConfig {
 	}
 
 	#buildEnvironment(): BuildEnvironmentOptions {
-		const outDir: string = fileURLToPath(this.#output);
+		const outDir: string = URLUtilities.fileURLToPath(this.#output);
 		const emptyOutDir: boolean = true;
 		const target: string = "ES2025";
 		const rollupOptions: RollupOptions = this.#buildRollupOptions();

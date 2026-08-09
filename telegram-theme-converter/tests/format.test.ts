@@ -3,7 +3,7 @@
 import "adaptive-extender/core";
 import { Color, ColorFormats } from "adaptive-extender/core";
 import { describe, it, expect } from "vitest";
-import { readFile } from "node:fs/promises";
+import AsyncFileSystem from "node:fs/promises";
 import { AtthemeReader } from "../services/attheme-reader.js";
 import { AtthemeWriter } from "../services/attheme-writer.js";
 import { PaletteReader } from "../services/palette-reader.js";
@@ -18,12 +18,12 @@ const fixtures = new URL("./fixtures/", import.meta.url);
 const desktopVocabularyPath = new URL("../../resources/data/telegram-desktop-vocabulary.json", import.meta.url);
 
 async function readFixture(name: string): Promise<Uint8Array> {
-	const buffer = await readFile(new URL(name, fixtures));
+	const buffer = await AsyncFileSystem.readFile(new URL(name, fixtures));
 	return new Uint8Array(buffer);
 }
 
 async function readDesktopBaseColors(): Promise<Map<string, Color>> {
-	const json = await readFile(desktopVocabularyPath, "utf-8");
+	const json = await AsyncFileSystem.readFile(desktopVocabularyPath, "utf-8");
 	const { entries } = JSON.parse(json) as { entries: { name: string; light: string; }[]; };
 	const colors = new Map<string, Color>();
 	for (const entry of entries) colors.set(entry.name, Color.parse(entry.light, { format: ColorFormats.hex, deep: true }));

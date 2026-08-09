@@ -3,7 +3,7 @@
 import "adaptive-extender/core";
 import { Color, ColorFormats } from "adaptive-extender/core";
 import { describe, it, expect } from "vitest";
-import { readFile } from "node:fs/promises";
+import AsyncFileSystem from "node:fs/promises";
 import { Vocabulary } from "../models/vocabulary.js";
 import { RuleTable } from "../models/rule-table.js";
 import { Transform } from "../models/rule.js";
@@ -19,12 +19,12 @@ const dataDir = new URL("../../resources/data/", import.meta.url);
 const fixtures = new URL("./fixtures/", import.meta.url);
 
 async function loadVocabulary(name: string): Promise<Vocabulary> {
-	const json = await readFile(new URL(name, dataDir), "utf-8");
+	const json = await AsyncFileSystem.readFile(new URL(name, dataDir), "utf-8");
 	return Vocabulary.import(JSON.parse(json), name);
 }
 
 async function loadRuleTable(): Promise<RuleTable> {
-	const json = await readFile(new URL("telegram-conversion-rules.json", dataDir), "utf-8");
+	const json = await AsyncFileSystem.readFile(new URL("telegram-conversion-rules.json", dataDir), "utf-8");
 	return RuleTable.import(JSON.parse(json), "telegram-conversion-rules.json");
 }
 
@@ -43,7 +43,7 @@ function colorsEqual(first: Readonly<Color>, second: Readonly<Color>): boolean {
 }
 
 async function readFixture(name: string): Promise<Uint8Array> {
-	const buffer = await readFile(new URL(name, fixtures));
+	const buffer = await AsyncFileSystem.readFile(new URL(name, fixtures));
 	return new Uint8Array(buffer);
 }
 
