@@ -63,10 +63,11 @@ export class AtthemeReader {
 		}
 
 		const text = new TextDecoder("utf-8").decode(bytes.subarray(0, wpsIndex));
-		const wallpaperStart = wpsIndex + AtthemeReader.#markerWallpaperStart.length;
-		const wpeIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperEnd, wallpaperStart);
-		const wallpaperEnd = wpeIndex === -1 ? bytes.length : wpeIndex;
-		const wallpaper = bytes.subarray(wallpaperStart, wallpaperEnd);
+		const startWallpaper = wpsIndex + AtthemeReader.#markerWallpaperStart.length;
+		const wpeIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperEnd, startWallpaper);
+		let endWallpaper = wpeIndex;
+		if (wpeIndex === -1) endWallpaper = bytes.length;
+		const wallpaper = bytes.subarray(startWallpaper, endWallpaper);
 
 		return { colors: AtthemeReader.#parseColors(text), wallpaper: new Uint8Array(wallpaper) };
 	}

@@ -27,7 +27,7 @@ export class AndroidTheme extends ThemeDocument {
 			if (measured === offset) return BytesTool.concat([text, AtthemeReader.markerWallpaperStart, wallpaper, AtthemeReader.markerWallpaperEnd]);
 			offset = measured;
 		}
-		throw new Error("Unable to converge on a stable wallpaperFileOffset");
+		throw new Error("Unable to converge on a stable offsetWallpaperFile");
 	}
 }
 //#endregion

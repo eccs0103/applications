@@ -9,7 +9,8 @@ export class PaletteReader {
 
 	static #stripComment(line: string): string {
 		const index = line.indexOf("//");
-		return index === -1 ? line : line.slice(0, index);
+		if (index === -1) return line;
+		return line.slice(0, index);
 	}
 
 	static #resolveValue(value: string, resolved: ReadonlyMap<string, Color>): Color {

@@ -11,7 +11,9 @@ export abstract class ThemeDocument {
 	constructor(colors: ReadonlyMap<string, Color>, wallpaper: Readonly<Uint8Array> | null) {
 		if (new.target === ThemeDocument) throw new TypeError("Unable to create an instance of an abstract class");
 		this.#colors = new Map(colors);
-		this.#wallpaper = wallpaper === null ? null : new Uint8Array(wallpaper);
+		let copyWallpaper: Uint8Array | null = null;
+		if (wallpaper !== null) copyWallpaper = new Uint8Array(wallpaper);
+		this.#wallpaper = copyWallpaper;
 	}
 
 	get colors(): ReadonlyMap<string, Color> {

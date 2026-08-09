@@ -125,10 +125,10 @@ class DesktopSource {
 		const light = PaletteReader.read(paletteText);
 
 		const zipEntries = await ArchiveReader.read(nightCustomBaseZip);
-		const paletteEntry = ArchiveReader.find(zipEntries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]);
-		if (paletteEntry === null) throw new ReferenceError("night-custom-base.tdesktop-theme has no palette entry");
-		const [, paletteBytes] = paletteEntry;
-		const dark = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), light);
+		const entryPalette = ArchiveReader.find(zipEntries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]);
+		if (entryPalette === null) throw new ReferenceError("night-custom-base.tdesktop-theme has no palette entry");
+		const [, bytesPalette] = entryPalette;
+		const dark = PaletteReader.read(new TextDecoder("utf-8").decode(bytesPalette), light);
 
 		const entries: VocabularyEntryData[] = [];
 		for (const [name, lightColor] of light) {

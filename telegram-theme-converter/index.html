@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="generator" content="1.0.0">
-	<meta name="title" content="Personal webpage">
+	<meta name="title" content="Personal applications">
 	<meta name="author" content="eccs0103">
 	<meta name="color-scheme" content="system">
 	<meta name="description" content="Perfect two-way conversion between Telegram Android (.attheme) and Telegram Desktop (.tdesktop-theme) themes.">
@@ -14,8 +14,8 @@
 	<meta name="language" content="English">
 	<meta name="revisit-after" content="1 days">
 	<title>Telegram theme converter - Personal applications</title>
-	<link rel="shortcut icon" href="../assets/icons/cake.png" media="(prefers-color-scheme: light)">
-	<link rel="shortcut icon" href="../assets/icons/cake-inverted.png" media="(prefers-color-scheme: dark)">
+	<link rel="shortcut icon" href="../assets/icons/swap.png" media="(prefers-color-scheme: light)">
+	<link rel="shortcut icon" href="../assets/icons/swap-inverted.png" media="(prefers-color-scheme: dark)">
 	<link rel="stylesheet" href="../styles/global.css">
 	<link rel="stylesheet" href="../styles/themes/material.css">
 	<link rel="stylesheet" href="./view/style.css">
@@ -23,38 +23,38 @@
 	<script type="module" src="./controllers/app-controller.ts"></script>
 </head>
 
-<body class="with-inline-padding with-block-padding with-inline-gap with-block-gap flex column">
+<body class="flex column with-gap large-gap with-padding large-padding">
 	<h2>Telegram theme converter</h2>
 	<p>Converts between Telegram Android (<code>.attheme</code>) and Telegram Desktop (<code>.tdesktop-theme</code>) themes, in either direction.</p>
 	<section class="option">
-		<label class="title" for="input-source">Source theme</label>
-		<input id="input-source" type="file" accept=".attheme,.tdesktop-theme" class="value">
-		<dfn id="definition-source" class="definition"></dfn>
+		<label class="title" for="source">Source theme</label>
+		<input id="source" type="file" accept=".attheme,.tdesktop-theme" class="value">
+		<dfn id="status" class="definition"></dfn>
 	</section>
 	<section class="option">
 		<span class="title">Direction</span>
-		<span id="span-direction" class="value"></span>
+		<span id="direction" class="value"></span>
 		<dfn id="definition-direction" class="definition">Detected automatically from the source file extension.</dfn>
 	</section>
-	<button id="button-convert" type="button" disabled>Convert</button>
+	<button id="convert" type="button" disabled>Convert</button>
 	<hr class="layer">
-	<div id="div-report" class="flex column with-block-gap" hidden>
+	<div id="report" class="flex column with-block-gap" hidden>
 		<h4>Coverage report</h4>
 		<section class="option">
 			<span class="title">Direct</span>
-			<span id="span-report-direct" class="value"></span>
+			<span id="report-direct" class="value"></span>
 		</section>
 		<section class="option">
 			<span class="title">Anchored</span>
-			<span id="span-report-anchored" class="value"></span>
+			<span id="report-anchored" class="value"></span>
 		</section>
 		<section class="option">
 			<span class="title">Dropped</span>
-			<span id="span-report-dropped" class="value"></span>
+			<span id="report-dropped" class="value"></span>
 		</section>
-		<details id="details-report-keys">
+		<details id="report-breakdown">
 			<summary>Per-key breakdown</summary>
-			<table id="table-report-keys"></table>
+			<table id="report-keys"></table>
 		</details>
 	</div>
 </body>

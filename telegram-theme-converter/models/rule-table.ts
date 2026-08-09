@@ -34,24 +34,24 @@ export class RuleTable extends Model {
 		this.#byAndroidTarget = byAndroidTarget;
 	}
 
-	directRuleForDesktopKey(desktopKey: string): Rule {
+	directRuleForDesktopKey(key: string): Rule {
 		this.#index();
 		const byDesktopTarget = ReferenceError.suppress(this.#byDesktopTarget, "RuleTable index not built");
-		return ReferenceError.suppress(byDesktopTarget.get(desktopKey), `No direct rule targets Desktop key '${desktopKey}'`);
+		return ReferenceError.suppress(byDesktopTarget.get(key), `No direct rule targets Desktop key '${key}'`);
 	}
 
-	directRuleForAndroidSource(androidKey: string): Rule | null {
+	directRuleForAndroidSource(key: string): Rule | null {
 		this.#index();
 		const byAndroidSource = ReferenceError.suppress(this.#byAndroidSource, "RuleTable index not built");
-		const rule = byAndroidSource.get(androidKey);
+		const rule = byAndroidSource.get(key);
 		if (rule === undefined) return null;
 		return rule;
 	}
 
-	anchoredRuleForAndroidKey(androidKey: string): Rule | null {
+	anchoredRuleForAndroidKey(key: string): Rule | null {
 		this.#index();
 		const byAndroidTarget = ReferenceError.suppress(this.#byAndroidTarget, "RuleTable index not built");
-		const rule = byAndroidTarget.get(androidKey);
+		const rule = byAndroidTarget.get(key);
 		if (rule === undefined) return null;
 		return rule;
 	}

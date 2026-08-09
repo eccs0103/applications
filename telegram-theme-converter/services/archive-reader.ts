@@ -42,7 +42,7 @@ export class ArchiveReader {
 			if (header.getUint32(0, true) !== ArchiveReader.#signatureCentralDirectory) throw new SyntaxError(`Invalid central directory header at offset ${cursor}`);
 
 			const method = header.getUint16(10, true);
-			const compressedSize = header.getUint32(20, true);
+			const sizeCompressed = header.getUint32(20, true);
 			const nameLength = header.getUint16(28, true);
 			const extraLength = header.getUint16(30, true);
 			const commentLength = header.getUint16(32, true);
@@ -54,7 +54,7 @@ export class ArchiveReader {
 			const localNameLength = localHeader.getUint16(26, true);
 			const localExtraLength = localHeader.getUint16(28, true);
 			const dataStart = localHeaderOffset + 30 + localNameLength + localExtraLength;
-			const raw = bytes.subarray(dataStart, dataStart + compressedSize);
+			const raw = bytes.subarray(dataStart, dataStart + sizeCompressed);
 
 			entries.set(name, await ArchiveReader.#decodeEntry(method, raw, name));
 

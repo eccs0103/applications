@@ -23,7 +23,10 @@ export class ArchiveWriter {
 		const table = new Uint32Array(256);
 		for (let index = 0; index < 256; index++) {
 			let value = index;
-			for (let bit = 0; bit < 8; bit++) value = (value & 1) === 1 ? (0xedb88320 ^ (value >>> 1)) : (value >>> 1);
+			for (let bit = 0; bit < 8; bit++) {
+				if ((value & 1) === 1) value = 0xedb88320 ^ (value >>> 1);
+				else value = value >>> 1;
+			}
 			table[index] = value >>> 0;
 		}
 		ArchiveWriter.#crcTable = table;
@@ -52,8 +55,12 @@ export class ArchiveWriter {
 		for (const entry of entries) {
 			const nameBytes = encoder.encode(entry.name);
 			const crc = ArchiveWriter.#crc32(entry.content);
-			const compressed = entry.stored ? entry.content : await ArchiveWriter.#deflate(entry.content);
-			const method = entry.stored ? 0 : 8;
+			let compressed = entry.content;
+			let method = 0;
+			if (!entry.stored) {
+				compressed = await ArchiveWriter.#deflate(entry.content);
+				method = 8;
+			}
 
 			const localHeader = new DataView(new ArrayBuffer(30));
 			localHeader.setUint32(0, ArchiveWriter.#signatureLocalFile, true);

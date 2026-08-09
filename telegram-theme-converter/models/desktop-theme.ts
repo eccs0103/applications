@@ -29,27 +29,29 @@ export class DesktopTheme extends ThemeDocument {
 	static async parse(bytes: Readonly<Uint8Array>, baseColors: ReadonlyMap<string, Color> = new Map()): Promise<DesktopTheme> {
 		const zipEntries = await ArchiveReader.read(bytes);
 
-		const paletteEntry = ArchiveReader.find(zipEntries, DesktopTheme.#namesPalette);
-		if (paletteEntry === null) throw new ReferenceError("No palette entry found in the desktop theme archive");
-		const [, paletteBytes] = paletteEntry;
-		const colors = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), baseColors);
+		const entryPalette = ArchiveReader.find(zipEntries, DesktopTheme.#namesPalette);
+		if (entryPalette === null) throw new ReferenceError("No palette entry found in the desktop theme archive");
+		const [, bytesPalette] = entryPalette;
+		const colors = PaletteReader.read(new TextDecoder("utf-8").decode(bytesPalette), baseColors);
 
-		const tiledEntry = ArchiveReader.find(zipEntries, DesktopTheme.#namesTiled);
-		let wallpaperEntry = ArchiveReader.find(zipEntries, DesktopTheme.#namesBackground);
-		if (wallpaperEntry === null) wallpaperEntry = tiledEntry;
-		const wallpaper = wallpaperEntry === null ? null : wallpaperEntry[1];
+		const entryTiled = ArchiveReader.find(zipEntries, DesktopTheme.#namesTiled);
+		let entryWallpaper = ArchiveReader.find(zipEntries, DesktopTheme.#namesBackground);
+		if (entryWallpaper === null) entryWallpaper = entryTiled;
+		let wallpaper: Uint8Array | null = null;
+		if (entryWallpaper !== null) wallpaper = entryWallpaper[1];
 
-		return new DesktopTheme(colors, wallpaper, tiledEntry !== null);
+		return new DesktopTheme(colors, wallpaper, entryTiled !== null);
 	}
 
 	async serialize(order: readonly string[]): Promise<Uint8Array> {
-		const paletteBytes = PaletteWriter.write(this.colors, order);
-		const entries: ArchiveEntry[] = [{ name: DesktopTheme.#nameCanonicalPalette, content: paletteBytes, stored: false }];
+		const bytesPalette = PaletteWriter.write(this.colors, order);
+		const entries: ArchiveEntry[] = [{ name: DesktopTheme.#nameCanonicalPalette, content: bytesPalette, stored: false }];
 
 		const wallpaper = this.wallpaper;
 		if (wallpaper !== null) {
 			const extension = ThemeDocument.wallpaperExtension(wallpaper);
-			const name = this.#tiled ? `tiled.${extension}` : `background.${extension}`;
+			let name = `background.${extension}`;
+			if (this.#tiled) name = `tiled.${extension}`;
 			entries.push({ name, content: wallpaper, stored: true });
 		}
 

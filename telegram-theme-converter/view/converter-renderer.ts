@@ -10,71 +10,30 @@ interface ConverterRendererEventMap {
 }
 
 export class ConverterRenderer extends EventTarget {
-	#container: HTMLElement;
-	#inputSource: HTMLInputElement | null = null;
-	#definitionSource: HTMLElement | null = null;
-	#spanDirection: HTMLSpanElement | null = null;
-	#buttonConvert: HTMLButtonElement | null = null;
-	#divReport: HTMLDivElement | null = null;
-	#spanReportDirect: HTMLSpanElement | null = null;
-	#spanReportAnchored: HTMLSpanElement | null = null;
-	#spanReportDropped: HTMLSpanElement | null = null;
-	#tableReportKeys: HTMLTableElement | null = null;
+	#inputSource: HTMLInputElement;
+	#dfnStatus: HTMLElement;
+	#spanDirection: HTMLSpanElement;
+	#buttonConvert: HTMLButtonElement;
+	#divReport: HTMLDivElement;
+	#spanReportDirect: HTMLSpanElement;
+	#spanReportAnchored: HTMLSpanElement;
+	#spanReportDropped: HTMLSpanElement;
+	#tableReportKeys: HTMLTableElement;
 
-	get #elementInputSource(): HTMLInputElement {
-		return ReferenceError.suppress(this.#inputSource, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementDefinitionSource(): HTMLElement {
-		return ReferenceError.suppress(this.#definitionSource, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementSpanDirection(): HTMLSpanElement {
-		return ReferenceError.suppress(this.#spanDirection, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementButtonConvert(): HTMLButtonElement {
-		return ReferenceError.suppress(this.#buttonConvert, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementDivReport(): HTMLDivElement {
-		return ReferenceError.suppress(this.#divReport, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementSpanReportDirect(): HTMLSpanElement {
-		return ReferenceError.suppress(this.#spanReportDirect, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementSpanReportAnchored(): HTMLSpanElement {
-		return ReferenceError.suppress(this.#spanReportAnchored, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementSpanReportDropped(): HTMLSpanElement {
-		return ReferenceError.suppress(this.#spanReportDropped, "ConverterRenderer.initialize() must run first");
-	}
-
-	get #elementTableReportKeys(): HTMLTableElement {
-		return ReferenceError.suppress(this.#tableReportKeys, "ConverterRenderer.initialize() must run first");
-	}
-
-	constructor(container: HTMLElement) {
+	constructor(inputSource: HTMLInputElement, dfnStatus: HTMLElement, spanDirection: HTMLSpanElement, buttonConvert: HTMLButtonElement, divReport: HTMLDivElement, spanReportDirect: HTMLSpanElement, spanReportAnchored: HTMLSpanElement, spanReportDropped: HTMLSpanElement, tableReportKeys: HTMLTableElement) {
 		super();
-		this.#container = container;
-	}
+		this.#inputSource = inputSource;
+		this.#dfnStatus = dfnStatus;
+		this.#spanDirection = spanDirection;
+		this.#buttonConvert = buttonConvert;
+		this.#divReport = divReport;
+		this.#spanReportDirect = spanReportDirect;
+		this.#spanReportAnchored = spanReportAnchored;
+		this.#spanReportDropped = spanReportDropped;
+		this.#tableReportKeys = tableReportKeys;
 
-	async initialize(): Promise<void> {
-		const container = this.#container;
-		this.#inputSource = await container.getElementAsync(HTMLInputElement, "input#input-source");
-		this.#definitionSource = await container.getElementAsync(HTMLElement, "dfn#definition-source");
-		this.#spanDirection = await container.getElementAsync(HTMLSpanElement, "span#span-direction");
-		this.#buttonConvert = await container.getElementAsync(HTMLButtonElement, "button#button-convert");
-		this.#divReport = await container.getElementAsync(HTMLDivElement, "div#div-report");
-		this.#spanReportDirect = await container.getElementAsync(HTMLSpanElement, "span#span-report-direct");
-		this.#spanReportAnchored = await container.getElementAsync(HTMLSpanElement, "span#span-report-anchored");
-		this.#spanReportDropped = await container.getElementAsync(HTMLSpanElement, "span#span-report-dropped");
-		this.#tableReportKeys = await container.getElementAsync(HTMLTableElement, "table#table-report-keys");
-
-		this.#initializeListeners();
+		inputSource.addEventListener("change", this.#onSourceChange.bind(this));
+		buttonConvert.addEventListener("click", this.#onConvertClick.bind(this));
 	}
 
 	addEventListener<K extends keyof ConverterRendererEventMap>(type: K, listener: (this: ConverterRenderer, ev: ConverterRendererEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -89,56 +48,64 @@ export class ConverterRenderer extends EventTarget {
 		return super.removeEventListener(type, listener, options);
 	}
 
-	#initializeListeners(): void {
-		const inputSource = this.#elementInputSource;
-		const buttonConvert = this.#elementButtonConvert;
+	#onSourceChange(): void {
+		const { files } = this.#inputSource;
+		let file: File | null = null;
+		if (files !== null && files[0] !== undefined) file = files[0];
+		this.dispatchEvent(new CustomEvent("sourcechange", { detail: file }));
+	}
 
-		inputSource.addEventListener("change", () => {
-			const files = inputSource.files;
-			let file: File | null = null;
-			if (files !== null && files[0] !== undefined) file = files[0];
-			this.dispatchEvent(new CustomEvent("sourcechange", { detail: file }));
-		});
-
-		buttonConvert.addEventListener("click", () => {
-			this.dispatchEvent(new Event("convertrequested"));
-		});
+	#onConvertClick(): void {
+		this.dispatchEvent(new Event("convertrequested"));
 	}
 
 	setStatus(text: string): void {
-		this.#elementDefinitionSource.textContent = text;
+		this.#dfnStatus.textContent = text;
 	}
 
 	setDirection(text: string): void {
-		this.#elementSpanDirection.textContent = text;
+		this.#spanDirection.textContent = text;
 	}
 
 	setConvertEnabled(enabled: boolean): void {
-		this.#elementButtonConvert.disabled = !enabled;
+		this.#buttonConvert.disabled = !enabled;
 	}
 
 	#renderReportRow(key: string, outcome: KeyOutcome): HTMLTableRowElement {
-		const trReportKey = this.#elementTableReportKeys.insertRow();
+		const trReportKey = this.#tableReportKeys.insertRow();
 		trReportKey.insertCell().textContent = key;
 		trReportKey.insertCell().textContent = outcome;
 		return trReportKey;
 	}
 
 	showReport(report: Readonly<Report>): void {
-		this.#elementSpanReportDirect.textContent = `${report.countBy(KeyOutcome.direct)}`;
-		this.#elementSpanReportAnchored.textContent = `${report.countBy(KeyOutcome.anchored)}`;
-		this.#elementSpanReportDropped.textContent = `${report.countBy(KeyOutcome.dropped)}`;
+		this.#spanReportDirect.textContent = `${report.countBy(KeyOutcome.direct)}`;
+		this.#spanReportAnchored.textContent = `${report.countBy(KeyOutcome.anchored)}`;
+		this.#spanReportDropped.textContent = `${report.countBy(KeyOutcome.dropped)}`;
 
-		this.#elementTableReportKeys.replaceChildren();
+		this.#tableReportKeys.replaceChildren();
 		for (const outcome of [KeyOutcome.direct, KeyOutcome.anchored, KeyOutcome.dropped]) {
 			for (const key of report.keysBy(outcome)) this.#renderReportRow(key, outcome);
 		}
 
-		this.#elementDivReport.hidden = false;
+		this.#divReport.hidden = false;
 	}
 
 	hideReport(): void {
-		this.#elementDivReport.hidden = true;
+		this.#divReport.hidden = true;
+	}
+
+	download(bytes: Readonly<Uint8Array>, fileName: string, mimeType: string): void {
+		const blob = new Blob([new Uint8Array(bytes)], { type: mimeType });
+		const url = URL.createObjectURL(blob);
+		try {
+			const anchorDownload = document.createElement("a");
+			anchorDownload.href = url;
+			anchorDownload.download = fileName;
+			anchorDownload.click();
+		} finally {
+			URL.revokeObjectURL(url);
+		}
 	}
 }
 //#endregion
