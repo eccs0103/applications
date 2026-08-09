@@ -4,12 +4,12 @@ import "adaptive-extender/core";
 import { Color } from "adaptive-extender/core";
 import { Argb } from "./argb.js";
 
+//#region Attheme reader
 export interface AtthemeDocumentData {
 	colors: Map<string, Color>;
 	wallpaper: Uint8Array | null;
 }
 
-//#region Attheme reader
 export class AtthemeReader {
 	static #markerWallpaperStart: Uint8Array = new TextEncoder().encode("WPS\n");
 	static #markerWallpaperEnd: Uint8Array = new TextEncoder().encode("\nWPE\n");

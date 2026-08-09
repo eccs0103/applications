@@ -8,12 +8,12 @@ import { AndroidTheme } from "../models/android-theme.js";
 import { DesktopTheme } from "../models/desktop-theme.js";
 import { Report, KeyOutcome } from "../models/report.js";
 
+//#region Converter
 export interface ConversionResult<T> {
 	theme: T;
 	report: Report;
 }
 
-//#region Converter
 export class Converter {
 	#androidVocabulary: Vocabulary;
 	#desktopVocabulary: Vocabulary;

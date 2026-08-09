@@ -3,13 +3,13 @@
 import "adaptive-extender/core";
 import { BytesTool } from "./bytes.js";
 
+//#region Archive writer
 export interface ArchiveEntry {
 	name: string;
 	content: Uint8Array;
 	stored: boolean;
 }
 
-//#region Archive writer
 export class ArchiveWriter {
 	static #signatureLocalFile: number = 0x04034b50;
 	static #signatureCentralDirectory: number = 0x02014b50;

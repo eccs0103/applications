@@ -42,22 +42,22 @@ export class Rule extends Model {
 		if (this.origin === RuleOrigin.direct) return new Color(anchor);
 
 		switch (this.transform) {
-			case Transform.identity: return new Color(anchor);
-			case Transform.alpha: {
-				if (this.parameter === null) throw new TypeError(`Rule for '${this.target}' uses 'alpha' without a parameter`);
-				return new Color(anchor).pass(this.parameter);
-			}
-			case Transform.lightness: {
-				if (this.parameter === null) throw new TypeError(`Rule for '${this.target}' uses 'lightness' without a parameter`);
-				return new Color(anchor).illuminate(this.parameter);
-			}
-			case Transform.mix: {
-				if (this.parameter === null) throw new TypeError(`Rule for '${this.target}' uses 'mix' without a parameter`);
-				if (this.mixWith === null) throw new TypeError(`Rule for '${this.target}' uses 'mix' without 'mixWith'`);
-				const second = ReferenceError.suppress(colors.get(this.mixWith), `Rule for '${this.target}' depends on missing color '${this.mixWith}'`);
-				return Color.mix(anchor, second, this.parameter);
-			}
-			default: throw new TypeError(`Rule for '${this.target}' is 'anchored' without a transform`);
+		case Transform.identity: return new Color(anchor);
+		case Transform.alpha: {
+			if (this.parameter === null) throw new TypeError(`Rule for '${this.target}' uses 'alpha' without a parameter`);
+			return new Color(anchor).pass(this.parameter);
+		}
+		case Transform.lightness: {
+			if (this.parameter === null) throw new TypeError(`Rule for '${this.target}' uses 'lightness' without a parameter`);
+			return new Color(anchor).illuminate(this.parameter);
+		}
+		case Transform.mix: {
+			if (this.parameter === null) throw new TypeError(`Rule for '${this.target}' uses 'mix' without a parameter`);
+			if (this.mixWith === null) throw new TypeError(`Rule for '${this.target}' uses 'mix' without 'mixWith'`);
+			const second = ReferenceError.suppress(colors.get(this.mixWith), `Rule for '${this.target}' depends on missing color '${this.mixWith}'`);
+			return Color.mix(anchor, second, this.parameter);
+		}
+		default: throw new TypeError(`Rule for '${this.target}' is 'anchored' without a transform`);
 		}
 	}
 }

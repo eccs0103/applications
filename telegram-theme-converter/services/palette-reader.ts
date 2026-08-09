@@ -22,6 +22,8 @@ export class PaletteReader {
 		return new Color(referenced);
 	}
 
+	static read(text: string): Map<string, Color>;
+	static read(text: string, seed: ReadonlyMap<string, Color>): Map<string, Color>;
 	static read(text: string, seed: ReadonlyMap<string, Color> = new Map()): Map<string, Color> {
 		const resolved = new Map<string, Color>(seed);
 		for (const rawLine of text.split(/\r?\n/)) {

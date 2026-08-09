@@ -24,10 +24,10 @@ export class RuleTable extends Model {
 				byDesktopTarget.set(rule.target, rule);
 				if (byAndroidSource.has(rule.source)) throw new TypeError(`Duplicate direct rule sourcing Android key '${rule.source}'`);
 				byAndroidSource.set(rule.source, rule);
-			} else {
-				if (byAndroidTarget.has(rule.target)) throw new TypeError(`Duplicate anchored rule for Android key '${rule.target}'`);
-				byAndroidTarget.set(rule.target, rule);
+				continue;
 			}
+			if (byAndroidTarget.has(rule.target)) throw new TypeError(`Duplicate anchored rule for Android key '${rule.target}'`);
+			byAndroidTarget.set(rule.target, rule);
 		}
 		this.#byDesktopTarget = byDesktopTarget;
 		this.#byAndroidSource = byAndroidSource;

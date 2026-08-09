@@ -22,10 +22,10 @@ export class DesktopTheme extends ThemeDocument {
 		this.#tiled = tiled;
 	}
 
-	get tiled(): boolean {
-		return this.#tiled;
-	}
+	get tiled(): boolean { return this.#tiled; }
 
+	static async parse(bytes: Readonly<Uint8Array>): Promise<DesktopTheme>;
+	static async parse(bytes: Readonly<Uint8Array>, baseColors: ReadonlyMap<string, Color>): Promise<DesktopTheme>;
 	static async parse(bytes: Readonly<Uint8Array>, baseColors: ReadonlyMap<string, Color> = new Map()): Promise<DesktopTheme> {
 		const zipEntries = await ArchiveReader.read(bytes);
 

@@ -15,6 +15,12 @@ export class ArchiveReader {
 		return new Uint8Array(buffer);
 	}
 
+	static async #decodeEntry(method: number, raw: Readonly<Uint8Array>, name: string): Promise<Uint8Array> {
+		if (method === 0) return new Uint8Array(raw);
+		if (method === 8) return ArchiveReader.#inflate(raw);
+		throw new TypeError(`Unsupported compression method ${method} for entry '${name}'`);
+	}
+
 	static #findEndOfCentralDirectory(bytes: Readonly<Uint8Array>): number {
 		for (let index = bytes.length - ArchiveReader.#lengthEndOfCentralDirectory; index >= 0; index--) {
 			const view = new DataView(bytes.buffer, bytes.byteOffset + index, ArchiveReader.#lengthEndOfCentralDirectory);
@@ -50,9 +56,7 @@ export class ArchiveReader {
 			const dataStart = localHeaderOffset + 30 + localNameLength + localExtraLength;
 			const raw = bytes.subarray(dataStart, dataStart + compressedSize);
 
-			if (method === 0) entries.set(name, new Uint8Array(raw));
-			else if (method === 8) entries.set(name, await ArchiveReader.#inflate(raw));
-			else throw new TypeError(`Unsupported compression method ${method} for entry '${name}'`);
+			entries.set(name, await ArchiveReader.#decodeEntry(method, raw, name));
 
 			cursor += 46 + nameLength + extraLength + commentLength;
 		}
