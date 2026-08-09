@@ -108,9 +108,6 @@ describe("RuleTable integrity", () => {
 				expect(colorsEqual(resolvedLight, target.lightColor())).toBe(true);
 				expect(colorsEqual(resolvedDark, target.darkColor())).toBe(true);
 			} else {
-				// Lightness was fitted with an independent HSL implementation at authoring time;
-				// applying it here goes through Color's own HSL math, so allow a small tolerance
-				// for rounding drift between the two rather than demanding exact equality.
 				const expectedLight = target.lightColor();
 				const expectedDark = target.darkColor();
 				expect(Math.abs(resolvedLight.red - expectedLight.red)).toBeLessThanOrEqual(6);
@@ -159,23 +156,21 @@ describe("Converter round trip", () => {
 		const { desktopVocabulary, converter } = await loadEverything();
 		const baseColors = new Map(desktopVocabulary.entries.map(entry => [entry.name, entry.lightColor()]));
 
-		// The fixtures are real Telegram theme files; each references a handful of legacy
-		// palette keys lib_ui has since renamed or removed. Those fall outside our canonical
-		// 586-key vocabulary entirely - the round trip is judged against every key our system
-		// actually operates on, not against a theme file's own incidental extras.
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
 			const bytes = await readFixture(name);
 			const zipEntries = await ArchiveReader.read(bytes);
 			const entry = ArchiveReader.find(zipEntries, ["colors.tdesktop-theme"]);
-			const paletteColors = PaletteReader.read(new TextDecoder("utf-8").decode(entry![1]), baseColors);
+			const [, paletteBytes] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
+			const paletteColors = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), baseColors);
 			const source = new DesktopTheme(paletteColors, null);
 
 			const { theme: android } = converter.desktopToAndroid(source);
 			const { theme: roundTripped } = converter.androidToDesktop(android);
 
 			for (const vocabularyEntry of desktopVocabulary.entries) {
-				const original = source.colors.get(vocabularyEntry.name)!;
-				expect(colorsEqual(roundTripped.colors.get(vocabularyEntry.name)!, original)).toBe(true);
+				const original = ReferenceError.suppress(source.colors.get(vocabularyEntry.name), `Missing '${vocabularyEntry.name}'`);
+				const roundTrippedColor = ReferenceError.suppress(roundTripped.colors.get(vocabularyEntry.name), `Missing '${vocabularyEntry.name}'`);
+				expect(colorsEqual(roundTrippedColor, original)).toBe(true);
 			}
 		}
 	});
@@ -187,8 +182,6 @@ describe("Converter round trip", () => {
 		for (const name of ["day.attheme", "night.attheme"]) {
 			const bytes = await readFixture(name);
 			const { colors } = AtthemeReader.read(bytes);
-			// Fill any key the sample theme leaves unspecified from the platform's own default, so the
-			// round trip is judged against a complete theme rather than penalizing normal partial samples.
 			const complete = new Map(androidVocabulary.entries.map(entry => [entry.name, entry.lightColor()]));
 			for (const [key, color] of colors) if (androidVocabulary.has(key)) complete.set(key, color);
 			const source = new AndroidTheme(complete, null);
@@ -199,7 +192,9 @@ describe("Converter round trip", () => {
 			const { theme: roundTripped, report: secondReport } = converter.desktopToAndroid(desktop);
 
 			for (const key of coreSources) {
-				expect(colorsEqual(roundTripped.colors.get(key)!, complete.get(key)!)).toBe(true);
+				const roundTrippedColor = ReferenceError.suppress(roundTripped.colors.get(key), `Missing '${key}'`);
+				const originalColor = ReferenceError.suppress(complete.get(key), `Missing '${key}'`);
+				expect(colorsEqual(roundTrippedColor, originalColor)).toBe(true);
 			}
 
 			const expectedAnchored = androidVocabulary.entries.map(entry => entry.name).filter(n => !coreSources.has(n)).sort();

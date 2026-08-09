@@ -22,11 +22,6 @@ async function readFixture(name: string): Promise<Uint8Array> {
 	return new Uint8Array(buffer);
 }
 
-/**
- * Desktop's own compiled-in default palette (light), used as the base an override film like
- * `day-custom-base.tdesktop-theme` resolves its cross-references against - exactly as the
- * real Telegram Desktop app does.
- */
 async function readDesktopBaseColors(): Promise<Map<string, Color>> {
 	const json = await readFile(desktopVocabularyPath, "utf-8");
 	const { entries } = JSON.parse(json) as { entries: { name: string; light: string; }[]; };
@@ -49,8 +44,6 @@ function colorMapsEqual(first: ReadonlyMap<string, Color>, second: ReadonlyMap<s
 	return true;
 }
 
-// A minimal, valid 1x1 JPEG, used only to exercise the wallpaper byte-handling path -
-// none of the official sample themes fetched for these fixtures embed one.
 const sampleWallpaper = new Uint8Array([
 	0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01,
 	0x00, 0x01, 0x00, 0x00, 0xff, 0xd9,
@@ -109,8 +102,8 @@ describe("AtthemeReader / AtthemeWriter", () => {
 		bytes.set(markerWallpaperEnd, prefix.length + markerWallpaperStart.length + sampleWallpaper.length);
 
 		const parsed = AtthemeReader.read(bytes);
-		expect(parsed.wallpaper).not.toBeNull();
-		expect([...parsed.wallpaper!]).toEqual([...sampleWallpaper]);
+		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
+		expect([...wallpaper]).toEqual([...sampleWallpaper]);
 	});
 });
 
@@ -134,8 +127,8 @@ describe("AndroidTheme", () => {
 		const bytes = await theme.serialize(order);
 		const parsed = AndroidTheme.parse(bytes);
 
-		expect(parsed.wallpaper).not.toBeNull();
-		expect([...parsed.wallpaper!]).toEqual([...sampleWallpaper]);
+		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
+		expect([...wallpaper]).toEqual([...sampleWallpaper]);
 		expect(colorMapsEqual(parsed.colors, colors)).toBe(true);
 	});
 });
@@ -153,17 +146,23 @@ describe("PaletteReader / PaletteWriter", () => {
 	});
 
 	it("resolves references and the '|' fallback to its first alternative", () => {
-		const text = "a: #ff0000ff;\nb: a;\nc: #00ff00 | a; // comment\n";
+		const text = "a: #ff0000ff;\nb: a;\nc: #00ff00 | a; // trailing comment\n";
 		const colors = PaletteReader.read(text);
-		expect(colorsEqual(colors.get("b")!, colors.get("a")!)).toBe(true);
-		expect(colors.get("c")!.toString({ format: ColorFormats.hex, deep: false })).toBe("#00ff00");
+		const colorA = ReferenceError.suppress(colors.get("a"), "Missing 'a'");
+		const colorB = ReferenceError.suppress(colors.get("b"), "Missing 'b'");
+		const colorC = ReferenceError.suppress(colors.get("c"), "Missing 'c'");
+		expect(colorsEqual(colorB, colorA)).toBe(true);
+		expect(colorC.toString({ format: ColorFormats.hex, deep: false })).toBe("#00ff00");
 	});
 
 	it("seeds resolution from a base map for a partial override film", () => {
 		const seed = new Map<string, Color>([["windowBg", Color.fromRGB(1, 1, 1, 1)]]);
 		const colors = PaletteReader.read("windowFgOver: windowBg;\n", seed);
-		expect(colorsEqual(colors.get("windowFgOver")!, seed.get("windowBg")!)).toBe(true);
-		expect(colorsEqual(colors.get("windowBg")!, seed.get("windowBg")!)).toBe(true);
+		const seedWindowBg = ReferenceError.suppress(seed.get("windowBg"), "Missing seed 'windowBg'");
+		const resolvedWindowFgOver = ReferenceError.suppress(colors.get("windowFgOver"), "Missing 'windowFgOver'");
+		const resolvedWindowBg = ReferenceError.suppress(colors.get("windowBg"), "Missing 'windowBg'");
+		expect(colorsEqual(resolvedWindowFgOver, seedWindowBg)).toBe(true);
+		expect(colorsEqual(resolvedWindowBg, seedWindowBg)).toBe(true);
 	});
 
 	it("reproduces official sample files on a read/rewrite round trip", async () => {
@@ -172,8 +171,7 @@ describe("PaletteReader / PaletteWriter", () => {
 			const bytes = await readFixture(name);
 			const entries = await ArchiveReader.read(bytes);
 			const entry = ArchiveReader.find(entries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]);
-			expect(entry).not.toBeNull();
-			const [, paletteBytes] = entry!;
+			const [, paletteBytes] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
 			const colors = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), baseColors);
 			const order = [...colors.keys()];
 			const rewritten = PaletteWriter.write(colors, order);
@@ -194,8 +192,10 @@ describe("ArchiveReader / ArchiveWriter", () => {
 		const parsed = await ArchiveReader.read(archive);
 
 		expect(parsed.size).toBe(2);
-		expect([...parsed.get("colors.tdesktop-theme")!]).toEqual([...textContent]);
-		expect([...parsed.get("background.jpg")!]).toEqual([...sampleWallpaper]);
+		const paletteEntry = ReferenceError.suppress(parsed.get("colors.tdesktop-theme"), "Missing palette entry");
+		const wallpaperEntry = ReferenceError.suppress(parsed.get("background.jpg"), "Missing wallpaper entry");
+		expect([...paletteEntry]).toEqual([...textContent]);
+		expect([...wallpaperEntry]).toEqual([...sampleWallpaper]);
 	});
 
 	it("finds entries case-insensitively", async () => {
@@ -213,7 +213,8 @@ describe("ArchiveReader / ArchiveWriter", () => {
 			const reparsed = await ArchiveReader.read(rebuilt);
 			expect(reparsed.size).toBe(entries.size);
 			for (const [entryName, content] of entries) {
-				expect([...reparsed.get(entryName)!]).toEqual([...content]);
+				const reparsedContent = ReferenceError.suppress(reparsed.get(entryName), `Missing entry '${entryName}'`);
+				expect([...reparsedContent]).toEqual([...content]);
 			}
 		}
 	});
@@ -236,7 +237,8 @@ describe("DesktopTheme", () => {
 		const bytes = await theme.serialize([...colors.keys()]);
 		const parsed = await DesktopTheme.parse(bytes);
 		expect(parsed.tiled).toBe(false);
-		expect([...parsed.wallpaper!]).toEqual([...sampleWallpaper]);
+		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
+		expect([...wallpaper]).toEqual([...sampleWallpaper]);
 	});
 
 	it("round-trips a tiled wallpaper under 'tiled.<ext>'", async () => {
@@ -245,7 +247,8 @@ describe("DesktopTheme", () => {
 		const bytes = await theme.serialize([...colors.keys()]);
 		const parsed = await DesktopTheme.parse(bytes);
 		expect(parsed.tiled).toBe(true);
-		expect([...parsed.wallpaper!]).toEqual([...sampleWallpaper]);
+		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
+		expect([...wallpaper]).toEqual([...sampleWallpaper]);
 	});
 
 	it("parses official sample archives without error", async () => {
