@@ -4,9 +4,6 @@ import "adaptive-extender/core";
 import { Color } from "adaptive-extender/core";
 
 //#region ARGB
-/**
- * Conversion between Android's signed 32-bit ARGB integer color encoding and {@link Color}.
- */
 export class Argb {
 	static toColor(value: number): Color {
 		const unsigned = value >>> 0;

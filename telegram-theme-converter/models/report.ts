@@ -2,25 +2,13 @@
 
 import "adaptive-extender/core";
 
-//#region Key outcome
-/**
- * What happened to a single target-platform key during a conversion.
- */
+//#region Report
 export enum KeyOutcome {
-	/** Copied from a directly-paired source key (the bijective core). */
 	direct = "direct",
-	/** Produced by an anchored derivation from a core key. */
 	anchored = "anchored",
-	/** A source key with no counterpart in the target vocabulary; excluded from the output. */
 	dropped = "dropped",
 }
-//#endregion
-//#region Report
-/**
- * A per-key account of a single conversion: what happened to every key involved, and the
- * summary counts derived from that ledger. Nothing about a conversion is ever discarded -
- * every key the source or target vocabulary mentions appears here exactly once.
- */
+
 export class Report {
 	#outcomes: Map<string, KeyOutcome> = new Map();
 

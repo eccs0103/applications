@@ -4,7 +4,7 @@ import "adaptive-extender/core";
 import { Color, ColorFormats } from "adaptive-extender/core";
 import { describe, it, expect } from "vitest";
 import { readFile } from "node:fs/promises";
-import { AtthemeReader, markerWallpaperStart, markerWallpaperEnd } from "../services/attheme-reader.js";
+import { AtthemeReader } from "../services/attheme-reader.js";
 import { AtthemeWriter } from "../services/attheme-writer.js";
 import { PaletteReader } from "../services/palette-reader.js";
 import { PaletteWriter } from "../services/palette-writer.js";
@@ -100,6 +100,8 @@ describe("AtthemeReader / AtthemeWriter", () => {
 
 	it("finds the WPS/WPE markers at an arbitrary, independently-computed offset", () => {
 		const prefix = new TextEncoder().encode("chat_wallpaper=-1\n");
+		const markerWallpaperStart = AtthemeReader.markerWallpaperStart;
+		const markerWallpaperEnd = AtthemeReader.markerWallpaperEnd;
 		const bytes = new Uint8Array(prefix.length + markerWallpaperStart.length + sampleWallpaper.length + markerWallpaperEnd.length);
 		bytes.set(prefix, 0);
 		bytes.set(markerWallpaperStart, prefix.length);

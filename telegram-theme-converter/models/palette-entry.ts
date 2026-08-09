@@ -5,10 +5,6 @@ import { Field, Model } from "adaptive-extender/core";
 import { Color } from "adaptive-extender/core";
 
 //#region Palette entry
-/**
- * A single canonical vocabulary entry: a color key name together with the platform's own
- * official default value for that key in its light and dark built-in themes.
- */
 export class PaletteEntry extends Model {
 	@Field(String, { name: "name" })
 	name: string;

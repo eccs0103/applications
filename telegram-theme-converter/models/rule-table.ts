@@ -5,12 +5,6 @@ import { Field, Model } from "adaptive-extender/core";
 import { Rule, RuleOrigin } from "./rule.js";
 
 //#region Rule table
-/**
- * The full conversion rule set: the 586-key bijective Desktop<->Android core, read forward
- * (by Desktop target) or backward (by Android source), plus the anchored derivations for the
- * Android keys the core does not cover. Owns every lookup a converter needs - callers never
- * scan {@link rules} themselves.
- */
 export class RuleTable extends Model {
 	@Field(Array.Of(Rule), { name: "rules" })
 	rules: Rule[] = [];
@@ -40,35 +34,24 @@ export class RuleTable extends Model {
 		this.#byAndroidTarget = byAndroidTarget;
 	}
 
-	/**
-	 * The core rule producing the given Desktop key.
-	 * @throws {ReferenceError} If no core rule targets this Desktop key.
-	 */
 	directRuleForDesktopKey(desktopKey: string): Rule {
 		this.#index();
-		const rule = this.#byDesktopTarget!.get(desktopKey);
-		if (rule === undefined) throw new ReferenceError(`No direct rule targets Desktop key '${desktopKey}'`);
-		return rule;
+		const byDesktopTarget = ReferenceError.suppress(this.#byDesktopTarget, "RuleTable index not built");
+		return ReferenceError.suppress(byDesktopTarget.get(desktopKey), `No direct rule targets Desktop key '${desktopKey}'`);
 	}
 
-	/**
-	 * The core rule sourced from the given Android key, or `null` if that key is not part of
-	 * the bijective core (i.e. it is a surplus key with only an anchored rule).
-	 */
 	directRuleForAndroidSource(androidKey: string): Rule | null {
 		this.#index();
-		const rule = this.#byAndroidSource!.get(androidKey);
+		const byAndroidSource = ReferenceError.suppress(this.#byAndroidSource, "RuleTable index not built");
+		const rule = byAndroidSource.get(androidKey);
 		if (rule === undefined) return null;
 		return rule;
 	}
 
-	/**
-	 * The anchored rule producing the given surplus Android key, or `null` if that key is part
-	 * of the bijective core instead.
-	 */
 	anchoredRuleForAndroidKey(androidKey: string): Rule | null {
 		this.#index();
-		const rule = this.#byAndroidTarget!.get(androidKey);
+		const byAndroidTarget = ReferenceError.suppress(this.#byAndroidTarget, "RuleTable index not built");
+		const rule = byAndroidTarget.get(androidKey);
 		if (rule === undefined) return null;
 		return rule;
 	}

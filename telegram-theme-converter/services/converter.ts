@@ -14,18 +14,6 @@ export interface ConversionResult<T> {
 }
 
 //#region Converter
-/**
- * Applies the rule table in either direction.
- *
- * Android -> Desktop: every one of the Desktop vocabulary's 586 keys is produced from its
- * paired Android key (the bijective core); the ~173 Android-only keys are dropped. Zero
- * fabrication in this direction - every emitted color is a value the source theme genuinely
- * declared, or the source platform's own default where the theme left a key unspecified.
- *
- * Desktop -> Android: the 586 core keys map back through the same rules; the remaining
- * surplus Android keys are derived from an already-resolved core anchor. The whole output is
- * always the complete 759-key Android vocabulary.
- */
 export class Converter {
 	#androidVocabulary: Vocabulary;
 	#desktopVocabulary: Vocabulary;
@@ -37,12 +25,6 @@ export class Converter {
 		this.#ruleTable = ruleTable;
 	}
 
-	/**
-	 * Resolves a key from the theme's own colors, falling back to the platform's own light
-	 * default when the source theme left the key unspecified - the same policy already proven
-	 * correct for partial Desktop override films (see {@link DesktopTheme.parse}), applied
-	 * uniformly here rather than guessing the source theme's brightness.
-	 */
 	#resolveOrDefault(colors: ReadonlyMap<string, Color>, key: string, vocabulary: Vocabulary): Color {
 		const color = colors.get(key);
 		if (color !== undefined) return color;

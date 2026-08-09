@@ -5,11 +5,6 @@ import { Field, Model } from "adaptive-extender/core";
 import { PaletteEntry } from "./palette-entry.js";
 
 //#region Vocabulary
-/**
- * The canonical, ordered set of color keys a Telegram platform recognizes, together with
- * their official light/dark defaults. Owns every lookup and completeness check performed
- * against it - callers never inspect its entries directly.
- */
 export class Vocabulary extends Model {
 	@Field(Array.Of(PaletteEntry), { name: "entries" })
 	entries: PaletteEntry[] = [];
@@ -36,18 +31,13 @@ export class Vocabulary extends Model {
 	}
 
 	get(name: string): PaletteEntry {
-		const entry = this.#index().get(name);
-		if (entry === undefined) throw new ReferenceError(`Unknown vocabulary key '${name}'`);
-		return entry;
+		return ReferenceError.suppress(this.#index().get(name), `Unknown vocabulary key '${name}'`);
 	}
 
 	names(): Set<string> {
 		return new Set(this.#index().keys());
 	}
 
-	/**
-	 * Keys declared by this vocabulary that are absent from the given set.
-	 */
 	missingFrom(names: ReadonlySet<string>): Set<string> {
 		const missing = new Set<string>();
 		for (const name of this.#index().keys()) {
@@ -56,9 +46,6 @@ export class Vocabulary extends Model {
 		return missing;
 	}
 
-	/**
-	 * Keys present in the given set that this vocabulary does not declare.
-	 */
 	unknownIn(names: ReadonlySet<string>): Set<string> {
 		const unknown = new Set<string>();
 		for (const name of names) {

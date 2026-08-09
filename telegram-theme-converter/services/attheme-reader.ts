@@ -4,24 +4,22 @@ import "adaptive-extender/core";
 import { Color } from "adaptive-extender/core";
 import { Argb } from "./argb.js";
 
-export const markerWallpaperStart: Readonly<Uint8Array> = new TextEncoder().encode("WPS\n");
-export const markerWallpaperEnd: Readonly<Uint8Array> = new TextEncoder().encode("\nWPE\n");
-export const keyWallpaperOffset = "wallpaperFileOffset";
-
-const prefixLegacyKey = "key_";
-
 export interface AtthemeDocumentData {
 	colors: Map<string, Color>;
 	wallpaper: Uint8Array | null;
 }
 
 //#region Attheme reader
-/**
- * Parses the Android `.attheme` format: plain-text `name=value` lines, one per color, where
- * `value` is a signed 32-bit ARGB integer, followed by an optional embedded wallpaper image
- * framed by literal `WPS` / `WPE` marker lines.
- */
 export class AtthemeReader {
+	static #markerWallpaperStart: Uint8Array = new TextEncoder().encode("WPS\n");
+	static #markerWallpaperEnd: Uint8Array = new TextEncoder().encode("\nWPE\n");
+	static #keyWallpaperOffset: string = "wallpaperFileOffset";
+	static #prefixLegacyKey: string = "key_";
+
+	static get markerWallpaperStart(): Readonly<Uint8Array> { return AtthemeReader.#markerWallpaperStart; }
+	static get markerWallpaperEnd(): Readonly<Uint8Array> { return AtthemeReader.#markerWallpaperEnd; }
+	static get keyWallpaperOffset(): string { return AtthemeReader.#keyWallpaperOffset; }
+
 	static #indexOfBytes(bytes: Readonly<Uint8Array>, marker: Readonly<Uint8Array>, from: number): number {
 		outer: for (let index = from; index <= bytes.length - marker.length; index++) {
 			for (let offset = 0; offset < marker.length; offset++) {
@@ -33,13 +31,10 @@ export class AtthemeReader {
 	}
 
 	static #normalizeName(name: string): string {
-		if (name.startsWith(prefixLegacyKey)) return name.slice(prefixLegacyKey.length);
+		if (name.startsWith(AtthemeReader.#prefixLegacyKey)) return name.slice(AtthemeReader.#prefixLegacyKey.length);
 		return name;
 	}
 
-	/**
-	 * @throws {SyntaxError} If a non-empty, non-comment line does not match `name=value`.
-	 */
 	static #parseColors(text: string): Map<string, Color> {
 		const colors = new Map<string, Color>();
 		for (const line of text.split(/\r?\n/)) {
@@ -50,7 +45,7 @@ export class AtthemeReader {
 			const index = trimmed.indexOf("=");
 			if (index === -1) throw new SyntaxError(`Invalid '${trimmed}' line syntax`);
 			const name = AtthemeReader.#normalizeName(trimmed.slice(0, index).trim());
-			if (name === keyWallpaperOffset) continue;
+			if (name === AtthemeReader.#keyWallpaperOffset) continue;
 
 			const rawValue = trimmed.slice(index + 1).trim();
 			const value = Number.parseInt(rawValue, 10);
@@ -61,15 +56,15 @@ export class AtthemeReader {
 	}
 
 	static read(bytes: Readonly<Uint8Array>): AtthemeDocumentData {
-		const wpsIndex = AtthemeReader.#indexOfBytes(bytes, markerWallpaperStart, 0);
+		const wpsIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperStart, 0);
 		if (wpsIndex === -1) {
 			const text = new TextDecoder("utf-8").decode(bytes);
 			return { colors: AtthemeReader.#parseColors(text), wallpaper: null };
 		}
 
 		const text = new TextDecoder("utf-8").decode(bytes.subarray(0, wpsIndex));
-		const wallpaperStart = wpsIndex + markerWallpaperStart.length;
-		const wpeIndex = AtthemeReader.#indexOfBytes(bytes, markerWallpaperEnd, wallpaperStart);
+		const wallpaperStart = wpsIndex + AtthemeReader.#markerWallpaperStart.length;
+		const wpeIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperEnd, wallpaperStart);
 		const wallpaperEnd = wpeIndex === -1 ? bytes.length : wpeIndex;
 		const wallpaper = bytes.subarray(wallpaperStart, wallpaperEnd);
 
