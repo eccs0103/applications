@@ -4,23 +4,31 @@ import "adaptive-extender/core";
 
 //#region Report
 export enum KeyOutcome {
-	direct = "direct",
-	anchored = "anchored",
-	dropped = "dropped",
+	/** The key's own role held a lifted value. */
+	bound = "bound",
+	/** The key's role held no value; the nearest populated ancestor role was copied instead. */
+	inherited = "inherited",
+	/** A source key that is not an authority for its role, and so was never consulted while lifting. */
+	unread = "unread",
+}
+
+interface ReportEntry {
+	outcome: KeyOutcome;
+	detail: string | null;
 }
 
 export class Report {
-	#outcomes: Map<string, KeyOutcome> = new Map();
+	#entries: Map<string, ReportEntry> = new Map();
 
-	record(key: string, outcome: KeyOutcome): void {
-		if (this.#outcomes.has(key)) throw new TypeError(`Key '${key}' already recorded in this report`);
-		this.#outcomes.set(key, outcome);
+	record(key: string, outcome: KeyOutcome, detail: string | null = null): void {
+		if (this.#entries.has(key)) throw new TypeError(`Key '${key}' already recorded in this report`);
+		this.#entries.set(key, { outcome, detail });
 	}
 
 	keysBy(outcome: KeyOutcome): string[] {
 		const keys: string[] = [];
-		for (const [key, recorded] of this.#outcomes) {
-			if (recorded === outcome) keys.push(key);
+		for (const [key, entry] of this.#entries) {
+			if (entry.outcome === outcome) keys.push(key);
 		}
 		return keys.sort();
 	}
@@ -29,8 +37,13 @@ export class Report {
 		return this.keysBy(outcome).length;
 	}
 
+	/** The role a key's value ultimately resolved to: its own role if `bound`, else the inherited ancestor. Null for `unread`. */
+	detailFor(key: string): string | null {
+		return ReferenceError.suppress(this.#entries.get(key), `Key '${key}' not recorded in this report`).detail;
+	}
+
 	get size(): number {
-		return this.#outcomes.size;
+		return this.#entries.size;
 	}
 }
 //#endregion

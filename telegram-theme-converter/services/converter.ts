@@ -1,74 +1,43 @@
 "use strict";
 
 import "adaptive-extender/core";
-import { Color } from "adaptive-extender/core";
-import { Vocabulary } from "../models/vocabulary.js";
-import { RuleTable } from "../models/rule-table.js";
-import { AndroidTheme } from "../models/android-theme.js";
-import { DesktopTheme } from "../models/desktop-theme.js";
+import { type Platform } from "../models/platform.js";
+import { type RoleVocabulary } from "../models/role-vocabulary.js";
+import { type ThemeDocument } from "../models/theme-document.js";
 import { Report, KeyOutcome } from "../models/report.js";
+import { Lifter } from "./lifter.js";
+import { Projector } from "./projector.js";
 
 //#region Converter
-export interface ConversionResult<T> {
+export interface ConversionResult<T extends ThemeDocument> {
 	theme: T;
 	report: Report;
 }
 
+/**
+ * Converts a theme between any two {@link Platform}s through a platform-neutral role hub:
+ * lift the source theme's authority keys into role values, then project those role values onto
+ * the target platform's keys. Adding a platform costs one vocabulary and one binding table; this
+ * class never branches on which platforms are involved.
+ */
 export class Converter {
-	#androidVocabulary: Vocabulary;
-	#desktopVocabulary: Vocabulary;
-	#ruleTable: RuleTable;
+	#roles: RoleVocabulary;
 
-	constructor(androidVocabulary: Vocabulary, desktopVocabulary: Vocabulary, ruleTable: RuleTable) {
-		this.#androidVocabulary = androidVocabulary;
-		this.#desktopVocabulary = desktopVocabulary;
-		this.#ruleTable = ruleTable;
+	constructor(roles: RoleVocabulary) {
+		this.#roles = roles;
 	}
 
-	#resolveOrDefault(colors: ReadonlyMap<string, Color>, key: string, vocabulary: Vocabulary): Color {
-		const color = colors.get(key);
-		if (color !== undefined) return color;
-		return vocabulary.get(key).lightColor();
-	}
-
-	androidToDesktop(source: Readonly<AndroidTheme>): ConversionResult<DesktopTheme> {
+	convert(source: Readonly<ThemeDocument>, from: Readonly<Platform>, to: Readonly<Platform>): ConversionResult<ThemeDocument> {
+		const values = Lifter.lift(source, from);
 		const report = new Report();
-		const colors = new Map<string, Color>();
 
-		for (const entry of this.#desktopVocabulary.entries) {
-			const rule = this.#ruleTable.directRuleForDesktopKey(entry.name);
-			colors.set(entry.name, this.#resolveOrDefault(source.colors, rule.source, this.#androidVocabulary));
-			report.record(entry.name, KeyOutcome.direct);
+		for (const key of from.bindings.keys()) {
+			if (from.bindings.isAuthority(key)) continue;
+			report.record(key, KeyOutcome.unread);
 		}
 
-		for (const name of source.names()) {
-			if (this.#ruleTable.directRuleForAndroidSource(name) === null) report.record(name, KeyOutcome.dropped);
-		}
-
-		const theme = new DesktopTheme(colors, source.wallpaper, false);
-		return { theme, report };
-	}
-
-	desktopToAndroid(source: Readonly<DesktopTheme>): ConversionResult<AndroidTheme> {
-		const report = new Report();
-		const colors = new Map<string, Color>();
-
-		for (const entry of this.#androidVocabulary.entries) {
-			const rule = this.#ruleTable.directRuleForAndroidSource(entry.name);
-			if (rule === null) continue;
-			colors.set(entry.name, this.#resolveOrDefault(source.colors, rule.target, this.#desktopVocabulary));
-			report.record(entry.name, KeyOutcome.direct);
-		}
-
-		for (const entry of this.#androidVocabulary.entries) {
-			if (colors.has(entry.name)) continue;
-			const rule = this.#ruleTable.anchoredRuleForAndroidKey(entry.name);
-			if (rule === null) throw new ReferenceError(`Android key '${entry.name}' has neither a direct nor an anchored rule`);
-			colors.set(entry.name, rule.resolve(colors));
-			report.record(entry.name, KeyOutcome.anchored);
-		}
-
-		const theme = new AndroidTheme(colors, source.wallpaper);
+		const colors = Projector.project(values, to, this.#roles, report);
+		const theme = to.create(colors, source.wallpaper);
 		return { theme, report };
 	}
 }

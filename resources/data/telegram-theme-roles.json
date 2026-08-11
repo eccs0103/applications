@@ -1,0 +1,209 @@
+{
+	"roles": [
+		{
+			"name": "surface.primary",
+			"parent": null,
+			"description": "Main content background - the default page/list surface."
+		},
+		{
+			"name": "surface.chrome",
+			"parent": null,
+			"description": "Top chrome bar background - Android's app bar / Desktop's title bar."
+		},
+		{
+			"name": "surface.overlay",
+			"parent": null,
+			"description": "Floating dialog/box/popup background, above the main surface."
+		},
+		{
+			"name": "surface.bubble.in",
+			"parent": null,
+			"description": "Incoming message bubble background."
+		},
+		{
+			"name": "surface.bubble.out",
+			"parent": null,
+			"description": "Outgoing message bubble background."
+		},
+		{
+			"name": "text.primary",
+			"parent": null,
+			"description": "Primary body text on the main surface."
+		},
+		{
+			"name": "text.secondary",
+			"parent": null,
+			"description": "Secondary/muted text on the main surface (subtitles, captions, icons)."
+		},
+		{
+			"name": "text.hint",
+			"parent": null,
+			"description": "Placeholder/hint text - the dimmest readable text tone."
+		},
+		{
+			"name": "accent.primary",
+			"parent": null,
+			"description": "The theme's brand accent color - active states, primary actions, links."
+		},
+		{
+			"name": "text.onAccent",
+			"parent": null,
+			"description": "Foreground color for content drawn on top of an accent-colored surface."
+		},
+		{
+			"name": "border.default",
+			"parent": null,
+			"description": "Dividers, separators, subtle borders."
+		},
+		{
+			"name": "shadow.default",
+			"parent": null,
+			"description": "Drop shadows and shadow lines."
+		},
+		{
+			"name": "status.error",
+			"parent": null,
+			"description": "Error/destructive/red semantic color."
+		},
+		{
+			"name": "status.success",
+			"parent": null,
+			"description": "Success/positive/green semantic color."
+		},
+		{
+			"name": "overlay.scrim",
+			"parent": null,
+			"description": "Semi-transparent selection/scrim overlay drawn above content."
+		},
+		{
+			"name": "palette.blue",
+			"parent": null,
+			"description": "The palette's blue swatch."
+		},
+		{
+			"name": "palette.green",
+			"parent": null,
+			"description": "The palette's green swatch."
+		},
+		{
+			"name": "palette.red",
+			"parent": null,
+			"description": "The palette's red swatch."
+		},
+		{
+			"name": "palette.golden",
+			"parent": null,
+			"description": "The palette's golden/yellow swatch."
+		},
+		{
+			"name": "palette.lightblue",
+			"parent": null,
+			"description": "The palette's light blue swatch."
+		},
+		{
+			"name": "palette.lightgreen",
+			"parent": null,
+			"description": "The palette's light green swatch."
+		},
+		{
+			"name": "palette.orange",
+			"parent": null,
+			"description": "The palette's orange swatch."
+		},
+		{
+			"name": "palette.purple",
+			"parent": null,
+			"description": "The palette's purple/violet swatch."
+		},
+		{
+			"name": "palette.cyan",
+			"parent": null,
+			"description": "The palette's cyan swatch."
+		},
+		{
+			"name": "text.title.chrome",
+			"parent": "text.primary",
+			"description": "The title text drawn on the chrome surface (contact name, screen title)."
+		},
+		{
+			"name": "icon.chrome",
+			"parent": "text.title.chrome",
+			"description": "Icon tint on the chrome surface - Android pairs this exactly with the title text."
+		},
+		{
+			"name": "text.subtitle.chrome",
+			"parent": "text.secondary",
+			"description": "The subtitle under the chrome title (online status, member count)."
+		},
+		{
+			"name": "accent.icon",
+			"parent": "text.onAccent",
+			"description": "Icon color drawn on top of an accent-colored surface (FAB icon, filled button icon)."
+		},
+		{
+			"name": "button.flat.text",
+			"parent": "accent.primary",
+			"description": "Text-only flat button using the accent color directly as foreground (Cancel/Apply style)."
+		},
+		{
+			"name": "badge.unread.bg",
+			"parent": "accent.primary",
+			"description": "Unread-count badge background for a not-muted chat."
+		},
+		{
+			"name": "badge.unread.bg.muted",
+			"parent": "text.secondary",
+			"description": "Unread-count badge background for a muted chat - documented on both platforms as a distinct, deliberately less prominent tone from the not-muted badge."
+		},
+		{
+			"name": "badge.unread.text",
+			"parent": "text.onAccent",
+			"description": "Unread-count badge text."
+		},
+		{
+			"name": "status.delivered",
+			"parent": "status.success",
+			"description": "The message delivery checkmark tint - shared by sent and read states on both platforms."
+		},
+		{
+			"name": "quote.bar",
+			"parent": "accent.primary",
+			"description": "The colored vertical bar marking a quoted/reply message."
+		},
+		{
+			"name": "quote.author",
+			"parent": "accent.primary",
+			"description": "The quoted message's author name."
+		},
+		{
+			"name": "quote.text",
+			"parent": "text.primary",
+			"description": "The quoted message's preview text."
+		},
+		{
+			"name": "media.title",
+			"parent": "text.primary",
+			"description": "File/audio title text inside a message - documented on Desktop as \"media filename text\"."
+		},
+		{
+			"name": "media.subtitle",
+			"parent": "text.secondary",
+			"description": "File/audio performer or metadata text inside a message. Desktop has no documented equivalent of this concept, so it has no Desktop authority and inherits text.secondary."
+		},
+		{
+			"name": "media.loader",
+			"parent": "accent.primary",
+			"description": "Download/upload progress ring - documented on Desktop as \"radial download animation line\"."
+		},
+		{
+			"name": "icon.onLoader",
+			"parent": "text.onAccent",
+			"description": "The icon glyph drawn on top of the loader ring - documented on Desktop as \"download arrow icon\", a separate key from the ring itself."
+		},
+		{
+			"name": "progress.fill",
+			"parent": "accent.primary",
+			"description": "The played/filled portion of an audio or voice seekbar, as distinct from its unplayed track."
+		}
+	]
+}

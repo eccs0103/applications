@@ -15,21 +15,21 @@ export class ConverterRenderer extends EventTarget {
 	#spanDirection: HTMLSpanElement;
 	#buttonConvert: HTMLButtonElement;
 	#divReport: HTMLDivElement;
-	#spanReportDirect: HTMLSpanElement;
-	#spanReportAnchored: HTMLSpanElement;
-	#spanReportDropped: HTMLSpanElement;
+	#spanReportBound: HTMLSpanElement;
+	#spanReportInherited: HTMLSpanElement;
+	#spanReportUnread: HTMLSpanElement;
 	#tableReportKeys: HTMLTableElement;
 
-	constructor(inputSource: HTMLInputElement, dfnStatus: HTMLElement, spanDirection: HTMLSpanElement, buttonConvert: HTMLButtonElement, divReport: HTMLDivElement, spanReportDirect: HTMLSpanElement, spanReportAnchored: HTMLSpanElement, spanReportDropped: HTMLSpanElement, tableReportKeys: HTMLTableElement) {
+	constructor(inputSource: HTMLInputElement, dfnStatus: HTMLElement, spanDirection: HTMLSpanElement, buttonConvert: HTMLButtonElement, divReport: HTMLDivElement, spanReportBound: HTMLSpanElement, spanReportInherited: HTMLSpanElement, spanReportUnread: HTMLSpanElement, tableReportKeys: HTMLTableElement) {
 		super();
 		this.#inputSource = inputSource;
 		this.#dfnStatus = dfnStatus;
 		this.#spanDirection = spanDirection;
 		this.#buttonConvert = buttonConvert;
 		this.#divReport = divReport;
-		this.#spanReportDirect = spanReportDirect;
-		this.#spanReportAnchored = spanReportAnchored;
-		this.#spanReportDropped = spanReportDropped;
+		this.#spanReportBound = spanReportBound;
+		this.#spanReportInherited = spanReportInherited;
+		this.#spanReportUnread = spanReportUnread;
 		this.#tableReportKeys = tableReportKeys;
 
 		inputSource.addEventListener("change", this.#onSourceChange.bind(this));
@@ -71,21 +71,22 @@ export class ConverterRenderer extends EventTarget {
 		this.#buttonConvert.disabled = !enabled;
 	}
 
-	#renderReportRow(key: string, outcome: KeyOutcome): HTMLTableRowElement {
+	#renderReportRow(key: string, outcome: KeyOutcome, detail: string | null): HTMLTableRowElement {
 		const trReportKey = this.#tableReportKeys.insertRow();
 		trReportKey.insertCell().textContent = key;
 		trReportKey.insertCell().textContent = outcome;
+		trReportKey.insertCell().textContent = detail ?? String.empty;
 		return trReportKey;
 	}
 
 	showReport(report: Readonly<Report>): void {
-		this.#spanReportDirect.textContent = `${report.countBy(KeyOutcome.direct)}`;
-		this.#spanReportAnchored.textContent = `${report.countBy(KeyOutcome.anchored)}`;
-		this.#spanReportDropped.textContent = `${report.countBy(KeyOutcome.dropped)}`;
+		this.#spanReportBound.textContent = `${report.countBy(KeyOutcome.bound)}`;
+		this.#spanReportInherited.textContent = `${report.countBy(KeyOutcome.inherited)}`;
+		this.#spanReportUnread.textContent = `${report.countBy(KeyOutcome.unread)}`;
 
 		this.#tableReportKeys.replaceChildren();
-		for (const outcome of [KeyOutcome.direct, KeyOutcome.anchored, KeyOutcome.dropped]) {
-			for (const key of report.keysBy(outcome)) this.#renderReportRow(key, outcome);
+		for (const outcome of [KeyOutcome.bound, KeyOutcome.inherited, KeyOutcome.unread]) {
+			for (const key of report.keysBy(outcome)) this.#renderReportRow(key, outcome, report.detailFor(key));
 		}
 
 		this.#divReport.hidden = false;

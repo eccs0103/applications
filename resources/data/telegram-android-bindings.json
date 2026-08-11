@@ -1,0 +1,3800 @@
+{
+	"platform": "android",
+	"bindings": [
+		{
+			"key": "dialogBackground",
+			"role": "surface.overlay",
+			"authority": true
+		},
+		{
+			"key": "dialogBackgroundGray",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogTextBlack",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogTextLink",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogLinkSelection",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogTextBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "dialogTextBlue2",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "dialogTextBlue4",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "dialogTextGray",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogTextGray2",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogTextGray3",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogTextGray4",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogTextHint",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "dialogIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogGrayLine",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "dialogTopBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogInputField",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogInputFieldActivated",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogCheckboxSquareBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogCheckboxSquareCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogCheckboxSquareUnchecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogCheckboxSquareDisabled",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "dialogRadioBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogRadioBackgroundChecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogLineProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogLineProgressBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogButton",
+			"role": "button.flat.text",
+			"authority": true
+		},
+		{
+			"key": "dialogButtonSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogScrollGlow",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogRoundCheckBox",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogRoundCheckBoxCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialog_inlineProgressBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialog_inlineProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogSearchBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogSearchHint",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "dialogSearchIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogSearchText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogFloatingButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogFloatingButtonPressed",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogFloatingIcon",
+			"role": "accent.icon",
+			"authority": false
+		},
+		{
+			"key": "dialogShadowLine",
+			"role": "shadow.default",
+			"authority": true
+		},
+		{
+			"key": "dialogEmptyImage",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogEmptyText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogSwipeRemove",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogReactionMentionBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogCardShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "dialogGiftsBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogGiftsTabText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "bot_loadingIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "gift_ribbon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "gift_ribbon_soldout",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "share_icon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "share_linkText",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "share_linkBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhite",
+			"role": "surface.primary",
+			"authority": true
+		},
+		{
+			"key": "windowBackgroundUnchecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundChecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundCheckText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "progressCircle",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueText",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueText2",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueText3",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueText4",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueText5",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueText6",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueText7",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueButton",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueIcon",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGreenText",
+			"role": "status.success",
+			"authority": true
+		},
+		{
+			"key": "windowBackgroundWhiteGreenText2",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "text_RedRegular",
+			"role": "status.error",
+			"authority": true
+		},
+		{
+			"key": "text_RedBold",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "fill_RedNormal",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText",
+			"role": "text.secondary",
+			"authority": true
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText2",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText3",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText4",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText5",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText6",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText7",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteGrayText8",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlackText",
+			"role": "text.primary",
+			"authority": true
+		},
+		{
+			"key": "windowBackgroundWhiteHintText",
+			"role": "text.hint",
+			"authority": true
+		},
+		{
+			"key": "windowBackgroundWhiteValueText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteLinkText",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteLinkSelection",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteBlueHeader",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteInputField",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundWhiteInputFieldActivated",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "switchTrack",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "switchTrackChecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "switchTrackBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "switchTrackBlueChecked",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "switchTrackBlueThumb",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "switchTrackBlueThumbChecked",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "switchTrackBlueSelector",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "switchTrackBlueSelectorChecked",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "switch2Track",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "switch2TrackChecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "checkboxSquareBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "checkboxSquareCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "checkboxSquareUnchecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "checkboxSquareDisabled",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "listSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "settings_listSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "radioBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "radioBackgroundChecked",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundGray",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBackgroundGrayShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "emptyListPlaceholder",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "divider",
+			"role": "border.default",
+			"authority": true
+		},
+		{
+			"key": "graySection",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "graySectionText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressInner1",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressOuter1",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressInner2",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressOuter2",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressInner3",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressOuter3",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressInner4",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contextProgressOuter4",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "fastScrollActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "fastScrollInactive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "fastScrollText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "pollCreateIcons",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "avatar_text",
+			"role": "text.onAccent",
+			"authority": true
+		},
+		{
+			"key": "avatar_backgroundSaved",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Saved",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundArchived",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundArchivedHidden",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundRed",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Red",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundOrange",
+			"role": "palette.orange",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Orange",
+			"role": "palette.orange",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundViolet",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Violet",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundGreen",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Green",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundCyan",
+			"role": "palette.cyan",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Cyan",
+			"role": "palette.cyan",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Blue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundPink",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "avatar_background2Pink",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundGray",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundInProfileBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_backgroundActionBarBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_subtitleInProfileBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_actionBarSelectorBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_actionBarIconBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_nameInMessageRed",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "avatar_nameInMessageOrange",
+			"role": "palette.orange",
+			"authority": false
+		},
+		{
+			"key": "avatar_nameInMessageViolet",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "avatar_nameInMessageGreen",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "avatar_nameInMessageCyan",
+			"role": "palette.cyan",
+			"authority": false
+		},
+		{
+			"key": "avatar_nameInMessageBlue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "avatar_nameInMessagePink",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefault",
+			"role": "surface.chrome",
+			"authority": true
+		},
+		{
+			"key": "actionBarDefaultIcon",
+			"role": "text.title.chrome",
+			"authority": false
+		},
+		{
+			"key": "actionBarActionModeDefault",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarActionModeDefaultTop",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarActionModeDefaultIcon",
+			"role": "icon.chrome",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultTitle",
+			"role": "text.title.chrome",
+			"authority": true
+		},
+		{
+			"key": "actionBarDefaultSubtitle",
+			"role": "text.subtitle.chrome",
+			"authority": true
+		},
+		{
+			"key": "actionBarDefaultSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarWhiteSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultSearch",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultSearchPlaceholder",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultSubmenuItem",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultSubmenuItemIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultSubmenuBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultSubmenuSeparator",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "actionBarActionModeDefaultSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarActionModeReaction",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarActionModeReactionText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarActionModeReactionDot",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarTabActiveText",
+			"role": "text.title.chrome",
+			"authority": false
+		},
+		{
+			"key": "actionBarTabUnactiveText",
+			"role": "text.subtitle.chrome",
+			"authority": false
+		},
+		{
+			"key": "actionBarTabLine",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_tabUnreadActiveBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_tabUnreadUnactiveBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarTabSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarBrowser",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "table_background",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "table_border",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultArchived",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultArchivedSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultArchivedIcon",
+			"role": "text.title.chrome",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultArchivedTitle",
+			"role": "text.title.chrome",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultArchivedSearch",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "actionBarDefaultArchivedSearchPlaceholder",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "chats_onlineCircle",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_unreadCounter",
+			"role": "badge.unread.bg",
+			"authority": true
+		},
+		{
+			"key": "chats_unreadCounterMuted",
+			"role": "badge.unread.bg.muted",
+			"authority": true
+		},
+		{
+			"key": "chats_unreadCounterText",
+			"role": "badge.unread.text",
+			"authority": true
+		},
+		{
+			"key": "chats_archiveBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_archivePinBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_archiveIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_archiveText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_name",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_nameArchived",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_secretName",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_secretIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_pinnedIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_message",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_messageArchived",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_message_threeLines",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_draft",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_nameMessage",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_nameMessageArchived",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_nameMessage_threeLines",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_nameMessageArchived_threeLines",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_attachMessage",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_actionMessage",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_date",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_date_bold",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_pinnedOverlay",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_tabletSelectedOverlay",
+			"role": "overlay.scrim",
+			"authority": false
+		},
+		{
+			"key": "chats_sentCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_sentReadCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_sentClock",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_sentError",
+			"role": "status.error",
+			"authority": false
+		},
+		{
+			"key": "chats_sentErrorIcon",
+			"role": "status.error",
+			"authority": false
+		},
+		{
+			"key": "chats_verifiedBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_verifiedCheck",
+			"role": "text.onAccent",
+			"authority": false
+		},
+		{
+			"key": "chats_muteIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_mentionIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuItemText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuItemCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuItemIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuName",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuPhone",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuPhoneCats",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chats_actionIcon",
+			"role": "accent.icon",
+			"authority": true
+		},
+		{
+			"key": "chats_actionBackground",
+			"role": "accent.primary",
+			"authority": true
+		},
+		{
+			"key": "chats_actionPressedBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_menuTopBackgroundCats",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_archivePullDownBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chats_archivePullDownBackgroundActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachCheckBoxCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachCheckBoxBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachPhotoBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachActiveTab",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachUnactiveTab",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachPermissionImage",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachPermissionMark",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachPermissionText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachEmptyImage",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachGalleryBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachAudioBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachContactBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachContactText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachLocationBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_attachPollBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inPollCorrectAnswer",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outPollCorrectAnswer",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inPollWrongAnswer",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outPollWrongAnswer",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_status",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inGreenCall",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "chat_outGreenCall",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "chat_lockIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_muteIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inBubble",
+			"role": "surface.bubble.in",
+			"authority": true
+		},
+		{
+			"key": "chat_inBubbleSelected",
+			"role": "surface.bubble.in",
+			"authority": false
+		},
+		{
+			"key": "chat_inBubbleShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "chat_outBubble",
+			"role": "surface.bubble.out",
+			"authority": true
+		},
+		{
+			"key": "chat_outBubbleGradientSelectedOverlay",
+			"role": "overlay.scrim",
+			"authority": false
+		},
+		{
+			"key": "chat_outBubbleSelected",
+			"role": "surface.bubble.out",
+			"authority": false
+		},
+		{
+			"key": "chat_outBubbleShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "chat_inMediaIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inMediaIconSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outMediaIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outMediaIconSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messageTextIn",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messageTextOut",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messageLinkIn",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messageLinkOut",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_serviceText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_serviceLink",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_serviceIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaTimeBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outSentCheck",
+			"role": "status.delivered",
+			"authority": true
+		},
+		{
+			"key": "chat_outSentCheckSelected",
+			"role": "status.delivered",
+			"authority": false
+		},
+		{
+			"key": "chat_outSentCheckRead",
+			"role": "status.delivered",
+			"authority": false
+		},
+		{
+			"key": "chat_outSentCheckReadSelected",
+			"role": "status.delivered",
+			"authority": false
+		},
+		{
+			"key": "chat_outSentClock",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outSentClockSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inSentClock",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inSentClockSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaSentCheck",
+			"role": "status.delivered",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaSentClock",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inViews",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inViewsSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outViews",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outViewsSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaViews",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inMenu",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inMenuSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outMenu",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outMenuSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaMenu",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outInstant",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outInstantSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inInstant",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inInstantSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_sentError",
+			"role": "status.error",
+			"authority": false
+		},
+		{
+			"key": "chat_sentErrorIcon",
+			"role": "status.error",
+			"authority": false
+		},
+		{
+			"key": "chat_selectedBackground",
+			"role": "overlay.scrim",
+			"authority": true
+		},
+		{
+			"key": "chat_previewDurationText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_previewGameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inPreviewInstantText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outPreviewInstantText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_secretTimeText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_stickerNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_botButtonText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inForwardedNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outForwardedNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inPsaNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outPsaNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inViaBotNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outViaBotNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_stickerViaBotNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inReplyLine",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "chat_outReplyLine",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "chat_outReplyLine2",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "chat_stickerReplyLine",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "chat_inReplyNameText",
+			"role": "quote.author",
+			"authority": false
+		},
+		{
+			"key": "chat_outReplyNameText",
+			"role": "quote.author",
+			"authority": false
+		},
+		{
+			"key": "chat_stickerReplyNameText",
+			"role": "quote.author",
+			"authority": false
+		},
+		{
+			"key": "chat_inReplyMessageText",
+			"role": "quote.text",
+			"authority": true
+		},
+		{
+			"key": "chat_outReplyMessageText",
+			"role": "quote.text",
+			"authority": false
+		},
+		{
+			"key": "chat_inReplyMediaMessageText",
+			"role": "quote.text",
+			"authority": false
+		},
+		{
+			"key": "chat_outReplyMediaMessageText",
+			"role": "quote.text",
+			"authority": false
+		},
+		{
+			"key": "chat_inReplyMediaMessageSelectedText",
+			"role": "quote.text",
+			"authority": false
+		},
+		{
+			"key": "chat_outReplyMediaMessageSelectedText",
+			"role": "quote.text",
+			"authority": false
+		},
+		{
+			"key": "chat_stickerReplyMessageText",
+			"role": "quote.text",
+			"authority": false
+		},
+		{
+			"key": "chat_inPreviewLine",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outPreviewLine",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inSiteNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outSiteNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inContactNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outContactNameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inContactPhoneText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inContactPhoneSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outContactPhoneText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outContactPhoneSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioSelectedProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioSelectedProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaTimeText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAdminText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAdminSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAdminText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAdminSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inTimeText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inTimeSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outTimeText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outTimeSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioPerformerText",
+			"role": "media.subtitle",
+			"authority": true
+		},
+		{
+			"key": "chat_inAudioPerformerSelectedText",
+			"role": "media.subtitle",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioPerformerText",
+			"role": "media.subtitle",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioPerformerSelectedText",
+			"role": "media.subtitle",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioTitleText",
+			"role": "media.title",
+			"authority": true
+		},
+		{
+			"key": "chat_outAudioTitleText",
+			"role": "media.title",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioDurationText",
+			"role": "media.subtitle",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioDurationText",
+			"role": "media.subtitle",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioDurationSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioDurationSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioSeekbar",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioCacheSeekbar",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioSeekbar",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioCacheSeekbar",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioSeekbarSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outAudioSeekbarSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inAudioSeekbarFill",
+			"role": "progress.fill",
+			"authority": true
+		},
+		{
+			"key": "chat_outAudioSeekbarFill",
+			"role": "progress.fill",
+			"authority": false
+		},
+		{
+			"key": "chat_inVoiceSeekbar",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outVoiceSeekbar",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inVoiceSeekbarSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outVoiceSeekbarSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inVoiceSeekbarFill",
+			"role": "progress.fill",
+			"authority": false
+		},
+		{
+			"key": "chat_outVoiceSeekbarFill",
+			"role": "progress.fill",
+			"authority": false
+		},
+		{
+			"key": "chat_inFileProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outFileProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inFileProgressSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outFileProgressSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inFileNameText",
+			"role": "media.title",
+			"authority": false
+		},
+		{
+			"key": "chat_outFileNameText",
+			"role": "media.title",
+			"authority": false
+		},
+		{
+			"key": "chat_inFileInfoText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outFileInfoText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inFileInfoSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outFileInfoSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inFileBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outFileBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inFileBackgroundSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outFileBackgroundSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inVenueInfoText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outVenueInfoText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inVenueInfoSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outVenueInfoSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaInfoText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_linkSelectBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outLinkSelectBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_textSelectBackground",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiSearchBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiSearchIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelShadowLine",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelEmptyText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiBottomPanelIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelIconSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelStickerPackSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelStickerPackSelectorLine",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelBackspace",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelTrendingTitle",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelStickerSetName",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelStickerSetNameHighlight",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelStickerSetNameIcon",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelTrendingDescription",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_botKeyboardButtonText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_botKeyboardButtonBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_botKeyboardButtonBackgroundPressed",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_unreadMessagesStartArrowIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_unreadMessagesStartText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_unreadMessagesStartBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inLocationBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inLocationIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outLocationIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inContactBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inContactIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outContactBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outContactIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_searchPanelIcons",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_searchPanelText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_secretChatStatusText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_fieldOverlayText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_stickersHintPanel",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "chat_replyPanelIcons",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_replyPanelClose",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_replyPanelName",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_replyPanelLine",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelHint",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelCursor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelIcons",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_recordedVoicePlayPause",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_recordedVoiceDot",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_recordedVoiceBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_recordedVoiceDarkerBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_recordedVoiceProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_recordedVoiceProgressInner",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_recordVoiceCancel",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelSend",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelVoiceLock",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelVoiceLockBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelVoiceLockShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "chat_recordTime",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_emojiPanelNewTrending",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_gifSaveHintText",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "chat_gifSaveHintBackground",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "chat_goDownButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_goDownButtonCounter",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_goDownButtonCounterBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelCancelInlineBot",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelVoicePressed",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelVoiceBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelVoiceDelete",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_messagePanelVoiceDuration",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inlineResultIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_topPanelBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_topPanelClose",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_topPanelLine",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_topPanelTitle",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_topPanelMessage",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_addContact",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inLoader",
+			"role": "media.loader",
+			"authority": true
+		},
+		{
+			"key": "chat_inLoaderSelected",
+			"role": "media.loader",
+			"authority": false
+		},
+		{
+			"key": "chat_outLoader",
+			"role": "media.loader",
+			"authority": false
+		},
+		{
+			"key": "chat_outLoaderSelected",
+			"role": "media.loader",
+			"authority": false
+		},
+		{
+			"key": "chat_inLoaderPhoto",
+			"role": "media.loader",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaLoaderPhoto",
+			"role": "media.loader",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaLoaderPhotoSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_mediaLoaderPhotoIcon",
+			"role": "icon.onLoader",
+			"authority": true
+		},
+		{
+			"key": "chat_mediaLoaderPhotoIconSelected",
+			"role": "icon.onLoader",
+			"authority": false
+		},
+		{
+			"key": "chat_serviceBackgroundSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inQuote",
+			"role": "quote.bar",
+			"authority": true
+		},
+		{
+			"key": "chat_outQuote",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "profile_creatorIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "profile_actionIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "profile_actionBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "profile_actionPressedBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "profile_verifiedBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "profile_verifiedCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "profile_title",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "profile_status",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_tagAdmin",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_tagCreator",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "profile_tabText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "profile_tabSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "profile_tabSelectedLine",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "profile_tabSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "player_actionBarSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "player_actionBarTitle",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "player_actionBarSubtitle",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "player_actionBarItems",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "player_background",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "player_time",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "player_progressBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "player_progressCachedBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "player_progress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "player_button",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "player_buttonActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sheet_scrollUp",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "sheet_other",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "files_folderIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "files_folderIconBackground",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "files_iconText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "sessions_devicesImage",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "passport_authorizeBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "passport_authorizeBackgroundSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "passport_authorizeText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "location_sendLocationBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "location_sendLocationIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "location_sendLocationText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "location_sendLiveLocationBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "location_sendLiveLocationIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "location_sendLiveLocationText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "location_liveLocationProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "location_placeLocationBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "location_actionIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "location_actionActiveIcon",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "location_actionBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "location_actionPressedBackground",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialog_liveLocationProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "calls_callReceivedGreenIcon",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "calls_callReceivedRedIcon",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_addedIcon",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_buttonProgress",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_addButton",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_addButton2",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_addButtonPressed",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_removeButtonText",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_buttonText",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "featuredStickers_unread",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "buttonNeutral",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "buttonNeutralText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "inappPlayerPerformer",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "inappPlayerTitle",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "inappPlayerBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "inappPlayerPlayPause",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "inappPlayerClose",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "returnToCallBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "returnToCallMutedBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "returnToCallText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "sharedMedia_startStopLoadIcon",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "sharedMedia_linkPlaceholder",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "sharedMedia_linkPlaceholderText",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "sharedMedia_photoPlaceholder",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "checkbox",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "checkboxCheck",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "checkboxDisabled",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stickers_menu",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stickers_menuSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "changephoneinfo_image2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupcreate_hintText",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "groupcreate_cursor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupcreate_sectionShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "groupcreate_sectionText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "groupcreate_spanText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "groupcreate_spanBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "groupcreate_spanDelete",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "contacts_inviteBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "contacts_inviteText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "login_progressInner",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "login_progressOuter",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "picker_enabledButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "picker_disabledButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "picker_badge",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "picker_badgeText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_botSwitchToInlineText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "undo_background",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "undo_cancelColor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "undo_infoColor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_outTextSelectionHighlight",
+			"role": "overlay.scrim",
+			"authority": false
+		},
+		{
+			"key": "chat_inTextSelectionHighlight",
+			"role": "overlay.scrim",
+			"authority": false
+		},
+		{
+			"key": "chat_TextSelectionCursor",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outTextSelectionCursor",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outBubbleLocationPlaceholder",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "chat_inBubbleLocationPlaceholder",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "chat_BlurAlpha",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_BlurAlphaSlow",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_editMediaButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartSignature",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartSignatureAlpha",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartHintLine",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "statisticChartActiveLine",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartInactivePickerChart",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartActivePickerChart",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartBackZoomColor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartChevronColor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_blue",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_green",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_red",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_golden",
+			"role": "palette.golden",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_lightblue",
+			"role": "palette.lightblue",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_lightgreen",
+			"role": "palette.lightgreen",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_orange",
+			"role": "palette.orange",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_indigo",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_purple",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLine_cyan",
+			"role": "palette.cyan",
+			"authority": false
+		},
+		{
+			"key": "statisticChartLineEmpty",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "color_blue",
+			"role": "palette.blue",
+			"authority": true
+		},
+		{
+			"key": "color_green",
+			"role": "palette.green",
+			"authority": true
+		},
+		{
+			"key": "color_red",
+			"role": "palette.red",
+			"authority": true
+		},
+		{
+			"key": "color_yellow",
+			"role": "palette.golden",
+			"authority": true
+		},
+		{
+			"key": "color_lightblue",
+			"role": "palette.lightblue",
+			"authority": true
+		},
+		{
+			"key": "color_lightgreen",
+			"role": "palette.lightgreen",
+			"authority": true
+		},
+		{
+			"key": "color_orange",
+			"role": "palette.orange",
+			"authority": true
+		},
+		{
+			"key": "color_purple",
+			"role": "palette.purple",
+			"authority": true
+		},
+		{
+			"key": "color_cyan",
+			"role": "palette.cyan",
+			"authority": true
+		},
+		{
+			"key": "voipgroup_checkMenu",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_muteButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_muteButton2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_muteButton3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_searchText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_searchPlaceholder",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_searchBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_leaveCallMenu",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_scrollUp",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_soundButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_soundButtonActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_soundButtonActiveScrolled",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_soundButton2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_soundButtonActive2",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_soundButtonActive2Scrolled",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_leaveButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_leaveButtonScrolled",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_connectingProgress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_disabledButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_rtmpButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_disabledButtonActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_disabledButtonActiveScrolled",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_unmuteButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_unmuteButton2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_actionBarUnscrolled",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_listViewBackgroundUnscrolled",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_lastSeenTextUnscrolled",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedIconUnscrolled",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_actionBar",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_actionBarItems",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_actionBarItemsSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedByAdminIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_lastSeenText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_nameText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_listViewBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_dialogBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_listeningText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_speakingText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_listSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_inviteMembersBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayBlue1",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayBlue2",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayGreen1",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayGreen2",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_topPanelBlue1",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_topPanelBlue2",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_topPanelGreen1",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_topPanelGreen2",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_topPanelGray",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayAlertGradientMuted",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayAlertGradientMuted2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayAlertGradientUnmuted",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayAlertGradientUnmuted2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedByAdminGradient",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedByAdminGradient2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedByAdminGradient3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayAlertMutedByAdmin",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_overlayAlertMutedByAdmin2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedByAdminMuteButton",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_mutedByAdminMuteButtonDisabled",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_windowBackgroundWhiteInputField",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "voipgroup_windowBackgroundWhiteInputFieldActivated",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outReactionButtonBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inReactionButtonBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inReactionButtonText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outReactionButtonText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_inReactionButtonTextSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outReactionButtonTextSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_reactionServiceButtonBackgroundSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_reactionServiceButtonTextSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradient0",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradient1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradient2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradient3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradient4",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBackground1",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBackground2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBackground3",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBackground4",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBackgroundOverlay",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumStarGradient1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumStarGradient2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumCoinGradient1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumCoinGradient2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumStartSmallStarsColor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumStartSmallStarsColor2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBottomSheet1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBottomSheet2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumGradientBottomSheet3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "topics_unreadCounter",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "topics_unreadCounterMuted",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "starsGradient1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "starsGradient2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle_dialog1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle_dialog2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle_closeFriends1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle_closeFriends2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle_live1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stories_circle_live2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "chat_inCodeBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "chat_outCodeBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "code_keyword",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "code_operator",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "code_constant",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "code_string",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "code_number",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "code_comment",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "code_function",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "iv_background",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "iv_backgroundGray",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "iv_ab_progress",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "iv_navigationBackground",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "reactionStarSelector",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "glass_defaultIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "glass_defaultText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "glass_targetMainTabs",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "glass_targetMainTopPanel",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "glass_tabSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "glass_tabSelectedText",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "glass_tabUnselected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "botKeyboard_button_danger",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "botKeyboard_button_primary",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "botKeyboard_button_success",
+			"role": "status.success",
+			"authority": false
+		},
+		{
+			"key": "telegram_color_dialogsLogo",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "telegram_color",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "telegram_color_text",
+			"role": "text.primary",
+			"authority": false
+		}
+	]
+}

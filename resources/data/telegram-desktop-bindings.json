@@ -1,0 +1,2935 @@
+{
+	"platform": "desktop",
+	"bindings": [
+		{
+			"key": "windowBg",
+			"role": "surface.primary",
+			"authority": true
+		},
+		{
+			"key": "windowFg",
+			"role": "text.primary",
+			"authority": true
+		},
+		{
+			"key": "windowBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "windowSubTextFg",
+			"role": "text.secondary",
+			"authority": true
+		},
+		{
+			"key": "windowSubTextFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "windowBoldFg",
+			"role": "text.title.chrome",
+			"authority": true
+		},
+		{
+			"key": "windowBoldFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "windowBgActive",
+			"role": "accent.primary",
+			"authority": true
+		},
+		{
+			"key": "windowFgActive",
+			"role": "text.onAccent",
+			"authority": true
+		},
+		{
+			"key": "windowActiveTextFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "windowShadowFg",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "windowShadowFgFallback",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "shadowFg",
+			"role": "shadow.default",
+			"authority": true
+		},
+		{
+			"key": "slideFadeOutBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "slideFadeOutShadowFg",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "imageBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "imageBgTransparent",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "activeButtonBg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "activeButtonBgOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "activeButtonBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "activeButtonFg",
+			"role": "accent.icon",
+			"authority": true
+		},
+		{
+			"key": "activeButtonFgOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "activeButtonSecondaryFg",
+			"role": "accent.icon",
+			"authority": false
+		},
+		{
+			"key": "activeButtonSecondaryFgOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "activeLineFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "activeLineFgError",
+			"role": "status.error",
+			"authority": false
+		},
+		{
+			"key": "lightButtonBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "lightButtonBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "lightButtonBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "lightButtonFg",
+			"role": "button.flat.text",
+			"authority": true
+		},
+		{
+			"key": "lightButtonFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "attentionButtonFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "attentionButtonFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "attentionButtonBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "attentionButtonBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "menuBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "menuBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "menuBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "menuIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "menuIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "menuSubmenuArrowFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "menuFgDisabled",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "menuSeparatorFg",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "scrollBarBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "scrollBarBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "scrollBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "scrollBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "smallCloseIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "smallCloseIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "radialFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "radialBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "placeholderFg",
+			"role": "text.hint",
+			"authority": true
+		},
+		{
+			"key": "placeholderFgActive",
+			"role": "text.hint",
+			"authority": false
+		},
+		{
+			"key": "inputBorderFg",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "filterInputBorderFg",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "filterInputActiveBg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "filterInputInactiveBg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "checkboxFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "botKbBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "botKbDownBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "botKbColor",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "botKbPrimaryBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "botKbDangerBg",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "botKbSuccessBg",
+			"role": "status.success",
+			"authority": false
+		},
+		{
+			"key": "botKbInlinePrimaryBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "botKbInlineDangerBg",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "botKbInlineSuccessBg",
+			"role": "status.success",
+			"authority": false
+		},
+		{
+			"key": "sliderBgInactive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sliderBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "tooltipBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "tooltipFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "tooltipBorderFg",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "titleShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "titleBg",
+			"role": "surface.chrome",
+			"authority": false
+		},
+		{
+			"key": "titleBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonFg",
+			"role": "icon.chrome",
+			"authority": true
+		},
+		{
+			"key": "titleButtonBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonBgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonFgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseBgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleButtonCloseFgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "titleFg",
+			"role": "text.title.chrome",
+			"authority": false
+		},
+		{
+			"key": "titleFgActive",
+			"role": "text.title.chrome",
+			"authority": false
+		},
+		{
+			"key": "trayCounterBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "trayCounterBgMute",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "trayCounterFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "trayCounterBgMacInvert",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "trayCounterFgMacInvert",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "layerBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "cancelIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "cancelIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "boxBg",
+			"role": "surface.overlay",
+			"authority": true
+		},
+		{
+			"key": "boxTextFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "boxTextFgGood",
+			"role": "status.success",
+			"authority": true
+		},
+		{
+			"key": "boxTextFgError",
+			"role": "status.error",
+			"authority": true
+		},
+		{
+			"key": "boxTitleFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "boxSearchBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "boxTitleAdditionalFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "boxTitleCloseFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "boxTitleCloseFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "boxDividerBg",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "boxDividerFg",
+			"role": "border.default",
+			"authority": true
+		},
+		{
+			"key": "paymentsTipActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "membersAboutLimitFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "contactsBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "contactsBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "contactsNameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "contactsStatusFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "contactsStatusFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "contactsStatusFgOnline",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "photoCropFadeBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "photoCropPointFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "callArrowFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "callArrowMissedFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "introBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "introTitleFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "introDescriptionFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "introCoverTopBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "introCoverBottomBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "introCoverIconsFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "introCoverPlaneTrace",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "introCoverPlaneInner",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "introCoverPlaneOuter",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "introCoverPlaneTop",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsMenuIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsMenuIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsNameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsChatIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsDateFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsTextFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsTextFgService",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsDraftFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsVerifiedIconBg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsVerifiedIconFg",
+			"role": "text.onAccent",
+			"authority": false
+		},
+		{
+			"key": "dialogsSendingIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsSentIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsUnreadBg",
+			"role": "badge.unread.bg",
+			"authority": true
+		},
+		{
+			"key": "dialogsUnreadBgMuted",
+			"role": "badge.unread.bg.muted",
+			"authority": true
+		},
+		{
+			"key": "dialogsUnreadFg",
+			"role": "badge.unread.text",
+			"authority": true
+		},
+		{
+			"key": "dialogsArchiveFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsOnlineBadgeFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsScamFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsNameFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsChatIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsDateFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsTextFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsTextFgServiceOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsDraftFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsVerifiedIconBgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsVerifiedIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsSendingIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsSentIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsUnreadBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsUnreadBgMutedOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsUnreadFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsArchiveFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsScamFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsNameFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsChatIconFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsDateFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsTextFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsTextFgServiceActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsDraftFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsVerifiedIconBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsVerifiedIconFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsSendingIconFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsSentIconFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsUnreadBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsUnreadBgMutedActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsUnreadFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsOnlineBadgeFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsScamFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsRippleBg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "dialogsRippleBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "searchedBarBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "searchedBarFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "searchedTextMatchBg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "searchedTextMatchFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "searchedTextCurrentMatchBg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "searchedTextCurrentMatchFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "topBarBg",
+			"role": "surface.chrome",
+			"authority": true
+		},
+		{
+			"key": "emojiPanBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "emojiPanCategories",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "emojiPanHeaderFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "emojiPanHeaderBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "emojiIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "emojiSubIconFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "stickerPanDeleteBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "stickerPanDeleteFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stickerPreviewBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "stickerPanPremium1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "stickerPanPremium2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyTextInFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyTextInFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyTextOutFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyTextOutFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyLinkInFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "historyLinkInFgSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "historyLinkOutFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "historyLinkOutFgSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "historyFileNameInFg",
+			"role": "media.title",
+			"authority": true
+		},
+		{
+			"key": "historyFileNameInFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyFileNameOutFg",
+			"role": "media.title",
+			"authority": false
+		},
+		{
+			"key": "historyFileNameOutFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyOutIconFg",
+			"role": "status.delivered",
+			"authority": true
+		},
+		{
+			"key": "historyOutIconFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyIconFgInverted",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historySendingOutIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historySendingInIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historySendingInvertedIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyCallArrowInFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyCallArrowInFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyCallArrowMissedInFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyCallArrowMissedInFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyCallArrowOutFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyCallArrowOutFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyUnreadBarBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyUnreadBarBorder",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "historyUnreadBarFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyForwardChooseBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyForwardChooseFg",
+			"role": "quote.author",
+			"authority": false
+		},
+		{
+			"key": "historyPeer1NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer1NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer1UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer2NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer2NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer2UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer3NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer3NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer3UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer4NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer4NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer4UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer5NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer5NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer5UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer6NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer6NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer6UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer7NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer7NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer7UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer8NameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer8NameFgSelected",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer8UserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeerUserpicFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyPeerSavedMessagesBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeerArchiveUserpicBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer1UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer2UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer3UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer4UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer5UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer6UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer7UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeer8UserpicBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyPeerSavedMessagesBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBg1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBg2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBg3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBg4",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBg5",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBg6",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBg8",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconBgArchive",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "settingsIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyScrollBarBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyScrollBarBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyScrollBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyScrollBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgInBg",
+			"role": "surface.bubble.in",
+			"authority": true
+		},
+		{
+			"key": "msgInBgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgOutBg",
+			"role": "surface.bubble.out",
+			"authority": true
+		},
+		{
+			"key": "msgOutBgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgSelectOverlay",
+			"role": "overlay.scrim",
+			"authority": true
+		},
+		{
+			"key": "msgStickerOverlay",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgInServiceFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgInServiceFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgOutServiceFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgOutServiceFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgInShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "msgInShadowSelected",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "msgOutShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "msgOutShadowSelected",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "msgInDateFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgInDateFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgOutDateFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgOutDateFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgServiceFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgServiceBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgServiceBgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgInReplyBarColor",
+			"role": "quote.bar",
+			"authority": true
+		},
+		{
+			"key": "msgInReplyBarSelColor",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "msgOutReplyBarColor",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "msgOutReplyBarSelColor",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "msgImgReplyBarColor",
+			"role": "quote.bar",
+			"authority": false
+		},
+		{
+			"key": "msgInMonoFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgOutMonoFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgInMonoFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgOutMonoFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgDateImgFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgDateImgBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgDateImgBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgDateImgBgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileThumbLinkInFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileThumbLinkInFgSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileThumbLinkOutFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileThumbLinkOutFgSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileInBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileInBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileInBgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileOutBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFileOutBgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile1Bg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile1BgDark",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile1BgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile1BgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile2Bg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile2BgDark",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile2BgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile2BgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile3Bg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile3BgDark",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile3BgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile3BgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile4Bg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile4BgDark",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile4BgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgFile4BgSelected",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyFileInIconFg",
+			"role": "icon.onLoader",
+			"authority": true
+		},
+		{
+			"key": "historyFileInIconFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyFileInRadialFg",
+			"role": "media.loader",
+			"authority": true
+		},
+		{
+			"key": "historyFileInRadialFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyFileOutIconFg",
+			"role": "icon.onLoader",
+			"authority": false
+		},
+		{
+			"key": "historyFileOutIconFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyFileOutRadialFg",
+			"role": "media.loader",
+			"authority": false
+		},
+		{
+			"key": "historyFileOutRadialFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyFileThumbIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyFileThumbIconFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyFileThumbRadialFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyFileThumbRadialFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyVideoMessageProgressFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformInActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformInActiveSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformInInactive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformInInactiveSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformOutActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformOutActiveSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformOutInactive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgWaveformOutInactiveSelected",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "msgBotKbOverBgAdd",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "msgBotKbIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "msgBotKbRippleBg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaInFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaInFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaOutFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaOutFgSelected",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "youtubePlayIconBg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "youtubePlayIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "videoPlayIconBg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "videoPlayIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "toastBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "toastFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyToDownBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyToDownBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyToDownBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "historyToDownFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyToDownFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyToDownShadow",
+			"role": "shadow.default",
+			"authority": false
+		},
+		{
+			"key": "historyComposeAreaBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyComposeAreaFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyComposeAreaFgService",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyComposeIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyComposeIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historySendIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historySendIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyPinnedBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyReplyBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyReplyIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyReplyCancelFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyReplyCancelFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "historyComposeButtonBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyComposeButtonBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "historyComposeButtonBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mapPointDrop",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mapPointDot",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "overviewCheckBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "overviewCheckBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "overviewCheckBorder",
+			"role": "border.default",
+			"authority": false
+		},
+		{
+			"key": "overviewCheckFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "overviewPhotoSelectOverlay",
+			"role": "overlay.scrim",
+			"authority": false
+		},
+		{
+			"key": "profileStatusFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "profileVerifiedCheckBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "profileVerifiedCheckFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "profileAdminStartFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "notificationsBoxMonitorFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "notificationsBoxScreenBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "notificationSampleUserpicFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "notificationSampleCloseFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "notificationSampleTextFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "notificationSampleNameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "mainMenuBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mainMenuCoverBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mainMenuCloudFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mainMenuCloudBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaPlayerBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaPlayerActiveFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaPlayerInactiveFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaPlayerDisabledFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileNameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileSizeFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileRedCornerFg",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileYellowCornerFg",
+			"role": "palette.golden",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileGreenCornerFg",
+			"role": "palette.green",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileBlueCornerFg",
+			"role": "palette.blue",
+			"authority": false
+		},
+		{
+			"key": "mediaviewFileExtFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewMenuBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewMenuBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewMenuBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewMenuFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewVideoBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewControlBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewControlFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewCaptionBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewCaptionFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewTextLinkFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewSaveMsgBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewSaveMsgFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackInactive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackInactiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackProgressFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackIconFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPlaybackIconRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPipControlsFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPipControlsFgOver",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPipPlaybackActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewPipPlaybackInactive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewTransparentBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "mediaviewTransparentFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "notificationBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callBgOpaque",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callBgButton",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callNameFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "callStatusFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "callIconBg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "callIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "callIconBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "callIconFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "callIconActiveRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "callAnswerBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callAnswerRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "callAnswerBgOuter",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callHangupBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callHangupRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "callMuteRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallActiveFg",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMembersBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMembersBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMembersBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMembersFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMemberActiveIcon",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMemberActiveStatus",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMemberInactiveIcon",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMemberInactiveStatus",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMemberMutedIcon",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMemberNotJoinedStatus",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallLive1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallLive2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMuted1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMuted2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallForceMutedBar1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallForceMutedBar2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallForceMutedBar3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallForceMuted1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallForceMuted2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallForceMuted3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMenuBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMenuBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallMenuBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallLeaveBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallLeaveBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallVideoTextFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "groupCallVideoSubTextFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "callBarBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callBarMuteRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "callBarBgMuted",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "callBarFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "importantTooltipBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "importantTooltipFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "importantTooltipFgLink",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "outdatedFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "outdateSoonBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "outdatedBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "spellUnderline",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonBgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonFgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseBgOver",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseFgOver",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseBgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTitleButtonCloseFgActiveOver",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "walletTopBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "walletBalanceFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "walletSubBalanceFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "walletTopLabelFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "walletTopIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "walletTopIconRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBgRipple",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarTextFg",
+			"role": "text.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarTextFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "sideBarIconFgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBadgeBg",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBadgeBgActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBadgeBgMuted",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBadgeBgMutedActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "sideBarBadgeFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "songCoverOverlayFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "photoEditorItemBaseHandleFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumButtonBg1",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumButtonBg2",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumButtonBg3",
+			"role": "surface.primary",
+			"authority": false
+		},
+		{
+			"key": "premiumButtonFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumIconBg1",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumIconBg2",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "premiumIconBg3",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "statisticsChartInactive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "statisticsChartActive",
+			"role": "accent.primary",
+			"authority": false
+		},
+		{
+			"key": "statisticsChartLineBlue",
+			"role": "palette.blue",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineGreen",
+			"role": "palette.green",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineRed",
+			"role": "palette.red",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineGolden",
+			"role": "palette.golden",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineLightblue",
+			"role": "palette.lightblue",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineLightgreen",
+			"role": "palette.lightgreen",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineOrange",
+			"role": "palette.orange",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineIndigo",
+			"role": "palette.purple",
+			"authority": false
+		},
+		{
+			"key": "statisticsChartLinePurple",
+			"role": "palette.purple",
+			"authority": true
+		},
+		{
+			"key": "statisticsChartLineCyan",
+			"role": "palette.cyan",
+			"authority": true
+		},
+		{
+			"key": "creditsBg1",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "creditsBg2",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "creditsBg3",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "creditsFg",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "creditsStroke",
+			"role": "palette.red",
+			"authority": false
+		},
+		{
+			"key": "currencyFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "rankAdminFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "rankOwnerFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "rankUserFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsMentionIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsReactionIconFg",
+			"role": "text.secondary",
+			"authority": false
+		},
+		{
+			"key": "dialogsPollIconFg",
+			"role": "text.secondary",
+			"authority": false
+		}
+	]
+}

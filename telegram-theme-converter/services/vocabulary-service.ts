@@ -3,13 +3,17 @@
 import "adaptive-extender/core";
 import { type Bridge } from "./bridge.js";
 import { Vocabulary } from "../models/vocabulary.js";
-import { RuleTable } from "../models/rule-table.js";
+import { RoleVocabulary } from "../models/role-vocabulary.js";
+import { BindingTable } from "../models/binding-table.js";
+import { AndroidPlatform, DesktopPlatform } from "../models/platform.js";
 
 //#region Vocabulary service
 export class VocabularyService {
 	static #nameAndroidVocabulary: string = "telegram-android-vocabulary.json";
 	static #nameDesktopVocabulary: string = "telegram-desktop-vocabulary.json";
-	static #nameRules: string = "telegram-conversion-rules.json";
+	static #nameRoles: string = "telegram-theme-roles.json";
+	static #nameAndroidBindings: string = "telegram-android-bindings.json";
+	static #nameDesktopBindings: string = "telegram-desktop-bindings.json";
 
 	#bridge: Bridge;
 	#baseURI: Readonly<URL>;
@@ -26,16 +30,24 @@ export class VocabularyService {
 		return JSON.parse(content);
 	}
 
-	async loadAndroidVocabulary(): Promise<Vocabulary> {
-		return Vocabulary.import(await this.#readJson(VocabularyService.#nameAndroidVocabulary), VocabularyService.#nameAndroidVocabulary);
+	async loadRoles(): Promise<RoleVocabulary> {
+		return RoleVocabulary.import(await this.#readJson(VocabularyService.#nameRoles), VocabularyService.#nameRoles);
 	}
 
-	async loadDesktopVocabulary(): Promise<Vocabulary> {
-		return Vocabulary.import(await this.#readJson(VocabularyService.#nameDesktopVocabulary), VocabularyService.#nameDesktopVocabulary);
+	async loadAndroidPlatform(): Promise<AndroidPlatform> {
+		const [vocabulary, bindings] = await Promise.all([
+			Vocabulary.import(await this.#readJson(VocabularyService.#nameAndroidVocabulary), VocabularyService.#nameAndroidVocabulary),
+			BindingTable.import(await this.#readJson(VocabularyService.#nameAndroidBindings), VocabularyService.#nameAndroidBindings),
+		]);
+		return new AndroidPlatform(vocabulary, bindings);
 	}
 
-	async loadRuleTable(): Promise<RuleTable> {
-		return RuleTable.import(await this.#readJson(VocabularyService.#nameRules), VocabularyService.#nameRules);
+	async loadDesktopPlatform(): Promise<DesktopPlatform> {
+		const [vocabulary, bindings] = await Promise.all([
+			Vocabulary.import(await this.#readJson(VocabularyService.#nameDesktopVocabulary), VocabularyService.#nameDesktopVocabulary),
+			BindingTable.import(await this.#readJson(VocabularyService.#nameDesktopBindings), VocabularyService.#nameDesktopBindings),
+		]);
+		return new DesktopPlatform(vocabulary, bindings);
 	}
 }
 //#endregion
