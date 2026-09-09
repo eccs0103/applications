@@ -21,6 +21,7 @@ class AppController extends Controller {
 	#members: GroupMember[] = [];
 	#selectionIndex: number = 0;
 	#selectionMember: GroupMember | null = null;
+	#wishGenerator: Generator<[GroupMember, string], null> | null = null;
 
 	async #readGroup(url: Readonly<URL>): Promise<Group> {
 		const content = await this.#bridge.read(url);
@@ -37,6 +38,7 @@ class AppController extends Controller {
 
 		this.#selectionIndex = this.#settings.readSelection();
 		this.#selectionMember = this.#members.at(this.#selectionIndex) ?? null;
+		this.#wishGenerator = this.#selectionMember?.askWishes() ?? null;
 
 		await this.#renderer.initialize();
 		await this.#renderer.render(this.#members);
@@ -62,6 +64,7 @@ class AppController extends Controller {
 
 	#updateSelection(member: GroupMember | null, animate: boolean): void {
 		const renderer = this.#renderer;
+		const timer = this.#timer;
 		this.#selectionMember = member;
 
 		if (member === null) {
@@ -71,24 +74,27 @@ class AppController extends Controller {
 		const date = new Date();
 		date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
 		const now = Number(date);
-		const { birthday } = member;
+		const birthday = new Date(member.birthday);
 		const begin = birthday.setFullYear(date.getFullYear());
-		const end = birthday.setDate(birthday.getDate() + 1);
-		const wish = member.askWish();
+		const wish = this.#wishGenerator?.next().value ?? null;
 
 		if (wish !== null) {
 			const [member, content] = wish;
-			return renderer.updateContent(content, member.name, animate, 5000);
+			renderer.updateContent(content, member.name, animate);
+			return timer.setTimeout(5000);
 		}
 
 		const timespan = Timespan.fromValue(begin - now);
 		const { days, hours, minutes, seconds } = timespan.duration();
 		const negativity = timespan.valueOf() < 0;
-		return renderer.updateContent(`${negativity ? "Անցավ" : "Մնաց"} ${days}օր ${hours}ժ․ ${minutes}ր․ ${seconds}վ․`, String.empty, false, 1000);
+		renderer.updateContent(`${negativity ? "Անցավ" : "Մնաց"} ${days}օր ${hours}ժ․ ${minutes}ր․ ${seconds}վ․`, String.empty, false);
+		return timer.setTimeout(1000);
 	}
 
 	#onSelectionChange(event: CustomEvent<GroupMember | null>): void {
-		this.#updateSelection(event.detail, false);
+		const member = event.detail;
+		this.#wishGenerator = member?.askWishes() ?? null;
+		this.#updateSelection(member, false);
 	}
 
 	#onSelectionCommit(): void {

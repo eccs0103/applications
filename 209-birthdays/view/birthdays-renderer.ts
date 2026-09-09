@@ -17,6 +17,8 @@ export class BirthdaysRenderer extends EventTarget {
 
 	#pairMemberWithButton: [GroupMember, HTMLButtonElement][] = [];
 	#buttonPickerSelection: HTMLButtonElement | null = null;
+	#animationTitle: Animation | null = null;
+	#animationAuxiliary: Animation | null = null;
 
 	static #appearance: Keyframe = BirthdaysRenderer.#createAppearanceKeyframe("1", "ease-out");
 	static #disappearance: Keyframe = BirthdaysRenderer.#createAppearanceKeyframe("0", "ease-in");
@@ -133,9 +135,12 @@ export class BirthdaysRenderer extends EventTarget {
 		this.#buttonPickerSelection.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "center", inline: "center" });
 	}
 
-	updateContent(title: string, auxiliary: string, animate: boolean, duration: number = 500): void {
+	updateContent(title: string, auxiliary: string, animate: boolean): void {
 		const h4SelectionTitle = this.#h4SelectionTitle!;
 		const dfnSelectionAuxiliary = this.#dfnSelectionAuxiliary!;
+
+		this.#animationTitle?.cancel();
+		this.#animationAuxiliary?.cancel();
 
 		if (!animate) {
 			h4SelectionTitle.textContent = title;
@@ -143,10 +148,12 @@ export class BirthdaysRenderer extends EventTarget {
 			return;
 		}
 
+		const duration = BirthdaysRenderer.#duration;
 		const keyframesOut = [BirthdaysRenderer.#appearance, BirthdaysRenderer.#disappearance];
 		const optionsOut: KeyframeAnimationOptions = { duration, fill: BirthdaysRenderer.#fill };
 		const animationOut = h4SelectionTitle.animate(keyframesOut, optionsOut);
-		dfnSelectionAuxiliary.animate(keyframesOut, optionsOut);
+		this.#animationTitle = animationOut;
+		this.#animationAuxiliary = dfnSelectionAuxiliary.animate(keyframesOut, optionsOut);
 
 		animationOut.onfinish = () => {
 			h4SelectionTitle.textContent = title;
@@ -154,8 +161,8 @@ export class BirthdaysRenderer extends EventTarget {
 
 			const keyframesIn = [BirthdaysRenderer.#disappearance, BirthdaysRenderer.#appearance];
 			const optionsIn: KeyframeAnimationOptions = { duration, fill: BirthdaysRenderer.#fill };
-			h4SelectionTitle.animate(keyframesIn, optionsIn);
-			dfnSelectionAuxiliary.animate(keyframesIn, optionsIn);
+			this.#animationTitle = h4SelectionTitle.animate(keyframesIn, optionsIn);
+			this.#animationAuxiliary = dfnSelectionAuxiliary.animate(keyframesIn, optionsIn);
 		};
 	}
 }

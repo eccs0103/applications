@@ -47,15 +47,15 @@ export class Timer extends EventTarget {
 	}
 
 	#callback(): void {
-		if (!this.#multiple && this.#remaining === 0) return;
 		const current = performance.now();
 		const difference = current - this.#previous;
+		this.#previous = current;
+		if (!this.#multiple && this.#remaining === 0) return;
 		this.#remaining -= difference;
 		if (this.#remaining <= 0) {
 			this.#remaining = 0;
 			this.dispatchEvent(new Event("trigger"));
 		}
-		this.#previous = current;
 	}
 }
 //#endregion
