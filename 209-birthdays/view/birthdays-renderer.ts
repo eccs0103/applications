@@ -7,6 +7,7 @@ import { type GroupMember } from "../models/group.js";
 interface BirthdaysRendererEventMap {
 	"selectionchange": CustomEvent<GroupMember | null>;
 	"selectioncommit": Event;
+	"notificationstoggle": Event;
 }
 
 export class BirthdaysRenderer extends EventTarget {
@@ -14,6 +15,7 @@ export class BirthdaysRenderer extends EventTarget {
 	#divScrollPicker: HTMLDivElement | null = null;
 	#h4SelectionTitle: HTMLHeadingElement | null = null;
 	#dfnSelectionAuxiliary: HTMLElement | null = null;
+	#buttonNotificationsToggle: HTMLButtonElement | null = null;
 
 	#pairMemberWithButton: [GroupMember, HTMLButtonElement][] = [];
 	#buttonPickerSelection: HTMLButtonElement | null = null;
@@ -35,7 +37,8 @@ export class BirthdaysRenderer extends EventTarget {
 		this.#divScrollPicker = await container.getElementAsync(HTMLDivElement, "div#scroll-picker");
 		this.#h4SelectionTitle = await container.getElementAsync(HTMLHeadingElement, "h4#selection-title");
 		this.#dfnSelectionAuxiliary = await container.getElementAsync(HTMLElement, "dfn#selection-auxiliary");
-		
+		this.#buttonNotificationsToggle = await container.getElementAsync(HTMLButtonElement, "button#notifications-toggle");
+
 		this.#initializeListeners();
 	}
 
@@ -123,11 +126,27 @@ export class BirthdaysRenderer extends EventTarget {
 			if (button === null) return;
 			const pair = this.#pairMemberWithButton.find(([, b]) => b === button);
 			if (pair === undefined) return;
-			
+
 			this.#setPickerSelection(pair);
 			this.#scrollToSelection(true);
 			this.dispatchEvent(new Event("selectioncommit"));
 		});
+
+		const buttonNotificationsToggle = this.#buttonNotificationsToggle!;
+		buttonNotificationsToggle.addEventListener("click", () => {
+			this.dispatchEvent(new Event("notificationstoggle"));
+		});
+	}
+
+	setNotificationsSupported(supported: boolean): void {
+		const buttonNotificationsToggle = this.#buttonNotificationsToggle!;
+		buttonNotificationsToggle.hidden = !supported;
+	}
+
+	setNotificationsSubscribed(subscribed: boolean): void {
+		const buttonNotificationsToggle = this.#buttonNotificationsToggle!;
+		buttonNotificationsToggle.textContent = subscribed ? "🔔 Ծանուցումները միացված են" : "🔕 Միացնել ծանուցումները";
+		buttonNotificationsToggle.disabled = subscribed;
 	}
 
 	#scrollToSelection(smooth: boolean): void {

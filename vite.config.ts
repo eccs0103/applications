@@ -11,7 +11,9 @@ const inputs: URL[] = [
 	new URL("./209-birthdays/index.html", root),
 	new URL("./telegram-theme-converter/index.html", root),
 ];
-const rootEntries: URL[] = [];
+const rootEntries: URL[] = [
+	new URL("./209-birthdays/services/service-worker.ts", root),
+];
 const pathEntries: URL[] = [];
 const output: URL = new URL("./dist", root);
 const plugins: VitePlugin[] = [new CloudflareVitePlugin()];

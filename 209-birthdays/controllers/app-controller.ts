@@ -8,6 +8,7 @@ import { type Bridge } from "../services/bridge.js";
 import { Group, type GroupMember } from "../models/group.js";
 import { SettingsService } from "../services/settings-service.js";
 import { Timer } from "../services/timer.js";
+import { NotificationService } from "../services/notification-service.js";
 
 const { baseURI, body } = document;
 
@@ -17,6 +18,7 @@ class AppController extends Controller {
 	#renderer: BirthdaysRenderer = new BirthdaysRenderer(body);
 	#timer: Timer = new Timer({ multiple: false });
 	#settings: SettingsService = new SettingsService();
+	#notifications: NotificationService = new NotificationService();
 
 	#members: GroupMember[] = [];
 	#selectionIndex: number = 0;
@@ -30,6 +32,24 @@ class AppController extends Controller {
 		return Group.load(object, "database-2025.json");
 	}
 
+	#resolveSelection(index: number): GroupMember | null {
+		const member = this.#members.at(index);
+		if (member === undefined) return null;
+		return member;
+	}
+
+	#createWishGenerator(member: GroupMember | null): Generator<[GroupMember, string], null> | null {
+		if (member === null) return null;
+		return member.askWishes();
+	}
+
+	#nextWish(): [GroupMember, string] | null {
+		const generator = this.#wishGenerator;
+		if (generator === null) return null;
+		const { value } = generator.next();
+		return value;
+	}
+
 	async run(): Promise<void> {
 		const group = await this.#readGroup(new URL("../data/database-2025.json", baseURI));
 		this.#members = group.members
@@ -37,19 +57,23 @@ class AppController extends Controller {
 			.sort((member1: GroupMember, member2: GroupMember) => member1.birthday.getMonth() - member2.birthday.getMonth());
 
 		this.#selectionIndex = this.#settings.readSelection();
-		this.#selectionMember = this.#members.at(this.#selectionIndex) ?? null;
-		this.#wishGenerator = this.#selectionMember?.askWishes() ?? null;
+		this.#selectionMember = this.#resolveSelection(this.#selectionIndex);
+		this.#wishGenerator = this.#createWishGenerator(this.#selectionMember);
 
 		await this.#renderer.initialize();
 		await this.#renderer.render(this.#members);
 
 		this.#renderer.addEventListener("selectionchange", this.#onSelectionChange.bind(this));
 		this.#renderer.addEventListener("selectioncommit", this.#onSelectionCommit.bind(this));
+		this.#renderer.addEventListener("notificationstoggle", this.#onNotificationsToggle.bind(this));
 		this.#timer.addEventListener("trigger", this.#onTimerTrigger.bind(this));
 
 		this.#renderer.setInitialSelection(this.#selectionIndex);
 		this.#updateSelection(this.#selectionMember, false);
 		this.#onSelectionCommit();
+
+		this.#renderer.setNotificationsSupported(this.#notifications.supported);
+		await this.#refreshNotificationsLabel();
 
 		MetadataInjector.inject({
 			type: "Person",
@@ -76,7 +100,7 @@ class AppController extends Controller {
 		const now = Number(date);
 		const birthday = new Date(member.birthday);
 		const begin = birthday.setFullYear(date.getFullYear());
-		const wish = this.#wishGenerator?.next().value ?? null;
+		const wish = this.#nextWish();
 
 		if (wish !== null) {
 			const [member, content] = wish;
@@ -93,7 +117,7 @@ class AppController extends Controller {
 
 	#onSelectionChange(event: CustomEvent<GroupMember | null>): void {
 		const member = event.detail;
-		this.#wishGenerator = member?.askWishes() ?? null;
+		this.#wishGenerator = this.#createWishGenerator(member);
 		this.#updateSelection(member, false);
 	}
 
@@ -106,6 +130,29 @@ class AppController extends Controller {
 
 	#onTimerTrigger(): void {
 		this.#updateSelection(this.#selectionMember, true);
+	}
+
+	#onNotificationsToggle(): void {
+		void this.#handleNotificationsToggle();
+	}
+
+	async #handleNotificationsToggle(): Promise<void> {
+		try {
+			await this.#toggleNotifications();
+		} catch (reason) {
+			await this.catch(Error.from(reason));
+		}
+	}
+
+	async #toggleNotifications(): Promise<void> {
+		const subscribed = await this.#notifications.isSubscribed();
+		if (!subscribed) await this.#notifications.subscribe();
+		await this.#refreshNotificationsLabel();
+	}
+
+	async #refreshNotificationsLabel(): Promise<void> {
+		const subscribed = await this.#notifications.isSubscribed();
+		this.#renderer.setNotificationsSubscribed(subscribed);
 	}
 
 	async catch(error: Error): Promise<void> {

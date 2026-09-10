@@ -1,0 +1,10 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"lib": [ "ES2025", "WebWorker" ]
+	},
+	"include": [
+		"209-birthdays/services/service-worker.ts",
+		"209-birthdays/services/reminder-expert.ts"
+	]
+}
