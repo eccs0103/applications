@@ -145,7 +145,7 @@ export class BirthdaysRenderer extends EventTarget {
 
 	setNotificationsSubscribed(subscribed: boolean): void {
 		const buttonNotificationsToggle = this.#buttonNotificationsToggle!;
-		buttonNotificationsToggle.textContent = subscribed ? "🔔 Ծանուցումները միացված են" : "🔕 Միացնել ծանուցումները";
+		buttonNotificationsToggle.title = subscribed ? "Ծանուցումները միացված են" : "Միացնել ծանուցումները";
 		buttonNotificationsToggle.disabled = subscribed;
 	}
 
@@ -158,8 +158,8 @@ export class BirthdaysRenderer extends EventTarget {
 		const h4SelectionTitle = this.#h4SelectionTitle!;
 		const dfnSelectionAuxiliary = this.#dfnSelectionAuxiliary!;
 
-		this.#animationTitle?.cancel();
-		this.#animationAuxiliary?.cancel();
+		if (this.#animationTitle !== null) this.#animationTitle.cancel();
+		if (this.#animationAuxiliary !== null) this.#animationAuxiliary.cancel();
 
 		if (!animate) {
 			h4SelectionTitle.textContent = title;

@@ -28,9 +28,9 @@ class BirthdayServiceWorker {
 	}
 
 	#reminderText(member: BirthdayHolder, days: number): [title: string, body: string] {
-		if (days === 0) return [`🎂 ${member.fullName}`, "Այսօր ծննդն է!"];
+		if (days === 0) return [`🎂 ${member.fullName}`, "Այսօր ծննունդն է!"];
 		const date = member.birthday.toLocaleDateString("hy", { month: "long", day: "numeric" });
-		return [`📅 ${member.fullName}`, `3 օրից ծննդն է (${date})`];
+		return [`📅 ${member.fullName}`, `${days} օրից ծննունդն է (${date})`];
 	}
 
 	async #notifyReminders(): Promise<void> {

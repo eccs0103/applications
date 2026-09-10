@@ -52,10 +52,18 @@ dialog.loader img[alt="Logo"] {
 
 button#notifications-toggle {
 	position: absolute;
-	inset: var(--size-gap) var(--size-gap) auto auto;
+	top: 50%;
+	left: var(--size-gap);
+	transform: translateY(-50%);
 	width: var(--size-standart);
 	height: var(--size-standart);
 	padding: 0;
-	font-size: var(--size-small-standart);
-	line-height: 1;
+
+	& > span.icon {
+		--url: url(../../assets/icons/bell.svg);
+	}
+
+	&:disabled > span.icon {
+		background-color: var(--color-highlight);
+	}
 }
