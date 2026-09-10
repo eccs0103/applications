@@ -5,6 +5,7 @@
 	},
 	"include": [
 		"209-birthdays/services/service-worker.ts",
-		"209-birthdays/services/reminder-expert.ts"
+		"209-birthdays/services/reminder-expert.ts",
+		"209-birthdays/models/birthday-database.ts"
 	]
 }

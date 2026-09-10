@@ -49,3 +49,13 @@ button.picker-item:not(.selected) dfn.subtitle {
 dialog.loader img[alt="Logo"] {
 	content: url(../../assets/icons/loading.gif);
 }
+
+button#notifications-toggle {
+	position: absolute;
+	inset: var(--size-gap) var(--size-gap) auto auto;
+	width: var(--size-standart);
+	height: var(--size-standart);
+	padding: 0;
+	font-size: var(--size-small-standart);
+	line-height: 1;
+}

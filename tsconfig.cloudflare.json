@@ -9,6 +9,7 @@
 		"environment/workers/cloudflare-worker.ts",
 		"environment/workers/birthday-push/**/*.ts",
 		"209-birthdays/services/reminder-expert.ts",
+		"209-birthdays/models/birthday-database.ts",
 		"worker-configuration.d.ts"
 	]
 }

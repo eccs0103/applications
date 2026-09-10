@@ -1,0 +1,28 @@
+{
+	"$schema": "../../../node_modules/wrangler/config-schema.json",
+	"name": "birthdays-push",
+	"main": "controllers/birthday-push-worker.ts",
+	"compatibility_date": "2026-07-16",
+	"routes": [
+		{ "pattern": "birthdays-push.eccs.dev", "custom_domain": true }
+	],
+	"observability": {
+		"enabled": true,
+		"traces": {
+			"enabled": true
+		}
+	},
+	"vars": {
+		"VAPID_PUBLIC": "BN66LGVq4XDMCJLh-bfKiVYT2mT9p-LpfURj4WT2WZ5V0mCWO3KNk6kleKa9c68bRYn7E450Z0g4-G26B-VWyto"
+	},
+	"kv_namespaces": [
+		{ "binding": "SUBSCRIPTIONS", "id": "d39b2d3be699468f89a0cb1987b0dccc" }
+	],
+	"triggers": {
+		// 08:00 UTC — adjust to taste; the Worker itself has no timezone concept
+		"crons": [ "0 8 * * *" ]
+	},
+	"secrets": {
+		"required": [ "VAPID_PRIVATE" ]
+	}
+}

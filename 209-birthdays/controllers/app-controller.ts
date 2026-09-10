@@ -46,7 +46,8 @@ class AppController extends Controller {
 	#nextWish(): [GroupMember, string] | null {
 		const generator = this.#wishGenerator;
 		if (generator === null) return null;
-		const { value } = generator.next();
+		const { value, done } = generator.next();
+		if (done) return null;
 		return value;
 	}
 
@@ -142,12 +143,12 @@ class AppController extends Controller {
 		} catch (reason) {
 			await this.catch(Error.from(reason));
 		}
+		await this.#refreshNotificationsLabel();
 	}
 
 	async #toggleNotifications(): Promise<void> {
 		const subscribed = await this.#notifications.isSubscribed();
 		if (!subscribed) await this.#notifications.subscribe();
-		await this.#refreshNotificationsLabel();
 	}
 
 	async #refreshNotificationsLabel(): Promise<void> {
