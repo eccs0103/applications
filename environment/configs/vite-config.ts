@@ -104,8 +104,10 @@ export class ViteConfig {
 
 	#buildServer(): ServerOptions {
 		const strictPort: boolean = true;
-		const open: boolean = true;
-		return { strictPort, open };
+		const [entry] = Object.keys(this.#normalizeInputs());
+		const open: string | boolean = entry === undefined ? true : (entry === "main" ? "/" : `/${entry}/`);
+		const preTransformRequests: boolean = false;
+		return { strictPort, open, preTransformRequests };
 	}
 
 	#buildESBuild(): ESBuildOptions {
