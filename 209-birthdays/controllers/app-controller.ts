@@ -106,7 +106,7 @@ class AppController extends Controller {
 		if (wish !== null) {
 			const [member, content] = wish;
 			renderer.updateContent(content, member.name, animate);
-			return timer.setTimeout(5000);
+			return timer.setTimeout(3000);
 		}
 
 		const timespan = Timespan.fromValue(begin - now);
