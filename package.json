@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "applications",
-	"version": "1.0.0",
+	"version": "1.1.4",
 	"type": "module",
 	"author": "eccs0103",
 	"packageManager": "npm@11.6.2",
