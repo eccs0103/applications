@@ -15,6 +15,7 @@ import { ArchiveReader } from "../services/archive-reader.js";
 import { PaletteReader } from "../services/palette-reader.js";
 import { AtthemeReader } from "../services/attheme-reader.js";
 
+const { abs } = Math;
 const dataDir = new URL("../../resources/data/", import.meta.url);
 const fixtures = new URL("./fixtures/", import.meta.url);
 
@@ -110,8 +111,8 @@ describe("RuleTable integrity", () => {
 			} else {
 				const expectedLight = target.lightColor();
 				const expectedDark = target.darkColor();
-				expect(Math.abs(resolvedLight.red - expectedLight.red)).toBeLessThanOrEqual(6);
-				expect(Math.abs(resolvedDark.red - expectedDark.red)).toBeLessThanOrEqual(6);
+				expect(abs(resolvedLight.red - expectedLight.red)).toBeLessThanOrEqual(6);
+				expect(abs(resolvedDark.red - expectedDark.red)).toBeLessThanOrEqual(6);
 			}
 		}
 	});

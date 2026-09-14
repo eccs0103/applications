@@ -124,7 +124,7 @@ export class BirthdaysRenderer extends EventTarget {
 			if (!(target instanceof Element)) return;
 			const button = target.closest("button");
 			if (button === null) return;
-			const pair = this.#pairMemberWithButton.find(([, b]) => b === button);
+			const pair = this.#pairMemberWithButton.find(([, button2]) => button2 === button);
 			if (pair === undefined) return;
 
 			this.#setPickerSelection(pair);
@@ -143,10 +143,10 @@ export class BirthdaysRenderer extends EventTarget {
 		buttonNotificationsToggle.hidden = !supported;
 	}
 
-	setNotificationsSubscribed(subscribed: boolean): void {
+	setNotificationsState(permission: NotificationPermission, subscribed: boolean): void {
 		const buttonNotificationsToggle = this.#buttonNotificationsToggle!;
-		buttonNotificationsToggle.title = subscribed ? "Ծանուցումները միացված են" : "Միացնել ծանուցումները";
-		buttonNotificationsToggle.disabled = subscribed;
+		buttonNotificationsToggle.dataset["notifications"] = permission;
+		buttonNotificationsToggle.disabled = permission !== "default";
 	}
 
 	#scrollToSelection(smooth: boolean): void {

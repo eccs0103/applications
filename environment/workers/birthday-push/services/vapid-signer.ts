@@ -2,6 +2,8 @@
 
 import "adaptive-extender/core";
 
+const { trunc } = Math;
+
 //#region Vapid signer
 export class VapidSigner {
 	#publicKey: string;
@@ -36,7 +38,7 @@ export class VapidSigner {
 	async authorization(endpoint: string): Promise<string> {
 		const audience = new URL(endpoint).origin;
 		const header = VapidSigner.#encodeJson({ typ: "JWT", alg: "ES256" });
-		const expiration = Math.trunc(Date.now() / 1000) + VapidSigner.#ttlSeconds;
+		const expiration = trunc(Date.now() / 1000) + VapidSigner.#ttlSeconds;
 		const payload = VapidSigner.#encodeJson({ aud: audience, exp: expiration, sub: VapidSigner.#subject });
 		const unsigned = `${header}.${payload}`;
 

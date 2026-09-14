@@ -21,8 +21,8 @@ class AppController extends Controller {
 	#notifications: NotificationService = new NotificationService();
 
 	#members: GroupMember[] = [];
-	#selectionIndex: number = 0;
-	#selectionMember: GroupMember | null = null;
+	#indexSelection: number = 0;
+	#memberSelection: GroupMember | null = null;
 	#wishGenerator: Generator<[GroupMember, string], null> | null = null;
 
 	async #readGroup(url: Readonly<URL>): Promise<Group> {
@@ -51,50 +51,12 @@ class AppController extends Controller {
 		return value;
 	}
 
-	async run(): Promise<void> {
-		const group = await this.#readGroup(new URL("../data/database-2025.json", baseURI));
-		this.#members = group.members
-			.sort((member1: GroupMember, member2: GroupMember) => member1.birthday.getDate() - member2.birthday.getDate())
-			.sort((member1: GroupMember, member2: GroupMember) => member1.birthday.getMonth() - member2.birthday.getMonth());
-
-		this.#selectionIndex = this.#settings.readSelection();
-		this.#selectionMember = this.#resolveSelection(this.#selectionIndex);
-		this.#wishGenerator = this.#createWishGenerator(this.#selectionMember);
-
-		await this.#renderer.initialize();
-		await this.#renderer.render(this.#members);
-
-		this.#renderer.addEventListener("selectionchange", this.#onSelectionChange.bind(this));
-		this.#renderer.addEventListener("selectioncommit", this.#onSelectionCommit.bind(this));
-		this.#renderer.addEventListener("notificationstoggle", this.#onNotificationsToggle.bind(this));
-		this.#timer.addEventListener("trigger", this.#onTimerTrigger.bind(this));
-
-		this.#renderer.setInitialSelection(this.#selectionIndex);
-		this.#updateSelection(this.#selectionMember, false);
-		this.#onSelectionCommit();
-
-		this.#renderer.setNotificationsSupported(this.#notifications.supported);
-		await this.#refreshNotificationsLabel();
-
-		MetadataInjector.inject({
-			type: "Person",
-			name: "eccs0103",
-			webpage: new URL("https://eccs.dev"),
-			preview: new URL("../icons/cake.png", baseURI),
-			associations: [],
-			job: "Software engineer",
-			description: "209 birthdays application.",
-		});
-	}
-
 	#updateSelection(member: GroupMember | null, animate: boolean): void {
 		const renderer = this.#renderer;
 		const timer = this.#timer;
-		this.#selectionMember = member;
+		this.#memberSelection = member;
 
-		if (member === null) {
-			return renderer.updateContent(String.empty, String.empty, false);
-		}
+		if (member === null) return renderer.updateContent(String.empty, String.empty, false);
 
 		const date = new Date();
 		date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
@@ -123,14 +85,14 @@ class AppController extends Controller {
 	}
 
 	#onSelectionCommit(): void {
-		const memberSelection = this.#selectionMember;
+		const memberSelection = this.#memberSelection;
 		if (memberSelection === null) return;
 		const index = this.#members.indexOf(memberSelection);
 		void this.#settings.writeSelection(index);
 	}
 
 	#onTimerTrigger(): void {
-		this.#updateSelection(this.#selectionMember, true);
+		this.#updateSelection(this.#memberSelection, true);
 	}
 
 	#onNotificationsToggle(): void {
@@ -147,13 +109,65 @@ class AppController extends Controller {
 	}
 
 	async #toggleNotifications(): Promise<void> {
-		const subscribed = await this.#notifications.isSubscribed();
-		if (!subscribed) await this.#notifications.subscribe();
+		const notifications = this.#notifications;
+		const subscribed = await notifications.isSubscribed();
+		if (!subscribed) await notifications.subscribe();
+	}
+
+	async #ensureNotificationsSubscribed(): Promise<void> {
+		const notifications = this.#notifications;
+		if (notifications.permission !== "granted") return;
+		const subscribed = await notifications.isSubscribed();
+		if (subscribed) return;
+		try {
+			await notifications.resubscribe();
+		} catch (reason) {
+			await this.catch(Error.from(reason));
+		}
 	}
 
 	async #refreshNotificationsLabel(): Promise<void> {
-		const subscribed = await this.#notifications.isSubscribed();
-		this.#renderer.setNotificationsSubscribed(subscribed);
+		const notifications = this.#notifications;
+		const subscribed = await notifications.isSubscribed();
+		this.#renderer.setNotificationsState(notifications.permission, subscribed);
+	}
+
+	async run(): Promise<void> {
+		const group = await this.#readGroup(new URL("../data/database-2025.json", baseURI));
+		this.#members = group.members
+			.sort((member1: GroupMember, member2: GroupMember) => member1.birthday.getDate() - member2.birthday.getDate())
+			.sort((member1: GroupMember, member2: GroupMember) => member1.birthday.getMonth() - member2.birthday.getMonth());
+
+		this.#indexSelection = this.#settings.readSelection();
+		this.#memberSelection = this.#resolveSelection(this.#indexSelection);
+		this.#wishGenerator = this.#createWishGenerator(this.#memberSelection);
+
+		const renderer = this.#renderer;
+		await renderer.initialize();
+		await renderer.render(this.#members);
+
+		renderer.addEventListener("selectionchange", this.#onSelectionChange.bind(this));
+		renderer.addEventListener("selectioncommit", this.#onSelectionCommit.bind(this));
+		renderer.addEventListener("notificationstoggle", this.#onNotificationsToggle.bind(this));
+		this.#timer.addEventListener("trigger", this.#onTimerTrigger.bind(this));
+
+		renderer.setInitialSelection(this.#indexSelection);
+		this.#updateSelection(this.#memberSelection, false);
+		this.#onSelectionCommit();
+
+		renderer.setNotificationsSupported(this.#notifications.supported);
+		await this.#ensureNotificationsSubscribed();
+		await this.#refreshNotificationsLabel();
+
+		MetadataInjector.inject({
+			type: "Person",
+			name: "eccs0103",
+			webpage: new URL("https://eccs.dev"),
+			preview: new URL("../icons/cake.png", baseURI),
+			associations: [],
+			job: "Software engineer",
+			description: "209 birthdays application.",
+		});
 	}
 
 	async catch(error: Error): Promise<void> {

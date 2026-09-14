@@ -19,7 +19,6 @@
 		{ "binding": "SUBSCRIPTIONS", "id": "d39b2d3be699468f89a0cb1987b0dccc" }
 	],
 	"triggers": {
-		// 08:00 UTC — adjust to taste; the Worker itself has no timezone concept
 		"crons": [ "0 8 * * *" ]
 	},
 	"secrets": {

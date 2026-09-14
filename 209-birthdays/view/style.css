@@ -63,7 +63,11 @@ button#notifications-toggle {
 		--url: url(../../assets/icons/bell.svg);
 	}
 
-	&:disabled > span.icon {
+	&[data-notifications="granted"] > span.icon {
 		background-color: var(--color-highlight);
+	}
+
+	&[data-notifications="denied"] {
+		opacity: 0.4;
 	}
 }

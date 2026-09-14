@@ -3,6 +3,8 @@
 import "adaptive-extender/core";
 import { Color } from "adaptive-extender/core";
 
+const { trunc } = Math;
+
 //#region ARGB
 export class Argb {
 	static toColor(value: number): Color {
@@ -15,10 +17,10 @@ export class Argb {
 	}
 
 	static fromColor(color: Readonly<Color>): number {
-		const alpha = Math.trunc(color.alpha * 255) & 0xff;
-		const red = Math.trunc(color.red) & 0xff;
-		const green = Math.trunc(color.green) & 0xff;
-		const blue = Math.trunc(color.blue) & 0xff;
+		const alpha = trunc(color.alpha * 255) & 0xff;
+		const red = trunc(color.red) & 0xff;
+		const green = trunc(color.green) & 0xff;
+		const blue = trunc(color.blue) & 0xff;
 		const unsigned = ((alpha << 24) | (red << 16) | (green << 8) | blue) >>> 0;
 		return unsigned | 0;
 	}

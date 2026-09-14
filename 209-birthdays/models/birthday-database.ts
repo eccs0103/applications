@@ -3,6 +3,8 @@
 import "adaptive-extender/core";
 import { Field, Model } from "adaptive-extender/core";
 
+const { round } = Math;
+
 //#region Birthday holder
 export class BirthdayHolder extends Model {
 	@Field(String, { name: "name" })
@@ -33,10 +35,10 @@ export class BirthdayHolder extends Model {
 		const todayNumber = this.#dayNumber(year, today.getMonth(), today.getDate());
 
 		const occurrenceThisYear = this.#dayNumber(year, month, day);
-		if (occurrenceThisYear >= todayNumber) return Math.round((occurrenceThisYear - todayNumber) / millisecondsPerDay);
+		if (occurrenceThisYear >= todayNumber) return round((occurrenceThisYear - todayNumber) / millisecondsPerDay);
 
 		const occurrenceNextYear = this.#dayNumber(year + 1, month, day);
-		return Math.round((occurrenceNextYear - todayNumber) / millisecondsPerDay);
+		return round((occurrenceNextYear - todayNumber) / millisecondsPerDay);
 	}
 }
 //#endregion

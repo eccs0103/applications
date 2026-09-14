@@ -20,6 +20,10 @@ export class NotificationService {
 		return "serviceWorker" in navigator && "PushManager" in window;
 	}
 
+	get permission(): NotificationPermission {
+		return Notification.permission;
+	}
+
 	async #getRegistration(): Promise<ServiceWorkerRegistration> {
 		return await navigator.serviceWorker.register("/service-worker.js", { type: "module" });
 	}
@@ -32,10 +36,7 @@ export class NotificationService {
 		return subscription !== null;
 	}
 
-	async subscribe(): Promise<void> {
-		const permission = await Notification.requestPermission();
-		if (permission !== "granted") throw new Error("Notification permission denied");
-
+	async #registerSubscription(): Promise<void> {
 		const registration = await this.#getRegistration();
 		await navigator.serviceWorker.ready;
 
@@ -55,6 +56,17 @@ export class NotificationService {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(subscription),
 		});
+	}
+
+	async subscribe(): Promise<void> {
+		const permission = await Notification.requestPermission();
+		if (permission !== "granted") throw new Error("Notification permission denied");
+		await this.#registerSubscription();
+	}
+
+	async resubscribe(): Promise<void> {
+		if (this.permission !== "granted") throw new Error("Notification permission not granted");
+		await this.#registerSubscription();
 	}
 }
 //#endregion
