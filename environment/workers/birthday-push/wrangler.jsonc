@@ -22,6 +22,6 @@
 		"crons": [ "0 8 * * *" ]
 	},
 	"secrets": {
-		"required": [ "VAPID_PRIVATE" ]
+		"required": [ "VAPID_PRIVATE", "TRIGGER_SECRET" ]
 	}
 }

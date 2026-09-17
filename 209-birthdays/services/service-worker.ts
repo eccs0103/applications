@@ -9,6 +9,14 @@ declare const self: ServiceWorkerGlobalScope;
 //#region Birthday service worker
 class BirthdayServiceWorker {
 	constructor() {
+		self.addEventListener("install", () => {
+			self.skipWaiting();
+		});
+
+		self.addEventListener("activate", (event) => {
+			event.waitUntil(self.clients.claim());
+		});
+
 		self.addEventListener("push", (event) => {
 			event.waitUntil(this.#notifyReminders());
 		});
@@ -20,7 +28,7 @@ class BirthdayServiceWorker {
 	}
 
 	async #readMembers(): Promise<BirthdayHolder[]> {
-		const response = await fetch("/data/database-2025.json");
+		const response = await fetch("/data/database-2025.json", { cache: "no-store" });
 		const content = await response.text();
 		const object = JSON.parse(content);
 		const database = BirthdayDatabase.import(object, "database-2025.json");
@@ -33,12 +41,22 @@ class BirthdayServiceWorker {
 		return [`📅 ${member.fullName}`, `${days} օրից ծննունդն է (${date})`];
 	}
 
+	async #notifyFallback(): Promise<void> {
+		await self.registration.showNotification("🎂 209", { body: "Ստուգեք ծննունդների ցուցակը", icon: "/icons/cake.png" });
+	}
+
 	async #notifyReminders(): Promise<void> {
-		const members = await this.#readMembers();
-		const reminders = ReminderExpert.findReminders(members, new Date());
-		for (const [member, days] of reminders) {
-			const [title, body] = this.#reminderText(member, days);
-			await self.registration.showNotification(title, { body, icon: "/icons/cake.png" });
+		try {
+			const members = await this.#readMembers();
+			const reminders = ReminderExpert.findReminders(members, new Date());
+			if (reminders.length === 0) return await this.#notifyFallback();
+			for (const [member, days] of reminders) {
+				const [title, body] = this.#reminderText(member, days);
+				await self.registration.showNotification(title, { body, icon: "/icons/cake.png" });
+			}
+		} catch (reason) {
+			console.error(`Reminder notification failed:\n${Error.from(reason)}`);
+			await this.#notifyFallback();
 		}
 	}
 

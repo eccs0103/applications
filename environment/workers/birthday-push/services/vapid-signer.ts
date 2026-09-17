@@ -7,12 +7,12 @@ const { trunc } = Math;
 //#region Vapid signer
 export class VapidSigner {
 	#publicKey: string;
-	#privateKey: string;
+	#privateKey: JsonWebKey;
 
 	static #ttlSeconds: number = 43200;
-	static #subject: string = "https://birthdays-push.eccs.dev";
+	static #subject: string = "mailto:eccs0103@gmail.com";
 
-	constructor(publicKey: string, privateKey: string) {
+	constructor(publicKey: string, privateKey: JsonWebKey) {
 		this.#publicKey = publicKey;
 		this.#privateKey = privateKey;
 	}
@@ -28,8 +28,7 @@ export class VapidSigner {
 	}
 
 	async #importPrivateKey(): Promise<CryptoKey> {
-		const jwk = JSON.parse(this.#privateKey);
-		return await crypto.subtle.importKey("jwk", jwk, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]);
+		return await crypto.subtle.importKey("jwk", this.#privateKey, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]);
 	}
 
 	/**

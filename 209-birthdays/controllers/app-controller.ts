@@ -9,6 +9,7 @@ import { Group, type GroupMember } from "../models/group.js";
 import { SettingsService } from "../services/settings-service.js";
 import { Timer } from "../services/timer.js";
 import { NotificationService } from "../services/notification-service.js";
+import { NotificationState } from "../models/notification-state.js";
 
 const { baseURI, body } = document;
 
@@ -110,17 +111,16 @@ class AppController extends Controller {
 
 	async #toggleNotifications(): Promise<void> {
 		const notifications = this.#notifications;
-		const subscribed = await notifications.isSubscribed();
-		if (!subscribed) await notifications.subscribe();
+		const state = await notifications.state();
+		if (state === NotificationState.ready) return;
+		await notifications.subscribe();
 	}
 
 	async #ensureNotificationsSubscribed(): Promise<void> {
 		const notifications = this.#notifications;
 		if (notifications.permission !== "granted") return;
-		const subscribed = await notifications.isSubscribed();
-		if (subscribed) return;
 		try {
-			await notifications.resubscribe();
+			await notifications.synchronize();
 		} catch (reason) {
 			await this.catch(Error.from(reason));
 		}
@@ -128,8 +128,7 @@ class AppController extends Controller {
 
 	async #refreshNotificationsLabel(): Promise<void> {
 		const notifications = this.#notifications;
-		const subscribed = await notifications.isSubscribed();
-		this.#renderer.setNotificationsState(notifications.permission, subscribed);
+		this.#renderer.setNotificationsState(await notifications.state());
 	}
 
 	async run(): Promise<void> {

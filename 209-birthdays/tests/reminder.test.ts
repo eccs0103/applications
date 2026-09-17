@@ -49,4 +49,11 @@ describe("ReminderExpert.findReminders", () => {
 		const [[, days]] = ReminderExpert.findReminders([member1], today);
 		expect(days).toBe(0);
 	});
+
+	it("fires the 3-day reminder for a birthday on the 18th when today is the 15th", () => {
+		const today = new Date(2026, 8, 15);
+		const anahit = member("Անահիտ", "2004-09-18");
+		const [[, days]] = ReminderExpert.findReminders([anahit], today);
+		expect(days).toBe(3);
+	});
 });

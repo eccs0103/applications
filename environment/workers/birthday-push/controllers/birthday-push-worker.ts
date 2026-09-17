@@ -5,15 +5,19 @@ import { EnvironmentProvider, type Environment } from "adaptive-extender/core";
 import database from "../../../../resources/data/database-2025.json";
 import { CloudflareWorker } from "../../cloudflare-worker.js";
 import { PushEnvironment } from "../models/push-environment.js";
+import { PushReport } from "../models/push-report.js";
 import { SubscriptionStore } from "../services/subscription-store.js";
 import { VapidSigner } from "../services/vapid-signer.js";
 import { PushDispatcher } from "../services/push-dispatcher.js";
 import { ResponseFactory } from "../services/response-factory.js";
-import { BirthdayDatabase } from "../../../../209-birthdays/models/birthday-database.js";
+import { BirthdayDatabase, type BirthdayHolder } from "../../../../209-birthdays/models/birthday-database.js";
 import { ReminderExpert } from "../../../../209-birthdays/services/reminder-expert.js";
 
 //#region Birthday push worker
-type WorkerBindings = Environment & { SUBSCRIPTIONS: KVNamespace; };
+interface WorkerServices {
+	SUBSCRIPTIONS: KVNamespace;
+}
+type WorkerBindings = Environment & WorkerServices;
 
 class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 	#factory: ResponseFactory = new ResponseFactory();
@@ -26,6 +30,7 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 		if (request.method === "OPTIONS") return factory.preflight();
 		if (request.method === "GET" && pathname === "/api/vapid") return factory.json({ key: environment.VAPID_PUBLIC });
 		if (request.method === "POST" && pathname === "/api/subscribe") return await this.#subscribe(request, environment);
+		if (request.method === "POST" && pathname === "/api/trigger") return await this.#trigger(request, environment);
 		return factory.error(404, "Not found");
 	}
 
@@ -41,15 +46,50 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 		return this.#factory.noContent();
 	}
 
+	#reminders(): [BirthdayHolder, number][] {
+		const members = BirthdayDatabase.import(database, "database-2025.json").members;
+		return ReminderExpert.findReminders(members, new Date());
+	}
+
+	static #safeEquals(token: string, token2: string): boolean {
+		const bytes = new TextEncoder().encode(token);
+		const bytes2 = new TextEncoder().encode(token2);
+		if (bytes.length !== bytes2.length) return false;
+		let difference = 0;
+		for (let index = 0; index < bytes.length; index++) difference |= bytes[index] ^ bytes2[index];
+		return difference === 0;
+	}
+
+	#authorized(request: Request, secret: string): boolean {
+		const header = request.headers.get("Authorization");
+		if (header === null) return false;
+		const [scheme, token] = header.split(" ");
+		if (scheme !== "Bearer") return false;
+		if (token === undefined) return false;
+		return BirthdayPushWorker.#safeEquals(token, secret);
+	}
+
+	async #runReminderCycle(environment: WorkerBindings, pushEnvironment: Readonly<PushEnvironment>): Promise<PushReport> {
+		const reminders = this.#reminders();
+		const due = reminders.map(([member]) => member.fullName);
+		if (reminders.length === 0) return new PushReport(due);
+
+		const dispatcher = new PushDispatcher(new SubscriptionStore(environment.SUBSCRIPTIONS), new VapidSigner(pushEnvironment.vapidPublic, pushEnvironment.vapidPrivate));
+		return await dispatcher.broadcast(due);
+	}
+
+	async #trigger(request: Request, environment: WorkerBindings): Promise<Response> {
+		const pushEnvironment = EnvironmentProvider.resolve(environment, PushEnvironment);
+		if (!this.#authorized(request, pushEnvironment.triggerSecret)) return this.#factory.error(401, "Unauthorized");
+		const report = await this.#runReminderCycle(environment, pushEnvironment);
+		return this.#factory.json(report);
+	}
+
 	async runScheduled(event: ScheduledController, environment: WorkerBindings): Promise<void> {
 		void event;
-		const members = BirthdayDatabase.import(database, "database-2025.json").members;
-		const reminders = ReminderExpert.findReminders(members, new Date());
-		if (reminders.length === 0) return;
-
-		const { vapidPublic, vapidPrivate } = EnvironmentProvider.resolve(environment, PushEnvironment);
-		const dispatcher = new PushDispatcher(new SubscriptionStore(environment.SUBSCRIPTIONS), new VapidSigner(vapidPublic, vapidPrivate));
-		await dispatcher.broadcast();
+		const pushEnvironment = EnvironmentProvider.resolve(environment, PushEnvironment);
+		const report = await this.#runReminderCycle(environment, pushEnvironment);
+		console.info(report.describe());
 	}
 
 	async catchScheduled(error: Error): Promise<void> {

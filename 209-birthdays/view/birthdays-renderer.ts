@@ -2,6 +2,7 @@
 
 import "adaptive-extender/web";
 import { type GroupMember } from "../models/group.js";
+import { NotificationState } from "../models/notification-state.js";
 
 //#region Birthdays renderer
 interface BirthdaysRendererEventMap {
@@ -143,10 +144,10 @@ export class BirthdaysRenderer extends EventTarget {
 		buttonNotificationsToggle.hidden = !supported;
 	}
 
-	setNotificationsState(permission: NotificationPermission, subscribed: boolean): void {
+	setNotificationsState(state: NotificationState): void {
 		const buttonNotificationsToggle = this.#buttonNotificationsToggle!;
-		buttonNotificationsToggle.dataset["notifications"] = permission;
-		buttonNotificationsToggle.disabled = permission !== "default";
+		buttonNotificationsToggle.dataset["notifications"] = state;
+		buttonNotificationsToggle.disabled = state === NotificationState.ready || state === NotificationState.denied;
 	}
 
 	#scrollToSelection(smooth: boolean): void {
