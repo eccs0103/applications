@@ -13,7 +13,7 @@
 		"build": "vite build",
 		"preview": "npm run build && vite preview",
 		"deploy": "vite build && wrangler deploy",
-		"deploy:birthday-push": "wrangler deploy --config environment/workers/birthday-push/wrangler.jsonc",
+		"deploy:birthday-push": "wrangler deploy --config 209-birthdays/wrangler.jsonc",
 		"typecheck": "tsc -p tsconfig.node.json && tsc -p tsconfig.web.json && tsc -p tsconfig.worker.json && tsc -p tsconfig.cloudflare.json",
 		"test": "npm run build && vitest run",
 		"extract:vocabulary": "tsx telegram-theme-converter/controllers/vocabulary-extractor.ts"

@@ -15,6 +15,14 @@
 	],
 	"exclude": [
 		"telegram-theme-converter/controllers/vocabulary-extractor.ts",
-		"209-birthdays/services/service-worker.ts"
+		"209-birthdays/services/service-worker.ts",
+		"209-birthdays/controllers/birthday-push-worker.ts",
+		"209-birthdays/models/push-environment.ts",
+		"209-birthdays/models/push-report.ts",
+		"209-birthdays/models/subscription-record.ts",
+		"209-birthdays/services/push-dispatcher.ts",
+		"209-birthdays/services/response-factory.ts",
+		"209-birthdays/services/subscription-store.ts",
+		"209-birthdays/services/vapid-signer.ts"
 	]
 }

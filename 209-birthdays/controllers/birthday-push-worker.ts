@@ -2,16 +2,16 @@
 
 import "adaptive-extender/core";
 import { EnvironmentProvider, type Environment } from "adaptive-extender/core";
-import database from "../../../../resources/data/database-2025.json";
-import { CloudflareWorker } from "../../cloudflare-worker.js";
+import database from "../../resources/data/database-2025.json";
+import { CloudflareWorker } from "../../environment/workers/cloudflare-worker.js";
 import { PushEnvironment } from "../models/push-environment.js";
 import { PushReport } from "../models/push-report.js";
 import { SubscriptionStore } from "../services/subscription-store.js";
 import { VapidSigner } from "../services/vapid-signer.js";
 import { PushDispatcher } from "../services/push-dispatcher.js";
 import { ResponseFactory } from "../services/response-factory.js";
-import { BirthdayDatabase, type BirthdayHolder } from "../../../../209-birthdays/models/birthday-database.js";
-import { ReminderExpert } from "../../../../209-birthdays/services/reminder-expert.js";
+import { BirthdayDatabase, type BirthdayHolder } from "../models/birthday-database.js";
+import { ReminderExpert } from "../services/reminder-expert.js";
 
 //#region Birthday push worker
 interface WorkerServices {
