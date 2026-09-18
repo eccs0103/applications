@@ -9,9 +9,7 @@ declare const self: ServiceWorkerGlobalScope;
 //#region Birthday service worker
 class BirthdayServiceWorker {
 	constructor() {
-		self.addEventListener("install", () => {
-			self.skipWaiting();
-		});
+		self.addEventListener("install", event => self.skipWaiting());
 
 		self.addEventListener("activate", (event) => {
 			event.waitUntil(self.clients.claim());
@@ -46,8 +44,8 @@ class BirthdayServiceWorker {
 
 	async #notifyFallback(): Promise<void> {
 		const body: string = "Ստուգեք ծնունդների ցուցակը";
-		const icon: string = "/icons/cake.png";
-		const badge: string = "/icons/cake.png";
+		const icon: string = "/icons/cake-colorful.png";
+		const badge: string = "/icons/cake-colorful.png";
 		await self.registration.showNotification("🎂 209", { body, icon, badge });
 	}
 
@@ -58,8 +56,8 @@ class BirthdayServiceWorker {
 			if (reminders.length === 0) return await this.#notifyFallback();
 			for (const [member, days] of reminders) {
 				const [title, body] = this.#reminderText(member, days);
-				const icon: string = "/icons/cake.png";
-				const badge: string = "/icons/cake.png";
+				const icon: string = "/icons/cake-colorful.png";
+				const badge: string = "/icons/cake-colorful.png";
 				await self.registration.showNotification(title, { body, icon, badge });
 			}
 		} catch (reason) {
