@@ -46,9 +46,21 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 		return this.#factory.noContent();
 	}
 
+	static #timezoneOffsetHours: number = 4;
+
+	/**
+	 * Cloudflare Workers run in UTC, but this app has one fixed audience timezone (Yerevan, UTC+4,
+	 * no DST). Raw UTC `new Date()` reads a calendar day that's still stale for up to 4 hours after
+	 * Yerevan's own day has already rolled over — shift by the fixed offset before reading the date.
+	 */
+	#today(): Date {
+		const shifted = new Date(Date.now() + BirthdayPushWorker.#timezoneOffsetHours * 60 * 60 * 1000);
+		return new Date(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate());
+	}
+
 	#reminders(): [BirthdayHolder, number][] {
 		const members = BirthdayDatabase.import(database, "database-2025.json").members;
-		return ReminderExpert.findReminders(members, new Date());
+		return ReminderExpert.findReminders(members, this.#today());
 	}
 
 	static #safeEquals(token: string, token2: string): boolean {
