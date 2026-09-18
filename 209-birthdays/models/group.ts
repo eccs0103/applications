@@ -58,7 +58,7 @@ export class GroupMember extends Model {
 	}
 }
 
-class Wish extends Model {
+export class Wish extends Model {
 	@Field(Number, { name: "member" })
 	member: number;
 
