@@ -19,7 +19,7 @@
 		{ "binding": "SUBSCRIPTIONS", "id": "d39b2d3be699468f89a0cb1987b0dccc" }
 	],
 	"triggers": {
-		"crons": [ "0 8 * * *" ]
+		"crons": [ "0 20 * * *" ]
 	},
 	"secrets": {
 		"required": [ "VAPID_PRIVATE", "TRIGGER_SECRET" ]
