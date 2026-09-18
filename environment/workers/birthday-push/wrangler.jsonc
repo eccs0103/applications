@@ -13,7 +13,7 @@
 		}
 	},
 	"vars": {
-		"VAPID_PUBLIC": "BN66LGVq4XDMCJLh-bfKiVYT2mT9p-LpfURj4WT2WZ5V0mCWO3KNk6kleKa9c68bRYn7E450Z0g4-G26B-VWyto"
+		"VAPID_PUBLIC": "BJ4t906-1NfoxkahS8VUthT9-sKttCIjsWfCRVXVCUvWRNAgyYG1BegX3JF9j-SWm0LGY3w-eVQb8lddjVv0j0o"
 	},
 	"kv_namespaces": [
 		{ "binding": "SUBSCRIPTIONS", "id": "d39b2d3be699468f89a0cb1987b0dccc" }

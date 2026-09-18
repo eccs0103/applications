@@ -36,13 +36,13 @@ class BirthdayServiceWorker {
 	}
 
 	#reminderText(member: BirthdayHolder, days: number): [title: string, body: string] {
-		if (days === 0) return [`🎂 ${member.fullName}`, "Այսօր ծննունդն է!"];
+		if (days === 0) return [`🎂 ${member.fullName}`, "Այսօր ծնունդն է!"];
 		const date = member.birthday.toLocaleDateString("hy", { month: "long", day: "numeric" });
-		return [`📅 ${member.fullName}`, `${days} օրից ծննունդն է (${date})`];
+		return [`📅 ${member.fullName}`, `${days} օրից ծնունդն է (${date})`];
 	}
 
 	async #notifyFallback(): Promise<void> {
-		await self.registration.showNotification("🎂 209", { body: "Ստուգեք ծննունդների ցուցակը", icon: "/icons/cake.png" });
+		await self.registration.showNotification("🎂 209", { body: "Ստուգեք ծնունդների ցուցակը", icon: "/icons/cake.png" });
 	}
 
 	async #notifyReminders(): Promise<void> {
