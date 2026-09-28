@@ -1,7 +1,7 @@
 "use strict";
 
 import "adaptive-extender/web";
-import { type ReactElement, useEffect, useRef, useState } from "react";
+import { type ReactElement, type RefObject, useEffect, useRef, useState } from "react";
 import { type GroupMember } from "../models/group.js";
 import { SelectionContent } from "../models/selection-content.js";
 import { NotificationState } from "../models/notification-state.js";
@@ -23,7 +23,7 @@ export interface BirthdaysAppProps {
 /** Reproduces AppController's generator-driven wish cycle: each Timer "trigger" pulls the next wish, or falls back to the live countdown once the generator is exhausted. */
 function useSelectionContent(member: GroupMember | null, timer: Timer): SelectionContent {
 	const [content, setContent] = useState<SelectionContent>(SelectionContent.empty());
-	const refGenerator = useRef<Generator<[GroupMember, string], null> | null>(null);
+	const refGenerator: RefObject<Generator<[GroupMember, string], null> | null> = useRef(null);
 
 	useEffect(() => {
 		if (member === null) {

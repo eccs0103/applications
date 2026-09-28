@@ -1,7 +1,7 @@
 "use strict";
 
 import "adaptive-extender/web";
-import { type ReactElement, useEffect, useRef } from "react";
+import { type ReactElement, type RefObject, useEffect, useRef } from "react";
 import { type GroupMember } from "../models/group.js";
 import { PickerSelection, type PickerSelectionDelegate } from "./picker-selection.js";
 
@@ -12,12 +12,12 @@ export interface ScrollPickerProps extends PickerSelectionDelegate {
 }
 
 export function ScrollPicker({ members, selection, onSelect, onCommit }: ScrollPickerProps): ReactElement {
-	const refContainer = useRef<HTMLDivElement | null>(null);
+	const refContainer: RefObject<HTMLDivElement | null> = useRef(null);
 
 	// Built once per mount and kept for the component's lifetime — the closest a function component gets to a
 	// constructor. Safe to capture onSelect/onCommit here because both stay referentially stable for this page's
 	// lifetime (a useState setter, and a bound service method — see BirthdaysApp).
-	const refPicker = useRef<PickerSelection | null>(null);
+	const refPicker: RefObject<PickerSelection | null> = useRef(null);
 	if (refPicker.current === null) refPicker.current = new PickerSelection(members, { onSelect, onCommit });
 	const picker = refPicker.current;
 

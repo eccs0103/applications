@@ -1,7 +1,7 @@
 "use strict";
 
 import "adaptive-extender/web";
-import { type ReactElement, useEffect, useRef } from "react";
+import { type ReactElement, type RefObject, useEffect, useRef } from "react";
 import { type SelectionContent } from "../models/selection-content.js";
 import { SelectionFade } from "./selection-fade.js";
 
@@ -11,9 +11,9 @@ export interface SelectionDisplayProps {
 }
 
 export function SelectionDisplay({ content }: SelectionDisplayProps): ReactElement {
-	const refTitle = useRef<HTMLHeadingElement | null>(null);
-	const refAuxiliary = useRef<HTMLElement | null>(null);
-	const refFade = useRef<SelectionFade | null>(null);
+	const refTitle: RefObject<HTMLHeadingElement | null> = useRef(null);
+	const refAuxiliary: RefObject<HTMLElement | null> = useRef(null);
+	const refFade: RefObject<SelectionFade | null> = useRef(null);
 
 	// Text is written by SelectionFade directly onto the DOM nodes rather than through JSX children — the fade-out
 	// has to finish showing the OLD text before the new one is written, which JSX re-rendering can't sequence.
