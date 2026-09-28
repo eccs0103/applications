@@ -138,7 +138,7 @@ body {
 	cursor: pointer;
 	font-family: inherit;
 	font-size: inherit;
-	font-weight: bold;
+	font-weight: 600;
 	resize: none;
 }
 
@@ -334,13 +334,17 @@ span {
 			height: var(--size-large-standart);
 		}
 	}
+
+	&.icon {
+		overflow: hidden;
+	}
 }
 
 .in-line {
 	height: 1em !important;
 }
 
-.font-smaller-4 {
+.font-smaller-5 {
 	font-size: 0.45em;
 }
 
@@ -390,7 +394,7 @@ kbd {
 	white-space: nowrap;
 	padding: 0.15em 0.35em !important;
 	font-family: 'Consolas', sans-serif, system-ui, monospace;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 code,

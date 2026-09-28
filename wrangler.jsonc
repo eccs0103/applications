@@ -2,6 +2,11 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "applications",
 	"compatibility_date": "2026-07-16",
+	"main": "environment/workers/site-worker.ts",
+	"assets": {
+		"binding": "ASSETS",
+		"run_worker_first": ["/*", "!/assets/*"]
+	},
 	"routes": [
 		{ "pattern": "applications.eccs.dev", "custom_domain": true }
 	],

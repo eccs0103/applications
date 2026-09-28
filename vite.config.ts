@@ -15,7 +15,7 @@ const rootEntries: URL[] = [
 	new URL("./209-birthdays/services/service-worker.ts", root),
 ];
 const pathEntries: URL[] = [];
-const output: URL = new URL("./dist", root);
+const output: URL = new URL("./dist/client", root);
 const plugins: VitePlugin[] = [new CloudflareVitePlugin()];
 const config: ViteConfig = await MPAConfig.construct(inputs, rootEntries, pathEntries, output, plugins);
 export default defineConfig(config.build());

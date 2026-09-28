@@ -3,8 +3,10 @@
 import "adaptive-extender/web";
 import { UserProfile } from "../models/user-profile.js";
 import { SessionContext } from "../models/session-context.js";
-import { analytics } from "../services/analytics-service.js";
+import { AnalyticsService } from "../services/analytics-service.js";
 import { Controller } from "adaptive-extender/web";
+
+const analytics = AnalyticsService.instance;
 
 //#region Profile collector
 declare global {
@@ -45,59 +47,40 @@ declare global {
 
 export class ProfileCollector extends Controller {
 	async run(): Promise<void> {
-		const platform = await this.#resolvePlatform();
-		const isMobile = this.#resolveMobile();
-		const { cpuArchitecture, deviceModel } = await this.#resolveHighEntropy();
-		const pointerType = this.#resolvePointerType();
-		const primaryLanguage = navigator.languages[0] ?? navigator.language;
+		const data = await this.#resolveHighEntropy();
+		const cpuArchitecture = this.#resolveArchitecture(data);
+		const pointer = this.#resolvePointer();
 		const doNotTrack = this.#resolveDoNotTrack();
-		const { hardwareConcurrency, maxTouchPoints, deviceMemory } = navigator;
+		const { hardwareConcurrency, maxTouchPoints, deviceMemory, webdriver } = navigator;
 		const darkMode = matchMedia("(prefers-color-scheme: dark)").matches;
 		const lowMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 		const highContrast = matchMedia("(prefers-contrast: more)").matches;
-		analytics.setProperties(new UserProfile(platform, isMobile, cpuArchitecture, deviceModel, hardwareConcurrency, deviceMemory, maxTouchPoints, devicePixelRatio, screen.colorDepth, darkMode, lowMotion, highContrast, pointerType, primaryLanguage, doNotTrack));
+		const standalone = matchMedia("(display-mode: standalone)").matches;
+		const resolution = `${screen.width}x${screen.height}`;
+		const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
+		analytics.setProperties(new UserProfile(cpuArchitecture, hardwareConcurrency, deviceMemory, maxTouchPoints, devicePixelRatio, screen.colorDepth, darkMode, lowMotion, highContrast, pointer, doNotTrack, resolution, timeZone, standalone, webdriver));
 		this.#dispatchSessionContext();
 	}
 
-	async #resolvePlatform(): Promise<string> {
-		const uad = navigator.userAgentData;
-		const uadPlatform = uad?.platform.insteadEmpty(undefined);
-		if (uadPlatform !== undefined) return uadPlatform;
-
-		const raw = navigator.platform;
-		if (raw === "Win32" || raw.startsWith("Win")) return "Windows";
-		if (raw === "MacIntel" || raw.startsWith("Mac")) return "macOS";
-		if (raw.includes("iPhone") || raw.includes("iPad")) return "iOS";
-		if (raw.includes("Linux")) return navigator.userAgent.includes("Android") ? "Android" : "Linux";
-
-		const ua = navigator.userAgent;
-		if (ua.includes("Android")) return "Android";
-		if (ua.includes("iPhone") || ua.includes("iPad")) return "iOS";
-		if (ua.includes("Windows")) return "Windows";
-		if (ua.includes("CrOS")) return "ChromeOS";
-		if (ua.includes("Mac OS")) return "macOS";
-		if (ua.includes("Linux")) return "Linux";
-
-		return raw.insteadEmpty("unknown");
+	static #nonEmpty(text: string | undefined): string | undefined {
+		if (text === undefined) return undefined;
+		return text.insteadEmpty(undefined);
 	}
 
-	#resolveMobile(): boolean {
+	async #resolveHighEntropy(): Promise<UADataValues> {
 		const uad = navigator.userAgentData;
-		if (uad !== undefined) return uad.mobile;
-		return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+		if (uad === undefined) return {};
+		try {
+			return await uad.getHighEntropyValues(["architecture"]);
+		} catch { /* fall through to UA string */ }
+		return {};
 	}
 
-	async #resolveHighEntropy(): Promise<{ cpuArchitecture: string; deviceModel: string | undefined; }> {
-		const uad = navigator.userAgentData;
-		if (uad !== undefined) {
-			try {
-				const data = await uad.getHighEntropyValues(["architecture", "model"]);
-				const cpuArchitecture = data.architecture?.insteadEmpty(undefined) ?? this.#fallbackArchitecture();
-				const deviceModel = data.model?.insteadEmpty(undefined);
-				return { cpuArchitecture, deviceModel };
-			} catch { /* fall through to UA string */ }
-		}
-		return { cpuArchitecture: this.#fallbackArchitecture(), deviceModel: undefined };
+	#resolveArchitecture(data: UADataValues): string {
+		const fallback = this.#fallbackArchitecture();
+		const { architecture } = data;
+		if (architecture === undefined) return fallback;
+		return architecture.insteadEmpty(fallback);
 	}
 
 	#fallbackArchitecture(): string {
@@ -111,7 +94,7 @@ export class ProfileCollector extends Controller {
 		return "unknown";
 	}
 
-	#resolvePointerType(): string {
+	#resolvePointer(): string {
 		if (matchMedia("(pointer: fine)").matches) return "fine";
 		if (matchMedia("(pointer: coarse)").matches) return "coarse";
 		return "none";
@@ -124,34 +107,41 @@ export class ProfileCollector extends Controller {
 		return "unspecified";
 	}
 
+	#resolveDomain(urlReferrer: string): string {
+		if (urlReferrer === "direct") return "direct";
+		try {
+			return new URL(urlReferrer).hostname;
+		} catch {
+			return "unknown";
+		}
+	}
+
+	#resolveNavigation(): string {
+		const [entry] = performance.getEntriesByType("navigation");
+		if (entry instanceof PerformanceNavigationTiming) return entry.type;
+		return "navigate";
+	}
+
 	#dispatchSessionContext(): void {
 		const rawReferrer = document.referrer;
-		const referrerUrl = rawReferrer.insteadEmpty("direct");
-		let referrerDomain: string;
-		if (referrerUrl === "direct") {
-			referrerDomain = "direct";
-		} else {
-			try {
-				referrerDomain = new URL(referrerUrl).hostname;
-			} catch {
-				referrerDomain = "unknown";
-			}
-		}
-
-		const allLanguages = navigator.languages.join(",");
-		const [navEntry] = performance.getEntriesByType("navigation");
-		const navigationType = navEntry instanceof PerformanceNavigationTiming ? navEntry.type : "navigate";
+		const urlReferrer = rawReferrer.insteadEmpty("direct");
+		const domainReferrer = this.#resolveDomain(urlReferrer);
+		const languages = navigator.languages.join(",");
+		const typeNavigation = this.#resolveNavigation();
 		const { connection } = navigator;
-		const connectionType = connection?.type?.insteadEmpty(undefined);
-		const effectiveConnection = connection?.effectiveType?.insteadEmpty(undefined);
-		const downlinkMbps = connection?.downlink;
-		const roundTripTimeMs = connection?.rtt;
-		const dataSaverEnabled = connection?.saveData;
-		const params = new URLSearchParams(location.search);
-		const utmSource = params.get("utm_source")?.insteadEmpty(undefined);
-		const utmMedium = params.get("utm_medium")?.insteadEmpty(undefined);
-		const utmCampaign = params.get("utm_campaign")?.insteadEmpty(undefined);
-		analytics.dispatch("session_context", new SessionContext(referrerUrl, referrerDomain, navigationType, allLanguages, connectionType, effectiveConnection, downlinkMbps, roundTripTimeMs, dataSaverEnabled, utmSource, utmMedium, utmCampaign));
+		let typeConnection: string | undefined;
+		let effectiveConnection: string | undefined;
+		let downlink: number | undefined;
+		let roundTripTimeMs: number | undefined;
+		let dataSaver: boolean | undefined;
+		if (connection !== undefined) {
+			typeConnection = ProfileCollector.#nonEmpty(connection.type);
+			effectiveConnection = ProfileCollector.#nonEmpty(connection.effectiveType);
+			downlink = connection.downlink;
+			roundTripTimeMs = connection.rtt;
+			dataSaver = connection.saveData;
+		}
+		analytics.dispatch("session_context", new SessionContext(domainReferrer, typeNavigation, languages, typeConnection, effectiveConnection, downlink, roundTripTimeMs, dataSaver));
 	}
 
 	async catch(error: Error): Promise<void> {

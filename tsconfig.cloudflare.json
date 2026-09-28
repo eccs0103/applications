@@ -8,6 +8,8 @@
 	},
 	"include": [
 		"environment/workers/cloudflare-worker.ts",
+		"environment/workers/site-worker.ts",
+		"environment/workers/visitor-cookies.ts",
 		"209-birthdays/controllers/birthday-push-worker.ts",
 		"209-birthdays/models/push-environment.ts",
 		"209-birthdays/models/push-report.ts",

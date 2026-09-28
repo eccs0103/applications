@@ -10,6 +10,7 @@ import { SettingsService } from "../services/settings-service.js";
 import { Timer } from "../services/timer.js";
 import { NotificationService } from "../services/notification-service.js";
 import { NotificationState } from "../models/notification-state.js";
+import { AnalyticsController } from "../../environment/controllers/analytics-controller.js";
 
 const { baseURI, body } = document;
 
@@ -132,6 +133,7 @@ class AppController extends Controller {
 	}
 
 	async run(): Promise<void> {
+		void AnalyticsController.launch();
 		const group = await this.#readGroup(new URL("../data/database-2025.json", baseURI));
 		this.#members = group.members
 			.sort((member1: GroupMember, member2: GroupMember) => member1.birthday.getDate() - member2.birthday.getDate())

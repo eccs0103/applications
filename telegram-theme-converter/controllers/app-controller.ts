@@ -10,6 +10,7 @@ import { AndroidTheme } from "../models/android-theme.js";
 import { DesktopTheme } from "../models/desktop-theme.js";
 import { Vocabulary } from "../models/vocabulary.js";
 import { type Color } from "adaptive-extender/core";
+import { AnalyticsController } from "../../environment/controllers/analytics-controller.js";
 
 const { baseURI, body } = document;
 
@@ -51,6 +52,7 @@ class AppController extends Controller {
 	}
 
 	async run(): Promise<void> {
+		void AnalyticsController.launch();
 		const bridge = new ClientBridge();
 		const vocabularyService = new VocabularyService(bridge, new URL(baseURI));
 		const [androidVocabulary, desktopVocabulary, ruleTable] = await Promise.all([
