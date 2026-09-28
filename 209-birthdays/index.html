@@ -21,19 +21,11 @@
 	<link rel="stylesheet" href="../styles/themes/material.css">
 	<link rel="stylesheet" href="./view/style.css">
 	<script type="module" src="../environment/services/analytics-service.ts"></script>
-	<script type="module" src="./controllers/app-controller.ts"></script>
+	<script type="module" src="./controllers/app-controller.tsx"></script>
 </head>
 
-<body class="with-inline-padding with-inline-gap">
-	<div id="scroll-picker" class="flex column definition"></div>
-	<hr class="layer">
-	<div id="picker-container" class="with-block-padding flex column main-center">
-		<h4 id="selection-title"></h4>
-		<dfn id="selection-auxiliary"></dfn>
-	</div>
-	<button id="notifications-toggle" type="button">
-		<span class="icon"></span>
-	</button>
+<body>
+	<div id="root" class="with-inline-padding with-inline-gap"></div>
 </body>
 
 </html>

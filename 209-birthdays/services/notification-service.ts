@@ -107,5 +107,25 @@ export class NotificationService {
 		if (this.#synchronized) return NotificationState.ready;
 		return NotificationState.pending;
 	}
+
+	async toggle(): Promise<NotificationState> {
+		try {
+			const state = await this.state();
+			if (state !== NotificationState.ready) await this.subscribe();
+		} catch (reason) {
+			console.error(Error.from(reason));
+		}
+		return await this.state();
+	}
+
+	async bootstrap(): Promise<NotificationState> {
+		if (this.permission !== "granted") return await this.state();
+		try {
+			await this.synchronize();
+		} catch (reason) {
+			console.error(Error.from(reason));
+		}
+		return await this.state();
+	}
 }
 //#endregion

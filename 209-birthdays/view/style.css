@@ -1,4 +1,4 @@
-body {
+div#root {
 	position: fixed;
 	inset: 0;
 	max-width: 100vmin;

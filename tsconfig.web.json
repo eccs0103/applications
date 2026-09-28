@@ -1,13 +1,15 @@
 {
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
-		"lib": [ "DOM", "DOM.Iterable", "ES2025" ]
+		"lib": [ "DOM", "DOM.Iterable", "ES2025" ],
+		"jsx": "react-jsx"
 	},
 	"include": [
 		"environment/models/**/*.ts",
 		"environment/controllers/**/*.ts",
 		"environment/services/**/*.ts",
 		"209-birthdays/**/*.ts",
+		"209-birthdays/**/*.tsx",
 		"telegram-theme-converter/controllers/**/*.ts",
 		"telegram-theme-converter/models/**/*.ts",
 		"telegram-theme-converter/services/**/*.ts",
