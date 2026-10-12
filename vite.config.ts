@@ -7,16 +7,19 @@ import { CloudflareVitePlugin } from "./environment/plugins/cloudflare-vite-plug
 import { ReactVitePlugin } from "./environment/plugins/react-vite-plugin.js";
 import { type VitePlugin } from "./environment/plugins/vite-plugin.js";
 
-const root: URL = new URL(import.meta.url);
-const inputs: URL[] = [
-	new URL("./209-birthdays/index.html", root),
-	new URL("./telegram-theme-converter/index.html", root),
-];
-const rootEntries: URL[] = [
-	new URL("./209-birthdays/services/service-worker.ts", root),
-];
-const pathEntries: URL[] = [];
-const output: URL = new URL("./dist/client", root);
-const plugins: VitePlugin[] = [new CloudflareVitePlugin(), new ReactVitePlugin()];
-const config: ViteConfig = await MPAConfig.construct(inputs, rootEntries, pathEntries, output, plugins);
-export default defineConfig(config.build());
+export default defineConfig(async (env) => {
+	const root: URL = new URL(import.meta.url);
+	const inputs: URL[] = [
+		new URL("./209-birthdays/index.html", root),
+		new URL("./telegram-theme-converter/index.html", root),
+	];
+	const rootEntries: URL[] = [
+		new URL("./209-birthdays/services/service-worker.ts", root),
+	];
+	const pathEntries: URL[] = [
+	];
+	const output: URL = new URL("./dist/client", root);
+	const plugins: VitePlugin[] = [new CloudflareVitePlugin(), new ReactVitePlugin()];
+	const config: ViteConfig = await MPAConfig.construct(inputs, rootEntries, pathEntries, output, plugins);
+	return config.build();
+});
