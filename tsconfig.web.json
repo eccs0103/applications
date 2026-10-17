@@ -5,7 +5,6 @@
 		"jsx": "react-jsx"
 	},
 	"include": [
-		"environment/models/**/*.ts",
 		"environment/controllers/**/*.ts",
 		"environment/services/**/*.ts",
 		"209-birthdays/**/*.ts",
