@@ -2,7 +2,6 @@
 
 import "adaptive-extender/core";
 import { EnvironmentProvider, type Environment } from "adaptive-extender/core";
-import database from "../../resources/data/database-2025.json";
 import { CloudflareWorker } from "../../environment/workers/cloudflare-worker.js";
 import { PushEnvironment } from "../models/push-environment.js";
 import { PushReport } from "../models/push-report.js";
@@ -58,8 +57,12 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 		return new Date(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate());
 	}
 
-	#reminders(): [BirthdayHolder, number][] {
-		const members = BirthdayDatabase.import(database, "database-2025.json").members;
+	static #database: string = "https://applications.eccs.dev/data/database-2025.json";
+
+	async #reminders(): Promise<[BirthdayHolder, number][]> {
+		const response = await fetch(BirthdayPushWorker.#database);
+		if (!response.ok) throw new ReferenceError(`Unable to read birthdays due ${response.status} status`);
+		const members = BirthdayDatabase.import(await response.json(), "database-2025.json").members;
 		return ReminderExpert.findReminders(members, this.#today());
 	}
 
@@ -82,7 +85,7 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 	}
 
 	async #runReminderCycle(environment: WorkerBindings, pushEnvironment: Readonly<PushEnvironment>): Promise<PushReport> {
-		const reminders = this.#reminders();
+		const reminders = await this.#reminders();
 		const due = reminders.map(([member]) => member.fullName);
 		if (reminders.length === 0) return new PushReport(due);
 
