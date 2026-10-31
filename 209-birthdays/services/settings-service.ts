@@ -11,7 +11,7 @@ export class SettingsService {
 
 	constructor() {
 		LegacyCell.migrate("Personal webpage\\209 birthdays\\Settings", "209 birthdays\\Settings");
-		this.#repository = localStorage.openBufferedCell("209 birthdays\\Settings", Settings, new Settings);
+		this.#repository = localStorage.openBufferedCell("209 birthdays\\Settings", Settings, new Settings());
 	}
 
 	readSelection(): number {
