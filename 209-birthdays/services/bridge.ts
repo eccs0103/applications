@@ -1,10 +1,11 @@
 "use strict";
 
 import "adaptive-extender/core";
+import { type URI } from "adaptive-extender/core";
 
 //#region Bridge
 export interface Bridge {
-	read(path: Readonly<URL>): Promise<string | null>;
-	write(path: Readonly<URL>, content: string): Promise<void>;
+	read(path: Readonly<URI>): Promise<string | null>;
+	write(path: Readonly<URI>, content: string): Promise<void>;
 }
 //#endregion

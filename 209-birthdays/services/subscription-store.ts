@@ -1,6 +1,7 @@
 "use strict";
 
 import "adaptive-extender/core";
+import { type URI } from "adaptive-extender/core";
 import { SubscriptionRecord } from "../models/subscription-record.js";
 
 //#region Subscription store
@@ -14,19 +15,20 @@ export class SubscriptionStore {
 	/**
 	 * Validates and stores a subscription, returning its endpoint, or `null` if the payload is malformed.
 	 */
-	async save(text: string): Promise<string | null> {
+	async save(text: string): Promise<URI | null> {
 		const object = JSON.parse(text);
 		try {
 			const subscription = SubscriptionRecord.import(object, "subscription");
-			await this.#namespace.put(subscription.endpoint, text);
-			return subscription.endpoint;
+			const { endpoint } = subscription;
+			await this.#namespace.put(endpoint.href, text);
+			return endpoint;
 		} catch {
 			return null;
 		}
 	}
 
-	async remove(endpoint: string): Promise<void> {
-		await this.#namespace.delete(endpoint);
+	async remove(endpoint: Readonly<URI>): Promise<void> {
+		await this.#namespace.delete(endpoint.href);
 	}
 
 	async listEndpoints(): Promise<string[]> {

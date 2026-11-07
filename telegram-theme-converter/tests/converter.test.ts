@@ -1,7 +1,7 @@
 "use strict";
 
-import "adaptive-extender/core";
-import { Color, ColorFormats } from "adaptive-extender/core";
+import "adaptive-extender/node";
+import { Color, ColorFormats, URI } from "adaptive-extender/node";
 import { describe, it, expect } from "vitest";
 import AsyncFileSystem from "node:fs/promises";
 import { Vocabulary } from "../models/vocabulary.js";
@@ -16,16 +16,16 @@ import { PaletteReader } from "../services/palette-reader.js";
 import { AtthemeReader } from "../services/attheme-reader.js";
 
 const { abs } = Math;
-const dataDir = new URL("../../resources/data/", import.meta.url);
-const fixtures = new URL("./fixtures/", import.meta.url);
+const dataDir = new URI("../../resources/data/", import.meta.url);
+const fixtures = new URI("./fixtures/", import.meta.url);
 
 async function loadVocabulary(name: string): Promise<Vocabulary> {
-	const json = await AsyncFileSystem.readFile(new URL(name, dataDir), "utf-8");
+	const json = await AsyncFileSystem.readFile(new URI(name, dataDir).toPath(), "utf-8");
 	return Vocabulary.import(JSON.parse(json), name);
 }
 
 async function loadRuleTable(): Promise<RuleTable> {
-	const json = await AsyncFileSystem.readFile(new URL("telegram-conversion-rules.json", dataDir), "utf-8");
+	const json = await AsyncFileSystem.readFile(new URI("telegram-conversion-rules.json", dataDir).toPath(), "utf-8");
 	return RuleTable.import(JSON.parse(json), "telegram-conversion-rules.json");
 }
 
@@ -44,7 +44,7 @@ function colorsEqual(first: Readonly<Color>, second: Readonly<Color>): boolean {
 }
 
 async function readFixture(name: string): Promise<Uint8Array> {
-	const buffer = await AsyncFileSystem.readFile(new URL(name, fixtures));
+	const buffer = await AsyncFileSystem.readFile(new URI(name, fixtures).toPath());
 	return new Uint8Array(buffer);
 }
 

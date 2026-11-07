@@ -1,6 +1,7 @@
 "use strict";
 
 import "adaptive-extender/core";
+import { type URI } from "adaptive-extender/core";
 
 const { trunc } = Math;
 
@@ -34,8 +35,8 @@ export class VapidSigner {
 	/**
 	 * Builds the `Authorization` header value for a push request to the given subscription endpoint.
 	 */
-	async authorization(endpoint: string): Promise<string> {
-		const audience = new URL(endpoint).origin;
+	async authorization(endpoint: Readonly<URI>): Promise<string> {
+		const audience = endpoint.origin;
 		const header = VapidSigner.#encodeJson({ typ: "JWT", alg: "ES256" });
 		const expiration = trunc(Date.now() / 1000) + VapidSigner.#ttlSeconds;
 		const payload = VapidSigner.#encodeJson({ aud: audience, exp: expiration, sub: VapidSigner.#subject });

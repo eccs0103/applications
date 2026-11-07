@@ -1,7 +1,7 @@
 "use strict";
 
 import "adaptive-extender/web";
-import { Controller, MetadataInjector } from "adaptive-extender/web";
+import { Controller, MetadataInjector, URI } from "adaptive-extender/web";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BirthdaysApp } from "../view/birthdays-app.js";
@@ -22,8 +22,8 @@ class AppController extends Controller {
 	#notifications: NotificationService = new NotificationService();
 	#timer: Timer = new Timer({ multiple: false });
 
-	async #readGroup(url: Readonly<URL>): Promise<Group> {
-		const content = await this.#bridge.read(url);
+	async #readGroup(uri: Readonly<URI>): Promise<Group> {
+		const content = await this.#bridge.read(uri);
 		if (content === null) throw new ReferenceError();
 		const object = JSON.parse(content);
 		return Group.load(object, "database-2025.json");
@@ -31,7 +31,7 @@ class AppController extends Controller {
 
 	async run(): Promise<void> {
 		void AnalyticsController.launch();
-		const group = await this.#readGroup(new URL("../data/database-2025.json", baseURI));
+		const group = await this.#readGroup(new URI("../data/database-2025.json", baseURI));
 		const members = group.members
 			.sort((member1, member2) => member1.birthday.getDate() - member2.birthday.getDate())
 			.sort((member1, member2) => member1.birthday.getMonth() - member2.birthday.getMonth());
@@ -42,8 +42,8 @@ class AppController extends Controller {
 		MetadataInjector.inject({
 			type: "Person",
 			name: "eccs0103",
-			webpage: new URL("https://eccs.dev"),
-			preview: new URL("../icons/cake.png", baseURI),
+			webpage: new URI("https://eccs.dev/"),
+			preview: new URI("../icons/cake.png", baseURI),
 			associations: [],
 			job: "Software engineer",
 			description: "209 birthdays application.",

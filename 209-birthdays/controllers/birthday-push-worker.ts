@@ -1,7 +1,7 @@
 "use strict";
 
 import "adaptive-extender/core";
-import { EnvironmentProvider, type Environment } from "adaptive-extender/core";
+import { EnvironmentProvider, URI, type Environment } from "adaptive-extender/core";
 import { CloudflareWorker } from "../../environment/workers/cloudflare-worker.js";
 import { PushEnvironment } from "../models/push-environment.js";
 import { PushReport } from "../models/push-report.js";
@@ -24,7 +24,7 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 	async run(request: Request, environment: WorkerBindings, context: ExecutionContext): Promise<Response> {
 		void context;
 		const factory = this.#factory;
-		const { pathname } = new URL(request.url);
+		const { pathname } = new URI(request.url);
 
 		if (request.method === "OPTIONS") return factory.preflight();
 		if (request.method === "GET" && pathname === "/api/vapid") return factory.json({ key: environment.VAPID_PUBLIC });

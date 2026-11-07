@@ -1,5 +1,7 @@
 "use strict";
 
+import "adaptive-extender/node";
+import { URI } from "adaptive-extender/node";
 import { defineConfig } from "vite";
 import { type ViteConfig } from "./environment/configs/vite-config.js";
 import { MPAConfig } from "./environment/configs/mpa-config.js";
@@ -8,17 +10,17 @@ import { ReactVitePlugin } from "./environment/plugins/react-vite-plugin.js";
 import { type VitePlugin } from "./environment/plugins/vite-plugin.js";
 
 export default defineConfig(async (env) => {
-	const root: URL = new URL(import.meta.url);
-	const inputs: URL[] = [
-		new URL("./209-birthdays/index.html", root),
-		new URL("./telegram-theme-converter/index.html", root),
+	const root: URI = new URI(import.meta.url);
+	const inputs: URI[] = [
+		new URI("./209-birthdays/index.html", root),
+		new URI("./telegram-theme-converter/index.html", root),
 	];
-	const rootEntries: URL[] = [
-		new URL("./209-birthdays/services/service-worker.ts", root),
+	const rootEntries: URI[] = [
+		new URI("./209-birthdays/services/service-worker.ts", root),
 	];
-	const pathEntries: URL[] = [
+	const pathEntries: URI[] = [
 	];
-	const output: URL = new URL("./dist/client", root);
+	const output: URI = new URI("./dist/client", root);
 	const plugins: VitePlugin[] = [new CloudflareVitePlugin(), new ReactVitePlugin()];
 	const config: ViteConfig = await MPAConfig.construct(inputs, rootEntries, pathEntries, output, plugins);
 	return config.build();

@@ -1,7 +1,7 @@
 "use strict";
 
 import "adaptive-extender/web";
-import { Controller, MetadataInjector } from "adaptive-extender/web";
+import { Controller, MetadataInjector, URI } from "adaptive-extender/web";
 import { ConverterRenderer } from "../view/converter-renderer.js";
 import { ClientBridge } from "../services/client-bridge.js";
 import { VocabularyService } from "../services/vocabulary-service.js";
@@ -54,7 +54,7 @@ class AppController extends Controller {
 	async run(): Promise<void> {
 		void AnalyticsController.launch();
 		const bridge = new ClientBridge();
-		const vocabularyService = new VocabularyService(bridge, new URL(baseURI));
+		const vocabularyService = new VocabularyService(bridge, new URI(baseURI));
 		const [androidVocabulary, desktopVocabulary, ruleTable] = await Promise.all([
 			vocabularyService.loadAndroidVocabulary(),
 			vocabularyService.loadDesktopVocabulary(),
@@ -72,7 +72,7 @@ class AppController extends Controller {
 		MetadataInjector.inject({
 			type: "Application",
 			name: "Telegram theme converter",
-			webpage: new URL(baseURI),
+			webpage: new URI(baseURI),
 			description: "Perfect two-way conversion between Telegram Android and Telegram Desktop themes.",
 			category: "Utility",
 			os: "Any",

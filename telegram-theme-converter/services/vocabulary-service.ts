@@ -1,6 +1,7 @@
 "use strict";
 
 import "adaptive-extender/core";
+import { URI } from "adaptive-extender/core";
 import { type Bridge } from "./bridge.js";
 import { Vocabulary } from "../models/vocabulary.js";
 import { RuleTable } from "../models/rule-table.js";
@@ -12,16 +13,16 @@ export class VocabularyService {
 	static #nameRules: string = "telegram-conversion-rules.json";
 
 	#bridge: Bridge;
-	#baseURI: Readonly<URL>;
+	#baseURI: Readonly<URI>;
 
-	constructor(bridge: Bridge, baseURI: Readonly<URL>) {
+	constructor(bridge: Bridge, baseURI: Readonly<URI>) {
 		this.#bridge = bridge;
 		this.#baseURI = baseURI;
 	}
 
 	async #readJson(name: string): Promise<any> {
-		const url = new URL(`../data/${name}`, this.#baseURI);
-		const content = await this.#bridge.read(url);
+		const uri = new URI(`../data/${name}`, this.#baseURI);
+		const content = await this.#bridge.read(uri);
 		if (content === null) throw new ReferenceError(`Missing data file '${name}'`);
 		return JSON.parse(content);
 	}

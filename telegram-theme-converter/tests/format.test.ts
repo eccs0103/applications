@@ -1,7 +1,7 @@
 "use strict";
 
-import "adaptive-extender/core";
-import { Color, ColorFormats } from "adaptive-extender/core";
+import "adaptive-extender/node";
+import { Color, ColorFormats, URI } from "adaptive-extender/node";
 import { describe, it, expect } from "vitest";
 import AsyncFileSystem from "node:fs/promises";
 import { AtthemeReader } from "../services/attheme-reader.js";
@@ -14,16 +14,16 @@ import { Argb } from "../services/argb.js";
 import { AndroidTheme } from "../models/android-theme.js";
 import { DesktopTheme } from "../models/desktop-theme.js";
 
-const fixtures = new URL("./fixtures/", import.meta.url);
-const desktopVocabularyPath = new URL("../../resources/data/telegram-desktop-vocabulary.json", import.meta.url);
+const fixtures = new URI("./fixtures/", import.meta.url);
+const desktopVocabularyPath = new URI("../../resources/data/telegram-desktop-vocabulary.json", import.meta.url);
 
 async function readFixture(name: string): Promise<Uint8Array> {
-	const buffer = await AsyncFileSystem.readFile(new URL(name, fixtures));
+	const buffer = await AsyncFileSystem.readFile(new URI(name, fixtures).toPath());
 	return new Uint8Array(buffer);
 }
 
 async function readDesktopBaseColors(): Promise<Map<string, Color>> {
-	const json = await AsyncFileSystem.readFile(desktopVocabularyPath, "utf-8");
+	const json = await AsyncFileSystem.readFile(desktopVocabularyPath.toPath(), "utf-8");
 	const { entries } = JSON.parse(json) as { entries: { name: string; light: string; }[]; };
 	const colors = new Map<string, Color>();
 	for (const entry of entries) colors.set(entry.name, Color.parse(entry.light, { format: ColorFormats.hex, deep: true }));

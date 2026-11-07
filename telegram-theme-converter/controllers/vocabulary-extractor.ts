@@ -1,9 +1,8 @@
 "use strict";
 
 import "adaptive-extender/node";
-import { Color, ColorFormats } from "adaptive-extender/node";
+import { Color, ColorFormats, URI } from "adaptive-extender/node";
 import AsyncFileSystem from "node:fs/promises";
-import URLUtilities from "node:url";
 import { AtthemeReader } from "../services/attheme-reader.js";
 import { PaletteReader } from "../services/palette-reader.js";
 import { ArchiveReader } from "../services/archive-reader.js";
@@ -144,9 +143,9 @@ class DesktopSource {
 //#region Vocabulary writer
 class VocabularyWriter {
 	static async write(entries: readonly VocabularyEntryData[], relativePath: string): Promise<void> {
-		const url = new URL(`../../${relativePath}`, import.meta.url);
+		const uri = new URI(`../../${relativePath}`, import.meta.url);
 		const json = `${JSON.stringify({ entries }, null, "\t")}\n`;
-		await AsyncFileSystem.writeFile(URLUtilities.fileURLToPath(url), json, "utf-8");
+		await AsyncFileSystem.writeFile(uri.toPath(), json, "utf-8");
 	}
 }
 //#endregion
