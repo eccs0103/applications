@@ -1,8 +1,9 @@
 "use strict";
 
+import "adaptive-extender/node";
 import { describe, it, expect } from "vitest";
-import { BirthdayHolder } from "../models/birthday-database.js";
-import { ReminderExpert } from "../services/reminder-expert.js";
+import { BirthdayHolder } from "../../209-birthdays/models/birthday-database.js";
+import { ReminderExpert } from "../../209-birthdays/services/reminder-expert.js";
 
 function member(name: string, birthday: string): BirthdayHolder {
 	return BirthdayHolder.import({ name, surname: String.empty, birthday }, "test-member");

@@ -1,31 +1,29 @@
 "use strict";
 
 import "adaptive-extender/node";
-import { Color, ColorFormats, URI } from "adaptive-extender/node";
+import { Color, ColorFormats } from "adaptive-extender/node";
 import { describe, it, expect } from "vitest";
-import AsyncFileSystem from "node:fs/promises";
-import { Vocabulary } from "../models/vocabulary.js";
-import { RuleTable } from "../models/rule-table.js";
-import { Transform } from "../models/rule.js";
-import { Converter } from "../services/converter.js";
-import { AndroidTheme } from "../models/android-theme.js";
-import { DesktopTheme } from "../models/desktop-theme.js";
-import { KeyOutcome } from "../models/report.js";
-import { ArchiveReader } from "../services/archive-reader.js";
-import { PaletteReader } from "../services/palette-reader.js";
-import { AtthemeReader } from "../services/attheme-reader.js";
+import { Vocabulary } from "../../telegram-theme-converter/models/vocabulary.js";
+import { RuleTable } from "../../telegram-theme-converter/models/rule-table.js";
+import { Transform } from "../../telegram-theme-converter/models/rule.js";
+import { Converter } from "../../telegram-theme-converter/services/converter.js";
+import { AndroidTheme } from "../../telegram-theme-converter/models/android-theme.js";
+import { DesktopTheme } from "../../telegram-theme-converter/models/desktop-theme.js";
+import { KeyOutcome } from "../../telegram-theme-converter/models/report.js";
+import { ArchiveReader } from "../../telegram-theme-converter/services/archive-reader.js";
+import { PaletteReader } from "../../telegram-theme-converter/services/palette-reader.js";
+import { AtthemeReader } from "../../telegram-theme-converter/services/attheme-reader.js";
+import { TestData } from "./test-data.js";
 
 const { abs } = Math;
-const dataDir = new URI("../../resources/data/", import.meta.url);
-const fixtures = new URI("./fixtures/", import.meta.url);
 
 async function loadVocabulary(name: string): Promise<Vocabulary> {
-	const json = await AsyncFileSystem.readFile(new URI(name, dataDir).toPath(), "utf-8");
+	const json = await TestData.data(name);
 	return Vocabulary.import(JSON.parse(json), name);
 }
 
 async function loadRuleTable(): Promise<RuleTable> {
-	const json = await AsyncFileSystem.readFile(new URI("telegram-conversion-rules.json", dataDir).toPath(), "utf-8");
+	const json = await TestData.data("telegram-conversion-rules.json");
 	return RuleTable.import(JSON.parse(json), "telegram-conversion-rules.json");
 }
 
@@ -41,11 +39,6 @@ async function loadEverything() {
 
 function colorsEqual(first: Readonly<Color>, second: Readonly<Color>): boolean {
 	return first.toString({ format: ColorFormats.hex, deep: true }) === second.toString({ format: ColorFormats.hex, deep: true });
-}
-
-async function readFixture(name: string): Promise<Uint8Array> {
-	const buffer = await AsyncFileSystem.readFile(new URI(name, fixtures).toPath());
-	return new Uint8Array(buffer);
 }
 
 describe("RuleTable integrity", () => {
@@ -158,7 +151,7 @@ describe("Converter round trip", () => {
 		const baseColors = new Map(desktopVocabulary.entries.map(entry => [entry.name, entry.lightColor()]));
 
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
-			const bytes = await readFixture(name);
+			const bytes = await TestData.fixture(name);
 			const zipEntries = await ArchiveReader.read(bytes);
 			const entry = ArchiveReader.find(zipEntries, ["colors.tdesktop-theme"]);
 			const [, paletteBytes] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
@@ -181,7 +174,7 @@ describe("Converter round trip", () => {
 		const coreSources = new Set(ruleTable.directRules().map(rule => rule.source));
 
 		for (const name of ["day.attheme", "night.attheme"]) {
-			const bytes = await readFixture(name);
+			const bytes = await TestData.fixture(name);
 			const { colors } = AtthemeReader.read(bytes);
 			const complete = new Map(androidVocabulary.entries.map(entry => [entry.name, entry.lightColor()]));
 			for (const [key, color] of colors) if (androidVocabulary.has(key)) complete.set(key, color);

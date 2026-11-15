@@ -1,29 +1,21 @@
 "use strict";
 
 import "adaptive-extender/node";
-import { Color, ColorFormats, URI } from "adaptive-extender/node";
+import { Color, ColorFormats } from "adaptive-extender/node";
 import { describe, it, expect } from "vitest";
-import AsyncFileSystem from "node:fs/promises";
-import { AtthemeReader } from "../services/attheme-reader.js";
-import { AtthemeWriter } from "../services/attheme-writer.js";
-import { PaletteReader } from "../services/palette-reader.js";
-import { PaletteWriter } from "../services/palette-writer.js";
-import { ArchiveReader } from "../services/archive-reader.js";
-import { ArchiveWriter } from "../services/archive-writer.js";
-import { Argb } from "../services/argb.js";
-import { AndroidTheme } from "../models/android-theme.js";
-import { DesktopTheme } from "../models/desktop-theme.js";
-
-const fixtures = new URI("./fixtures/", import.meta.url);
-const desktopVocabularyPath = new URI("../../resources/data/telegram-desktop-vocabulary.json", import.meta.url);
-
-async function readFixture(name: string): Promise<Uint8Array> {
-	const buffer = await AsyncFileSystem.readFile(new URI(name, fixtures).toPath());
-	return new Uint8Array(buffer);
-}
+import { AtthemeReader } from "../../telegram-theme-converter/services/attheme-reader.js";
+import { AtthemeWriter } from "../../telegram-theme-converter/services/attheme-writer.js";
+import { PaletteReader } from "../../telegram-theme-converter/services/palette-reader.js";
+import { PaletteWriter } from "../../telegram-theme-converter/services/palette-writer.js";
+import { ArchiveReader } from "../../telegram-theme-converter/services/archive-reader.js";
+import { ArchiveWriter } from "../../telegram-theme-converter/services/archive-writer.js";
+import { Argb } from "../../telegram-theme-converter/services/argb.js";
+import { AndroidTheme } from "../../telegram-theme-converter/models/android-theme.js";
+import { DesktopTheme } from "../../telegram-theme-converter/models/desktop-theme.js";
+import { TestData } from "./test-data.js";
 
 async function readDesktopBaseColors(): Promise<Map<string, Color>> {
-	const json = await AsyncFileSystem.readFile(desktopVocabularyPath.toPath(), "utf-8");
+	const json = await TestData.data("telegram-desktop-vocabulary.json");
 	const { entries } = JSON.parse(json) as { entries: { name: string; light: string; }[]; };
 	const colors = new Map<string, Color>();
 	for (const entry of entries) colors.set(entry.name, Color.parse(entry.light, { format: ColorFormats.hex, deep: true }));
@@ -43,11 +35,6 @@ function colorMapsEqual(first: ReadonlyMap<string, Color>, second: ReadonlyMap<s
 	}
 	return true;
 }
-
-const sampleWallpaper = new Uint8Array([
-	0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01,
-	0x00, 0x01, 0x00, 0x00, 0xff, 0xd9,
-]);
 
 describe("Argb", () => {
 	it("round-trips signed 32-bit ARGB integers through Color", () => {
@@ -81,7 +68,7 @@ describe("AtthemeReader / AtthemeWriter", () => {
 
 	it("reproduces official sample files byte-for-byte on a read/rewrite round trip for the keys they declare", async () => {
 		for (const name of ["day.attheme", "night.attheme", "bluebubbles.attheme"]) {
-			const bytes = await readFixture(name);
+			const bytes = await TestData.fixture(name);
 			const { colors, wallpaper } = AtthemeReader.read(bytes);
 			expect(wallpaper).toBeNull();
 			const order = [...colors.keys()];
@@ -95,15 +82,15 @@ describe("AtthemeReader / AtthemeWriter", () => {
 		const prefix = new TextEncoder().encode("chat_wallpaper=-1\n");
 		const markerWallpaperStart = AtthemeReader.markerWallpaperStart;
 		const markerWallpaperEnd = AtthemeReader.markerWallpaperEnd;
-		const bytes = new Uint8Array(prefix.length + markerWallpaperStart.length + sampleWallpaper.length + markerWallpaperEnd.length);
+		const bytes = new Uint8Array(prefix.length + markerWallpaperStart.length + TestData.wallpaper.length + markerWallpaperEnd.length);
 		bytes.set(prefix, 0);
 		bytes.set(markerWallpaperStart, prefix.length);
-		bytes.set(sampleWallpaper, prefix.length + markerWallpaperStart.length);
-		bytes.set(markerWallpaperEnd, prefix.length + markerWallpaperStart.length + sampleWallpaper.length);
+		bytes.set(TestData.wallpaper, prefix.length + markerWallpaperStart.length);
+		bytes.set(markerWallpaperEnd, prefix.length + markerWallpaperStart.length + TestData.wallpaper.length);
 
 		const parsed = AtthemeReader.read(bytes);
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...sampleWallpaper]);
+		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
 	});
 });
 
@@ -122,13 +109,13 @@ describe("AndroidTheme", () => {
 			["windowBackgroundWhite", Color.fromRGB(1, 2, 3, 1)],
 			["chat_wallpaper", Color.fromRGB(200, 200, 200, 1)],
 		]);
-		const theme = new AndroidTheme(colors, sampleWallpaper);
+		const theme = new AndroidTheme(colors, TestData.wallpaper);
 		const order = [...colors.keys()];
 		const bytes = await theme.serialize(order);
 		const parsed = AndroidTheme.parse(bytes);
 
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...sampleWallpaper]);
+		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
 		expect(colorMapsEqual(parsed.colors, colors)).toBe(true);
 	});
 });
@@ -168,7 +155,7 @@ describe("PaletteReader / PaletteWriter", () => {
 	it("reproduces official sample files on a read/rewrite round trip", async () => {
 		const baseColors = await readDesktopBaseColors();
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
-			const bytes = await readFixture(name);
+			const bytes = await TestData.fixture(name);
 			const entries = await ArchiveReader.read(bytes);
 			const entry = ArchiveReader.find(entries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]);
 			const [, paletteBytes] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
@@ -186,7 +173,7 @@ describe("ArchiveReader / ArchiveWriter", () => {
 		const textContent = new TextEncoder().encode("windowBg: #ffffffff;\n");
 		const entries = [
 			{ name: "colors.tdesktop-theme", content: textContent, stored: false },
-			{ name: "background.jpg", content: sampleWallpaper, stored: true },
+			{ name: "background.jpg", content: TestData.wallpaper, stored: true },
 		];
 		const archive = await ArchiveWriter.write(entries);
 		const parsed = await ArchiveReader.read(archive);
@@ -195,7 +182,7 @@ describe("ArchiveReader / ArchiveWriter", () => {
 		const paletteEntry = ReferenceError.suppress(parsed.get("colors.tdesktop-theme"), "Missing palette entry");
 		const wallpaperEntry = ReferenceError.suppress(parsed.get("background.jpg"), "Missing wallpaper entry");
 		expect([...paletteEntry]).toEqual([...textContent]);
-		expect([...wallpaperEntry]).toEqual([...sampleWallpaper]);
+		expect([...wallpaperEntry]).toEqual([...TestData.wallpaper]);
 	});
 
 	it("finds entries case-insensitively", async () => {
@@ -207,7 +194,7 @@ describe("ArchiveReader / ArchiveWriter", () => {
 
 	it("reproduces the official sample archives on a decompress/recompress round trip", async () => {
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
-			const bytes = await readFixture(name);
+			const bytes = await TestData.fixture(name);
 			const entries = await ArchiveReader.read(bytes);
 			const rebuilt = await ArchiveWriter.write([...entries].map(([entryName, content]) => ({ name: entryName, content, stored: false })));
 			const reparsed = await ArchiveReader.read(rebuilt);
@@ -233,28 +220,28 @@ describe("DesktopTheme", () => {
 
 	it("round-trips a non-tiled wallpaper under 'background.<ext>'", async () => {
 		const colors = new Map<string, Color>([["windowBg", Color.fromRGB(1, 2, 3, 1)]]);
-		const theme = new DesktopTheme(colors, sampleWallpaper, false);
+		const theme = new DesktopTheme(colors, TestData.wallpaper, false);
 		const bytes = await theme.serialize([...colors.keys()]);
 		const parsed = await DesktopTheme.parse(bytes);
 		expect(parsed.tiled).toBe(false);
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...sampleWallpaper]);
+		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
 	});
 
 	it("round-trips a tiled wallpaper under 'tiled.<ext>'", async () => {
 		const colors = new Map<string, Color>([["windowBg", Color.fromRGB(1, 2, 3, 1)]]);
-		const theme = new DesktopTheme(colors, sampleWallpaper, true);
+		const theme = new DesktopTheme(colors, TestData.wallpaper, true);
 		const bytes = await theme.serialize([...colors.keys()]);
 		const parsed = await DesktopTheme.parse(bytes);
 		expect(parsed.tiled).toBe(true);
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...sampleWallpaper]);
+		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
 	});
 
 	it("parses official sample archives without error", async () => {
 		const baseColors = await readDesktopBaseColors();
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
-			const bytes = await readFixture(name);
+			const bytes = await TestData.fixture(name);
 			const theme = await DesktopTheme.parse(bytes, baseColors);
 			expect(theme.colors.size).toBeGreaterThan(0);
 		}
