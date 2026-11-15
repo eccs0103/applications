@@ -3,11 +3,14 @@
 import "adaptive-extender/node";
 import { URI } from "adaptive-extender/node";
 import AsyncFileSystem from "node:fs/promises";
+import { Vocabulary } from "../../telegram-theme-converter/models/vocabulary.js";
+import { RuleTable } from "../../telegram-theme-converter/models/rule-table.js";
 
 //#region Test data
 export class TestData {
 	static #fixtures: URI = new URI("./fixtures/", import.meta.url);
 	static #data: URI = new URI("../../resources/data/", import.meta.url);
+	static #rules: string = "telegram-conversion-rules.json";
 	static #wallpaper: Uint8Array = new Uint8Array([
 		0xff, 0xd8, 0xff, 0xe0, 0x00, 0x10, 0x4a, 0x46, 0x49, 0x46, 0x00, 0x01, 0x01, 0x00, 0x00, 0x01,
 		0x00, 0x01, 0x00, 0x00, 0xff, 0xd9,
@@ -20,8 +23,18 @@ export class TestData {
 		return new Uint8Array(buffer);
 	}
 
-	static async data(name: string): Promise<string> {
-		return await AsyncFileSystem.readFile(new URI(name, TestData.#data).toPath(), "utf-8");
+	static async vocabulary(name: string): Promise<Vocabulary> {
+		return Vocabulary.import(await TestData.#json(name), name);
+	}
+
+	static async rules(): Promise<RuleTable> {
+		const name = TestData.#rules;
+		return RuleTable.import(await TestData.#json(name), name);
+	}
+
+	static async #json(name: string): Promise<unknown> {
+		const text = await AsyncFileSystem.readFile(new URI(name, TestData.#data).toPath(), "utf-8");
+		return JSON.parse(text);
 	}
 }
 //#endregion

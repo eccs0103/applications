@@ -1,7 +1,7 @@
 "use strict";
 
 import "adaptive-extender/core";
-import { Field, Model } from "adaptive-extender/core";
+import { Field, Model, type Color } from "adaptive-extender/core";
 import { PaletteEntry } from "./palette-entry.js";
 
 //#region Vocabulary
@@ -12,7 +12,8 @@ export class Vocabulary extends Model {
 	#byName: Map<string, PaletteEntry> | null = null;
 
 	#index(): Map<string, PaletteEntry> {
-		if (this.#byName !== null) return this.#byName;
+		const byName = this.#byName;
+		if (byName !== null) return byName;
 		const index = new Map<string, PaletteEntry>();
 		for (const entry of this.entries) {
 			if (index.has(entry.name)) throw new TypeError(`Duplicate vocabulary entry '${entry.name}'`);
@@ -56,6 +57,12 @@ export class Vocabulary extends Model {
 
 	isComplete(names: ReadonlySet<string>): boolean {
 		return this.missingFrom(names).size === 0 && this.unknownIn(names).size === 0;
+	}
+
+	lightColors(): Map<string, Color> {
+		const colors = new Map<string, Color>();
+		for (const entry of this.entries) colors.set(entry.name, entry.lightColor());
+		return colors;
 	}
 }
 //#endregion

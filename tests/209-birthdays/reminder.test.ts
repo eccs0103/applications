@@ -32,22 +32,22 @@ describe("ReminderExpert.findReminders", () => {
 
 	it("wraps across the year boundary", () => {
 		const today = new Date(2026, 11, 30);
-		const member1 = member("Գևորգ", "2004-01-02");
-		const [[, days]] = ReminderExpert.findReminders([member1], today);
+		const holder = member("Գևորգ", "2004-01-02");
+		const [[, days]] = ReminderExpert.findReminders([holder], today);
 		expect(days).toBe(3);
 	});
 
 	it("treats a leap-day birthday as February 28th in a non-leap year", () => {
 		const today = new Date(2027, 1, 28);
-		const member1 = member("Անահիտ", "2000-02-29");
-		const [[, days]] = ReminderExpert.findReminders([member1], today);
+		const holder = member("Անահիտ", "2000-02-29");
+		const [[, days]] = ReminderExpert.findReminders([holder], today);
 		expect(days).toBe(0);
 	});
 
 	it("keeps a leap-day birthday on February 29th in a leap year", () => {
 		const today = new Date(2028, 1, 29);
-		const member1 = member("Անահիտ", "2000-02-29");
-		const [[, days]] = ReminderExpert.findReminders([member1], today);
+		const holder = member("Անահիտ", "2000-02-29");
+		const [[, days]] = ReminderExpert.findReminders([holder], today);
 		expect(days).toBe(0);
 	});
 

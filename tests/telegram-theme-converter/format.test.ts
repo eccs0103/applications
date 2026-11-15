@@ -14,24 +14,16 @@ import { AndroidTheme } from "../../telegram-theme-converter/models/android-them
 import { DesktopTheme } from "../../telegram-theme-converter/models/desktop-theme.js";
 import { TestData } from "./test-data.js";
 
-async function readDesktopBaseColors(): Promise<Map<string, Color>> {
-	const json = await TestData.data("telegram-desktop-vocabulary.json");
-	const { entries } = JSON.parse(json) as { entries: { name: string; light: string; }[]; };
-	const colors = new Map<string, Color>();
-	for (const entry of entries) colors.set(entry.name, Color.parse(entry.light, { format: ColorFormats.hex, deep: true }));
-	return colors;
+function sameColor(color: Readonly<Color>, color2: Readonly<Color>): boolean {
+	return Argb.fromColor(color) === Argb.fromColor(color2);
 }
 
-function colorsEqual(first: Readonly<Color>, second: Readonly<Color>): boolean {
-	return Argb.fromColor(first) === Argb.fromColor(second);
-}
-
-function colorMapsEqual(first: ReadonlyMap<string, Color>, second: ReadonlyMap<string, Color>): boolean {
-	if (first.size !== second.size) return false;
-	for (const [name, color] of first) {
-		const other = second.get(name);
+function sameColors(colors: ReadonlyMap<string, Color>, colors2: ReadonlyMap<string, Color>): boolean {
+	if (colors.size !== colors2.size) return false;
+	for (const [name, color] of colors) {
+		const other = colors2.get(name);
 		if (other === undefined) return false;
-		if (!colorsEqual(color, other)) return false;
+		if (!sameColor(color, other)) return false;
 	}
 	return true;
 }
@@ -55,7 +47,7 @@ describe("AtthemeReader / AtthemeWriter", () => {
 		const bytes = AtthemeWriter.writeText(colors, order, -1);
 		const { colors: parsed, wallpaper } = AtthemeReader.read(bytes);
 		expect(wallpaper).toBeNull();
-		expect(colorMapsEqual(parsed, colors)).toBe(true);
+		expect(sameColors(parsed, colors)).toBe(true);
 	});
 
 	it("strips the legacy 'key_' prefix and ignores wallpaperFileOffset", () => {
@@ -74,23 +66,23 @@ describe("AtthemeReader / AtthemeWriter", () => {
 			const order = [...colors.keys()];
 			const rewritten = AtthemeWriter.writeText(colors, order, -1);
 			const { colors: reparsed } = AtthemeReader.read(rewritten);
-			expect(colorMapsEqual(reparsed, colors)).toBe(true);
+			expect(sameColors(reparsed, colors)).toBe(true);
 		}
 	});
 
 	it("finds the WPS/WPE markers at an arbitrary, independently-computed offset", () => {
+		const { wallpaper: sample } = TestData;
+		const { markerWallpaperStart: start, markerWallpaperEnd: end } = AtthemeReader;
 		const prefix = new TextEncoder().encode("chat_wallpaper=-1\n");
-		const markerWallpaperStart = AtthemeReader.markerWallpaperStart;
-		const markerWallpaperEnd = AtthemeReader.markerWallpaperEnd;
-		const bytes = new Uint8Array(prefix.length + markerWallpaperStart.length + TestData.wallpaper.length + markerWallpaperEnd.length);
+		const bytes = new Uint8Array(prefix.length + start.length + sample.length + end.length);
 		bytes.set(prefix, 0);
-		bytes.set(markerWallpaperStart, prefix.length);
-		bytes.set(TestData.wallpaper, prefix.length + markerWallpaperStart.length);
-		bytes.set(markerWallpaperEnd, prefix.length + markerWallpaperStart.length + TestData.wallpaper.length);
+		bytes.set(start, prefix.length);
+		bytes.set(sample, prefix.length + start.length);
+		bytes.set(end, prefix.length + start.length + sample.length);
 
 		const parsed = AtthemeReader.read(bytes);
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
+		expect([...wallpaper]).toEqual([...sample]);
 	});
 });
 
@@ -101,22 +93,23 @@ describe("AndroidTheme", () => {
 		const bytes = await theme.serialize([...colors.keys()]);
 		const parsed = AndroidTheme.parse(bytes);
 		expect(parsed.wallpaper).toBeNull();
-		expect(colorMapsEqual(parsed.colors, colors)).toBe(true);
+		expect(sameColors(parsed.colors, colors)).toBe(true);
 	});
 
 	it("computes a wallpaperFileOffset that survives a serialize/parse round trip, with a wallpaper", async () => {
+		const { wallpaper: sample } = TestData;
 		const colors = new Map<string, Color>([
 			["windowBackgroundWhite", Color.fromRGB(1, 2, 3, 1)],
 			["chat_wallpaper", Color.fromRGB(200, 200, 200, 1)],
 		]);
-		const theme = new AndroidTheme(colors, TestData.wallpaper);
+		const theme = new AndroidTheme(colors, sample);
 		const order = [...colors.keys()];
 		const bytes = await theme.serialize(order);
 		const parsed = AndroidTheme.parse(bytes);
 
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
-		expect(colorMapsEqual(parsed.colors, colors)).toBe(true);
+		expect([...wallpaper]).toEqual([...sample]);
+		expect(sameColors(parsed.colors, colors)).toBe(true);
 	});
 });
 
@@ -129,7 +122,7 @@ describe("PaletteReader / PaletteWriter", () => {
 		const order = [...colors.keys()];
 		const bytes = PaletteWriter.write(colors, order);
 		const parsed = PaletteReader.read(new TextDecoder("utf-8").decode(bytes));
-		expect(colorMapsEqual(parsed, colors)).toBe(true);
+		expect(sameColors(parsed, colors)).toBe(true);
 	});
 
 	it("resolves references and the '|' fallback to its first alternative", () => {
@@ -138,51 +131,53 @@ describe("PaletteReader / PaletteWriter", () => {
 		const colorA = ReferenceError.suppress(colors.get("a"), "Missing 'a'");
 		const colorB = ReferenceError.suppress(colors.get("b"), "Missing 'b'");
 		const colorC = ReferenceError.suppress(colors.get("c"), "Missing 'c'");
-		expect(colorsEqual(colorB, colorA)).toBe(true);
+		expect(sameColor(colorB, colorA)).toBe(true);
 		expect(colorC.toString({ format: ColorFormats.hex, deep: false })).toBe("#00ff00");
 	});
 
 	it("seeds resolution from a base map for a partial override film", () => {
 		const seed = new Map<string, Color>([["windowBg", Color.fromRGB(1, 1, 1, 1)]]);
 		const colors = PaletteReader.read("windowFgOver: windowBg;\n", seed);
-		const seedWindowBg = ReferenceError.suppress(seed.get("windowBg"), "Missing seed 'windowBg'");
-		const resolvedWindowFgOver = ReferenceError.suppress(colors.get("windowFgOver"), "Missing 'windowFgOver'");
-		const resolvedWindowBg = ReferenceError.suppress(colors.get("windowBg"), "Missing 'windowBg'");
-		expect(colorsEqual(resolvedWindowFgOver, seedWindowBg)).toBe(true);
-		expect(colorsEqual(resolvedWindowBg, seedWindowBg)).toBe(true);
+		const seeded = ReferenceError.suppress(seed.get("windowBg"), "Missing seed 'windowBg'");
+		const over = ReferenceError.suppress(colors.get("windowFgOver"), "Missing 'windowFgOver'");
+		const background = ReferenceError.suppress(colors.get("windowBg"), "Missing 'windowBg'");
+		expect(sameColor(over, seeded)).toBe(true);
+		expect(sameColor(background, seeded)).toBe(true);
 	});
 
 	it("reproduces official sample files on a read/rewrite round trip", async () => {
-		const baseColors = await readDesktopBaseColors();
+		const desktop = await TestData.vocabulary("telegram-desktop-vocabulary.json");
+		const base = desktop.lightColors();
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
 			const bytes = await TestData.fixture(name);
 			const entries = await ArchiveReader.read(bytes);
 			const entry = ArchiveReader.find(entries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]);
-			const [, paletteBytes] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
-			const colors = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), baseColors);
+			const [, palette] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
+			const colors = PaletteReader.read(new TextDecoder("utf-8").decode(palette), base);
 			const order = [...colors.keys()];
 			const rewritten = PaletteWriter.write(colors, order);
 			const reparsed = PaletteReader.read(new TextDecoder("utf-8").decode(rewritten));
-			expect(colorMapsEqual(reparsed, colors)).toBe(true);
+			expect(sameColors(reparsed, colors)).toBe(true);
 		}
 	});
 });
 
 describe("ArchiveReader / ArchiveWriter", () => {
 	it("round-trips stored and deflated entries", async () => {
-		const textContent = new TextEncoder().encode("windowBg: #ffffffff;\n");
+		const { wallpaper: sample } = TestData;
+		const text = new TextEncoder().encode("windowBg: #ffffffff;\n");
 		const entries = [
-			{ name: "colors.tdesktop-theme", content: textContent, stored: false },
-			{ name: "background.jpg", content: TestData.wallpaper, stored: true },
+			{ name: "colors.tdesktop-theme", content: text, stored: false },
+			{ name: "background.jpg", content: sample, stored: true },
 		];
 		const archive = await ArchiveWriter.write(entries);
 		const parsed = await ArchiveReader.read(archive);
 
 		expect(parsed.size).toBe(2);
-		const paletteEntry = ReferenceError.suppress(parsed.get("colors.tdesktop-theme"), "Missing palette entry");
-		const wallpaperEntry = ReferenceError.suppress(parsed.get("background.jpg"), "Missing wallpaper entry");
-		expect([...paletteEntry]).toEqual([...textContent]);
-		expect([...wallpaperEntry]).toEqual([...TestData.wallpaper]);
+		const palette = ReferenceError.suppress(parsed.get("colors.tdesktop-theme"), "Missing palette entry");
+		const wallpaper = ReferenceError.suppress(parsed.get("background.jpg"), "Missing wallpaper entry");
+		expect([...palette]).toEqual([...text]);
+		expect([...wallpaper]).toEqual([...sample]);
 	});
 
 	it("finds entries case-insensitively", async () => {
@@ -196,12 +191,12 @@ describe("ArchiveReader / ArchiveWriter", () => {
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
 			const bytes = await TestData.fixture(name);
 			const entries = await ArchiveReader.read(bytes);
-			const rebuilt = await ArchiveWriter.write([...entries].map(([entryName, content]) => ({ name: entryName, content, stored: false })));
+			const rebuilt = await ArchiveWriter.write([...entries].map(([key, content]) => ({ name: key, content, stored: false })));
 			const reparsed = await ArchiveReader.read(rebuilt);
 			expect(reparsed.size).toBe(entries.size);
-			for (const [entryName, content] of entries) {
-				const reparsedContent = ReferenceError.suppress(reparsed.get(entryName), `Missing entry '${entryName}'`);
-				expect([...reparsedContent]).toEqual([...content]);
+			for (const [key, content] of entries) {
+				const content2 = ReferenceError.suppress(reparsed.get(key), `Missing entry '${key}'`);
+				expect([...content2]).toEqual([...content]);
 			}
 		}
 	});
@@ -215,34 +210,37 @@ describe("DesktopTheme", () => {
 		const parsed = await DesktopTheme.parse(bytes);
 		expect(parsed.wallpaper).toBeNull();
 		expect(parsed.tiled).toBe(false);
-		expect(colorMapsEqual(parsed.colors, colors)).toBe(true);
+		expect(sameColors(parsed.colors, colors)).toBe(true);
 	});
 
 	it("round-trips a non-tiled wallpaper under 'background.<ext>'", async () => {
+		const { wallpaper: sample } = TestData;
 		const colors = new Map<string, Color>([["windowBg", Color.fromRGB(1, 2, 3, 1)]]);
-		const theme = new DesktopTheme(colors, TestData.wallpaper, false);
+		const theme = new DesktopTheme(colors, sample, false);
 		const bytes = await theme.serialize([...colors.keys()]);
 		const parsed = await DesktopTheme.parse(bytes);
 		expect(parsed.tiled).toBe(false);
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
+		expect([...wallpaper]).toEqual([...sample]);
 	});
 
 	it("round-trips a tiled wallpaper under 'tiled.<ext>'", async () => {
+		const { wallpaper: sample } = TestData;
 		const colors = new Map<string, Color>([["windowBg", Color.fromRGB(1, 2, 3, 1)]]);
-		const theme = new DesktopTheme(colors, TestData.wallpaper, true);
+		const theme = new DesktopTheme(colors, sample, true);
 		const bytes = await theme.serialize([...colors.keys()]);
 		const parsed = await DesktopTheme.parse(bytes);
 		expect(parsed.tiled).toBe(true);
 		const wallpaper = ReferenceError.suppress(parsed.wallpaper, "Expected a parsed wallpaper");
-		expect([...wallpaper]).toEqual([...TestData.wallpaper]);
+		expect([...wallpaper]).toEqual([...sample]);
 	});
 
 	it("parses official sample archives without error", async () => {
-		const baseColors = await readDesktopBaseColors();
+		const desktop = await TestData.vocabulary("telegram-desktop-vocabulary.json");
+		const base = desktop.lightColors();
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
 			const bytes = await TestData.fixture(name);
-			const theme = await DesktopTheme.parse(bytes, baseColors);
+			const theme = await DesktopTheme.parse(bytes, base);
 			expect(theme.colors.size).toBeGreaterThan(0);
 		}
 	});

@@ -1,10 +1,10 @@
 "use strict";
 
 import "adaptive-extender/node";
-import { Color, ColorFormats } from "adaptive-extender/node";
+import { ColorFormats, type Color } from "adaptive-extender/node";
 import { describe, it, expect } from "vitest";
-import { Vocabulary } from "../../telegram-theme-converter/models/vocabulary.js";
-import { RuleTable } from "../../telegram-theme-converter/models/rule-table.js";
+import { type Vocabulary } from "../../telegram-theme-converter/models/vocabulary.js";
+import { type RuleTable } from "../../telegram-theme-converter/models/rule-table.js";
 import { Transform } from "../../telegram-theme-converter/models/rule.js";
 import { Converter } from "../../telegram-theme-converter/services/converter.js";
 import { AndroidTheme } from "../../telegram-theme-converter/models/android-theme.js";
@@ -17,128 +17,136 @@ import { TestData } from "./test-data.js";
 
 const { abs } = Math;
 
-async function loadVocabulary(name: string): Promise<Vocabulary> {
-	const json = await TestData.data(name);
-	return Vocabulary.import(JSON.parse(json), name);
-}
+//#region Fixture
+class Fixture {
+	#android: Vocabulary;
+	#desktop: Vocabulary;
+	#table: RuleTable;
+	#converter: Converter;
 
-async function loadRuleTable(): Promise<RuleTable> {
-	const json = await TestData.data("telegram-conversion-rules.json");
-	return RuleTable.import(JSON.parse(json), "telegram-conversion-rules.json");
-}
+	constructor(android: Vocabulary, desktop: Vocabulary, table: RuleTable) {
+		this.#android = android;
+		this.#desktop = desktop;
+		this.#table = table;
+		this.#converter = new Converter(android, desktop, table);
+	}
 
-async function loadEverything() {
-	const [androidVocabulary, desktopVocabulary, ruleTable] = await Promise.all([
-		loadVocabulary("telegram-android-vocabulary.json"),
-		loadVocabulary("telegram-desktop-vocabulary.json"),
-		loadRuleTable(),
-	]);
-	const converter = new Converter(androidVocabulary, desktopVocabulary, ruleTable);
-	return { androidVocabulary, desktopVocabulary, ruleTable, converter };
-}
+	static async load(): Promise<Fixture> {
+		const [android, desktop, table] = await Promise.all([
+			TestData.vocabulary("telegram-android-vocabulary.json"),
+			TestData.vocabulary("telegram-desktop-vocabulary.json"),
+			TestData.rules(),
+		]);
+		return new Fixture(android, desktop, table);
+	}
 
-function colorsEqual(first: Readonly<Color>, second: Readonly<Color>): boolean {
-	return first.toString({ format: ColorFormats.hex, deep: true }) === second.toString({ format: ColorFormats.hex, deep: true });
+	get android(): Vocabulary { return this.#android; }
+	get desktop(): Vocabulary { return this.#desktop; }
+	get table(): RuleTable { return this.#table; }
+	get converter(): Converter { return this.#converter; }
+}
+//#endregion
+
+function sameColor(color: Readonly<Color>, color2: Readonly<Color>): boolean {
+	return color.toString({ format: ColorFormats.hex, deep: true }) === color2.toString({ format: ColorFormats.hex, deep: true });
 }
 
 describe("RuleTable integrity", () => {
 	it("has exactly 759 rules: 586 direct + 173 anchored", async () => {
-		const { ruleTable } = await loadEverything();
-		expect(ruleTable.rules.length).toBe(759);
-		expect(ruleTable.directRules().length).toBe(586);
-		expect(ruleTable.anchoredRules().length).toBe(173);
+		const { table } = await Fixture.load();
+		expect(table.rules.length).toBe(759);
+		expect(table.directRules().length).toBe(586);
+		expect(table.anchoredRules().length).toBe(173);
 	});
 
 	it("the direct rules form an injective bijection onto the full Desktop vocabulary", async () => {
-		const { desktopVocabulary, ruleTable } = await loadEverything();
-		const targets = new Set(ruleTable.directRules().map(rule => rule.target));
-		const sources = new Set(ruleTable.directRules().map(rule => rule.source));
+		const { desktop, table } = await Fixture.load();
+		const targets = new Set(table.directRules().map(rule => rule.target));
+		const sources = new Set(table.directRules().map(rule => rule.source));
 		expect(targets.size).toBe(586);
 		expect(sources.size).toBe(586);
-		expect(desktopVocabulary.isComplete(targets)).toBe(true);
+		expect(desktop.isComplete(targets)).toBe(true);
 	});
 
 	it("every rule's target and referenced sources are real vocabulary keys", async () => {
-		const { androidVocabulary, desktopVocabulary, ruleTable } = await loadEverything();
-		for (const rule of ruleTable.directRules()) {
-			expect(desktopVocabulary.has(rule.target)).toBe(true);
-			expect(androidVocabulary.has(rule.source)).toBe(true);
+		const { android, desktop, table } = await Fixture.load();
+		for (const rule of table.directRules()) {
+			expect(desktop.has(rule.target)).toBe(true);
+			expect(android.has(rule.source)).toBe(true);
 		}
-		for (const rule of ruleTable.anchoredRules()) {
-			expect(androidVocabulary.has(rule.target)).toBe(true);
-			expect(androidVocabulary.has(rule.source)).toBe(true);
-			if (rule.mixWith !== null) expect(androidVocabulary.has(rule.mixWith)).toBe(true);
+		for (const rule of table.anchoredRules()) {
+			expect(android.has(rule.target)).toBe(true);
+			expect(android.has(rule.source)).toBe(true);
+			if (rule.mixWith !== null) expect(android.has(rule.mixWith)).toBe(true);
 		}
 	});
 
 	it("every anchor points inside the bijective core - no chains, no cycles", async () => {
-		const { ruleTable } = await loadEverything();
-		const coreSources = new Set(ruleTable.directRules().map(rule => rule.source));
-		const anchoredTargets = new Set(ruleTable.anchoredRules().map(rule => rule.target));
-		for (const rule of ruleTable.anchoredRules()) {
-			expect(coreSources.has(rule.source)).toBe(true);
-			expect(anchoredTargets.has(rule.source)).toBe(false);
+		const { table } = await Fixture.load();
+		const core = new Set(table.directRules().map(rule => rule.source));
+		const anchored = new Set(table.anchoredRules().map(rule => rule.target));
+		for (const rule of table.anchoredRules()) {
+			expect(core.has(rule.source)).toBe(true);
+			expect(anchored.has(rule.source)).toBe(false);
 		}
 	});
 
 	it("the Android vocabulary is fully covered: every key is a core source or an anchored target, never both", async () => {
-		const { androidVocabulary, ruleTable } = await loadEverything();
-		const coreSources = new Set(ruleTable.directRules().map(rule => rule.source));
-		const anchoredTargets = new Set(ruleTable.anchoredRules().map(rule => rule.target));
-		for (const name of coreSources) expect(anchoredTargets.has(name)).toBe(false);
-		const covered = new Set([...coreSources, ...anchoredTargets]);
-		expect(androidVocabulary.isComplete(covered)).toBe(true);
+		const { android, table } = await Fixture.load();
+		const core = new Set(table.directRules().map(rule => rule.source));
+		const anchored = new Set(table.anchoredRules().map(rule => rule.target));
+		for (const name of core) expect(anchored.has(name)).toBe(false);
+		const covered = new Set([...core, ...anchored]);
+		expect(android.isComplete(covered)).toBe(true);
 	});
 
 	it("every fitted alpha/lightness transform reproduces both the light and the dark official samples", async () => {
-		const { androidVocabulary, ruleTable } = await loadEverything();
-		for (const rule of ruleTable.anchoredRules()) {
+		const { android, table } = await Fixture.load();
+		for (const rule of table.anchoredRules()) {
 			if (rule.transform !== Transform.alpha && rule.transform !== Transform.lightness) continue;
-			const anchor = androidVocabulary.get(rule.source);
-			const target = androidVocabulary.get(rule.target);
-			const resolvedLight = rule.resolve(new Map([[rule.source, anchor.lightColor()]]));
-			const resolvedDark = rule.resolve(new Map([[rule.source, anchor.darkColor()]]));
+			const anchor = android.get(rule.source);
+			const target = android.get(rule.target);
+			const light = rule.resolve(new Map([[rule.source, anchor.lightColor()]]));
+			const dark = rule.resolve(new Map([[rule.source, anchor.darkColor()]]));
 			if (rule.transform === Transform.alpha) {
-				expect(colorsEqual(resolvedLight, target.lightColor())).toBe(true);
-				expect(colorsEqual(resolvedDark, target.darkColor())).toBe(true);
-			} else {
-				const expectedLight = target.lightColor();
-				const expectedDark = target.darkColor();
-				expect(abs(resolvedLight.red - expectedLight.red)).toBeLessThanOrEqual(6);
-				expect(abs(resolvedDark.red - expectedDark.red)).toBeLessThanOrEqual(6);
+				expect(sameColor(light, target.lightColor())).toBe(true);
+				expect(sameColor(dark, target.darkColor())).toBe(true);
+				continue;
 			}
+			expect(abs(light.red - target.lightColor().red)).toBeLessThanOrEqual(6);
+			expect(abs(dark.red - target.darkColor().red)).toBeLessThanOrEqual(6);
 		}
 	});
 });
 
 describe("Converter completeness", () => {
 	it("Android -> Desktop always emits exactly the Desktop vocabulary's key set", async () => {
-		const { desktopVocabulary, converter } = await loadEverything();
+		const { desktop, converter } = await Fixture.load();
 		const source = new AndroidTheme(new Map(), null);
 		const { theme } = converter.androidToDesktop(source);
-		expect(desktopVocabulary.isComplete(theme.names())).toBe(true);
+		expect(desktop.isComplete(theme.names())).toBe(true);
 	});
 
 	it("Desktop -> Android always emits exactly the Android vocabulary's key set", async () => {
-		const { androidVocabulary, converter } = await loadEverything();
+		const { android, converter } = await Fixture.load();
 		const source = new DesktopTheme(new Map(), null);
 		const { theme } = converter.desktopToAndroid(source);
-		expect(androidVocabulary.isComplete(theme.names())).toBe(true);
+		expect(android.isComplete(theme.names())).toBe(true);
 	});
 
 	it("Android -> Desktop reports every Desktop key as direct and every non-core source key as dropped", async () => {
-		const { androidVocabulary, ruleTable, converter } = await loadEverything();
-		const source = new AndroidTheme(new Map(androidVocabulary.entries.map(entry => [entry.name, entry.lightColor()])), null);
+		const { android, table, converter } = await Fixture.load();
+		const source = new AndroidTheme(android.lightColors(), null);
 		const { report } = converter.androidToDesktop(source);
 		expect(report.countBy(KeyOutcome.direct)).toBe(586);
-		const coreSources = new Set(ruleTable.directRules().map(rule => rule.source));
-		const expectedDropped = androidVocabulary.entries.map(entry => entry.name).filter(name => !coreSources.has(name));
-		expect(report.keysBy(KeyOutcome.dropped)).toEqual(expectedDropped.sort());
+		const core = new Set(table.directRules().map(rule => rule.source));
+		const dropped = android.entries.map(entry => entry.name).filter(name => !core.has(name));
+		expect(report.keysBy(KeyOutcome.dropped)).toEqual(dropped.sort());
 	});
 
 	it("Desktop -> Android reports exactly 586 direct and 173 anchored keys", async () => {
-		const { desktopVocabulary, converter } = await loadEverything();
-		const source = new DesktopTheme(new Map(desktopVocabulary.entries.map(entry => [entry.name, entry.lightColor()])), null);
+		const { desktop, converter } = await Fixture.load();
+		const source = new DesktopTheme(desktop.lightColors(), null);
 		const { report } = converter.desktopToAndroid(source);
 		expect(report.countBy(KeyOutcome.direct)).toBe(586);
 		expect(report.countBy(KeyOutcome.anchored)).toBe(173);
@@ -147,52 +155,52 @@ describe("Converter completeness", () => {
 
 describe("Converter round trip", () => {
 	it("Desktop -> Android -> Desktop is the identity across all 586 keys, using official sample palettes", async () => {
-		const { desktopVocabulary, converter } = await loadEverything();
-		const baseColors = new Map(desktopVocabulary.entries.map(entry => [entry.name, entry.lightColor()]));
+		const { desktop, converter } = await Fixture.load();
+		const base = desktop.lightColors();
 
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
 			const bytes = await TestData.fixture(name);
-			const zipEntries = await ArchiveReader.read(bytes);
-			const entry = ArchiveReader.find(zipEntries, ["colors.tdesktop-theme"]);
-			const [, paletteBytes] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
-			const paletteColors = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), baseColors);
-			const source = new DesktopTheme(paletteColors, null);
+			const archive = await ArchiveReader.read(bytes);
+			const entry = ArchiveReader.find(archive, ["colors.tdesktop-theme"]);
+			const [, palette] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
+			const colors = PaletteReader.read(new TextDecoder("utf-8").decode(palette), base);
+			const source = new DesktopTheme(colors, null);
 
 			const { theme: android } = converter.desktopToAndroid(source);
-			const { theme: roundTripped } = converter.androidToDesktop(android);
+			const { theme: returned } = converter.androidToDesktop(android);
 
-			for (const vocabularyEntry of desktopVocabulary.entries) {
-				const original = ReferenceError.suppress(source.colors.get(vocabularyEntry.name), `Missing '${vocabularyEntry.name}'`);
-				const roundTrippedColor = ReferenceError.suppress(roundTripped.colors.get(vocabularyEntry.name), `Missing '${vocabularyEntry.name}'`);
-				expect(colorsEqual(roundTrippedColor, original)).toBe(true);
+			for (const { name: key } of desktop.entries) {
+				const original = ReferenceError.suppress(source.colors.get(key), `Missing '${key}'`);
+				const color = ReferenceError.suppress(returned.colors.get(key), `Missing '${key}'`);
+				expect(sameColor(color, original)).toBe(true);
 			}
 		}
 	});
 
 	it("Android -> Desktop -> Android is the identity on the 586 core keys; surplus keys are reported as anchored", async () => {
-		const { androidVocabulary, ruleTable, converter } = await loadEverything();
-		const coreSources = new Set(ruleTable.directRules().map(rule => rule.source));
+		const { android, table, converter } = await Fixture.load();
+		const core = new Set(table.directRules().map(rule => rule.source));
 
 		for (const name of ["day.attheme", "night.attheme"]) {
 			const bytes = await TestData.fixture(name);
 			const { colors } = AtthemeReader.read(bytes);
-			const complete = new Map(androidVocabulary.entries.map(entry => [entry.name, entry.lightColor()]));
-			for (const [key, color] of colors) if (androidVocabulary.has(key)) complete.set(key, color);
+			const complete = android.lightColors();
+			for (const [key, color] of colors) if (android.has(key)) complete.set(key, color);
 			const source = new AndroidTheme(complete, null);
 
-			const { theme: desktop, report: firstReport } = converter.androidToDesktop(source);
-			expect(firstReport.countBy(KeyOutcome.direct)).toBe(586);
+			const { theme: desktop, report } = converter.androidToDesktop(source);
+			expect(report.countBy(KeyOutcome.direct)).toBe(586);
 
-			const { theme: roundTripped, report: secondReport } = converter.desktopToAndroid(desktop);
+			const { theme: returned, report: report2 } = converter.desktopToAndroid(desktop);
 
-			for (const key of coreSources) {
-				const roundTrippedColor = ReferenceError.suppress(roundTripped.colors.get(key), `Missing '${key}'`);
-				const originalColor = ReferenceError.suppress(complete.get(key), `Missing '${key}'`);
-				expect(colorsEqual(roundTrippedColor, originalColor)).toBe(true);
+			for (const key of core) {
+				const color = ReferenceError.suppress(returned.colors.get(key), `Missing '${key}'`);
+				const original = ReferenceError.suppress(complete.get(key), `Missing '${key}'`);
+				expect(sameColor(color, original)).toBe(true);
 			}
 
-			const expectedAnchored = androidVocabulary.entries.map(entry => entry.name).filter(n => !coreSources.has(n)).sort();
-			expect(secondReport.keysBy(KeyOutcome.anchored)).toEqual(expectedAnchored);
+			const anchored = android.entries.map(entry => entry.name).filter(key => !core.has(key)).sort();
+			expect(report2.keysBy(KeyOutcome.anchored)).toEqual(anchored);
 		}
 	});
 });

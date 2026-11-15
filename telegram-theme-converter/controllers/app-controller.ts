@@ -9,7 +9,6 @@ import { Converter } from "../services/converter.js";
 import { AndroidTheme } from "../models/android-theme.js";
 import { DesktopTheme } from "../models/desktop-theme.js";
 import { Vocabulary } from "../models/vocabulary.js";
-import { type Color } from "adaptive-extender/core";
 import { AnalyticsController } from "../../environment/controllers/analytics-controller.js";
 
 const { baseURI, body } = document;
@@ -29,8 +28,8 @@ class AppController extends Controller {
 	#androidVocabulary: Vocabulary | null = null;
 	#desktopVocabulary: Vocabulary | null = null;
 
-	#sourceFile: File | null = null;
-	#sourcePlatform: SourcePlatform | null = null;
+	#file: File | null = null;
+	#platform: SourcePlatform | null = null;
 
 	get #requiredConverter(): Converter {
 		return ReferenceError.suppress(this.#converter, "AppController.run() must complete first");
@@ -44,7 +43,7 @@ class AppController extends Controller {
 		return ReferenceError.suppress(this.#desktopVocabulary, "AppController.run() must complete first");
 	}
 
-	#detectSourcePlatform(fileName: string): SourcePlatform | null {
+	#detect(fileName: string): SourcePlatform | null {
 		const lowered = fileName.toLowerCase();
 		if (lowered.endsWith(AppController.#extensionAttheme)) return SourcePlatform.android;
 		if (lowered.endsWith(AppController.#extensionTdesktopTheme)) return SourcePlatform.desktop;
@@ -54,20 +53,21 @@ class AppController extends Controller {
 	async run(): Promise<void> {
 		void AnalyticsController.launch();
 		const bridge = new ClientBridge();
-		const vocabularyService = new VocabularyService(bridge, new URI(baseURI));
+		const service = new VocabularyService(bridge, new URI(baseURI));
 		const [androidVocabulary, desktopVocabulary, ruleTable] = await Promise.all([
-			vocabularyService.loadAndroidVocabulary(),
-			vocabularyService.loadDesktopVocabulary(),
-			vocabularyService.loadRuleTable(),
+			service.loadAndroidVocabulary(),
+			service.loadDesktopVocabulary(),
+			service.loadRuleTable(),
 		]);
 		this.#androidVocabulary = androidVocabulary;
 		this.#desktopVocabulary = desktopVocabulary;
 		this.#converter = new Converter(androidVocabulary, desktopVocabulary, ruleTable);
 
-		await this.#renderer.initialize();
-		this.#renderer.addEventListener("sourcechange", this.#onSourceChange.bind(this));
-		this.#renderer.addEventListener("convertrequested", this.#onConvertRequested.bind(this));
-		this.#renderer.hideReport();
+		const renderer = this.#renderer;
+		await renderer.initialize();
+		renderer.addEventListener("sourcechange", this.#onSourceChange.bind(this));
+		renderer.addEventListener("convertrequested", this.#onConvertRequested.bind(this));
+		renderer.hideReport();
 
 		MetadataInjector.inject({
 			type: "Application",
@@ -80,40 +80,35 @@ class AppController extends Controller {
 	}
 
 	#onSourceChange(event: CustomEvent<File | null>): void {
+		const renderer = this.#renderer;
 		const file = event.detail;
-		this.#sourceFile = file;
-		this.#renderer.hideReport();
+		this.#file = file;
+		renderer.hideReport();
 
 		if (file === null) {
-			this.#sourcePlatform = null;
-			this.#renderer.setDirection(String.empty);
-			this.#renderer.setConvertEnabled(false);
+			this.#platform = null;
+			renderer.setDirection(String.empty);
+			renderer.setConvertEnabled(false);
 			return;
 		}
 
-		const platform = this.#detectSourcePlatform(file.name);
-		this.#sourcePlatform = platform;
+		const platform = this.#detect(file.name);
+		this.#platform = platform;
 
 		if (platform === SourcePlatform.android) {
-			this.#renderer.setDirection("Android → Desktop");
-			this.#renderer.setConvertEnabled(true);
+			renderer.setDirection("Android → Desktop");
+			renderer.setConvertEnabled(true);
 			return;
 		}
 		if (platform === SourcePlatform.desktop) {
-			this.#renderer.setDirection("Desktop → Android");
-			this.#renderer.setConvertEnabled(true);
+			renderer.setDirection("Desktop → Android");
+			renderer.setConvertEnabled(true);
 			return;
 		}
 
-		this.#renderer.setDirection(String.empty);
-		this.#renderer.setConvertEnabled(false);
-		this.#renderer.setStatus(`Unrecognized file '${file.name}' - expected ${AppController.#extensionAttheme} or ${AppController.#extensionTdesktopTheme}.`);
-	}
-
-	#lightColors(vocabulary: Readonly<Vocabulary>): Map<string, Color> {
-		const colors = new Map<string, Color>();
-		for (const entry of vocabulary.entries) colors.set(entry.name, entry.lightColor());
-		return colors;
+		renderer.setDirection(String.empty);
+		renderer.setConvertEnabled(false);
+		renderer.setStatus(`Unrecognized file '${file.name}' - expected ${AppController.#extensionAttheme} or ${AppController.#extensionTdesktopTheme}.`);
 	}
 
 	#download(bytes: Readonly<Uint8Array>, fileName: string, mimeType: string): void {
@@ -135,14 +130,17 @@ class AppController extends Controller {
 	}
 
 	async #convert(): Promise<void> {
-		const file = this.#sourceFile;
-		const platform = this.#sourcePlatform;
+		const renderer = this.#renderer;
+		const attheme = AppController.#extensionAttheme;
+		const tdesktop = AppController.#extensionTdesktopTheme;
+		const file = this.#file;
+		const platform = this.#platform;
 		const converter = this.#requiredConverter;
 		const desktopVocabulary = this.#requiredDesktopVocabulary;
 
 		if (file === null || platform === null) return;
 
-		this.#renderer.setStatus("Converting…");
+		renderer.setStatus("Converting…");
 		const bytes = new Uint8Array(await file.arrayBuffer());
 
 		if (platform === SourcePlatform.android) {
@@ -150,26 +148,29 @@ class AppController extends Controller {
 			const { theme, report } = converter.androidToDesktop(source);
 			const order = desktopVocabulary.entries.map(entry => entry.name);
 			const output = await theme.serialize(order);
-			this.#download(output, this.#swapExtension(file.name, AppController.#extensionAttheme, AppController.#extensionTdesktopTheme), "application/zip");
-			this.#renderer.showReport(report);
-			this.#renderer.setStatus(`Converted '${file.name}'.`);
+			this.#download(output, this.#swapExtension(file.name, attheme, tdesktop), "application/zip");
+			renderer.showReport(report);
+			renderer.setStatus(`Converted '${file.name}'.`);
 			return;
 		}
 
-		const source = await DesktopTheme.parse(bytes, this.#lightColors(desktopVocabulary));
+		const source = await DesktopTheme.parse(bytes, desktopVocabulary.lightColors());
 		const { theme, report } = converter.desktopToAndroid(source);
 		const order = this.#requiredAndroidVocabulary.entries.map(entry => entry.name);
 		const output = await theme.serialize(order);
-		this.#download(output, this.#swapExtension(file.name, AppController.#extensionTdesktopTheme, AppController.#extensionAttheme), "text/plain");
-		this.#renderer.showReport(report);
-		this.#renderer.setStatus(`Converted '${file.name}'.`);
+		this.#download(output, this.#swapExtension(file.name, tdesktop, attheme), "text/plain");
+		renderer.showReport(report);
+		renderer.setStatus(`Converted '${file.name}'.`);
 	}
 
-	#onConvertRequested(): void {
-		this.#convert().catch(reason => {
-			console.error(Error.from(reason));
-			this.#renderer.setStatus(`Failed: ${Error.from(reason)}`);
-		});
+	async #onConvertRequested(event: Event): Promise<void> {
+		try {
+			await this.#convert();
+		} catch (reason) {
+			const error = Error.from(reason);
+			console.error(error);
+			this.#renderer.setStatus(`Failed: ${error}`);
+		}
 	}
 
 	async catch(error: Error): Promise<void> {
