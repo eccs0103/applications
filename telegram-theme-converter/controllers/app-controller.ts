@@ -20,8 +20,8 @@ enum SourcePlatform {
 
 //#region App controller
 class AppController extends Controller {
-	static #extensionAttheme: string = ".attheme";
-	static #extensionTdesktopTheme: string = ".tdesktop-theme";
+	static #attheme: string = ".attheme";
+	static #tdesktop: string = ".tdesktop-theme";
 
 	#renderer: ConverterRenderer = new ConverterRenderer(body);
 	#converter: Converter | null = null;
@@ -45,8 +45,8 @@ class AppController extends Controller {
 
 	#detect(fileName: string): SourcePlatform | null {
 		const lowered = fileName.toLowerCase();
-		if (lowered.endsWith(AppController.#extensionAttheme)) return SourcePlatform.android;
-		if (lowered.endsWith(AppController.#extensionTdesktopTheme)) return SourcePlatform.desktop;
+		if (lowered.endsWith(AppController.#attheme)) return SourcePlatform.android;
+		if (lowered.endsWith(AppController.#tdesktop)) return SourcePlatform.desktop;
 		return null;
 	}
 
@@ -108,7 +108,7 @@ class AppController extends Controller {
 
 		renderer.setDirection(String.empty);
 		renderer.setConvertEnabled(false);
-		renderer.setStatus(`Unrecognized file '${file.name}' - expected ${AppController.#extensionAttheme} or ${AppController.#extensionTdesktopTheme}.`);
+		renderer.setStatus(`Unrecognized file '${file.name}' - expected ${AppController.#attheme} or ${AppController.#tdesktop}.`);
 	}
 
 	#download(bytes: Readonly<Uint8Array>, fileName: string, mimeType: string): void {
@@ -131,8 +131,8 @@ class AppController extends Controller {
 
 	async #convert(): Promise<void> {
 		const renderer = this.#renderer;
-		const attheme = AppController.#extensionAttheme;
-		const tdesktop = AppController.#extensionTdesktopTheme;
+		const attheme = AppController.#attheme;
+		const tdesktop = AppController.#tdesktop;
 		const file = this.#file;
 		const platform = this.#platform;
 		const converter = this.#requiredConverter;

@@ -30,8 +30,9 @@ export class AtthemeReader {
 		return -1;
 	}
 
-	static #normalizeName(name: string): string {
-		if (name.startsWith(AtthemeReader.#prefixLegacyKey)) return name.slice(AtthemeReader.#prefixLegacyKey.length);
+	static #unprefix(name: string): string {
+		const prefix = AtthemeReader.#prefixLegacyKey;
+		if (name.startsWith(prefix)) return name.slice(prefix.length);
 		return name;
 	}
 
@@ -39,34 +40,35 @@ export class AtthemeReader {
 		const colors = new Map<string, Color>();
 		for (const line of text.split(/\r?\n/)) {
 			const trimmed = line.trim();
-			if (trimmed.length === 0) continue;
+			if (String.isEmpty(trimmed)) continue;
 			if (trimmed.startsWith("//")) continue;
 
 			const index = trimmed.indexOf("=");
 			if (index === -1) throw new SyntaxError(`Invalid '${trimmed}' line syntax`);
-			const name = AtthemeReader.#normalizeName(trimmed.slice(0, index).trim());
+			const name = AtthemeReader.#unprefix(trimmed.slice(0, index).trim());
 			if (name === AtthemeReader.#keyWallpaperOffset) continue;
 
-			const rawValue = trimmed.slice(index + 1).trim();
-			const value = Number.parseInt(rawValue, 10);
-			if (!Number.isFinite(value)) throw new SyntaxError(`Invalid '${rawValue}' color value for key '${name}'`);
+			const raw = trimmed.slice(index + 1).trim();
+			const value = Number.parseInt(raw, 10);
+			if (!Number.isFinite(value)) throw new SyntaxError(`Invalid '${raw}' color value for key '${name}'`);
 			colors.set(name, Argb.toColor(value));
 		}
 		return colors;
 	}
 
 	static read(bytes: Readonly<Uint8Array>): AtthemeDocumentData {
-		const wpsIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperStart, 0);
+		const markerWallpaperStart = AtthemeReader.#markerWallpaperStart;
+		const wpsIndex = AtthemeReader.#indexOfBytes(bytes, markerWallpaperStart, 0);
 		if (wpsIndex === -1) {
 			const text = new TextDecoder("utf-8").decode(bytes);
 			return { colors: AtthemeReader.#parseColors(text), wallpaper: null };
 		}
 
 		const text = new TextDecoder("utf-8").decode(bytes.subarray(0, wpsIndex));
-		const wallpaperStart = wpsIndex + AtthemeReader.#markerWallpaperStart.length;
-		const wpeIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperEnd, wallpaperStart);
-		const wallpaperEnd = wpeIndex === -1 ? bytes.length : wpeIndex;
-		const wallpaper = bytes.subarray(wallpaperStart, wallpaperEnd);
+		const start = wpsIndex + markerWallpaperStart.length;
+		const wpeIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperEnd, start);
+		const end = wpeIndex === -1 ? bytes.length : wpeIndex;
+		const wallpaper = bytes.subarray(start, end);
 
 		return { colors: AtthemeReader.#parseColors(text), wallpaper: new Uint8Array(wallpaper) };
 	}

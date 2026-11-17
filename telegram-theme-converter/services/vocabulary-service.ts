@@ -8,9 +8,9 @@ import { RuleTable } from "../models/rule-table.js";
 
 //#region Vocabulary service
 export class VocabularyService {
-	static #nameAndroidVocabulary: string = "telegram-android-vocabulary.json";
-	static #nameDesktopVocabulary: string = "telegram-desktop-vocabulary.json";
-	static #nameRules: string = "telegram-conversion-rules.json";
+	static #android: string = "telegram-android-vocabulary.json";
+	static #desktop: string = "telegram-desktop-vocabulary.json";
+	static #rules: string = "telegram-conversion-rules.json";
 
 	#bridge: Bridge;
 	#baseURI: Readonly<URI>;
@@ -20,23 +20,25 @@ export class VocabularyService {
 		this.#baseURI = baseURI;
 	}
 
-	async #readJson(name: string): Promise<any> {
+	async #read(name: string): Promise<any> {
 		const uri = new URI(`../data/${name}`, this.#baseURI);
-		const content = await this.#bridge.read(uri);
-		if (content === null) throw new ReferenceError(`Missing data file '${name}'`);
+		const content = ReferenceError.suppress(await this.#bridge.read(uri), `Missing data file '${name}'`);
 		return JSON.parse(content);
 	}
 
 	async loadAndroidVocabulary(): Promise<Vocabulary> {
-		return Vocabulary.import(await this.#readJson(VocabularyService.#nameAndroidVocabulary), VocabularyService.#nameAndroidVocabulary);
+		const android = VocabularyService.#android;
+		return Vocabulary.import(await this.#read(android), android);
 	}
 
 	async loadDesktopVocabulary(): Promise<Vocabulary> {
-		return Vocabulary.import(await this.#readJson(VocabularyService.#nameDesktopVocabulary), VocabularyService.#nameDesktopVocabulary);
+		const desktop = VocabularyService.#desktop;
+		return Vocabulary.import(await this.#read(desktop), desktop);
 	}
 
 	async loadRuleTable(): Promise<RuleTable> {
-		return RuleTable.import(await this.#readJson(VocabularyService.#nameRules), VocabularyService.#nameRules);
+		const rules = VocabularyService.#rules;
+		return RuleTable.import(await this.#read(rules), rules);
 	}
 }
 //#endregion

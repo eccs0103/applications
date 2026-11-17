@@ -17,9 +17,7 @@ export class PaletteReader {
 			const deep = value.length > 7;
 			return Color.parse(value, { format: ColorFormats.hex, deep });
 		}
-		const referenced = resolved.get(value);
-		if (referenced === undefined) throw new ReferenceError(`Unknown palette reference '${value}'`);
-		return new Color(referenced);
+		return new Color(ReferenceError.suppress(resolved.get(value), `Unknown palette reference '${value}'`));
 	}
 
 	static read(text: string): Map<string, Color>;
@@ -28,7 +26,7 @@ export class PaletteReader {
 		const resolved = new Map<string, Color>(seed);
 		for (const rawLine of text.split(/\r?\n/)) {
 			const line = PaletteReader.#stripComment(rawLine).trim();
-			if (line.length === 0) continue;
+			if (String.isEmpty(line)) continue;
 
 			const match = PaletteReader.#patternDeclaration.exec(line);
 			if (match === null) throw new SyntaxError(`Invalid '${line}' line syntax`);

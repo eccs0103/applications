@@ -34,15 +34,16 @@ export class Converter {
 	androidToDesktop(source: Readonly<AndroidTheme>): ConversionResult<DesktopTheme> {
 		const report = new Report();
 		const colors = new Map<string, Color>();
+		const ruleTable = this.#ruleTable;
 
 		for (const entry of this.#desktopVocabulary.entries) {
-			const rule = this.#ruleTable.directRuleForDesktopKey(entry.name);
+			const rule = ruleTable.directRuleForDesktopKey(entry.name);
 			colors.set(entry.name, this.#resolveOrDefault(source.colors, rule.source, this.#androidVocabulary));
 			report.record(entry.name, KeyOutcome.direct);
 		}
 
 		for (const name of source.names()) {
-			if (this.#ruleTable.directRuleForAndroidSource(name) === null) report.record(name, KeyOutcome.dropped);
+			if (ruleTable.directRuleForAndroidSource(name) === null) report.record(name, KeyOutcome.dropped);
 		}
 
 		const theme = new DesktopTheme(colors, source.wallpaper, false);
@@ -52,18 +53,19 @@ export class Converter {
 	desktopToAndroid(source: Readonly<DesktopTheme>): ConversionResult<AndroidTheme> {
 		const report = new Report();
 		const colors = new Map<string, Color>();
+		const androidVocabulary = this.#androidVocabulary;
+		const ruleTable = this.#ruleTable;
 
-		for (const entry of this.#androidVocabulary.entries) {
-			const rule = this.#ruleTable.directRuleForAndroidSource(entry.name);
+		for (const entry of androidVocabulary.entries) {
+			const rule = ruleTable.directRuleForAndroidSource(entry.name);
 			if (rule === null) continue;
 			colors.set(entry.name, this.#resolveOrDefault(source.colors, rule.target, this.#desktopVocabulary));
 			report.record(entry.name, KeyOutcome.direct);
 		}
 
-		for (const entry of this.#androidVocabulary.entries) {
+		for (const entry of androidVocabulary.entries) {
 			if (colors.has(entry.name)) continue;
-			const rule = this.#ruleTable.anchoredRuleForAndroidKey(entry.name);
-			if (rule === null) throw new ReferenceError(`Android key '${entry.name}' has neither a direct nor an anchored rule`);
+			const rule = ReferenceError.suppress(ruleTable.anchoredRuleForAndroidKey(entry.name), `Android key '${entry.name}' has neither a direct nor an anchored rule`);
 			colors.set(entry.name, rule.resolve(colors));
 			report.record(entry.name, KeyOutcome.anchored);
 		}

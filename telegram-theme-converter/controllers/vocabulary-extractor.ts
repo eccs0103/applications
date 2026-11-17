@@ -115,24 +115,21 @@ class AndroidSource {
 //#region Desktop source
 class DesktopSource {
 	static #commit: string = "8e18cb71103d83d7d98994ff27f0a2bca55c489c";
-	static #commitLibUi: string = "9c2fb5e7cb7f0c9150340dec8204ce5ca687a65a";
-	static #urlColorsPalette: string = `https://raw.githubusercontent.com/desktop-app/lib_ui/${DesktopSource.#commitLibUi}/ui/colors.palette`;
+	static #commit2: string = "9c2fb5e7cb7f0c9150340dec8204ce5ca687a65a";
+	static #urlColorsPalette: string = `https://raw.githubusercontent.com/desktop-app/lib_ui/${DesktopSource.#commit2}/ui/colors.palette`;
 	static #urlNightCustomBase: string = `https://raw.githubusercontent.com/telegramdesktop/tdesktop/${DesktopSource.#commit}/Telegram/Resources/night-custom-base.tdesktop-theme`;
 
 	static async build(): Promise<VocabularyEntryData[]> {
-		const [paletteText, nightCustomBaseZip] = await Promise.all([HttpFetcher.text(DesktopSource.#urlColorsPalette), HttpFetcher.bytes(DesktopSource.#urlNightCustomBase)]);
-		const light = PaletteReader.read(paletteText);
+		const [palette, nightCustomBaseZip] = await Promise.all([HttpFetcher.text(DesktopSource.#urlColorsPalette), HttpFetcher.bytes(DesktopSource.#urlNightCustomBase)]);
+		const light = PaletteReader.read(palette);
 
 		const zipEntries = await ArchiveReader.read(nightCustomBaseZip);
-		const paletteEntry = ArchiveReader.find(zipEntries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]);
-		if (paletteEntry === null) throw new ReferenceError("night-custom-base.tdesktop-theme has no palette entry");
-		const [, paletteBytes] = paletteEntry;
-		const dark = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), light);
+		const [, bytes] = ReferenceError.suppress(ArchiveReader.find(zipEntries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]), "night-custom-base.tdesktop-theme has no palette entry");
+		const dark = PaletteReader.read(new TextDecoder("utf-8").decode(bytes), light);
 
 		const entries: VocabularyEntryData[] = [];
 		for (const [name, lightColor] of light) {
-			const darkColor = dark.get(name);
-			if (darkColor === undefined) throw new ReferenceError(`Desktop dark palette unexpectedly missing '${name}'`);
+			const darkColor = ReferenceError.suppress(dark.get(name), `Desktop dark palette unexpectedly missing '${name}'`);
 			entries.push({ name, light: ColorHexFormatter.format(lightColor), dark: ColorHexFormatter.format(darkColor) });
 		}
 		return entries;
@@ -156,13 +153,13 @@ class VocabularyExtractor {
 	static #pathDesktopVocabulary: string = "resources/data/telegram-desktop-vocabulary.json";
 
 	static async run(): Promise<void> {
-		const [androidEntries, desktopEntries] = await Promise.all([AndroidSource.build(), DesktopSource.build()]);
+		const [android, desktop] = await Promise.all([AndroidSource.build(), DesktopSource.build()]);
 
-		console.log(`Android vocabulary: ${androidEntries.length} keys`);
-		console.log(`Desktop vocabulary: ${desktopEntries.length} keys`);
+		console.log(`Android vocabulary: ${android.length} keys`);
+		console.log(`Desktop vocabulary: ${desktop.length} keys`);
 
-		await VocabularyWriter.write(androidEntries, VocabularyExtractor.#pathAndroidVocabulary);
-		await VocabularyWriter.write(desktopEntries, VocabularyExtractor.#pathDesktopVocabulary);
+		await VocabularyWriter.write(android, VocabularyExtractor.#pathAndroidVocabulary);
+		await VocabularyWriter.write(desktop, VocabularyExtractor.#pathDesktopVocabulary);
 	}
 }
 //#endregion

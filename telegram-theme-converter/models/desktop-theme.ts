@@ -27,15 +27,13 @@ export class DesktopTheme extends ThemeDocument {
 	static async parse(bytes: Readonly<Uint8Array>): Promise<DesktopTheme>;
 	static async parse(bytes: Readonly<Uint8Array>, baseColors: ReadonlyMap<string, Color>): Promise<DesktopTheme>;
 	static async parse(bytes: Readonly<Uint8Array>, baseColors: ReadonlyMap<string, Color> = new Map()): Promise<DesktopTheme> {
-		const zipEntries = await ArchiveReader.read(bytes);
+		const entries = await ArchiveReader.read(bytes);
 
-		const paletteEntry = ArchiveReader.find(zipEntries, DesktopTheme.#namesPalette);
-		if (paletteEntry === null) throw new ReferenceError("No palette entry found in the desktop theme archive");
-		const [, paletteBytes] = paletteEntry;
-		const colors = PaletteReader.read(new TextDecoder("utf-8").decode(paletteBytes), baseColors);
+		const [, palette] = ReferenceError.suppress(ArchiveReader.find(entries, DesktopTheme.#namesPalette), "No palette entry found in the desktop theme archive");
+		const colors = PaletteReader.read(new TextDecoder("utf-8").decode(palette), baseColors);
 
-		const tiledEntry = ArchiveReader.find(zipEntries, DesktopTheme.#namesTiled);
-		let wallpaperEntry = ArchiveReader.find(zipEntries, DesktopTheme.#namesBackground);
+		const tiledEntry = ArchiveReader.find(entries, DesktopTheme.#namesTiled);
+		let wallpaperEntry = ArchiveReader.find(entries, DesktopTheme.#namesBackground);
 		if (wallpaperEntry === null) wallpaperEntry = tiledEntry;
 		const wallpaper = wallpaperEntry === null ? null : wallpaperEntry[1];
 
@@ -43,8 +41,8 @@ export class DesktopTheme extends ThemeDocument {
 	}
 
 	async serialize(order: readonly string[]): Promise<Uint8Array> {
-		const paletteBytes = PaletteWriter.write(this.colors, order);
-		const entries: ArchiveEntry[] = [{ name: DesktopTheme.#nameCanonicalPalette, content: paletteBytes, stored: false }];
+		const palette = PaletteWriter.write(this.colors, order);
+		const entries: ArchiveEntry[] = [{ name: DesktopTheme.#nameCanonicalPalette, content: palette, stored: false }];
 
 		const wallpaper = this.wallpaper;
 		if (wallpaper !== null) {

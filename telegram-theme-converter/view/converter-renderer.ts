@@ -74,7 +74,7 @@ export class ConverterRenderer extends EventTarget {
 		this.#spanReportDropped = await container.getElementAsync(HTMLSpanElement, "span#span-report-dropped");
 		this.#tableReportKeys = await container.getElementAsync(HTMLTableElement, "table#table-report-keys");
 
-		this.#initializeListeners();
+		this.#listen();
 	}
 
 	addEventListener<K extends keyof ConverterRendererEventMap>(type: K, listener: (this: ConverterRenderer, ev: ConverterRendererEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -89,20 +89,18 @@ export class ConverterRenderer extends EventTarget {
 		return super.removeEventListener(type, listener, options);
 	}
 
-	#initializeListeners(): void {
+	#listen(): void {
 		const inputSource = this.#elementInputSource;
 		const buttonConvert = this.#elementButtonConvert;
 
-		inputSource.addEventListener("change", () => {
+		inputSource.addEventListener("change", (event) => {
 			const files = inputSource.files;
 			let file: File | null = null;
 			if (files !== null && files[0] !== undefined) file = files[0];
 			this.dispatchEvent(new CustomEvent("sourcechange", { detail: file }));
 		});
 
-		buttonConvert.addEventListener("click", () => {
-			this.dispatchEvent(new Event("convertrequested"));
-		});
+		buttonConvert.addEventListener("click", event => this.dispatchEvent(new Event("convertrequested")));
 	}
 
 	setStatus(text: string): void {

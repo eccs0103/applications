@@ -55,14 +55,14 @@ describe("RuleTable integrity", () => {
 	it("has exactly 759 rules: 586 direct + 173 anchored", async () => {
 		const { table } = await Fixture.load();
 		expect(table.rules.length).toBe(759);
-		expect(table.directRules().length).toBe(586);
-		expect(table.anchoredRules().length).toBe(173);
+		expect(table.direct().length).toBe(586);
+		expect(table.anchored().length).toBe(173);
 	});
 
 	it("the direct rules form an injective bijection onto the full Desktop vocabulary", async () => {
 		const { desktop, table } = await Fixture.load();
-		const targets = new Set(table.directRules().map(rule => rule.target));
-		const sources = new Set(table.directRules().map(rule => rule.source));
+		const targets = new Set(table.direct().map(rule => rule.target));
+		const sources = new Set(table.direct().map(rule => rule.source));
 		expect(targets.size).toBe(586);
 		expect(sources.size).toBe(586);
 		expect(desktop.isComplete(targets)).toBe(true);
@@ -70,11 +70,11 @@ describe("RuleTable integrity", () => {
 
 	it("every rule's target and referenced sources are real vocabulary keys", async () => {
 		const { android, desktop, table } = await Fixture.load();
-		for (const rule of table.directRules()) {
+		for (const rule of table.direct()) {
 			expect(desktop.has(rule.target)).toBe(true);
 			expect(android.has(rule.source)).toBe(true);
 		}
-		for (const rule of table.anchoredRules()) {
+		for (const rule of table.anchored()) {
 			expect(android.has(rule.target)).toBe(true);
 			expect(android.has(rule.source)).toBe(true);
 			if (rule.mixWith !== null) expect(android.has(rule.mixWith)).toBe(true);
@@ -83,9 +83,9 @@ describe("RuleTable integrity", () => {
 
 	it("every anchor points inside the bijective core - no chains, no cycles", async () => {
 		const { table } = await Fixture.load();
-		const core = new Set(table.directRules().map(rule => rule.source));
-		const anchored = new Set(table.anchoredRules().map(rule => rule.target));
-		for (const rule of table.anchoredRules()) {
+		const core = new Set(table.direct().map(rule => rule.source));
+		const anchored = new Set(table.anchored().map(rule => rule.target));
+		for (const rule of table.anchored()) {
 			expect(core.has(rule.source)).toBe(true);
 			expect(anchored.has(rule.source)).toBe(false);
 		}
@@ -93,8 +93,8 @@ describe("RuleTable integrity", () => {
 
 	it("the Android vocabulary is fully covered: every key is a core source or an anchored target, never both", async () => {
 		const { android, table } = await Fixture.load();
-		const core = new Set(table.directRules().map(rule => rule.source));
-		const anchored = new Set(table.anchoredRules().map(rule => rule.target));
+		const core = new Set(table.direct().map(rule => rule.source));
+		const anchored = new Set(table.anchored().map(rule => rule.target));
 		for (const name of core) expect(anchored.has(name)).toBe(false);
 		const covered = new Set([...core, ...anchored]);
 		expect(android.isComplete(covered)).toBe(true);
@@ -102,7 +102,7 @@ describe("RuleTable integrity", () => {
 
 	it("every fitted alpha/lightness transform reproduces both the light and the dark official samples", async () => {
 		const { android, table } = await Fixture.load();
-		for (const rule of table.anchoredRules()) {
+		for (const rule of table.anchored()) {
 			if (rule.transform !== Transform.alpha && rule.transform !== Transform.lightness) continue;
 			const anchor = android.get(rule.source);
 			const target = android.get(rule.target);
@@ -139,7 +139,7 @@ describe("Converter completeness", () => {
 		const source = new AndroidTheme(android.lightColors(), null);
 		const { report } = converter.androidToDesktop(source);
 		expect(report.countBy(KeyOutcome.direct)).toBe(586);
-		const core = new Set(table.directRules().map(rule => rule.source));
+		const core = new Set(table.direct().map(rule => rule.source));
 		const dropped = android.entries.map(entry => entry.name).filter(name => !core.has(name));
 		expect(report.keysBy(KeyOutcome.dropped)).toEqual(dropped.sort());
 	});
@@ -179,7 +179,7 @@ describe("Converter round trip", () => {
 
 	it("Android -> Desktop -> Android is the identity on the 586 core keys; surplus keys are reported as anchored", async () => {
 		const { android, table, converter } = await Fixture.load();
-		const core = new Set(table.directRules().map(rule => rule.source));
+		const core = new Set(table.direct().map(rule => rule.source));
 
 		for (const name of ["day.attheme", "night.attheme"]) {
 			const bytes = await TestData.fixture(name);

@@ -11,15 +11,16 @@ export interface ArchiveEntry {
 }
 
 export class ArchiveWriter {
-	static #signatureLocalFile: number = 0x04034b50;
-	static #signatureCentralDirectory: number = 0x02014b50;
-	static #signatureEndOfCentralDirectory: number = 0x06054b50;
+	static #localSignature: number = 0x04034b50;
+	static #centralSignature: number = 0x02014b50;
+	static #endSignature: number = 0x06054b50;
 	static #dosDateEpoch: number = 0b0000000000100001;
 
 	static #crcTable: Uint32Array | null = null;
 
 	static #table(): Uint32Array {
-		if (ArchiveWriter.#crcTable !== null) return ArchiveWriter.#crcTable;
+		const crcTable = ArchiveWriter.#crcTable;
+		if (crcTable !== null) return crcTable;
 		const table = new Uint32Array(256);
 		for (let index = 0; index < 256; index++) {
 			let value = index;
@@ -45,6 +46,7 @@ export class ArchiveWriter {
 
 	static async write(entries: readonly ArchiveEntry[]): Promise<Uint8Array> {
 		const encoder = new TextEncoder();
+		const dosDateEpoch = ArchiveWriter.#dosDateEpoch;
 		const localChunks: Uint8Array[] = [];
 		const centralChunks: Uint8Array[] = [];
 		let offset = 0;
@@ -56,12 +58,12 @@ export class ArchiveWriter {
 			const method = entry.stored ? 0 : 8;
 
 			const localHeader = new DataView(new ArrayBuffer(30));
-			localHeader.setUint32(0, ArchiveWriter.#signatureLocalFile, true);
+			localHeader.setUint32(0, ArchiveWriter.#localSignature, true);
 			localHeader.setUint16(4, 20, true);
 			localHeader.setUint16(6, 0, true);
 			localHeader.setUint16(8, method, true);
 			localHeader.setUint16(10, 0, true);
-			localHeader.setUint16(12, ArchiveWriter.#dosDateEpoch, true);
+			localHeader.setUint16(12, dosDateEpoch, true);
 			localHeader.setUint32(14, crc, true);
 			localHeader.setUint32(18, compressed.length, true);
 			localHeader.setUint32(22, entry.content.length, true);
@@ -70,13 +72,13 @@ export class ArchiveWriter {
 			localChunks.push(new Uint8Array(localHeader.buffer), nameBytes, compressed);
 
 			const centralHeader = new DataView(new ArrayBuffer(46));
-			centralHeader.setUint32(0, ArchiveWriter.#signatureCentralDirectory, true);
+			centralHeader.setUint32(0, ArchiveWriter.#centralSignature, true);
 			centralHeader.setUint16(4, 20, true);
 			centralHeader.setUint16(6, 20, true);
 			centralHeader.setUint16(8, 0, true);
 			centralHeader.setUint16(10, method, true);
 			centralHeader.setUint16(12, 0, true);
-			centralHeader.setUint16(14, ArchiveWriter.#dosDateEpoch, true);
+			centralHeader.setUint16(14, dosDateEpoch, true);
 			centralHeader.setUint32(16, crc, true);
 			centralHeader.setUint32(20, compressed.length, true);
 			centralHeader.setUint32(24, entry.content.length, true);
@@ -96,7 +98,7 @@ export class ArchiveWriter {
 		const centralDirectoryBytes = BytesTool.concat(centralChunks);
 
 		const eocd = new DataView(new ArrayBuffer(22));
-		eocd.setUint32(0, ArchiveWriter.#signatureEndOfCentralDirectory, true);
+		eocd.setUint32(0, ArchiveWriter.#endSignature, true);
 		eocd.setUint16(4, 0, true);
 		eocd.setUint16(6, 0, true);
 		eocd.setUint16(8, entries.length, true);

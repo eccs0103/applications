@@ -56,11 +56,11 @@ export class RuleTable extends Model {
 		return rule;
 	}
 
-	directRules(): readonly Rule[] {
+	direct(): readonly Rule[] {
 		return this.rules.filter(rule => rule.origin === RuleOrigin.direct);
 	}
 
-	anchoredRules(): readonly Rule[] {
+	anchored(): readonly Rule[] {
 		return this.rules.filter(rule => rule.origin === RuleOrigin.anchored);
 	}
 }
