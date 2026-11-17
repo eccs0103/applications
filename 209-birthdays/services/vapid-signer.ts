@@ -32,9 +32,6 @@ export class VapidSigner {
 		return await crypto.subtle.importKey("jwk", this.#privateKey, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]);
 	}
 
-	/**
-	 * Builds the `Authorization` header value for a push request to the given subscription endpoint.
-	 */
 	async authorization(endpoint: Readonly<URI>): Promise<string> {
 		const audience = endpoint.origin;
 		const header = VapidSigner.#encodeJson({ typ: "JWT", alg: "ES256" });

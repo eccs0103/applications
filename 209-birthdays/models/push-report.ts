@@ -18,8 +18,9 @@ export class PushReport {
 	}
 
 	record(endpoint: string, outcome: PushOutcome): void {
-		if (this.#outcomes.has(endpoint)) throw new TypeError(`Endpoint '${endpoint}' already recorded in this report`);
-		this.#outcomes.set(endpoint, outcome);
+		const outcomes = this.#outcomes;
+		if (outcomes.has(endpoint)) throw new TypeError(`Endpoint '${endpoint}' already recorded in this report`);
+		outcomes.set(endpoint, outcome);
 	}
 
 	countBy(outcome: PushOutcome): number {
@@ -33,11 +34,11 @@ export class PushReport {
 	get size(): number { return this.#outcomes.size; }
 
 	describe(): string {
-		const due = this.#due.join(", ");
+		const due = this.#due;
 		const delivered = this.countBy(PushOutcome.delivered);
 		const expired = this.countBy(PushOutcome.expired);
 		const rejected = this.countBy(PushOutcome.rejected);
-		return `Reminder run: ${this.#due.length} due (${due}), ${delivered} delivered, ${expired} expired, ${rejected} rejected.`;
+		return `Reminder run: ${due.length} due (${due.join(", ")}), ${delivered} delivered, ${expired} expired, ${rejected} rejected.`;
 	}
 
 	toJSON(): object {

@@ -23,8 +23,7 @@ class AppController extends Controller {
 	#timer: Timer = new Timer({ multiple: false });
 
 	async #readGroup(uri: Readonly<URI>): Promise<Group> {
-		const content = await this.#bridge.read(uri);
-		if (content === null) throw new ReferenceError();
+		const content = ReferenceError.suppress(await this.#bridge.read(uri));
 		const object = JSON.parse(content);
 		return Group.load(object, "database-2025.json");
 	}

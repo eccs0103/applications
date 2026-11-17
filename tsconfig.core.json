@@ -10,7 +10,6 @@
 		"209-birthdays/models/group.ts",
 		"209-birthdays/models/settings.ts",
 		"209-birthdays/models/vapid-key.ts",
-		"209-birthdays/services/bridge.ts",
-		"209-birthdays/services/reminder-expert.ts"
+		"209-birthdays/services/bridge.ts"
 	]
 }

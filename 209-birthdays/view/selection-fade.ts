@@ -3,15 +3,11 @@
 import "adaptive-extender/web";
 
 //#region Selection fade
-/**
- * Owns the fade-out-then-swap-text-then-fade-in choreography — the same responsibility BirthdaysRenderer's
- * `updateContent` held directly, now scoped to the two DOM nodes it was handed once at construction.
- */
 export class SelectionFade {
 	#h4SelectionTitle: HTMLElement;
 	#dfnSelectionAuxiliary: HTMLElement;
-	#titleAnimation: Animation | null = null;
-	#auxiliaryAnimation: Animation | null = null;
+	#animation: Animation | null = null;
+	#animation2: Animation | null = null;
 
 	static #appearance: Keyframe = { opacity: "1", easing: "ease-out" };
 	static #disappearance: Keyframe = { opacity: "0", easing: "ease-in" };
@@ -24,10 +20,10 @@ export class SelectionFade {
 	}
 
 	#cancel(): void {
-		const titleAnimation = this.#titleAnimation;
-		if (titleAnimation !== null) titleAnimation.cancel();
-		const auxiliaryAnimation = this.#auxiliaryAnimation;
-		if (auxiliaryAnimation !== null) auxiliaryAnimation.cancel();
+		const animation = this.#animation;
+		if (animation !== null) animation.cancel();
+		const animation2 = this.#animation2;
+		if (animation2 !== null) animation2.cancel();
 	}
 
 	#write(title: string, auxiliary: string): void {
@@ -35,13 +31,12 @@ export class SelectionFade {
 		this.#dfnSelectionAuxiliary.textContent = auxiliary;
 	}
 
-	/** Starts the same keyframes on both nodes and returns the title's animation, which paces the text swap. */
 	#animate(keyframes: Keyframe[]): Animation {
 		const options: KeyframeAnimationOptions = { duration: SelectionFade.#duration, fill: SelectionFade.#fill };
-		const titleAnimation = this.#h4SelectionTitle.animate(keyframes, options);
-		this.#titleAnimation = titleAnimation;
-		this.#auxiliaryAnimation = this.#dfnSelectionAuxiliary.animate(keyframes, options);
-		return titleAnimation;
+		const animation = this.#h4SelectionTitle.animate(keyframes, options);
+		this.#animation = animation;
+		this.#animation2 = this.#dfnSelectionAuxiliary.animate(keyframes, options);
+		return animation;
 	}
 
 	#onFadeOutFinish(title: string, auxiliary: string): void {

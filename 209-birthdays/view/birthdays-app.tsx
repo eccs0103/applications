@@ -20,7 +20,6 @@ export interface BirthdaysAppProps {
 	timer: Timer;
 }
 
-/** Reproduces AppController's generator-driven wish cycle: each Timer "trigger" pulls the next wish, or falls back to the live countdown once the generator is exhausted. */
 function useSelectionContent(member: GroupMember | null, timer: Timer): SelectionContent {
 	const [content, setContent] = useState<SelectionContent>(SelectionContent.empty());
 	const refGenerator: RefObject<Generator<[GroupMember, string], null> | null> = useRef(null);
@@ -37,9 +36,9 @@ function useSelectionContent(member: GroupMember | null, timer: Timer): Selectio
 
 	useEffect(() => {
 		if (member === null) return;
-		const handleTrigger = (): void => setContent(SelectionContent.next(refGenerator.current, member, true));
-		timer.addEventListener("trigger", handleTrigger);
-		return timer.removeEventListener.bind(timer, "trigger", handleTrigger);
+		const trigger = (event: Event): void => setContent(SelectionContent.next(refGenerator.current, member, true));
+		timer.addEventListener("trigger", trigger);
+		return timer.removeEventListener.bind(timer, "trigger", trigger);
 	}, [member, timer]);
 
 	useEffect(() => {
@@ -61,14 +60,14 @@ export function BirthdaysApp({ members, settings, notifications, timer }: Birthd
 		void bootstrap();
 	}, [notifications]);
 
-	const handleToggle = async (): Promise<void> => setNotificationsState(await notifications.toggle());
+	const toggle = async (): Promise<void> => setNotificationsState(await notifications.toggle());
 
 	return (
 		<>
 			<ScrollPicker members={members} selection={indexSelection} onSelect={setMemberSelection} onCommit={settings.writeSelection.bind(settings)} />
 			<hr className="layer" />
 			<SelectionDisplay content={content} />
-			<NotificationsToggle supported={notifications.supported} state={notificationsState} onToggle={handleToggle} />
+			<NotificationsToggle supported={notifications.supported} state={notificationsState} onToggle={toggle} />
 		</>
 	);
 }

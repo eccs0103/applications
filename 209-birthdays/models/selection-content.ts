@@ -5,9 +5,6 @@ import { Timespan } from "adaptive-extender/web";
 import { type GroupMember } from "./group.js";
 
 //#region Selection content
-/**
- * What the selection display shows for the current member: either a wish someone left them, or the live countdown to their birthday.
- */
 export class SelectionContent {
 	title: string;
 	auxiliary: string;

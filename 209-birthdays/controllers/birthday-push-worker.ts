@@ -10,7 +10,6 @@ import { VapidSigner } from "../services/vapid-signer.js";
 import { PushDispatcher } from "../services/push-dispatcher.js";
 import { ResponseFactory } from "../services/response-factory.js";
 import { BirthdayDatabase, type BirthdayHolder } from "../models/birthday-database.js";
-import { ReminderExpert } from "../services/reminder-expert.js";
 
 //#region Birthday push worker
 interface WorkerServices {
@@ -27,7 +26,7 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 		const { pathname } = new URI(request.url);
 
 		if (request.method === "OPTIONS") return factory.preflight();
-		if (request.method === "GET" && pathname === "/api/vapid") return factory.json({ key: environment.VAPID_PUBLIC });
+		if (request.method === "GET" && pathname === "/api/vapid") return factory.json({ key: EnvironmentProvider.resolve(environment, PushEnvironment).vapidPublic });
 		if (request.method === "POST" && pathname === "/api/subscribe") return await this.#subscribe(request, environment);
 		if (request.method === "POST" && pathname === "/api/trigger") return await this.#trigger(request, environment);
 		return factory.error(404, "Not found");
@@ -41,19 +40,16 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 		const text = await request.text();
 		const store = new SubscriptionStore(environment.SUBSCRIPTIONS);
 		const endpoint = await store.save(text);
-		if (endpoint === null) return this.#factory.error(400, "Bad request");
-		return this.#factory.noContent();
+		const factory = this.#factory;
+		if (endpoint === null) return factory.error(400, "Bad request");
+		return factory.noContent();
 	}
 
-	static #timezoneOffsetHours: number = 4;
+	static #offset: number = 4;
 
-	/**
-	 * Cloudflare Workers run in UTC, but this app has one fixed audience timezone (Yerevan, UTC+4,
-	 * no DST). Raw UTC `new Date()` reads a calendar day that's still stale for up to 4 hours after
-	 * Yerevan's own day has already rolled over — shift by the fixed offset before reading the date.
-	 */
+	// Workers run in UTC while the audience is in Yerevan (UTC+4, no DST), so the UTC date lags Yerevan's day by up to 4 hours: shift by the hours first
 	#today(): Date {
-		const shifted = new Date(Date.now() + BirthdayPushWorker.#timezoneOffsetHours * 60 * 60 * 1000);
+		const shifted = new Date(Date.now() + BirthdayPushWorker.#offset * 60 * 60 * 1000);
 		return new Date(shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate());
 	}
 
@@ -62,8 +58,7 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 	async #reminders(): Promise<[BirthdayHolder, number][]> {
 		const response = await fetch(BirthdayPushWorker.#database);
 		if (!response.ok) throw new ReferenceError(`Unable to read birthdays due ${response.status} status`);
-		const members = BirthdayDatabase.import(await response.json(), "database-2025.json").members;
-		return ReminderExpert.findReminders(members, this.#today());
+		return BirthdayDatabase.import(await response.json(), "database-2025.json").reminders(this.#today());
 	}
 
 	static #safeEquals(token: string, token2: string): boolean {
@@ -95,9 +90,10 @@ class BirthdayPushWorker extends CloudflareWorker<WorkerBindings> {
 
 	async #trigger(request: Request, environment: WorkerBindings): Promise<Response> {
 		const pushEnvironment = EnvironmentProvider.resolve(environment, PushEnvironment);
-		if (!this.#authorized(request, pushEnvironment.triggerSecret)) return this.#factory.error(401, "Unauthorized");
+		const factory = this.#factory;
+		if (!this.#authorized(request, pushEnvironment.secret)) return factory.error(401, "Unauthorized");
 		const report = await this.#runReminderCycle(environment, pushEnvironment);
-		return this.#factory.json(report);
+		return factory.json(report);
 	}
 
 	async runScheduled(event: ScheduledController, environment: WorkerBindings): Promise<void> {

@@ -7,6 +7,8 @@ const { round } = Math;
 
 //#region Birthday holder
 export class BirthdayHolder extends Model {
+	static #dayLength: number = 24 * 60 * 60 * 1000;
+
 	@Field(String, { name: "name" })
 	name: string;
 
@@ -24,27 +26,36 @@ export class BirthdayHolder extends Model {
 		return this.#dayNumber(year, month, day - 1);
 	}
 
-	/**
-	 * Returns the number of days until the next occurrence of this birthday, relative to `today`.
-	 */
 	daysUntil(today: Date): number {
-		const millisecondsPerDay = 24 * 60 * 60 * 1000;
+		const dayLength = BirthdayHolder.#dayLength;
 		const month = this.birthday.getMonth();
 		const day = this.birthday.getDate();
 		const year = today.getFullYear();
-		const todayNumber = this.#dayNumber(year, today.getMonth(), today.getDate());
+		const now = this.#dayNumber(year, today.getMonth(), today.getDate());
 
-		const occurrenceThisYear = this.#dayNumber(year, month, day);
-		if (occurrenceThisYear >= todayNumber) return round((occurrenceThisYear - todayNumber) / millisecondsPerDay);
+		const current = this.#dayNumber(year, month, day);
+		if (current >= now) return round((current - now) / dayLength);
 
-		const occurrenceNextYear = this.#dayNumber(year + 1, month, day);
-		return round((occurrenceNextYear - todayNumber) / millisecondsPerDay);
+		const next = this.#dayNumber(year + 1, month, day);
+		return round((next - now) / dayLength);
 	}
 }
 //#endregion
 //#region Birthday database
 export class BirthdayDatabase extends Model {
+	static #offsets: readonly number[] = [0, 3];
+
 	@Field(Array.Of(BirthdayHolder), { name: "members" })
 	members: BirthdayHolder[];
+
+	reminders(today: Date): [BirthdayHolder, number][] {
+		const reminders: [BirthdayHolder, number][] = [];
+		for (const member of this.members) {
+			const days = member.daysUntil(today);
+			if (!BirthdayDatabase.#offsets.includes(days)) continue;
+			reminders.push([member, days]);
+		}
+		return reminders;
+	}
 }
 //#endregion

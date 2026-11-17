@@ -15,8 +15,7 @@ export function SelectionDisplay({ content }: SelectionDisplayProps): ReactEleme
 	const refAuxiliary: RefObject<HTMLElement | null> = useRef(null);
 	const refFade: RefObject<SelectionFade | null> = useRef(null);
 
-	// Text is written by SelectionFade directly onto the DOM nodes rather than through JSX children — the fade-out
-	// has to finish showing the OLD text before the new one is written, which JSX re-rendering can't sequence.
+	// SelectionFade writes the text onto the DOM nodes, not through JSX children: the fade-out must finish showing the old text before the new one is written, which a re-render cannot sequence
 	useEffect(() => {
 		const h4SelectionTitle = refTitle.current;
 		const dfnSelectionAuxiliary = refAuxiliary.current;

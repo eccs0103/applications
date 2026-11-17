@@ -1,8 +1,7 @@
 "use strict";
 
 import "adaptive-extender/core";
-import { Field, Model } from "adaptive-extender/core";
-import { Random } from "adaptive-extender/web";
+import { Field, Model, Random } from "adaptive-extender/core";
 
 //#region Group
 export class GroupMember extends Model {
@@ -80,7 +79,7 @@ export class Group extends Model {
 	wishes: Wish[];
 
 	static load(source: any, name: string): Group {
-		const group = super.import(source, name) as Group;
+		const group = Group.import(source, name);
 
 		const identifiers = new Map<number, GroupMember>();
 		for (const member of group.members) identifiers.add(member.identifier, member);

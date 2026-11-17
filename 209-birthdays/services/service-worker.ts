@@ -2,7 +2,6 @@
 
 import "adaptive-extender/worker";
 import { BirthdayDatabase, type BirthdayHolder } from "../models/birthday-database.js";
-import { ReminderExpert } from "./reminder-expert.js";
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -25,16 +24,15 @@ class BirthdayServiceWorker {
 		});
 	}
 
-	async #readMembers(): Promise<BirthdayHolder[]> {
+	async #read(): Promise<BirthdayDatabase> {
 		const cache: RequestCache = "no-store";
 		const response = await fetch("/data/database-2025.json", { cache });
 		const content = await response.text();
 		const object = JSON.parse(content);
-		const database = BirthdayDatabase.import(object, "database-2025.json");
-		return database.members;
+		return BirthdayDatabase.import(object, "database-2025.json");
 	}
 
-	#reminderText(member: BirthdayHolder, days: number): [string, string] {
+	#describe(member: BirthdayHolder, days: number): [string, string] {
 		if (days === 0) return [`🎂 ${member.fullName}`, "Այսօր ծնունդն է!"];
 		const month: "long" = "long";
 		const day: "numeric" = "numeric";
@@ -51,11 +49,11 @@ class BirthdayServiceWorker {
 
 	async #notifyReminders(): Promise<void> {
 		try {
-			const members = await this.#readMembers();
-			const reminders = ReminderExpert.findReminders(members, new Date());
+			const database = await this.#read();
+			const reminders = database.reminders(new Date());
 			if (reminders.length === 0) return await this.#notifyFallback();
 			for (const [member, days] of reminders) {
-				const [title, body] = this.#reminderText(member, days);
+				const [title, body] = this.#describe(member, days);
 				const icon: string = "/icons/cake-colorful.png";
 				const badge: string = "/icons/cake-colorful.png";
 				await self.registration.showNotification(title, { body, icon, badge });

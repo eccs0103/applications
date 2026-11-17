@@ -9,11 +9,6 @@ export interface PickerSelectionDelegate {
 	onCommit(index: number): void;
 }
 
-/**
- * Owns the scroll picker's imperative DOM state — which button is highlighted, and how the list scrolls to it —
- * the same responsibility BirthdaysRenderer held directly on its class fields before this page was React.
- * One instance per mounted ScrollPicker; React only ever calls its public methods.
- */
 export class PickerSelection {
 	#members: readonly GroupMember[];
 	#delegate: PickerSelectionDelegate;
@@ -25,8 +20,8 @@ export class PickerSelection {
 		this.#delegate = delegate;
 	}
 
-	/** Mirrors `Array.prototype.at` so an out-of-range or negative index resolves the same way it did against the old pair array. */
-	static #normalizeIndex(length: number, index: number): number | null {
+	// Resolves like Array.prototype.at: a negative index counts from the end, so stored selections keep pointing at the same member
+	static #at(length: number, index: number): number | null {
 		let normalized = index;
 		if (normalized < 0) normalized += length;
 		if (normalized < 0 || normalized >= length) return null;
@@ -87,19 +82,19 @@ export class PickerSelection {
 	}
 
 	setInitial(divScrollPicker: Readonly<HTMLDivElement>, selection: number): void {
-		let index = PickerSelection.#normalizeIndex(this.#members.length, selection);
+		let index = PickerSelection.#at(this.#members.length, selection);
 		if (index === null) index = this.#findClosest(divScrollPicker);
 		this.#select(index);
 		this.#scrollTo(false);
 	}
 
-	handleScroll(divScrollPicker: Readonly<HTMLDivElement>): void {
+	scroll(divScrollPicker: Readonly<HTMLDivElement>, event: Event): void {
 		const closest = this.#findClosest(divScrollPicker);
 		if (closest === this.#index) return;
 		this.#select(closest);
 	}
 
-	handleClick(index: number): void {
+	choose(index: number): void {
 		this.#select(index);
 		this.#scrollTo(true);
 		this.#delegate.onCommit(index);

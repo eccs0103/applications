@@ -14,9 +14,7 @@ export interface ScrollPickerProps extends PickerSelectionDelegate {
 export function ScrollPicker({ members, selection, onSelect, onCommit }: ScrollPickerProps): ReactElement {
 	const refContainer: RefObject<HTMLDivElement | null> = useRef(null);
 
-	// Built once per mount and kept for the component's lifetime — the closest a function component gets to a
-	// constructor. Safe to capture onSelect/onCommit here because both stay referentially stable for this page's
-	// lifetime (a useState setter, and a bound service method — see BirthdaysApp).
+	// Built once per mount; capturing onSelect and onCommit is safe only because both stay referentially stable (a useState setter and a bound service method, see BirthdaysApp)
 	const refPicker: RefObject<PickerSelection | null> = useRef(null);
 	if (refPicker.current === null) refPicker.current = new PickerSelection(members, { onSelect, onCommit });
 	const picker = refPicker.current;
@@ -27,10 +25,10 @@ export function ScrollPicker({ members, selection, onSelect, onCommit }: ScrollP
 
 		picker.setInitial(divScrollPicker, selection);
 
-		const handleScroll = picker.handleScroll.bind(picker, divScrollPicker);
-		divScrollPicker.addEventListener("scroll", handleScroll, { passive: true });
-		return divScrollPicker.removeEventListener.bind(divScrollPicker, "scroll", handleScroll);
-		// Runs once on mount only — matches BirthdaysRenderer#setInitialSelection, which also ran once.
+		const scroll = picker.scroll.bind(picker, divScrollPicker);
+		divScrollPicker.addEventListener("scroll", scroll, { passive: true });
+		return divScrollPicker.removeEventListener.bind(divScrollPicker, "scroll", scroll);
+		// Runs once on mount only: the initial selection must not be re-applied on later renders
 	}, []);
 
 	return (
@@ -42,7 +40,7 @@ export function ScrollPicker({ members, selection, onSelect, onCommit }: ScrollP
 					title={String.empty}
 					className="picker-item flex column main-center"
 					ref={picker.setButton.bind(picker, index)}
-					onClick={picker.handleClick.bind(picker, index)}
+					onClick={picker.choose.bind(picker, index)}
 				>
 					<span className="title">{member.birthday.toLocaleDateString("hy", { month: "short", day: "numeric" })}</span>
 					<dfn className="subtitle">{member.name}</dfn>

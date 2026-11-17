@@ -12,9 +12,6 @@ export class SubscriptionStore {
 		this.#namespace = namespace;
 	}
 
-	/**
-	 * Validates and stores a subscription, returning its endpoint, or `null` if the payload is malformed.
-	 */
 	async save(text: string): Promise<URI | null> {
 		const object = JSON.parse(text);
 		try {
