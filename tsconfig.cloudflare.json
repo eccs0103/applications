@@ -16,8 +16,6 @@
 		"209-birthdays/services/push-dispatcher.ts",
 		"209-birthdays/services/response-factory.ts",
 		"209-birthdays/services/subscription-store.ts",
-		"209-birthdays/services/vapid-signer.ts",
-		"209-birthdays/services/reminder-expert.ts",
-		"209-birthdays/models/birthday-database.ts"
+		"209-birthdays/services/vapid-signer.ts"
 	]
 }
