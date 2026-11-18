@@ -5,6 +5,7 @@ import { URI } from "adaptive-extender/node";
 import AsyncFileSystem from "node:fs/promises";
 import { Vocabulary } from "../../telegram-theme-converter/models/vocabulary.js";
 import { RuleTable } from "../../telegram-theme-converter/models/rule-table.js";
+import { ServerCodec } from "../../telegram-theme-converter/services/server-codec.js";
 
 //#region Test data
 export class TestData {
@@ -16,7 +17,10 @@ export class TestData {
 		0x00, 0x01, 0x00, 0x00, 0xff, 0xd9,
 	]);
 
+	static #codec: ServerCodec = new ServerCodec();
+
 	static get wallpaper(): Uint8Array { return TestData.#wallpaper; }
+	static get codec(): ServerCodec { return TestData.#codec; }
 
 	static async fixture(name: string): Promise<Uint8Array> {
 		const buffer = await AsyncFileSystem.readFile(new URI(name, TestData.#fixtures).toPath());

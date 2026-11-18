@@ -7,6 +7,7 @@ import { AtthemeReader } from "../services/attheme-reader.js";
 import { PaletteReader } from "../services/palette-reader.js";
 import { ArchiveReader } from "../services/archive-reader.js";
 import { Argb } from "../services/argb.js";
+import { ServerCodec } from "../services/server-codec.js";
 
 interface VocabularyEntryData {
 	name: string;
@@ -92,8 +93,9 @@ class AndroidSource {
 		const [javaSource, nightAtthemeText] = await Promise.all([HttpFetcher.text(AndroidSource.#urlThemeColors), HttpFetcher.text(AndroidSource.#urlNightAttheme)]);
 		const light = AndroidSource.#parseLightDefaults(javaSource);
 
-		const nightAtthemeBytes = new TextEncoder().encode(nightAtthemeText);
-		const { colors: darkOverrides } = AtthemeReader.read(nightAtthemeBytes);
+		const codec = new ServerCodec();
+		const nightAtthemeBytes = codec.encode(nightAtthemeText);
+		const { colors: darkOverrides } = AtthemeReader.read(nightAtthemeBytes, codec);
 		let skippedLegacyAliases = 0;
 		for (const name of darkOverrides.keys()) {
 			if (!light.has(name)) skippedLegacyAliases++;
@@ -123,9 +125,10 @@ class DesktopSource {
 		const [palette, nightCustomBaseZip] = await Promise.all([HttpFetcher.text(DesktopSource.#urlColorsPalette), HttpFetcher.bytes(DesktopSource.#urlNightCustomBase)]);
 		const light = PaletteReader.read(palette);
 
-		const zipEntries = await ArchiveReader.read(nightCustomBaseZip);
+		const codec = new ServerCodec();
+		const zipEntries = await ArchiveReader.read(nightCustomBaseZip, codec);
 		const [, bytes] = ReferenceError.suppress(ArchiveReader.find(zipEntries, ["colors.tdesktop-theme", "colors.tdesktop-palette"]), "night-custom-base.tdesktop-theme has no palette entry");
-		const dark = PaletteReader.read(new TextDecoder("utf-8").decode(bytes), light);
+		const dark = PaletteReader.read(codec.decode(bytes), light);
 
 		const entries: VocabularyEntryData[] = [];
 		for (const [name, lightColor] of light) {

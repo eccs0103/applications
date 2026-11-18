@@ -7,6 +7,7 @@ import { ArchiveReader } from "../services/archive-reader.js";
 import { ArchiveWriter, type ArchiveEntry } from "../services/archive-writer.js";
 import { PaletteReader } from "../services/palette-reader.js";
 import { PaletteWriter } from "../services/palette-writer.js";
+import { type Codec } from "../services/codec.js";
 
 //#region Desktop theme
 export class DesktopTheme extends ThemeDocument {
@@ -24,13 +25,13 @@ export class DesktopTheme extends ThemeDocument {
 
 	get tiled(): boolean { return this.#tiled; }
 
-	static async parse(bytes: Readonly<Uint8Array>): Promise<DesktopTheme>;
-	static async parse(bytes: Readonly<Uint8Array>, baseColors: ReadonlyMap<string, Color>): Promise<DesktopTheme>;
-	static async parse(bytes: Readonly<Uint8Array>, baseColors: ReadonlyMap<string, Color> = new Map()): Promise<DesktopTheme> {
-		const entries = await ArchiveReader.read(bytes);
+	static async parse(bytes: Readonly<Uint8Array>, codec: Codec): Promise<DesktopTheme>;
+	static async parse(bytes: Readonly<Uint8Array>, codec: Codec, baseColors: ReadonlyMap<string, Color>): Promise<DesktopTheme>;
+	static async parse(bytes: Readonly<Uint8Array>, codec: Codec, baseColors: ReadonlyMap<string, Color> = new Map()): Promise<DesktopTheme> {
+		const entries = await ArchiveReader.read(bytes, codec);
 
 		const [, palette] = ReferenceError.suppress(ArchiveReader.find(entries, DesktopTheme.#namesPalette), "No palette entry found in the desktop theme archive");
-		const colors = PaletteReader.read(new TextDecoder("utf-8").decode(palette), baseColors);
+		const colors = PaletteReader.read(codec.decode(palette), baseColors);
 
 		const tiledEntry = ArchiveReader.find(entries, DesktopTheme.#namesTiled);
 		let wallpaperEntry = ArchiveReader.find(entries, DesktopTheme.#namesBackground);
@@ -40,8 +41,8 @@ export class DesktopTheme extends ThemeDocument {
 		return new DesktopTheme(colors, wallpaper, tiledEntry !== null);
 	}
 
-	async serialize(order: readonly string[]): Promise<Uint8Array> {
-		const palette = PaletteWriter.write(this.colors, order);
+	async serialize(order: readonly string[], codec: Codec): Promise<Uint8Array> {
+		const palette = PaletteWriter.write(this.colors, order, codec);
 		const entries: ArchiveEntry[] = [{ name: DesktopTheme.#nameCanonicalPalette, content: palette, stored: false }];
 
 		const wallpaper = this.wallpaper;
@@ -51,7 +52,7 @@ export class DesktopTheme extends ThemeDocument {
 			entries.push({ name, content: wallpaper, stored: true });
 		}
 
-		return ArchiveWriter.write(entries);
+		return ArchiveWriter.write(entries, codec);
 	}
 }
 //#endregion

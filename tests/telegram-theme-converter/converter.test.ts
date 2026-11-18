@@ -160,7 +160,7 @@ describe("Converter round trip", () => {
 
 		for (const name of ["day-custom-base.tdesktop-theme", "night-custom-base.tdesktop-theme"]) {
 			const bytes = await TestData.fixture(name);
-			const archive = await ArchiveReader.read(bytes);
+			const archive = await ArchiveReader.read(bytes, TestData.codec);
 			const entry = ArchiveReader.find(archive, ["colors.tdesktop-theme"]);
 			const [, palette] = ReferenceError.suppress(entry, `No palette entry in '${name}'`);
 			const colors = PaletteReader.read(new TextDecoder("utf-8").decode(palette), base);
@@ -183,7 +183,7 @@ describe("Converter round trip", () => {
 
 		for (const name of ["day.attheme", "night.attheme"]) {
 			const bytes = await TestData.fixture(name);
-			const { colors } = AtthemeReader.read(bytes);
+			const { colors } = AtthemeReader.read(bytes, TestData.codec);
 			const complete = android.lightColors();
 			for (const [key, color] of colors) if (android.has(key)) complete.set(key, color);
 			const source = new AndroidTheme(complete, null);

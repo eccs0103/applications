@@ -3,6 +3,7 @@
 import "adaptive-extender/core";
 import { Color } from "adaptive-extender/core";
 import { Argb } from "./argb.js";
+import { type Codec } from "./codec.js";
 
 //#region Attheme reader
 export interface AtthemeDocumentData {
@@ -11,8 +12,8 @@ export interface AtthemeDocumentData {
 }
 
 export class AtthemeReader {
-	static #markerWallpaperStart: Uint8Array = new TextEncoder().encode("WPS\n");
-	static #markerWallpaperEnd: Uint8Array = new TextEncoder().encode("\nWPE\n");
+	static #markerWallpaperStart: Uint8Array = Uint8Array.from("WPS\n", character => character.charCodeAt(0));
+	static #markerWallpaperEnd: Uint8Array = Uint8Array.from("\nWPE\n", character => character.charCodeAt(0));
 	static #keyWallpaperOffset: string = "wallpaperFileOffset";
 	static #prefixLegacyKey: string = "key_";
 
@@ -56,15 +57,15 @@ export class AtthemeReader {
 		return colors;
 	}
 
-	static read(bytes: Readonly<Uint8Array>): AtthemeDocumentData {
+	static read(bytes: Readonly<Uint8Array>, codec: Codec): AtthemeDocumentData {
 		const markerWallpaperStart = AtthemeReader.#markerWallpaperStart;
 		const wpsIndex = AtthemeReader.#indexOfBytes(bytes, markerWallpaperStart, 0);
 		if (wpsIndex === -1) {
-			const text = new TextDecoder("utf-8").decode(bytes);
+			const text = codec.decode(bytes);
 			return { colors: AtthemeReader.#parseColors(text), wallpaper: null };
 		}
 
-		const text = new TextDecoder("utf-8").decode(bytes.subarray(0, wpsIndex));
+		const text = codec.decode(bytes.subarray(0, wpsIndex));
 		const start = wpsIndex + markerWallpaperStart.length;
 		const wpeIndex = AtthemeReader.#indexOfBytes(bytes, AtthemeReader.#markerWallpaperEnd, start);
 		const end = wpeIndex === -1 ? bytes.length : wpeIndex;

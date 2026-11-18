@@ -2,6 +2,7 @@
 
 import "adaptive-extender/core";
 import { BytesTool } from "./bytes.js";
+import { type Codec } from "./codec.js";
 
 //#region Archive writer
 export interface ArchiveEntry {
@@ -38,23 +39,16 @@ export class ArchiveWriter {
 		return (crc ^ 0xffffffff) >>> 0;
 	}
 
-	static async #deflate(bytes: Readonly<Uint8Array>): Promise<Uint8Array> {
-		const stream = new Blob([new Uint8Array(bytes)]).stream().pipeThrough(new CompressionStream("deflate-raw"));
-		const buffer = await new Response(stream).arrayBuffer();
-		return new Uint8Array(buffer);
-	}
-
-	static async write(entries: readonly ArchiveEntry[]): Promise<Uint8Array> {
-		const encoder = new TextEncoder();
+	static async write(entries: readonly ArchiveEntry[], codec: Codec): Promise<Uint8Array> {
 		const dosDateEpoch = ArchiveWriter.#dosDateEpoch;
 		const localChunks: Uint8Array[] = [];
 		const centralChunks: Uint8Array[] = [];
 		let offset = 0;
 
 		for (const entry of entries) {
-			const nameBytes = encoder.encode(entry.name);
+			const nameBytes = codec.encode(entry.name);
 			const crc = ArchiveWriter.#crc32(entry.content);
-			const compressed = entry.stored ? entry.content : await ArchiveWriter.#deflate(entry.content);
+			const compressed = entry.stored ? entry.content : await codec.deflate(entry.content);
 			const method = entry.stored ? 0 : 8;
 
 			const localHeader = new DataView(new ArrayBuffer(30));

@@ -11,6 +11,7 @@
 		"environment/configs/**/*.ts",
 		"environment/plugins/**/*.ts",
 		"telegram-theme-converter/controllers/vocabulary-extractor.ts",
+		"telegram-theme-converter/services/server-codec.ts",
 		"tests/**/*.ts"
 	]
 }

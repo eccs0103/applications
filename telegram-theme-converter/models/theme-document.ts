@@ -2,6 +2,7 @@
 
 import "adaptive-extender/core";
 import { Color } from "adaptive-extender/core";
+import { type Codec } from "../services/codec.js";
 
 //#region Theme document
 export abstract class ThemeDocument {
@@ -26,7 +27,7 @@ export abstract class ThemeDocument {
 		return new Set(this.#colors.keys());
 	}
 
-	abstract serialize(order: readonly string[]): Promise<Uint8Array>;
+	abstract serialize(order: readonly string[], codec: Codec): Promise<Uint8Array>;
 
 	static wallpaperExtension(wallpaper: Readonly<Uint8Array>): "jpg" | "png" {
 		if (wallpaper.length >= 2 && wallpaper[0] === 0xff && wallpaper[1] === 0xd8) return "jpg";

@@ -1,6 +1,7 @@
 "use strict";
 
 import "adaptive-extender/core";
+import { type Codec } from "./codec.js";
 
 //#region Archive reader
 export class ArchiveReader {
@@ -9,15 +10,9 @@ export class ArchiveReader {
 	static #endSignature: number = 0x06054b50;
 	static #endLength: number = 22;
 
-	static async #inflate(bytes: Readonly<Uint8Array>): Promise<Uint8Array> {
-		const stream = new Blob([new Uint8Array(bytes)]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
-		const buffer = await new Response(stream).arrayBuffer();
-		return new Uint8Array(buffer);
-	}
-
-	static async #decodeEntry(method: number, raw: Readonly<Uint8Array>, name: string): Promise<Uint8Array> {
+	static async #decodeEntry(method: number, raw: Readonly<Uint8Array>, name: string, codec: Codec): Promise<Uint8Array> {
 		if (method === 0) return new Uint8Array(raw);
-		if (method === 8) return ArchiveReader.#inflate(raw);
+		if (method === 8) return codec.inflate(raw);
 		throw new TypeError(`Unsupported compression method ${method} for entry '${name}'`);
 	}
 
@@ -31,7 +26,7 @@ export class ArchiveReader {
 		throw new SyntaxError("End of central directory record not found");
 	}
 
-	static async read(bytes: Readonly<Uint8Array>): Promise<Map<string, Uint8Array>> {
+	static async read(bytes: Readonly<Uint8Array>, codec: Codec): Promise<Map<string, Uint8Array>> {
 		const eocdOffset = ArchiveReader.#findEnd(bytes);
 		const eocd = new DataView(bytes.buffer, bytes.byteOffset + eocdOffset, ArchiveReader.#endLength);
 		const entryCount = eocd.getUint16(10, true);
@@ -49,7 +44,7 @@ export class ArchiveReader {
 			const extraLength = header.getUint16(30, true);
 			const commentLength = header.getUint16(32, true);
 			const localHeaderOffset = header.getUint32(42, true);
-			const name = new TextDecoder("utf-8").decode(bytes.subarray(cursor + 46, cursor + 46 + nameLength));
+			const name = codec.decode(bytes.subarray(cursor + 46, cursor + 46 + nameLength));
 
 			const localHeader = new DataView(bytes.buffer, bytes.byteOffset + localHeaderOffset, 30);
 			if (localHeader.getUint32(0, true) !== ArchiveReader.#localSignature) throw new SyntaxError(`Invalid local file header for entry '${name}'`);
@@ -58,7 +53,7 @@ export class ArchiveReader {
 			const dataStart = localHeaderOffset + 30 + localNameLength + localExtraLength;
 			const raw = bytes.subarray(dataStart, dataStart + size);
 
-			entries.set(name, await ArchiveReader.#decodeEntry(method, raw, name));
+			entries.set(name, await ArchiveReader.#decodeEntry(method, raw, name, codec));
 
 			cursor += 46 + nameLength + extraLength + commentLength;
 		}

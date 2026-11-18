@@ -4,6 +4,8 @@ import "adaptive-extender/web";
 import { Controller, MetadataInjector, URI } from "adaptive-extender/web";
 import { ConverterRenderer } from "../view/converter-renderer.js";
 import { ClientBridge } from "../services/client-bridge.js";
+import { ClientCodec } from "../services/client-codec.js";
+import { type Codec } from "../services/codec.js";
 import { VocabularyService } from "../services/vocabulary-service.js";
 import { Converter } from "../services/converter.js";
 import { AndroidTheme } from "../models/android-theme.js";
@@ -24,6 +26,7 @@ class AppController extends Controller {
 	static #tdesktop: string = ".tdesktop-theme";
 
 	#renderer: ConverterRenderer = new ConverterRenderer(body);
+	#codec: Codec = new ClientCodec();
 	#converter: Converter | null = null;
 	#androidVocabulary: Vocabulary | null = null;
 	#desktopVocabulary: Vocabulary | null = null;
@@ -137,6 +140,7 @@ class AppController extends Controller {
 		const platform = this.#platform;
 		const converter = this.#requiredConverter;
 		const desktopVocabulary = this.#requiredDesktopVocabulary;
+		const codec = this.#codec;
 
 		if (file === null || platform === null) return;
 
@@ -144,20 +148,20 @@ class AppController extends Controller {
 		const bytes = new Uint8Array(await file.arrayBuffer());
 
 		if (platform === SourcePlatform.android) {
-			const source = AndroidTheme.parse(bytes);
+			const source = AndroidTheme.parse(bytes, codec);
 			const { theme, report } = converter.androidToDesktop(source);
 			const order = desktopVocabulary.entries.map(entry => entry.name);
-			const output = await theme.serialize(order);
+			const output = await theme.serialize(order, codec);
 			this.#download(output, this.#swapExtension(file.name, attheme, tdesktop), "application/zip");
 			renderer.showReport(report);
 			renderer.setStatus(`Converted '${file.name}'.`);
 			return;
 		}
 
-		const source = await DesktopTheme.parse(bytes, desktopVocabulary.lightColors());
+		const source = await DesktopTheme.parse(bytes, codec, desktopVocabulary.lightColors());
 		const { theme, report } = converter.desktopToAndroid(source);
 		const order = this.#requiredAndroidVocabulary.entries.map(entry => entry.name);
-		const output = await theme.serialize(order);
+		const output = await theme.serialize(order, codec);
 		this.#download(output, this.#swapExtension(file.name, tdesktop, attheme), "text/plain");
 		renderer.showReport(report);
 		renderer.setStatus(`Converted '${file.name}'.`);
