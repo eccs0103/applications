@@ -2,7 +2,7 @@
 	"$schema": "../node_modules/wrangler/config-schema.json",
 	"name": "birthdays-push",
 	"main": "controllers/birthday-push-worker.ts",
-	"compatibility_date": "2026-07-16",
+	"compatibility_date": "2026-11-16",
 	"routes": [
 		{ "pattern": "birthdays-push.eccs.dev", "custom_domain": true }
 	],
